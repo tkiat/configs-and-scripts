@@ -1,11 +1,12 @@
 #!/usr/bin/env dash
+echo "If the script hangs, exit and check if already authenticated (e.g. by typing gdrive list)."
 if ! type gdrive > /dev/null; then
   echo "gdrive not found in \$PATH. Exiting..."
   exit 1
 fi
 
-if ! [ -d ~/Cloud ]; then
-  echo "The folder ~/Cloud not found. Exiting..."
+if ! [ -d $MY_CLOUD_DIR ]; then
+  echo "Please defines MY_CLOUD_DIR (your cloud folder location) env variable somewhere. Exiting..."
   exit 1
 fi
 
@@ -15,7 +16,7 @@ for i in $old;
   do gdrive delete $i;
 done
 
-cd ~
+cd /tmp
 filename="$(date '+%Y_%m_%d')-Cloud.tar.gz"
 tar czf $filename --directory=$MY_CLOUD_DIR .
 gpg --encrypt --recipient tkiat@tutanota.com $filename
