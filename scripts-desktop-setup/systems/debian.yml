@@ -1,0 +1,6 @@
+# - import_playbook: ../playbook/configs.yml
+# - import_playbook: ../playbook/distro-debian.yml
+- import_playbook: ../playbook/linux-apps-common.yml
+# - import_playbook: ../playbook/vim.yml
+# - import_playbook: ../playbook/vim-plugin.yml
+# - import_playbook: ../playbook/language-server.yml
