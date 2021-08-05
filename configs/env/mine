@@ -1,2 +1,2 @@
-export MY_CLOUD_DIR=~/Cloud
-export MY_SYNC_DIR=~/Sync
+export MY_CLOUD_DIR=~/Sync-Cloud
+export MY_SYNC_DIR=~/Sync-Local

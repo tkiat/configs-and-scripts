@@ -11,13 +11,15 @@ if ! [ -d $MY_CLOUD_DIR ]; then
 fi
 
 # remove old backups
-old=$(gdrive list -q "name contains '-Cloud.tar.gz.gpg'" | awk 'NR > 1 {print $1}')
+old=$(gdrive list -q "name contains '-Sync-Cloud.tar.gz.gpg'" | awk 'NR > 1 {print $1}')
 for i in $old;
   do gdrive delete $i;
 done
 
 cd /tmp
-filename="$(date '+%Y_%m_%d')-Cloud.tar.gz"
+filename="$(date '+%Y_%m_%d')-Sync-Cloud.tar.gz"
+
+echo "Archiving and Compressing ..."
 tar czf $filename --directory=$MY_CLOUD_DIR .
 gpg --encrypt --recipient tkiat@tutanota.com $filename
 rm $filename

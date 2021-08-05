@@ -4,10 +4,10 @@
   name: all-playbooks
   tasks:
     - set_fact: configs_dir="{{ ansible_env.HOME }}/configs-and-scripts/configs"
-    - set_fact: private_dir="{{ ansible_env.HOME }}/Sync-HDD/Private"
+    - set_fact: private_dir="{{ ansible_env.HOME }}/Sync-Local/Private"
     - set_fact: hostlist=localhost
 
-# - import_playbook: playbook/configs.yml
+- import_playbook: playbook/configs.yml
 
 # - import_playbook: playbook/distro-debian.yml
 # - import_playbook: playbook/distro-guix_system.yml
