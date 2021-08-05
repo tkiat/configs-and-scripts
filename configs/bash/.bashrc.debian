@@ -1,0 +1,7 @@
+source ~/.bashrc.shared
+# Debian Specific
+. ~/.alias-modules/apt
+. ~/.alias-modules/nix
+. ~/.alias-modules/systemctl
+
+export NIX_REMOTE=daemon

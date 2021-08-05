@@ -1,4 +1,7 @@
 - name: package-debian -> nix-nonfree -> install packages
+  become: yes
+  become_user: root
+  become_method: su
   ansible.builtin.shell: "export NIXPKGS_ALLOW_UNFREE=1 && nix-env -i {{ item }}"
   with_items: 
     - firefox-devedition-bin

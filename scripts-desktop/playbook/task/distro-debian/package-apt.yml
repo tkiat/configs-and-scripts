@@ -1,4 +1,5 @@
 - name: package-debian -> debian -> install packages
+  become: yes
   vars:
     ansible_python_interpreter: "/usr/bin/python3"
   ansible.builtin.apt:

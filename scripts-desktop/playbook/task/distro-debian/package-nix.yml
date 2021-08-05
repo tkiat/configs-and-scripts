@@ -1,4 +1,7 @@
 - name: package-debian -> nix -> install packages
+  become: yes
+  become_user: root
+  become_method: su
   ansible.builtin.shell: "nix-env -i {{ item }}"
   with_items: 
   - acpi

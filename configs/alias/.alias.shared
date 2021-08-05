@@ -34,9 +34,10 @@ alias sudo='sudo ' # enable running alias as superuser$
 alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
 alias xpdf="xpdf -z width"
-# shortcut to default commands
+# shortcut on top of default command
 alias 2cryptsetup-o="sudo cryptsetup luksOpen"
 alias 2cryptsetup-x="sudo cryptsetup luksClose"
+alias 2git-addconfig='git config --local include.path ../.gitconfig'
 alias 2mount-hdd="sudo mount /dev/mapper/hdd /mnt/hdd"
 alias 2mount-usb="sudo mount /dev/mapper/usb /mnt/usb"
 alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
