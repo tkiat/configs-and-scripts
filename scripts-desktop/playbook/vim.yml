@@ -1,0 +1,9 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: vim
+  tasks:
+    - import_tasks: task/vim/directories.yml
+    - import_tasks: task/vim/vimrc.yml
+    - import_tasks: task/vim/colors.yml
+    - import_tasks: task/vim/ftplugin.yml
+    - import_tasks: task/vim/plugin.yml
+    - import_tasks: task/vim/template.yml

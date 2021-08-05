@@ -1,0 +1,10 @@
+- name: xmonad -> create ~/.xmonad if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.xmonad"
+    state: directory
+
+- name: xmonad -> create xmonad.hs symlink
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/xmonad/xmonad.hs"
+    dest: "{{ ansible_env.HOME }}/.xmonad/xmonad.hs"
+    state: link

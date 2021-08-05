@@ -1,0 +1,12 @@
+- name: template -> create ~/.vim/template/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/template"
+    state: directory
+
+- name: template -> symlink my templates
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.vim/template/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/vim/template/*.template"

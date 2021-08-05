@@ -1,0 +1,8 @@
+- name: vimrc -> create necessary folders inside ~/.vim if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/{{ item }}"
+    state: directory
+  with_items:
+    - backup
+    - undo
+    - swap

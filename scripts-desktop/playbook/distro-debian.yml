@@ -1,0 +1,11 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: distro-debian
+  become: yes
+  become_user: root
+  become_method: su
+  tasks:
+    - import_tasks: task/distro-debian/package-apt.yml
+    - import_tasks: task/distro-debian/package-nix.yml
+    - import_tasks: task/distro-debian/package-nix-nonfree.yml
+
+    - import_tasks: task/distro-debian/font.yml

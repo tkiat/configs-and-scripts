@@ -1,0 +1,37 @@
+unbind-key C
+unbind-key h
+unbind-key j
+unbind-key k
+unbind-key l
+unbind-key o
+unbind-key w
+
+bind-key ^D pagedown
+bind-key ^U pageup
+bind-key d toggle-show-read-feeds
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key w open-in-browser
+browser chromium
+color article             white   black
+color background          white   black
+color info                white   black      bold
+color listfocus           white   color240   bold
+color listfocus_unread    magenta color240   bold
+color listnormal          white   black
+color listnormal_unread   magenta black
+datetime-format "%L"
+history-limit 0 # search history
+keep-articles-days 7
+# macro c set browser "chromium --incognito %u"; open-in-browser ; set browser chromium
+# macro c set browser "chromium %u"; open-in-browser ; set browser chromium
+macro f set browser "firefox %u"; open-in-browser ; set browser chromium
+macro i set browser "icecat %u"; open-in-browser ; set browser chromium
+macro q set browser "qutebrowser %u"; open-in-browser ; set browser chromium
+macro w set browser "w3m %u"; open-in-browser ; set browser chromium
+# max-items 100
+# refresh-on-startup yes
+show-read-articles no
+show-read-feeds no

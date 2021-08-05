@@ -1,0 +1,4 @@
+alias 2poweroff='systemctl poweroff'
+alias 2reboot='systemctl reboot'
+alias 2suspend='command -v slock &> /dev/null && systemctl suspend && slock'
+alias 2shutdown='systemctl poweroff'

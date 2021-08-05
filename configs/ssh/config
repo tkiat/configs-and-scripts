@@ -1,0 +1,16 @@
+Host *
+	Preferredauthentications publickey
+Host gitlab.com
+	IdentityFile ~/.ssh/GitLab-tkiatd
+Host github.com
+	IdentityFile ~/.ssh/GitHub-tkiatd
+Host notabug.org
+	IdentityFile ~/.ssh/NotABug-tkiat
+Host aws-ec2
+	User ec2-user
+	HostName ec2-13-251-165-144.ap-southeast-1.compute.amazonaws.com
+	IdentityFile ~/.ssh/tkiatd-AWS-key.pem
+Host aws-codecommit git-codecommit.*.amazonaws.com
+	HostName git-codecommit.ap-southeast-1.amazonaws.com
+	User APKAZHTLRRW3HYPF3JEC
+	IdentityFile ~/.ssh/AWS-CodeCommit-tkiatd

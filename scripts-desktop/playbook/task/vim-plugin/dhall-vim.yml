@@ -1,0 +1,4 @@
+- name: vim-plugin -> dhall-vim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/vmchale/dhall-vim.git'
+    dest: '{{ base_dir }}/dhall-vim'

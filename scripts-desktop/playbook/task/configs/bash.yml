@@ -1,0 +1,5 @@
+- name: bash -> symlink .bashrc.shared
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/bash/.bashrc.shared"
+    dest: "{{ ansible_env.HOME }}/.bashrc.shared"
+    state: link

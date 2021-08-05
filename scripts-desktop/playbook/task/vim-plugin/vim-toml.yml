@@ -1,0 +1,4 @@
+- name: vim-plugin -> vim-toml -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/cespare/vim-toml.git'
+    dest: '{{ base_dir }}/vim-toml'

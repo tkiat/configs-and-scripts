@@ -1,0 +1,4 @@
+- name: vim-plugin -> editorconfig-vim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/editorconfig/editorconfig-vim.git'
+    dest: '{{ base_dir }}/editorconfig-vim'

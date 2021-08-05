@@ -1,0 +1,5 @@
+- name: git -> symlink .gitconfig
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/git/.gitconfig"
+    dest: "{{ ansible_env.HOME }}/.gitconfig"
+    state: link

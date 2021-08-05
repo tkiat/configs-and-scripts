@@ -1,0 +1,5 @@
+- name: xmobar -> create .xmobarrc symlink
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/xmobar/.xmobarrc"
+    dest: "{{ ansible_env.HOME }}/.xmobarrc"
+    state: link

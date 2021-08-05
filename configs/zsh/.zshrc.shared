@@ -1,0 +1,81 @@
+# ======================================== #
+# Reference: http://zsh.sourceforge.net/Doc/Release/index.html
+# Author: Theerawat Kiatdarakun
+# Welcome to .zshrc I put everything interactive here
+# ========================================
+export EDITOR=
+local editor=vim
+local line_str="----------------------------------------"
+setopt +o nomatch # suppress error when pattern is nomatch
+# set -o vi # vi mode
+# Aliases ================================
+[ -f ~/.alias.shared ] && . ~/.alias.shared
+# overwite default
+# main
+function 2bind-chroot {
+	for dir in dev proc run sys
+	do
+		echo "mounting /$dir to $1/$dir ..."
+		sudo mkdir -p $1/$dir
+		sudo mount --rbind /$dir $1/$dir
+		sudo mount --make-rslave $1/$dir
+	done
+}
+function 2file-edit { $editor $(which $1) }
+alias    2go-cache-clear="go clean -cache -modcache -i -r"
+function 2pdf-merge {
+	array=( $@ )
+	len=${#array[@]}
+	gs -q -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=merged-output.pdf -dBATCH ${array[@]:0:$len-1}
+}
+function 2run-background {
+	$1 > /dev/null 2>&1 &
+	disown
+}
+# ----------------------------------------
+# History ================================
+HISTFILE=~/.zsh_history
+HISTSIZE=4000 # max entries in current-session memory
+SAVEHIST=4000 # max entries in HISTFILE
+setopt incappendhistory # immediately append to history file, not waiting until shell exits
+setopt sharehistory # share history across terminals
+# ----------------------------------------
+# Keybinding ============================
+bindkey "\e[3~" delete-char
+function zle-line-init () { echoti smkx }
+function zle-line-finish () { echoti rmkx }
+zle -N zle-line-init
+zle -N zle-line-finish
+# ----------------------------------------
+# LS_COLORS ==============================
+# get and reset default value
+# eval $(dircolors | head -1)
+LS_COLORS=$(echo $LS_COLORS | sed -e 's/=[^=]*:/=0:/g')
+# remap and export
+LS_COLORS=$LS_COLORS'di=1;30;107:tw=1;30;107:ow=1;30;107:'
+LS_COLORS=$LS_COLORS'ln=1;36:'
+LS_COLORS=$LS_COLORS'*.7z=35:*.bz=35:*.bz2=35:*.gz=35:*.rar=35:*.tar=35:*.zip=35:'
+export LS_COLORS
+# ----------------------------------------
+# Prompt =================================
+# local emojis=('$' '( °Д°) ' '( •̀ω•́)つ' '(´＿- `)' '(๑•﹏•)⋆*' '( °Д°) ┻━┻' '(ﾉ´ヮ´)ﾉ*' 'ʕ •ᴥ•ʔ' '(˘ ³˘)♥' '(っ˘з(˘⌣˘)' '(ɔˆз(ˆ⌣ˆc)' '( ˘⌣˘)♡' '(¬_¬ )')
+# local emoji=$emojis[$(($RANDOM % ${#emojis[@]} + 1))]
+# PROMPT='%B'$PROMPT'%(!.(root).)'\$vcs_info_msg_0_'%b%(60l.'$'\n''.)${emoji} '
+# zstyle ':vcs_info:*' actionformats '(%a'$'\UE0A0''%b)' # used when git detected and e.g. rebase/merge conflict
+# zstyle ':vcs_info:*' formats '%F{'$color_light'}:%n/%r/%b%f' # used when git detected and actionformats is inactive
+
+# pick color of the day
+local day=$(date +%u) # Mon(1)-Sun(7)
+local colors=(11 165 046 208 014 129 196); local color=$colors[day]
+local colors_light=(227 213 121 180 123 099 124); local color_light=$colors_light[day]
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '%F{'$color_light'}:git@%b%f'
+setopt PROMPT_SUBST
+precmd () { vcs_info }
+PROMPT='%B%F{'$color_light'}%n@'$HOST':%F{'$color'}%0 %1~%f'
+PROMPT=$PROMPT'%(!.(root).)'\$vcs_info_msg_0_'$%b '
+# ----------------------------------------
+# Tab Completion =========================
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# ----------------------------------------

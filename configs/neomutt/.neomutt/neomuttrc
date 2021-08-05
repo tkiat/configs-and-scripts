@@ -1,0 +1,31 @@
+source ~/.neomutt/mappings
+source ~/.neomutt/appearance
+# general
+set   abort_nosubject = no
+set   editor = "vim"
+set   header_cache = ~/.cache/neomutt
+set   imap_check_subscribed # check server mailboxes
+set   imap_keepalive = 300
+set   imap_list_subscribed
+unset imap_passive # automatically establish connection
+set   mail_check = 120
+set   mail_check_stats
+set   message_cachedir = "~/.cache/neomutt"
+set   realname = "Theerawat Kiatdarakun"
+set   sort = "reverse-date-received"
+
+auto_view text/html
+# alternative_order text/plain text/enriched text/html
+
+# folder-hook: run command before switching folder
+source "~/.neomutt/accounts/johndonut751@gmail.com"
+folder-hook $folder 'source ~/.neomutt/accounts/johndonut751@gmail.com'
+macro index <f2> '<sync-mailbox><enter-command>source ~/.neomutt/accounts/johndonut751@gmail.com<enter><change-folder>!<enter>'
+
+source "~/.neomutt/accounts/johndonut751@posteo.net
+folder-hook $folder 'source ~/.neomutt/accounts/johndonut751@posteo.net'
+macro index <f3> '<sync-mailbox><enter-command>source ~/.neomutt/accounts/johndonut751@posteo.net<enter><change-folder>!<enter>'
+
+source "~/.neomutt/accounts/tkiatd@outlook.com
+folder-hook $folder 'source ~/.neomutt/accounts/tkiatd@outlook.com'
+macro index <f4> '<sync-mailbox><enter-command>source ~/.neomutt/accounts/tkiatd@outlook.com<enter><change-folder>!<enter>'

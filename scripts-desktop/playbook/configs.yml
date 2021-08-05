@@ -1,0 +1,21 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: configs
+  tasks:
+    - import_tasks: task/configs/alias.yml
+    - import_tasks: task/configs/alsa.yml
+    - import_tasks: task/configs/bash.yml
+    - import_tasks: task/configs/cmus.yml
+    - import_tasks: task/configs/git.yml
+    - import_tasks: task/configs/gtk-3.0.yml
+    - import_tasks: task/configs/inkscape.yml
+    - import_tasks: task/configs/mc.yml
+    - import_tasks: task/configs/newsboat.yml
+    - import_tasks: task/configs/ranger.yml
+    - import_tasks: task/configs/readline.yml
+    - import_tasks: task/configs/ssh.yml
+    - import_tasks: task/configs/tmux.yml
+    - import_tasks: task/configs/unison.yml
+    - import_tasks: task/configs/w3m.yml
+    - import_tasks: task/configs/xmobar.yml
+    - import_tasks: task/configs/xmonad.yml
+    - import_tasks: task/configs/xorg.yml

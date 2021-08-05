@@ -1,0 +1,74 @@
+let mapleader=','
+let space_per_tab=2
+let g:my_commentgroup=[
+	\{
+		\'comment-symbol': '#',
+		\'ext': '*.bash,*.bashrc\(\.shared\)\=,*dash,*.gitignore,*.nix,*.py,*.rec,*.sh,*.tf,*.tmux.conf,.xinitrc,*.yml,*.zprofile,*.zshenv,*.zshrc\(\.shared\)\=',
+		\'comment-line': 'mqI# <esc>`qll',
+		\'comment-visual': ':s/^\%V/# /g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><esc>`qhh',
+		\'uncomment-visual': ':s/^\%V# //g<cr>'
+	\},
+	\{
+		\'comment-symbol': '//',
+		\'ext': '*.adoc,*.c,*.dot,*.go,*.h,*.js,*.jsx,*.ts,*.tsx,*.cpp',
+		\'comment-line': 'mqI// <esc>`qll',
+		\'comment-visual': ':s/^\%V/\/\/ /g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><del><esc>`qhh',
+		\'uncomment-visual': ':s/^\%V\/\/ //g<cr>'
+	\},
+	\{
+		\'comment-symbol': '--',
+		\'ext': '*.cabal,*.dhall,*.hs,*.purs',
+		\'comment-line': 'mqI-- <esc>`qll',
+		\'comment-visual': ':s/^\%V/-- /g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><del><esc>`qhh',
+		\'uncomment-visual': ':s/^\%V-- //g<cr>'
+	\},
+	\{
+		\'comment-symbol': '/* */',
+		\'ext': '*.css,*.scss',
+		\'comment-line': 'mqI/*<esc>A*/<esc>`qll',
+		\'comment-visual': ':s/^/\/*/g<cr>gv:s/$/*\//g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><esc>A<bs><bs><esc>`qhh',
+		\'uncomment-visual': ':s/\/\*//g<cr>gv:s/\*\///g<cr>:nohl<cr>'
+	\},
+	\{
+		\'comment-symbol': '"',
+		\'ext': '*.vim,*.vimrc\(\.shared\)\=,',
+		\'comment-line': 'mqI" <esc>`qll',
+		\'comment-visual': ':s/^\%V/" /g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><esc>`qhh',
+		\'uncomment-visual': ':s/^\%V" //g<cr>'
+	\},
+	\{
+		\'comment-symbol': ';;;',
+		\'ext': '*.scm',
+		\'comment-line': 'mqI;;; <esc>`qllll',
+		\'comment-visual': ':s/^\%V/;;; /g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><del><del><esc>`qhhhh',
+		\'uncomment-visual': ':s/^\%V;;; //g<cr>'
+	\},
+	\{
+		\'comment-symbol': '<!-- -->',
+		\'ext': '*.html,*.md',
+		\'comment-line': 'mqI<!--<esc>A--><esc>`qllll',
+		\'comment-visual': ':s/^/<!--/g<cr>gv:s/$/-->/g<cr>:nohl<cr>',
+		\'uncomment-line': 'mqI<del><del><del><del><esc>A<bs><bs><bs><esc>`qhhhh',
+		\'uncomment-visual': ':s/<!--//g<cr>gv:s/-->//g<cr>:nohl<cr>'
+	\}
+\]
+let s:char_html_escape={
+	\'&': '&amp;',
+	\">": "&gt;",
+	\'<': '&lt;',
+	\'1': '&nbsp;',
+	\'2': '&ensp;',
+	\'4': '&emsp;'
+\}
+function EscapeHTML()
+  let l:curChar = strcharpart(getline('.')[col('.') - 1:], 0, 1)
+  if has_key(s:char_html_escape, l:curChar)
+    exe 'normal s'.g:char_html_escape[l:curChar]
+  endif
+endfunction

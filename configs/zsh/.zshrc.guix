@@ -1,0 +1,12 @@
+source ~/.zshrc.shared
+alias wpa="sudo wpa_supplicant -c /etc/wpa_supplicant.conf -i wlp0s29f7u2 -B"
+alias dhc="sudo dhclient -v wlp0s29f7u2"
+alias 2gp="guix package"
+alias 2guix-garbage-collect="guix package --delete-generations && guix gc --collect-garbage"
+alias 2guix-refresh="GUIX_PROFILE='/home/tkiat/.guix-profile' && . '$GUIX_PROFILE/etc/profile'"
+alias 2guix-show-config="guix system describe | grep 'configuration file' | cut -d : -f 2 | xargs vim"
+alias 2guix-source="GUIX_PROFILE=/home/"$USER"/.guix-profile; . /home/"$USER"/.guix-profile/etc/profile"
+# applications
+alias 2cam="ffplay -s 400x400 -alwaysontop -left 1000 -top 600 /dev/video0"
+alias mupdf="mupdf-x11"
+alias 2pomodoro="~/Git/lazyman-pomodoro/lazyman-pomodoro.py"

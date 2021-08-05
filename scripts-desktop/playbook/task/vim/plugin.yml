@@ -1,0 +1,33 @@
+- name: plugin -> create ~/.vim/plugin/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/plugin"
+    state: directory
+
+- name: plugin -> find my plugins
+  find:
+    paths: "{{ configs_dir }}/vim/plugin"
+    recurse: true
+  register: result
+
+- name: plugin -> create folder of those plugins
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vim/plugin/{{ item.path | dirname | basename}}"
+    state: directory
+  with_items: "{{ result.files }}"
+  when: item.path | dirname | basename != "plugin"
+
+- name: plugin -> symlink those plugins that live inside a folder
+  file:
+    src: "{{ item.path }}"
+    path: "{{ ansible_env.HOME }}/.vim/plugin/{{ item.path | dirname | basename }}/{{ item.path | basename }}"
+    state: link
+  with_items: "{{ result.files }}"
+  when: item.path | dirname | basename != "plugin"
+
+- name: plugin -> symlink those plugins that live outside a folder
+  file:
+    src: "{{ item.path }}"
+    path: "{{ ansible_env.HOME }}/.vim/plugin/{{ item.path | basename }}"
+    state: link
+  with_items: "{{ result.files }}"
+  when: item.path | dirname | basename == "plugin"

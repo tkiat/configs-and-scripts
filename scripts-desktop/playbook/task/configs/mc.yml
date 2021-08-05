@@ -1,0 +1,25 @@
+- name: mc -> create ~/.config/mc/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/mc"
+    state: directory
+
+- name: mc -> force symlink hotlist
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/mc/hotlist"
+    dest: "{{ ansible_env.HOME }}/.config/mc/hotlist"
+    state: link
+    force: yes
+
+- name: mc -> force symlink ini
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/mc/ini"
+    dest: "{{ ansible_env.HOME }}/.config/mc/ini"
+    state: link
+    force: yes
+
+- name: mc -> force symlink mc.ext
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/mc/mc.ext"
+    dest: "{{ ansible_env.HOME }}/.config/mc/mc.ext"
+    state: link
+    force: yes

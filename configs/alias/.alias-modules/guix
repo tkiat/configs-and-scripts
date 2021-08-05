@@ -1,0 +1,1 @@
+alias 2guix-gc="guix package --delete-generations && guix gc --collect-garbage"

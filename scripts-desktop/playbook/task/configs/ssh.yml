@@ -1,0 +1,26 @@
+- name: ssh -> create ~/.ssh if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+
+- name: ssh -> create config symlink
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/ssh/config"
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    state: link
+
+- name: ssh -> symlink all public keys
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/ssh/*.pub"
+
+- name: ssh -> symlink all private keys and known_host
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ private_dir }}/ssh/*"

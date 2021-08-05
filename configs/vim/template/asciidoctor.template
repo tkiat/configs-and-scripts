@@ -1,0 +1,13 @@
+= Title
+:author: Theerawat Kiatdarakun
+// :docinfo: shared-head
+// :docinfodir: ../../../../asciidoctor/
+:nofooter:
+:revdate: Updated {docdate}
+:stylesheet: asciidoctor.css
+// :stylesheet: dark-complete.css
+:toc: auto
+:toc-title: Outline
+
+== Heading
+=== Subheading

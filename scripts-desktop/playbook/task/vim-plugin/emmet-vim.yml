@@ -1,0 +1,4 @@
+- name: vim-plugin -> emmet-vim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/mattn/emmet-vim.git'
+    dest: "{{ base_dir }}/emmet-vim"

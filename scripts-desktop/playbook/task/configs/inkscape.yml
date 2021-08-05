@@ -1,0 +1,10 @@
+- name: inkscape -> create ~/.config/inkscape/templates/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/inkscape/templates"
+    state: directory
+
+- name: inkscape -> symlink templates/default.svg
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/inkscape/templates/default.svg"
+    dest: "{{ ansible_env.HOME }}/.config/inkscape/templates/default.svg"
+    state: link

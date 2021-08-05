@@ -1,0 +1,4 @@
+- name: vim-plugin -> purescript-vim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/purescript-contrib/purescript-vim.git'
+    dest: "{{ base_dir }}/purescript-vim"

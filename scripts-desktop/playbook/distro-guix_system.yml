@@ -1,0 +1,4 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: guix_system
+  tasks:
+    - import_tasks: task/distro-guix_system/package-install.yml

@@ -1,0 +1,18 @@
+- name: vimrc -> create .vimrc symlink
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/vim/.vimrc"
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+    state: link
+
+- name: vimrc -> create ~/.vimrc-modules/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.vimrc-modules"
+    state: directory
+
+- name: vimrc -> symlink vimrc-modules
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.vimrc-modules/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/vim/vimrc-modules/*"

@@ -1,0 +1,10 @@
+- name: configs-debian -> font -> copy Comic Shanns font to the system
+  become: yes
+  ansible.builtin.copy:
+    src: "{{ configs_dir }}/font/comic-shanns/v2/comic shanns 2.ttf"
+    dest: "/usr/local/share/fonts"
+
+- name: configs-debian -> font -> refresh font cache
+  ansible.builtin.command: "fc-cache"
+
+

@@ -1,0 +1,12 @@
+[user]
+	email = tkiat@tutanota.com
+	name = Theerawat Kiatdarakun
+	signingkey = A1808C8DE7272D8715CDAB9639AA7B979BCC55C5
+[gpg]
+	program = gpg
+[core]
+	editor = vim
+[init]
+	defaultBranch = main
+[color]
+	ui = auto

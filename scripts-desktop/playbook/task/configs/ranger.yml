@@ -1,0 +1,10 @@
+- name: ranger -> create ~/.config/ranger/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/ranger"
+    state: directory
+
+- name: ranger -> symlink rc.conf
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/ranger/rc.conf"
+    dest: "{{ ansible_env.HOME }}/.config/ranger/rc.conf"
+    state: link

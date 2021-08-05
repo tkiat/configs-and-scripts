@@ -1,0 +1,5 @@
+- name: readline -> symlink .inputrc
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/readline/.inputrc"
+    dest: "{{ ansible_env.HOME }}/.inputrc"
+    state: link

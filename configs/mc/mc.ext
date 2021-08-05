@@ -1,0 +1,11 @@
+shell/i/.pdf
+	Open=xpdf %f
+
+regex/i/\.(cbz|epub)$
+	Open=mupdf %f 2> /dev/null &
+
+regex/i/\.(avi|mov|mp4|wmv)$
+	Open=vlc %f 2> /dev/null &
+
+regex/i/\.(gif|jpe?g|png)$
+	Open=feh %f 2> /dev/null &

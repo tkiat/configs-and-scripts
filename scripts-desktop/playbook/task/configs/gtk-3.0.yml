@@ -1,0 +1,10 @@
+- name: gtk-3.0 -> create ~/.config/gtk-3.0/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    state: directory
+
+- name: gtk-3.0 -> symlink settings.ini
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/gtk-3.0/settings.ini"
+    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/settings.ini"
+    state: link

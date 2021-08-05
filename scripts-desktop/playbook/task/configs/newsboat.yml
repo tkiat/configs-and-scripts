@@ -1,0 +1,16 @@
+- name: newsboat -> create ~/.newsboat/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.newsboat"
+    state: directory
+
+- name: newsboat -> symlink config
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/newsboat/config"
+    dest: "{{ ansible_env.HOME }}/.newsboat/config"
+    state: link
+
+- name: newsboat -> symlink urls
+  ansible.builtin.file:
+    src: "{{ private_dir }}/newsboat/urls"
+    dest: "{{ ansible_env.HOME }}/.newsboat/urls"
+    state: link

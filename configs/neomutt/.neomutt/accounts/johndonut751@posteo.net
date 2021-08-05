@@ -1,0 +1,20 @@
+unmailboxes *
+
+set my_email=johndonut751@posteo.net
+
+set folder=imap://$my_email@posteo.de:143
+set from=$my_email
+set imap_pass=`pass show t/posteo`
+set imap_user=$my_email
+set smtp_pass=`pass show t/posteo`
+set smtp_url=smtp://$my_email@posteo.de:587
+
+set postponed=+Drafts
+set record=+Sent
+set spoolfile=+Inbox
+mailboxes = +Inbox
+
+set ssl_force_tls=no
+set ssl_starttls=yes
+
+account-hook $folder "set imap_user=$my_email imap_pass=$imap_pass"

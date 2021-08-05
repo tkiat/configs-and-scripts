@@ -1,0 +1,11 @@
+- name: alias -> symlink .alias.shared
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/alias/.alias.shared"
+    dest: "{{ ansible_env.HOME }}/.alias.shared"
+    state: link
+
+- name: alias -> symlink .alias-modules
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/alias/.alias-modules"
+    dest: "{{ ansible_env.HOME }}/.alias-modules"
+    state: link

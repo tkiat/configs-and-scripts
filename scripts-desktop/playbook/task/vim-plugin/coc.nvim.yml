@@ -1,0 +1,43 @@
+- name: coc.nvim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/neoclide/coc.nvim.git'
+    dest: '{{ base_dir }}/coc.nvim'
+
+- name: coc.nvim -> symlink coc-settings.json
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/vim/coc-settings.json"
+    dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    state: link
+
+      # - name: vim-plugin -> coc.nvim -> create ~/.config/coc/extensions/ if not exist
+      #   file:
+      #     path: ~/.config/coc/extensions
+      #     state: directory
+      # 
+      # - name: vim-plugin -> coc.nvim -> check if ~/.config/coc/extensions/package.json exist
+      #   stat:
+      #     path: ~/.config/coc/extensions/package.json
+      #   register: package_json
+      # 
+      # - name: vim-plugin -> coc.nvim -> create ~/.config/coc/extensions/package.json if not exist
+      #   copy:
+      #     dest: ~/.config/coc/extensions/package.json
+      #     content: '{"dependencies":{}}'
+      #   when: package_json.stat.exists == false
+#
+# - name: coc.nvim -> install extensions
+#   npm:
+#     name: '{{ item }}'
+#     path: ~/.config/coc/extensions
+#   with_items:
+#     - coc-css
+#     - coc-html
+#     - coc-json
+#     - coc-markdownlint
+#     - coc-prettier
+#     - coc-purty
+#     - coc-python
+#     - coc-sh
+#     - coc-tsserver
+#     - coc-xml
+#     - coc-yaml

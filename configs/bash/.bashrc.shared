@@ -1,0 +1,62 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+# Alias
+[ -f ~/.alias.shared ] && . ~/.alias.shared
+[ -f ~/.alias-modules/apt ] && . ~/.alias-modules/apt
+[ -f ~/.alias-modules/git ] && . ~/.alias-modules/git
+[ -f ~/.alias-modules/nix ] && . ~/.alias-modules/nix
+[ -f ~/.alias-modules/systemctl ] && . ~/.alias-modules/systemctl
+# Default
+EDITOR=vim
+# PATH
+export PATH=$PATH:~/Git/scripts/shell/
+# History
+HISTCONTROL=ignoreboth # no duplicates or lines with "^ .*" in history
+shopt -s histappend # append, not overwrite, to the history file
+HISTSIZE=10000 # size in actual memory (e.g. up arrow and ctrl-r)
+HISTFILESIZE=10000 # size in file
+HISTTIMEFORMAT="%d/%m/%y %T "
+# Completion ----------------------------------------------
+. ~/desktop-configs-and-scripts/scripts-desktop/shell/bash_zsh-git_completion.bash
+bind 'TAB':menu-complete # If there are multiple matches for completion, Tab should cycle through them
+bind "set show-all-if-ambiguous on" # Display a list of the matching files
+bind "set menu-complete-display-prefix on"
+#if ! shopt -oq posix; then
+#  if [ -f /usr/share/bash-completion/bash_completion ]; then
+#    . /usr/share/bash-completion/bash_completion
+#  elif [ -f /etc/bash_completion ]; then
+#    . /etc/bash_completion
+#  fi
+#fi
+# Prompt --------------------------------------------------
+force_color_prompt=no
+. ~/desktop-configs-and-scripts/scripts-desktop/shell/bash_zsh-git_prompt.sh
+export GIT_PS1_SHOWDIRTYSTATE=1
+# case "$TERM" in
+#     xterm-color|*-256color) color_prompt=yes;;
+# esac
+# if [ -n "$force_color_prompt" ]; then
+#     if [ -x /usr/bin/tput ] | [ -x ~/.guix-profile/bin/tput ] && tput setaf 1 >&/dev/null; then # try setaf -> setf if not working
+# 	color_prompt=yes
+#     else
+# 	color_prompt=
+#     fi
+# fi
+# if [ "$color_prompt" = yes ]; then
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;36m\]$(__git_ps1)\[\033[0m\]\$ '
+# else
+#     PS1='\u@\h:\w$(__git_ps1)$ '
+# fi
+unset color_prompt force_color_prompt
+# Display
+# export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01' # colored GCC warnings and errors
+
+# TODO
+shopt -s autocd # auto cd
+shopt -s checkwinsize # check the window size after each command and, if necessary, # update the values of LINES and COLUMNS.
+shopt -s globstar # "**" match all files, directories, and subdirectories.
+# make less more friendly for non-text input files, see lesspipe(1)
+# [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"

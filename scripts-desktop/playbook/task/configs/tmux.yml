@@ -1,0 +1,5 @@
+- name: tmux -> symlink .tmux.conf
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/tmux/.tmux.conf"
+    dest: "{{ ansible_env.HOME }}/.tmux.conf"
+    state: link

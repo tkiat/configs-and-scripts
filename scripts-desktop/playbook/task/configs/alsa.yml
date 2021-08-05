@@ -1,0 +1,5 @@
+- name: alsa -> symlink .asoundrc
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/alsa/.asoundrc"
+    dest: "{{ ansible_env.HOME }}/.asoundrc"
+    state: link

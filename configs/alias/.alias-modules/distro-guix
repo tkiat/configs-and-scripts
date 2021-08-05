@@ -1,0 +1,6 @@
+# file name
+guix_config_scm="/home/$USER/Git/dotfiles-and-configs/guix/config.scm"
+# distro
+alias 2guix-show-config='guix system describe | grep '\''configuration file'\'' | cut -d : -f 2 | xargs vim'
+#
+alias 2suspend="[ -x \"$(command -v loginctl)\" ] && [ -x \"$(command -v slock)\" ] && loginctl suspend && slock"
