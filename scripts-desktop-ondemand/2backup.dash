@@ -1,0 +1,4 @@
+#!/usr/bin/env dash
+./backup-bookmark_chromium.dash
+./backup-bookmark_firefox.dash
+./backup-cloud.dash

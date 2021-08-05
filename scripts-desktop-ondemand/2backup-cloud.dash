@@ -1,0 +1,24 @@
+#!/usr/bin/env dash
+if ! type gdrive > /dev/null; then
+  echo "gdrive not found in \$PATH. Exiting..."
+  exit 1
+fi
+
+if ! [ -d ~/Cloud ]; then
+  echo "The folder ~/Cloud not found. Exiting..."
+  exit 1
+fi
+
+# remove old backups
+old=$(gdrive list -q "name contains '-Cloud.tar.gz.gpg'" | awk 'NR > 1 {print $1}')
+for i in $old;
+  do gdrive delete $i;
+done
+
+cd ~
+filename="$(date '+%Y_%m_%d')-Cloud.tar.gz"
+tar czf $filename --directory=$MY_CLOUD_DIR .
+gpg --encrypt --recipient tkiat@tutanota.com $filename
+rm $filename
+gdrive upload "$filename.gpg"
+rm "$filename.gpg"

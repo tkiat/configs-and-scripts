@@ -1,0 +1,6 @@
+#!/usr/bin/env dash
+bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
+cd ~/Git/private
+rm -f bookmark-Chromium-*
+cp ~/.config/chromium/Default/Bookmarks $bookmark_filename
+git add $bookmark_filename && git commit -m "Update to $bookmark_filename" && git push origin $(git rev-parse --abbrev-ref HEAD)

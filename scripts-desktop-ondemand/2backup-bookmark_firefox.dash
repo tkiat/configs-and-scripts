@@ -1,0 +1,13 @@
+#!/usr/bin/env dash
+bookmark_old=~/.mozilla/firefox/1lyg6uc1.default-default/bookmarkbackups/*.jsonlz4
+if ! [ -f $bookmark_old ]; then
+  echo "Cannot find Firefox bookmark file. Exiting..."
+  exit 1
+fi
+
+# can use e.g. dejsonlz4 to convert jsonlz4 to json
+bookmark_filename="bookmark-Firefox-$(date +'%Y_%m_%d').jsonlz4"
+cd ~/Git/private
+rm -f bookmark-Firefox-*
+cp $bookmark_old $bookmark_filename
+git add $bookmark_filename && git commit -m "Update to $bookmark_filename" && git push origin $(git rev-parse --abbrev-ref HEAD)
