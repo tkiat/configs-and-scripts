@@ -1,7 +1,14 @@
-#!/usr/bin/env dash
-bookmark_old=~/.mozilla/firefox/1lyg6uc1.default-default/bookmarkbackups/*.jsonlz4
-if ! [ -f $bookmark_old ]; then
-  echo "Cannot find Firefox bookmark file. Exiting..."
+#!/usr/bin/env bash
+if ! [ -d $MY_PRIVATE_DIR ]; then
+  echo "Please defines MY_PRIVATE_DIR (your destination folder) env variable somewhere. Exiting..."
+  exit 1
+fi
+
+bookmark_dir=~/.mozilla/firefox/9ivxo1xk.default-default/bookmarkbackups
+bookmark_arr=( $bookmark_dir/*.jsonlz4 )
+bookmark_latest="${bookmark_arr[-1]}"
+if ! [ -f $bookmark_latest ]; then
+  echo "Cannot find any Firefox bookmark file inside $bookmark_dir. Exiting..."
   exit 1
 fi
 
@@ -9,4 +16,4 @@ fi
 bookmark_filename="bookmark-Firefox-$(date +'%Y_%m_%d').jsonlz4"
 cd $MY_PRIVATE_DIR
 rm -f bookmark-Firefox-*
-cp $bookmark_old $bookmark_filename
+cp $bookmark_latest $bookmark_filename
