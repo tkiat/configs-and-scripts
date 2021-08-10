@@ -1,0 +1,9 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: common-vim
+  tasks:
+    - import_tasks: task/common-vim/directories.yml
+    - import_tasks: task/common-vim/vimrc.yml
+    - import_tasks: task/common-vim/colors.yml
+    - import_tasks: task/common-vim/ftplugin.yml
+    - import_tasks: task/common-vim/plugin.yml
+    - import_tasks: task/common-vim/template.yml

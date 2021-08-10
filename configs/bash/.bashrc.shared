@@ -6,8 +6,8 @@ case $- in
 esac
 # This Script Variables --------------------------------------------------------
 configs_path=~/configs-and-scripts/configs
-scripts_ondemand_path=~/configs-and-scripts/scripts-desktop-ondemand
-scripts_onstart_path=~/configs-and-scripts/scripts-desktop-onstart
+scripts_ondemand_path=~/configs-and-scripts/scripts-desktop/ondemand
+scripts_onstart_path=~/configs-and-scripts/scripts-desktop/onstart
 # Shell Options and Variables --------------------------------------------------
 shopt -s autocd # just type folder name and it will auto cd
 shopt -s checkwinsize # update LINES and COLUMNS after each command

@@ -1,4 +1,0 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
-  name: linux-apps-common
-  tasks:
-    - import_tasks: ../task/linux-apps-common/node.yml

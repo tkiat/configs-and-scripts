@@ -4,10 +4,10 @@ let g:my_commentgroup=[
 	\{
 		\'comment-symbol': '#',
 		\'ext': '*.bash,*.bashrc\(\.shared\)\=,*dash,*.gitignore,*.nix,*.py,*.rec,*.sh,*.tf,*.tmux.conf,.xinitrc,*.yml,*.zprofile,*.zshenv,*.zshrc\(\.shared\)\=',
-		\'comment-line': 'mqI# <esc>`qll',
-		\'comment-visual': ':s/^\%V/# /g<cr>:nohl<cr>',
-		\'uncomment-line': 'mqI<del><del><esc>`qhh',
-		\'uncomment-visual': ':s/^\%V# //g<cr>'
+		\'comment-line': 'mqV:s/^\%V/# /g<cr>:nohl<cr>`q',
+		\'comment-visual': 'mq:s/^\%V/# /g<cr>:nohl<cr>`q',
+		\'uncomment-line': 'mqV:s/^\%V# //g<cr>`q',
+		\'uncomment-visual': 'mq:s/^\%V# //g<cr>`q'
 	\},
 	\{
 		\'comment-symbol': '//',

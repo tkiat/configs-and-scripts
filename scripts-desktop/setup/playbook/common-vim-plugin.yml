@@ -1,0 +1,11 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: common-vim-plugin
+  tasks:
+    - set_fact: base_dir="{{ ansible_env.HOME }}/.vim/pack/plugins/start"
+    - import_tasks: task/common-vim-plugin/coc.nvim.yml
+    - import_tasks: task/common-vim-plugin/dhall-vim.yml
+    - import_tasks: task/common-vim-plugin/editorconfig-vim.yml
+    - import_tasks: task/common-vim-plugin/emmet-vim.yml
+    - import_tasks: task/common-vim-plugin/nerdtree.yml
+    - import_tasks: task/common-vim-plugin/purescript-vim.yml
+    - import_tasks: task/common-vim-plugin/vim-toml.yml
