@@ -1,0 +1,19 @@
+- name: gather the directory configs_dir information
+  stat:
+    path: '{{ configs_dir }}'
+  register: configs_dir_info
+
+- name: fail when configs_dir does not exist
+  fail:
+    msg: configs_dir does not exist! Stopping ...
+  when: configs_dir_info.stat.exists == false
+
+- name: gather the directory private_dir information
+  stat:
+    path: '{{ private_dir }}'
+  register: private_dir_info
+
+- name: fail when private_dir does not exist
+  fail:
+    msg: private_dir does not exist! Stopping ...
+  when: private_dir_info.stat.exists == false
