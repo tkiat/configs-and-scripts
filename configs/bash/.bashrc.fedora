@@ -1,6 +1,11 @@
+# Alias Files
+source ~/.alias-modules/dnf
+source ~/.alias-modules/nix
+
 # Alias
 alias chromium="ungoogled-chromium --no-default-browser-check"
 alias vim="vimx"
+
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then

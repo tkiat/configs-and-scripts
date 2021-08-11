@@ -1,3 +1,17 @@
+- name: package-dnf -> enable RPM fusion repo
+  become: yes
+  ansible.builtin.dnf:
+    name: "https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    state: present
+    disable_gpg_check: yes
+
+- name: package-dnf -> install packages from RPM fusion repo
+  become: yes
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+  with_items:
+    - kdenlive
+
 - name: package-dnf -> install packages
   become: yes
   ansible.builtin.dnf:
