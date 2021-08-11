@@ -4,9 +4,9 @@
     dest: "{{ ansible_env.HOME }}/.xpdfrc"
     state: link
 
-- name: xorg -> create .xinitrc symlink
+- name: xorg -> create .xinitrc.shared symlink
   ansible.builtin.file:
-    src: "{{ configs_dir }}/xorg/.xinitrc"
-    dest: "{{ ansible_env.HOME }}/.xinitrc"
+    src: "{{ configs_dir }}/xorg/.xinitrc.shared"
+    dest: "{{ ansible_env.HOME }}/.xinitrc.shared"
     state: link
     force: yes

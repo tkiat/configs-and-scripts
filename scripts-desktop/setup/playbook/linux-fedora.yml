@@ -6,3 +6,4 @@
 
     - import_tasks: task/linux-fedora/configs.yml
     - import_tasks: task/linux-fedora/font.yml
+    - import_tasks: task/linux-fedora/xorg.yml

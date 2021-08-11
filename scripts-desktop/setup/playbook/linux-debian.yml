@@ -7,3 +7,4 @@
 
     - import_tasks: task/linux-debian/configs.yml
     - import_tasks: task/linux-debian/font.yml
+    - import_tasks: task/linux-debian/xorg.yml
