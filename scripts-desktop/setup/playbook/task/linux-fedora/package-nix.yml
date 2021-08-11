@@ -1,4 +1,3 @@
-# - sudo dnf groupinstall base-x
 - name: package-nix -> gather list of installed packages
   shell: nix-env -q
   register: nix_pkgs_installed

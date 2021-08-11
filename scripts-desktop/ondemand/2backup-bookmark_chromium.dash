@@ -1,5 +1,10 @@
 #!/usr/bin/env dash
+if ! [ -d $MY_PRIVATE_DIR ]; then
+  echo "Please defines MY_PRIVATE_DIR (your private folder location) env variable. Exiting..."
+  exit 1
+fi
+
 bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
 cd $MY_PRIVATE_DIR
 rm -f bookmark-Chromium-*
-cp ~/.config/chromium/Default/Bookmarks $bookmark_filename
+cp ~/.config/ungoogled-chromium/Default/Bookmarks $bookmark_filename

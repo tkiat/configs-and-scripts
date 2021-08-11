@@ -6,7 +6,7 @@ if ! type gdrive > /dev/null; then
 fi
 
 if ! [ -d $MY_CLOUD_DIR ]; then
-  echo "Please defines MY_CLOUD_DIR (your cloud folder location) env variable somewhere. Exiting..."
+  echo "Please defines MY_CLOUD_DIR (your cloud folder location) env variable. Exiting..."
   exit 1
 fi
 
