@@ -1,11 +1,10 @@
-# Alias Files
+# Alias
 source ~/.alias-modules/dnf
 source ~/.alias-modules/nix
+source ~/.alias-modules/systemctl
 
-# Alias
 alias chromium="ungoogled-chromium --no-default-browser-check"
 alias vim="vimx"
-
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
@@ -32,7 +31,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 unset rc
-
 
 source ~/.bashrc.shared
 
