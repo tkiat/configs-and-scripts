@@ -6,8 +6,9 @@
 setxkbmap -layout us,th -option grp:alt_space_toggle
 xsetroot -solid black
 
-chromium&
-st&
+# chromium&
+# st&
+source ~/.xinitrc.shared
 
 ### xmonad
 
