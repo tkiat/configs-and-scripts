@@ -1,8 +1,16 @@
-- name: package-nix -> install packages
+- name: package-nix -> gather list of installed packages
+  become: yes
+  become_user: root
+  become_method: su
+  shell: nix-env -q
+  register: nix_pkgs_installed
+
+- name: package-nix -> install only new packages
   become: yes
   become_user: root
   become_method: su
   ansible.builtin.shell: 'nix-env -i {{ item }}'
+  when: not nix_pkgs_installed.stdout is search(item)
   with_items:
     - acpi
     - alsa-utils

@@ -1,8 +1,11 @@
-      # - sudo dnf groupinstall base-x
-      #- manual -> ungoogled-chromium
-      # - fonts-thai-tlwg-ttf
-- name: package-nix -> install packages
-  ansible.builtin.shell: 'nix-env -i {{ item }}'
+# - sudo dnf groupinstall base-x
+- name: package-nix -> gather list of installed packages
+  shell: nix-env -q
+  register: nix_pkgs_installed
+
+- name: package-nix -> install only new packages
+  ansible.builtin.shell: "nix-env -i {{ item }}"
+  when: not nix_pkgs_installed.stdout is search(item)
   with_items:
     - cmus
     - dejsonlz4

@@ -10,6 +10,7 @@
     - import_tasks: task/common-configs/inkscape.yml
     - import_tasks: task/common-configs/mc.yml
     - import_tasks: task/common-configs/newsboat.yml
+    - import_tasks: task/common-configs/pass.yml
     - import_tasks: task/common-configs/ranger.yml
     - import_tasks: task/common-configs/readline.yml
     - import_tasks: task/common-configs/ssh.yml

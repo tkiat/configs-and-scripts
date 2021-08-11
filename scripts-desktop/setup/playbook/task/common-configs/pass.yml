@@ -1,0 +1,4 @@
+- name: pass -> git clone
+  ansible.builtin.git:
+    repo: 'git@gitlab.com:tkiat/password-store.git'
+    dest: "{{ ansible_env.HOME }}/.password-store"

@@ -1,6 +1,5 @@
-- import_playbook: ../playbook/linux-debian.yml
 - import_playbook: ../playbook/linux-common-apps.yml
+- import_playbook: ../playbook/linux-debian.yml
 - import_playbook: ../playbook/common-configs.yml
 - import_playbook: ../playbook/common-vim.yml
 - import_playbook: ../playbook/common-vim-plugin.yml
-# - import_playbook: ../playbook/language-server.yml

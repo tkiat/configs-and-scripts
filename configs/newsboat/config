@@ -30,6 +30,7 @@ keep-articles-days 7
 macro f set browser "firefox %u"; open-in-browser ; set browser chromium
 macro i set browser "icecat %u"; open-in-browser ; set browser chromium
 macro q set browser "qutebrowser %u"; open-in-browser ; set browser chromium
+macro u set browser "ungoogled-chromium %u"; open-in-browser ; set browser chromium
 macro w set browser "w3m %u"; open-in-browser ; set browser chromium
 # max-items 100
 # refresh-on-startup yes
