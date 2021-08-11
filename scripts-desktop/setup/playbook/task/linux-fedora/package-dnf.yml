@@ -10,7 +10,9 @@
   ansible.builtin.dnf:
     name: '{{ item }}'
   with_items:
+    - cmus
     - kdenlive
+    - vlc
 
 - name: package-dnf -> install packages
   become: yes
@@ -41,6 +43,7 @@
     - git
     - heimdall
     - htop
+    - ImageMagick
     - inkscape
     - jpegoptim
     - less
