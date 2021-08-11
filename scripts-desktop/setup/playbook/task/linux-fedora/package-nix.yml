@@ -1,0 +1,14 @@
+      # - sudo dnf groupinstall base-x
+      #- manual -> ungoogled-chromium
+      # - fonts-thai-tlwg-ttf
+- name: package-nix -> install packages
+  ansible.builtin.shell: 'nix-env -i {{ item }}'
+  with_items:
+    - cmus
+    - dejsonlz4
+    - du-dust
+    - fd
+    - imagemagick
+    - kdenlive
+    - vlc
+    - vscodium

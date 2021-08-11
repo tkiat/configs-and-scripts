@@ -1,4 +1,4 @@
-- name: package-debian -> nix-nonfree -> install packages
+- name: ipackage-nix-nonfree -> install packages
   become: yes
   become_user: root
   become_method: su

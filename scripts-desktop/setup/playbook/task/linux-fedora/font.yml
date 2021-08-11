@@ -1,8 +1,15 @@
+- name: font -> create "/usr/share/fonts/comic shanns 2" if not exist
+  become: yes
+  ansible.builtin.file:
+    path: "/usr/share/fonts/comic shanns 2"
+    state: directory
+
 - name: font -> copy Comic Shanns font to the system
   become: yes
   ansible.builtin.copy:
     src: "{{ configs_dir }}/font/comic-shanns/v2/comic shanns 2.ttf"
-    dest: "/usr/local/share/fonts"
+    dest: "/usr/share/fonts/comic shanns 2"
 
 - name: font -> refresh font cache
+  become: yes
   ansible.builtin.command: "fc-cache"

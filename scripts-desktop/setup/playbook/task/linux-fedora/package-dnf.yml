@@ -1,0 +1,84 @@
+      # - sudo dnf groupinstall base-x
+      #- manual -> ungoogled-chromium
+      # - fonts-thai-tlwg-ttf
+      # - libx11-dev
+      # - libxft-dev
+      # - libxinerama-dev
+      # - libxrandr-dev
+      # - libxss-dev
+      # not found
+      # - dejsonlz4
+      # - vlc
+      # - vscodium
+      # - cmus
+      # - fd
+      # - imagemagick
+      # - kdenlive
+
+- name: package-dnf -> install packages
+  become: yes
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+  with_items:
+    - acpi
+    - alsa-utils
+    - android-tools
+    - bat
+    - calibre
+    - curl
+    - dmidecode
+    - docker
+    - dbus-x11
+    - exa
+    - feh
+    - firefox
+    - flashrom
+    - fontconfig
+    - ghc
+    - ghostscript
+    - gimp
+    - git
+    - heimdall
+    - htop
+    - inkscape
+    - jpegoptim
+    - less
+    - libreoffice
+    - lm_sensors
+    - mc
+    - mediainfo
+    - mupdf
+    - neofetch
+    - newsboat
+    - pandoc
+    - pass
+    - psmisc
+    - python3-pip
+    - ranger
+    - redshift
+    - ripgrep
+    - rsync
+    - scrot
+    - setxkbmap
+    - ShellCheck
+    - smartmontools
+    - sudo
+    - tealdeer
+    - thunar
+    - tmux
+    - tokei
+    - torbrowser-launcher
+    - tree
+    - unzip
+    - vim-X11
+    - vrms-rpm
+    - w3m
+    - weechat
+    - wget
+    - xclip
+    - xmobar
+    - xmonad
+    - xorg-x11-xinit
+    - yarnpkg
+    - zenity
+    - zip

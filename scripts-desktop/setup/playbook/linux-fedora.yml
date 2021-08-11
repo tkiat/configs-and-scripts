@@ -1,0 +1,6 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: linux-fedora
+  tasks:
+#     - import_tasks: task/linux-fedora/package-dnf.yml
+#     - import_tasks: task/linux-fedora/package-nix.yml
+    - import_tasks: task/linux-fedora/font.yml

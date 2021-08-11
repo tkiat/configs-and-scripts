@@ -1,4 +1,4 @@
-- name: package-debian -> nix -> install packages
+- name: package-nix -> install packages
   become: yes
   become_user: root
   become_method: su
