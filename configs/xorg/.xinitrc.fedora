@@ -1,3 +1,3 @@
-source ~/.xinitrc.shared
-
 ungoogled-chromium&
+
+source ~/.xinitrc.shared

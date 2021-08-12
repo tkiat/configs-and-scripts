@@ -10,37 +10,35 @@
 
 - name: coc.nvim -> symlink coc-settings.json
   ansible.builtin.file:
-    src: "{{ configs_dir }}/vim/coc-settings.json"
-    dest: "{{ ansible_env.HOME }}/.vim/coc-settings.json"
+    src: '{{ configs_dir }}/vim/coc-settings.json'
+    dest: '{{ ansible_env.HOME }}/.vim/coc-settings.json'
     state: link
-
-- name: coc.nvim -> create ~/.config/coc/extensions/ if not exist
-  file:
-    path: "{{ ansible_env.HOME }}/.config/coc/extensions"
-    state: directory
-
-- name: coc.nvim -> gather info from ~/.config/coc/extensions/package.json
-  stat:
-    path: "{{ ansible_env.HOME }}/.config/coc/extensions/package.json"
-  register: package_json
-
-- name: coc.nvim -> create ~/.config/coc/extensions/package.json if not exist
-  copy:
-    dest: "{{ ansible_env.HOME }}/.config/coc/extensions/package.json"
-    content: '{"dependencies":{}}'
-  when: package_json.stat.exists == false
-
-- name: coc.nvim -> install extensions
-  npm:
-    name: '{{ item }}'
-    path: "{{ ansible_env.HOME }}/.config/coc/extensions"
-  with_items:
-    - coc-css
-    - coc-html
-    - coc-json
-    - coc-prettier
-    - coc-purty
-    - coc-python
-    - coc-sh
-    - coc-tsserver
-    - coc-yaml
+# - name: coc.nvim -> create ~/.config/coc/extensions/ if not exist
+#   file:
+#     path: "{{ ansible_env.HOME }}/.config/coc/extensions"
+#     state: directory
+#
+# - name: coc.nvim -> gather info from ~/.config/coc/extensions/package.json
+#   stat:
+#     path: "{{ ansible_env.HOME }}/.config/coc/extensions/package.json"
+#   register: package_json
+#
+# - name: coc.nvim -> create ~/.config/coc/extensions/package.json if not exist
+#   copy:
+#     dest: "{{ ansible_env.HOME }}/.config/coc/extensions/package.json"
+#     content: '{"dependencies":{}}'
+#   when: package_json.stat.exists == false
+#
+# - name: coc.nvim -> install extensions
+#   npm:
+#     name: '{{ item }}'
+#     path: "{{ ansible_env.HOME }}/.config/coc/extensions"
+#   with_items:
+#     - coc-css
+#     - coc-html
+#     - coc-json
+#     - coc-prettier
+#     - coc-python
+#     - coc-sh
+#     - coc-tsserver
+#     - coc-yaml

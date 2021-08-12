@@ -1,0 +1,11 @@
+- name: package-dnf-rmpfusion -> enable repo
+  become: yes
+  ansible.builtin.dnf:
+    name: 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm'
+    state: present
+    disable_gpg_check: yes
+# - name: package-dnf-rmpfusion -> install packages
+#   become: yes
+#   ansible.builtin.dnf:
+#     name: '{{ item }}'
+#   with_items:

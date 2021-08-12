@@ -6,6 +6,10 @@
   ansible.builtin.shell: 'nix-env -i {{ item }}'
   when: not nix_pkgs_installed.stdout is search(item)
   with_items:
+    - cmus
     - dejsonlz4
     - du-dust
+    - gdrive
+    - telegram-desktop
+    - vlc
     - vscodium

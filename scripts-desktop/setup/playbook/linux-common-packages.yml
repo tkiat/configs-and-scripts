@@ -1,0 +1,5 @@
+- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+  name: linux-common-packages
+  tasks:
+    - import_tasks: task/linux-common-packages/node.yml
+    - import_tasks: task/linux-common-packages/node-global-package.yml
