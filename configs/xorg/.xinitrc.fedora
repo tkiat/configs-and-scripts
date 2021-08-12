@@ -1,3 +1,5 @@
-ungoogled-chromium&
+ungoogled-chromium --incognito --disable-default-check&
+
+feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/day.jpg
 
 source ~/.xinitrc.shared
