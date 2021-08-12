@@ -1,0 +1,13 @@
+- name: lazyman-pomodoro -> symlink config.conf
+  ansible.builtin.file:
+    src: '{{ backup_dir }}/personal/lazyman-pomodoro/config.conf'
+    dest: '{{ ansible_env.HOME }}/.local/share/lazyman-pomodoro/config.conf'
+    state: link
+    force: yes
+
+- name: lazyman-pomodoro -> symlink record.json
+  ansible.builtin.file:
+    src: '{{ backup_dir }}/personal/lazyman-pomodoro/record.json'
+    dest: '{{ ansible_env.HOME }}/.local/share/lazyman-pomodoro/record.json'
+    state: link
+    force: yes
