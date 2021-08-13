@@ -2,9 +2,10 @@
   name: linux-fedora
   tasks:
     - import_tasks: task/linux-fedora/package-dnf.yml
-    #     - import_tasks: task/linux-fedora/package-dnf-rpmfusion.yml
+    # - import_tasks: task/linux-fedora/package-dnf-rpmfusion.yml
     - import_tasks: task/linux-fedora/package-nix.yml
 
     - import_tasks: task/linux-fedora/configs.yml
+    - import_tasks: task/linux-fedora/cron.yml
     - import_tasks: task/linux-fedora/font.yml
     - import_tasks: task/linux-fedora/xorg.yml

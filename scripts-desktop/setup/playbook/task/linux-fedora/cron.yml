@@ -1,0 +1,19 @@
+- name: cron -> create "DISPLAY=:0" on top
+  ansible.builtin.cron:
+    name: DISPLAY
+    env: yes
+    job: :0
+
+- name: cron -> change background to day theme at 06:00
+  ansible.builtin.cron:
+    name: 'background-day'
+    minute: '0'
+    hour: '6'
+    job: 'feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/day.jpg'
+
+- name: cron -> change background to dark theme at 19:00
+  ansible.builtin.cron:
+    name: 'background-night'
+    minute: '0'
+    hour: '19'
+    job: 'feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/night.jpg'
