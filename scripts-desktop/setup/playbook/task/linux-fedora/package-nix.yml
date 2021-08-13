@@ -10,8 +10,10 @@
     - dejsonlz4
     - du-dust
     - gdrive
+    - okular
     - stack
     - telegram-desktop
+    - vim_configurable
     - vlc
     - vscodium
     - xmobar

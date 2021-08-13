@@ -11,7 +11,7 @@ Config {
   -- layout
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% }{ %cpu% <fc=#82aaff>|</fc> %memory% <fc=#82aaff>|</fc> <fc=grey>%date%</fc>"
+  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=grey>%date%</fc>"
   -- behavior
   allDesktops = True,
   hideOnStart = False,
@@ -23,11 +23,15 @@ Config {
   commands = [
     Run StdinReader,
     Run Cpu [
-      "--template", "CPU: <total>%",
+      "--template", "CPU <total>%",
       "--Low", "5", "--High", "50",
       "--low", "green", "--normal", "orange", "--high"  ,"red"
-    ] 10, -- 10 * 0.1 sec
-    Run Memory ["-t","RAM: <usedratio>%"] 10,
-    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+    ] 20, -- * 0.1 sec
+    Run Memory [
+      "--template", "RAM <usedratio>%",
+      "--Low", "40", "--High", "60",
+      "--low", "green", "--normal", "orange", "--high"  ,"red"
+    ] 20,
+    Run Date "%_d %a %H:%M:%S" "date" 10
   ],
 }

@@ -4,7 +4,6 @@ source ~/.alias-modules/nix
 source ~/.alias-modules/systemctl
 
 alias chromium="ungoogled-chromium --incognito --no-default-browser-check"
-alias vim="vimx"
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
