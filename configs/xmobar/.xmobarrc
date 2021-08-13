@@ -1,4 +1,4 @@
-Config    {
+Config {
   -- appearance
   alpha = 255, -- opacity from 0 to 255
   bgColor = "black",
@@ -22,8 +22,12 @@ Config    {
   -- plugin
   commands = [
     Run StdinReader,
-    Run Cpu ["--Low","3", "--High","50", "--low", "--normal","green","--high","red"] 10,
-    Run Memory ["-t","Mem: <usedratio>%"] 10,
+    Run Cpu [
+      "--template", "CPU: <total>%",
+      "--Low", "5", "--High", "50",
+      "--low", "green", "--normal", "orange", "--high"  ,"red"
+    ] 10, -- 10 * 0.1 sec
+    Run Memory ["-t","RAM: <usedratio>%"] 10,
     Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
   ],
 }
