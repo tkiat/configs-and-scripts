@@ -22,7 +22,6 @@
     - flashrom
     - flatpak
     - fontconfig
-    - ghc
     - ghostscript
     - gimp
     - git
@@ -67,8 +66,6 @@
     - weechat
     - wget
     - xclip
-    - xmobar
-    - xmonad
     - xorg-x11-xinit
     - yarnpkg
     - zenity

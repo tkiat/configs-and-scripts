@@ -2,6 +2,6 @@ alias 2dnf-gc='sudo dnf autoremove'
 alias 2dnf-i='sudo dnf install'
 alias 2dnf-r='sudo dnf remove'
       2dnf-s-pkg() { dnf info $1 | bat; }
-alias 2dnf-s-command='dnf whatprovides'
-alias 2dnf-s-installed='dnf list --installed'
+alias 2dnf-s-command='dnf whatprovides | bat'
+alias 2dnf-s-installed='dnf list --installed | bat'
 alias 2dnf-u='sudo dnf update'

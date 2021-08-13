@@ -10,6 +10,9 @@
     - dejsonlz4
     - du-dust
     - gdrive
+    - stack
     - telegram-desktop
     - vlc
     - vscodium
+    - xmobar
+    - xmonad-with-packages
