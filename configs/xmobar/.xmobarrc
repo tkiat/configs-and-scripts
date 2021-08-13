@@ -1,29 +1,29 @@
-Config {
-  font = "xft:Comic Shanns:pixelsize=16",
-  additionalFonts = [],
-  borderColor = "black",
-  border = TopB,
+Config    {
+  -- appearance
+  alpha = 255, -- opacity from 0 to 255
   bgColor = "black",
+  borderColor = "black",
+  border = BottomB,
   fgColor = "grey",
-  alpha = 255,
+  font = "xft:Comic Shanns:pixelsize=16",
   position = Top,
-  -- position = Static { xpos = 0, ypos = 0, width = 1280, height = 24 },
   textOffset = -1,
-  iconOffset = -1,
-  lowerOnStart = True,
-  pickBroadest = False,
-  persistent = False,
-  hideOnStart = False,
-  iconRoot = ".",
-  allDesktops = True,
-  overrideRedirect = True,
-  commands = [
-    Run StdinReader,
-    Run Cpu ["-L","3","-H","50", "--normal","green","--high","red"] 10,
-    Run Memory ["-t","Mem: <usedratio>%"] 10,
-    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
-  ],
+  -- layout
   sepChar = "%",
   alignSep = "}{",
   template = "%StdinReader% }{ %cpu% <fc=#82aaff>|</fc> %memory% <fc=#82aaff>|</fc> <fc=grey>%date%</fc>"
+  -- behavior
+  allDesktops = True,
+  hideOnStart = False,
+  lowerOnStart = True, -- window is sent the bottom of the stack initially.
+  overrideRedirect = True,
+  persistent = False, -- enable hiding
+  pickBroadest = False, -- pick broadest display
+  -- plugin
+  commands = [
+    Run StdinReader,
+    Run Cpu ["--Low","3", "--High","50", "--low", "--normal","green","--high","red"] 10,
+    Run Memory ["-t","Mem: <usedratio>%"] 10,
+    Run Date "%a %b %_d %Y %H:%M:%S" "date" 10
+  ],
 }

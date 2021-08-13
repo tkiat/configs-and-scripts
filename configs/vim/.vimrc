@@ -1,17 +1,12 @@
 source ~/.vimrc-modules/const
 source ~/.vimrc-modules/shared
-" source ~/.vimrc.specific/browser-nerdtree.vim
-" source ~/.vimrc.specific/formatter-haskell-hindent.vim
-au VimEnter * if &diff | execute 'windo set wrap' | endif " force line wrap in vim diff
+autocmd VimEnter * if &diff | execute 'windo set wrap' | endif " force line wrap in vim diff
+" syntax ======================================================================
+autocmd BufNewFile,BufRead *.xmobarrc set syntax=haskell
+
 " =============================================================================
 "                                  Plugins
 " =============================================================================
-" augroup Autoformat
-"     autocmd!
-"     " Use one of the following (The 1st variant is cleaner IMO)
-"     autocmd FileType css let &l:equalprg = 'prettier --parser css --stdin --tab-width 2'
-"     autocmd FileType css setlocal equalprg=prettier\ --parser\ css\ --stdin\ --tab-width\ 2
-" augroup END"
 " ftplugin ====================================================================
 filetype plugin on
 filetype plugin indent on
