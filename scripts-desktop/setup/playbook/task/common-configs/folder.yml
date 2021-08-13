@@ -1,0 +1,5 @@
+- name: folder -> symlink ~/Downloads
+  ansible.builtin.file:
+    src: '{{ sync_local_dir }}/Downloads'
+    dest: '{{ ansible_env.HOME }}/Downloads'
+    state: link

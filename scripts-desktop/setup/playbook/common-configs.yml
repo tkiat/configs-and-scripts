@@ -5,6 +5,7 @@
     - import_tasks: task/common-configs/alsa.yml
     - import_tasks: task/common-configs/bash.yml
     - import_tasks: task/common-configs/cmus.yml
+    - import_tasks: task/common-configs/folder.yml
     - import_tasks: task/common-configs/git.yml
     - import_tasks: task/common-configs/gtk-3.0.yml
     - import_tasks: task/common-configs/inkscape.yml

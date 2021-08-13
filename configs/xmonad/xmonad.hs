@@ -74,4 +74,5 @@ myManageHook = composeAll
   , className =? "kdenlive" --> doShift "7"
   , className =? "FreeFileSync" --> doShift "Media"
   , className =? "supertux2" --> doShift "Media"
+  , className =? "vlc" --> doShift "Media"
   ]
