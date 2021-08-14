@@ -4,6 +4,8 @@ source ~/.alias-modules/nix
 source ~/.alias-modules/systemctl
 
 alias chromium="ungoogled-chromium --incognito --no-default-browser-check"
+alias kdenlive='flatpak run org.kde.kdenlive'
+
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then

@@ -11,7 +11,7 @@ Config {
   -- layout
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=grey>%date%</fc>"
+  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=grey>%date%</fc>",
   -- behavior
   allDesktops = True,
   hideOnStart = False,
@@ -33,5 +33,5 @@ Config {
       "--low", "green", "--normal", "orange", "--high"  ,"red"
     ] 20,
     Run Date "%_d %a %H:%M:%S" "date" 10
-  ],
+  ]
 }

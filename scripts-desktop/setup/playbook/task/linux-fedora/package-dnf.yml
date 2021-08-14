@@ -52,6 +52,7 @@
     - setxkbmap
     - ShellCheck
     - smartmontools
+    - sox
     - sudo
     - tealdeer
     - thunar

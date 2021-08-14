@@ -36,6 +36,7 @@ alias xpdf="xpdf -z width"
 # shortcut on top of default command
 alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
+alias 2git-remote='git remote -v'
       2grep-width-nolink() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2mount-sdb="sudo mount /dev/sdb /mnt/sdb"
 alias 2mount-sdc="sudo mount /dev/sdc /mnt/sdc"

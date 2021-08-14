@@ -3,6 +3,6 @@ alias 2nix-gc='nix-env --delete-generations old && nix-store --gc'
       2nix-i() { nix-env -i $1 && rm -f ~/.cache/dmenu_run; }
 alias 2nix-info='nix-shell -p nix-info --run "nix-info -m"'
 alias 2nix-e='nix-env -e'
-alias 2nix-q='nix-env --query'
-      2nix-s() { nix-env -qa | grep $1 | bat; }
+      2nix-s-pkg() { nix-env -qa | grep $1 | bat; }
+alias 2nix-s-installed='nix-env --query'
 alias 2nix-u='nix-channel --update && nix-env -u'
