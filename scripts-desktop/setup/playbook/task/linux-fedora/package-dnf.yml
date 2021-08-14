@@ -4,6 +4,7 @@
     name: '{{ item }}'
   with_items:
     - '@base-x'
+    - '@Development Tools'
     - acpi
     - alsa-utils
     - android-tools

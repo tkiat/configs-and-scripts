@@ -15,6 +15,7 @@ import           XMonad.Util.Run                ( hPutStrLn
 -- import XMonad.Util.SpawnOnce
 main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobarrc"
+  -- xmobarProc <- spawnPipe "xmobar ~/xmobar/xmobar.hs"
   xmonad
     $                 docks def
                         { borderWidth        = 2
