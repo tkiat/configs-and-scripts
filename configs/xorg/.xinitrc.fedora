@@ -2,4 +2,9 @@ ungoogled-chromium --incognito --disable-default-check&
 
 # feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/day.jpg
 
+xpomodoro_pipe_r=/tmp/.xpomodoro-resting
+xpomodoro_pipe_w=/tmp/.xpomodoro-working
+[[ -S $xpomodoro_pipe_r ]] || mkfifo $xpomodoro_pipe_r
+[[ -S $xpomodoro_pipe_w ]] || mkfifo $xpomodoro_pipe_w
+
 source ~/.xinitrc.shared
