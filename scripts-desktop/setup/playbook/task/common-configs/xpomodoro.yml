@@ -1,0 +1,6 @@
+- name: xpomodoro -> symlink record.json
+  ansible.builtin.file:
+    src: '{{ backup_dir }}/personal/xpomodoro/record.json'
+    dest: '{{ ansible_env.HOME }}/.local/share/xpomodoro/record.json'
+    state: link
+    force: yes

@@ -9,7 +9,7 @@
     - import_tasks: task/common-configs/git.yml
     - import_tasks: task/common-configs/gtk-3.0.yml
     - import_tasks: task/common-configs/inkscape.yml
-    - import_tasks: task/common-configs/lazyman-pomodoro.yml
+    - import_tasks: task/common-configs/xpomodoro.yml
     - import_tasks: task/common-configs/mc.yml
     - import_tasks: task/common-configs/newsboat.yml
     - import_tasks: task/common-configs/pass.yml
