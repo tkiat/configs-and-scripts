@@ -9,11 +9,11 @@
     name: 'background-day'
     minute: '0'
     hour: '6'
-    job: 'feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/day.jpg'
+    job: 'feh --bg-fill {{ sync_dir }}/Content/Image/wallpaper-fedora/day.jpg'
 
 - name: cron -> change background to dark theme at 19:00
   ansible.builtin.cron:
     name: 'background-night'
     minute: '0'
     hour: '19'
-    job: 'feh --bg-fill ~/Sync-Local/Content/Image/wallpaper-fedora/night.jpg'
+    job: 'feh --bg-fill {{ sync_dir }}/Content/Image/wallpaper-fedora/night.jpg'

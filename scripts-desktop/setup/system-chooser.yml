@@ -3,12 +3,15 @@
 - hosts: localhost # this need to be fixed, modify set_fact below
   name: system-chooser
   tasks:
-    - set_fact: sync_local_dir="{{ ansible_env.HOME }}/Sync-Local"
-    - set_fact: backup_dir="{{ sync_local_dir }}/Backup"
-    - set_fact: private_dir="{{ sync_local_dir }}/Private"
-    - set_fact: configs_dir="{{ ansible_env.HOME }}/configs-and-scripts/configs"
     - set_fact: hostlist=localhost
-    - import_tasks: playbook/task/check-fact.yml
 
-- import_playbook: systems/debian.yml
-  # - import_playbook: systems/fedora.yml
+    - set_fact: sync_dir="{{ ansible_env.HOME }}/Sync"
+    - set_fact: backup_dir="{{ sync_dir }}/Backup"
+    - set_fact: cloud_dir="{{ sync_dir }}/Cloud"
+    - set_fact: private_dir="{{ sync_dir }}/Private"
+
+    - set_fact: configs_dir="{{ ansible_env.HOME }}/configs-and-scripts/configs"
+    - import_tasks: playbook/task/check-fact.yml
+#
+# - import_playbook: systems/debian.yml
+# - import_playbook: systems/fedora.yml

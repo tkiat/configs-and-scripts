@@ -1,12 +1,12 @@
-- name: gather the directory sync_local_dir information
+- name: gather the directory sync_dir information
   stat:
-    path: '{{ sync_local_dir }}'
-  register: sync_local_dir_info
+    path: '{{ sync_dir }}'
+  register: sync_dir_info
 
-- name: fail when sync_local_dir does not exist
+- name: fail when sync_dir does not exist
   fail:
-    msg: sync_local_dir does not exist! Stopping ...
-  when: sync_local_dir_info.stat.exists == false
+    msg: sync_dir does not exist! Stopping ...
+  when: sync_dir_info.stat.exists == false
 
 - name: gather the directory configs_dir information
   stat:
