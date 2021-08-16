@@ -16,7 +16,7 @@ for i in $old;
   do gdrive delete $i;
 done
 
-cd /tmp
+cd ~
 filename="$(date '+%Y_%m_%d')-Sync-Cloud.tar.gz"
 
 echo "Archiving and Compressing ..."

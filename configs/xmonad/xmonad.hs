@@ -10,12 +10,11 @@ import           XMonad.Util.EZConfig           ( additionalKeysP )
 import           XMonad.Util.Run                ( hPutStrLn
                                                 , spawnPipe
                                                 )
+import           XMonad.Util.SpawnOnce
 
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
--- import XMonad.Util.SpawnOnce
 main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobarrc"
-  -- xmobarProc <- spawnPipe "xmobar ~/xmobar/xmobar.hs"
   xmonad
     $                 docks def
                         { borderWidth        = 2
@@ -29,8 +28,14 @@ main = do
                         , normalBorderColor  = "#222222"
                         , terminal           = "st"
                         , workspaces = ["General", "Web", "3", "4", "Login", "6", "7", "Media"]
+                        , startupHook        = myStartupHook
                         }
     `additionalKeysP` myKeys
+
+myStartupHook :: X ()
+myStartupHook = do
+  spawnOnce "echo 'POMODORO' > /tmp/.xpomodoro-resting"
+  spawnOnce "echo '' > /tmp/.xpomodoro-working"
 
 windowCount :: X (Maybe String)
 windowCount =
