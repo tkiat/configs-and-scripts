@@ -1,3 +1,1 @@
-export MY_SYNC_DIR=/home/tkiat/Sync
-export MY_CLOUD_DIR=/home/tkiat/Sync/Cloud
-export MY_PRIVATE_DIR=/home/tkiat/Sync/Private
+export MY_PERSONAL_CLOUD_DIR=/home/tkiat/Sync/Personal-Cloud

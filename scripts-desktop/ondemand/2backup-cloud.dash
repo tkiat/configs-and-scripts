@@ -5,8 +5,8 @@ if ! type gdrive > /dev/null; then
   exit 1
 fi
 
-if ! [ -d $MY_CLOUD_DIR ]; then
-  echo "Please defines MY_CLOUD_DIR (your cloud folder location) env variable. Exiting..."
+if ! [ -d $MY_PERSONAL_CLOUD_DIR ]; then
+  echo "Please defines MY_PERSONAL_CLOUD_DIR (your cloud folder location) env variable. Exiting..."
   exit 1
 fi
 
@@ -20,7 +20,7 @@ cd /tmp
 filename="$(date '+%Y_%m_%d')-Sync-Cloud.tar.gz"
 
 echo "Archiving and Compressing ..."
-tar czf $filename --directory=$MY_CLOUD_DIR .
+tar czf $filename --directory=$MY_PERSONAL_CLOUD_DIR .
 gpg --encrypt --recipient tkiat@tutanota.com $filename
 rm $filename
 gdrive upload "$filename.gpg"

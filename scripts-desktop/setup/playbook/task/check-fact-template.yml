@@ -1,0 +1,8 @@
+- name: store {{ item }} information in a register
+  stat:
+    path: '{{ item }}'
+  register: temp
+- name: check if {{ item }} exist
+  fail:
+    msg: '{{ item }} does not exist!'
+  when: temp.stat.exists == false
