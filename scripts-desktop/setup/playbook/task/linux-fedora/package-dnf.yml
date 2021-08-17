@@ -41,7 +41,9 @@
     - newsboat
     - pandoc
     - pass
+    - passmenu
     - pidgin
+    - pinentry-gtk
     - psmisc
     - purple-telegram
     - python3-pip
