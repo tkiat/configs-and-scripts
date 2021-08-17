@@ -25,6 +25,7 @@ PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;36m\]$(__git_ps1
 # Alias and Env
 . ~/.alias.shared
 . $configs_path/env/personal
+alias 2bash-status-code-last-cmd='echo $?'
 # Completion -------------------------------------------------------------------
 if ! shopt -oq posix; then . $scripts_onstart_path/bash_zsh-git_completion.bash; fi
 bind 'TAB':menu-complete # TAB to cycle through completion matches
