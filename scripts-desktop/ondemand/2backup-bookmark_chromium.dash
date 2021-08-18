@@ -1,10 +1,18 @@
 #!/usr/bin/env dash
-if ! [ -d $MY_PRIVATE_DIR ]; then
-  echo "Please defines MY_PRIVATE_DIR (your private folder location) env variable. Exiting..."
+src_dir=~/.config/ungoogled-chromium/Default
+target_dir=~/Sync/Personal-Cloud/App/Chromium
+
+if ! [ -d $src_dir ]; then
+  echo "Source directory ${src_dir} not found"
+  exit 1
+fi
+
+if ! [ -d $target_dir ]; then
+  echo "Target directory ${target_dir} not found"
   exit 1
 fi
 
 bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
-cd $MY_PRIVATE_DIR
+cd $target_dir || exit
 rm -f bookmark-Chromium-*
-cp ~/.config/ungoogled-chromium/Default/Bookmarks $bookmark_filename
+cp "$src_dir/Bookmarks" "$bookmark_filename"
