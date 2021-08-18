@@ -55,8 +55,8 @@ autocmd BufNew * execute ":tabm"
 " ========================================
 " {([: generate closing braces automatically
 for val in ['{}','()','[]']
-	exe 'inoremap '.val[0].' '.val[0].val[1].'<Esc>i'
-	exe 'inoremap '.val[0].'<CR> '.val[0].'<CR>'.val[1].'<Esc>ko'
+  exe 'inoremap '.val[0].' '.val[0].val[1].'<Esc>i'
+  exe 'inoremap '.val[0].'<CR> '.val[0].'<CR>'.val[1].'<Esc>ko'
 endfor
 " placeholder
 inoreabbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dapibus convallis massa, nec gravida diam pellentesque at. Aliquam mollis tempor mi sed venenatis. Maecenas neque massa, pulvinar vitae lacus et, convallis interdum ligula. Suspendisse rhoncus a arcu quis volutpat. Donec ac risus eros. Pellentesque convallis lectus eu sodales ornare. Quisque egestas ex non purus porta porttitor. Ut blandit feugiat iaculis. Nulla mollis venenatis pulvinar. Nullam pulvinar efficitur aliquet. Donec in nibh eleifend, finibus dui nec, faucibus dui.
@@ -71,18 +71,18 @@ inoreabbrev shebang #!/usr/bin/env
 " ========================================
 " 0-8: go to tab, 9: go to last tab
 for val in range(0,8)
-	exe 'nnoremap <leader>'.val.' '.val.'gt<cr>'
+  exe 'nnoremap <leader>'.val.' '.val.'gt<cr>'
 endfor
 nnoremap <leader>9 :tabl<cr>
 " {(["'*<`: enclose curent word with its pair
 " TODO custom pair
 for val in ['{}','()','[]','""',"''",'**','<>','``']
-	exe 'nnoremap <leader>'.val[0].' ciw'.val[0].val[1].'<esc>Pl'
-	exe 'vnoremap <leader>'.val[0].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
-	if val[0] !=# val[1]
-		exe 'nnoremap <leader>'.val[1].' ciw'.val[0].val[1].'<esc>Pl'
-		exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
-	endif
+  exe 'nnoremap <leader>'.val[0].' ciw'.val[0].val[1].'<esc>Pl'
+  exe 'vnoremap <leader>'.val[0].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
+  if val[0] !=# val[1]
+    exe 'nnoremap <leader>'.val[1].' ciw'.val[0].val[1].'<esc>Pl'
+    exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
+  endif
 endfor
 " ** enclose word
 nnoremap <leader>** ciw****<esc>hPl
@@ -97,11 +97,11 @@ nnoremap <leader>c0 :colorscheme default<cr>
 nnoremap <leader>c1 :colorscheme custom-dark<cr>
 nnoremap <leader>c2 :colorscheme custom-light<cr>
 " c: copy - current file
-  " nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
+" nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
 " d: definition highlight group
 map <leader>def :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-			\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-			\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " d: delete - braces pair
 nnoremap <leader>d %x``x
 " d: delete - first letter
@@ -110,7 +110,7 @@ nnoremap <leader>d^ mqI<del><esc>`qh
 nnoremap <leader>da mq$x<esc>`q
 " d: delete - trailing character(s)
 for char in [';','$']
-	exe 'nnoremap <leader>d'.char.' mq:%s/'.char.'$//g<cr>`q'
+  exe 'nnoremap <leader>d'.char.' mq:%s/'.char.'$//g<cr>`q'
 endfor
 nnoremap <leader>d<Space> mq:%s/\s\+$//<cr>`q
 " f: file - print current
@@ -119,7 +119,7 @@ nnoremap <leader>f :execute "normal! a" . expand('%:t:r')<CR>
 nnoremap <expr> <leader>hl (&hls && v:hlsearch ? ':set nohls' : ':set hls')."\n"
 " i: insert - a character at the end of the line
 for char in [',',';']
-	exe 'nnoremap <leader>i'.char.' mqA'.char.'<esc>`q'
+  exe 'nnoremap <leader>i'.char.' mqA'.char.'<esc>`q'
 endfor
 " o: open file
 nnoremap <leader>obc :vsplit ~/.bashrc<cr>
@@ -153,7 +153,7 @@ nnoremap <leader>rU mq:s/\<./\u&/g<cr>`q
 exe 'nnoremap <leader>r<tab> mq:%s/\(^ *\)\@<= \{'.space_per_tab.'\}/<tab>/g<cr>`q'
 " m: move - tab
 for val in range(0,9)
-	exe 'nnoremap <leader>m'.val.' :tabm'.val.'<CR>'
+  exe 'nnoremap <leader>m'.val.' :tabm'.val.'<CR>'
 endfor
 " q: quit
 nnoremap <leader>q :q<cr>
