@@ -69,7 +69,7 @@ inoreabbrev shebang #!/usr/bin/env
 " ========================================
 " mapping manually with <leader>
 " ========================================
-" 0-8: go to tab, 9: go to last tab
+" go to tab
 for val in range(0,8)
   exe 'nnoremap <leader>'.val.' '.val.'gt<cr>'
 endfor
@@ -84,6 +84,7 @@ for val in ['{}','()','[]','""',"''",'**','<>','``']
     exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
   endif
 endfor
+nnoremap <leader>; mqA;<esc>`q
 " ** enclose word
 nnoremap <leader>** ciw****<esc>hPl
 vnoremap <leader>** mq:s/\%V.*\%V./**&**/<cr>`qf'**':nohl<cr>
@@ -99,7 +100,7 @@ nnoremap <leader>c2 :colorscheme custom-light<cr>
 " c: copy - current file
 " nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
 " d: definition highlight group
-map <leader>def :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+map <leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
       \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
       \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " d: delete - braces pair
@@ -117,23 +118,11 @@ nnoremap <leader>d<Space> mq:%s/\s\+$//<cr>`q
 nnoremap <leader>f :execute "normal! a" . expand('%:t:r')<CR>
 " h: highlight - toggle
 nnoremap <expr> <leader>hl (&hls && v:hlsearch ? ':set nohls' : ':set hls')."\n"
-" i: insert - a character at the end of the line
-for char in [',',';']
-  exe 'nnoremap <leader>i'.char.' mqA'.char.'<esc>`q'
-endfor
 " o: open file
-nnoremap <leader>obc :vsplit ~/.bashrc<cr>
-nnoremap <leader>obs :vsplit ~/.bashrc.shared<cr>
-nnoremap <leader>ot  :tabnew ~/.vim/template/<cr>
+nnoremap <leader>oh  :tabnew ~<cr>
 nnoremap <leader>ov  :vsplit ~/.vimrc<cr>
-nnoremap <leader>ovc :vsplit ~/.vimrc-modules/vimrc.const<cr>
-nnoremap <leader>ovs :vsplit ~/.vimrc-modules/vimrc.shared<cr>
-nnoremap <leader>ozc :vsplit ~/.zshrc<cr>
-nnoremap <leader>ozs :vsplit ~/.zshrc.shared<cr>
-nnoremap <leader>oze :vsplit ~/.zshenv<cr>
-nnoremap <leader>ozp :vsplit ~/.zprofile<cr>
-" oq: open file in qutebrowser
-nnoremap <leader>oq :!qutebrowser %<cr>
+nnoremap <leader>ovm :tabnew ~/.vimrc-modules<cr>
+nnoremap <leader>ovt :tabnew ~/.vim/template/<cr>
 " p: paste from clipboard to end of file
 nnoremap <leader>pc :w<cr>:!echo $(xclip -o selection clipboard) >> %<cr>L<cr>
 " TODO vnoreamp '<,'>s/\%Vfoo\%V/bar/g
