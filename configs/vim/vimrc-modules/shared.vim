@@ -6,6 +6,8 @@
 " set ttimeoutlen=0
 
 let template_dir='~/.vim/template/'
+let mapleader=','
+let space_per_tab=2
 " TODO use vim tag sections here also check mapping first perhaps can remove leader
 " ========================================
 " Set
@@ -94,15 +96,6 @@ nnoremap <leader><space> mqbi<space><esc>ea<space><esc>`ql
 nnoremap <leader>c0 :colorscheme default<cr>
 nnoremap <leader>c1 :colorscheme custom-dark<cr>
 nnoremap <leader>c2 :colorscheme custom-light<cr>
-" c: comment
-for i in range(0,6)
-	exe ':autocmd BufNewFile,BufRead '.my_commentgroup[i]['ext'].' nnoremap <buffer> <leader>c '.my_commentgroup[i]['comment-line']
-	exe ':autocmd BufNewFile,BufRead '.my_commentgroup[i]['ext'].' vnoremap <buffer> <leader>c '.my_commentgroup[i]['comment-visual']
-endfor
-" c: comment - manual
-nnoremap <leader>cc ^i/*<esc>A*/<esc>
-nnoremap <leader>c/ ^i//<esc>A<esc>
-nnoremap <leader>c{ ^i{/*<esc>A*/}<esc>
 " c: copy - current file
   " nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
 " d: definition highlight group
@@ -120,8 +113,6 @@ for char in [';','$']
 	exe 'nnoremap <leader>d'.char.' mq:%s/'.char.'$//g<cr>`q'
 endfor
 nnoremap <leader>d<Space> mq:%s/\s\+$//<cr>`q
-" e: escape
-nnoremap <leader>e :call EscapeHTML()<cr>"
 " f: file - print current
 nnoremap <leader>f :execute "normal! a" . expand('%:t:r')<CR>
 " h: highlight - toggle
@@ -135,8 +126,8 @@ nnoremap <leader>obc :vsplit ~/.bashrc<cr>
 nnoremap <leader>obs :vsplit ~/.bashrc.shared<cr>
 nnoremap <leader>ot  :tabnew ~/.vim/template/<cr>
 nnoremap <leader>ov  :vsplit ~/.vimrc<cr>
-nnoremap <leader>ovc :vsplit ~/.vimrc-modules/const<cr>
-nnoremap <leader>ovs :vsplit ~/.vimrc-modules/shared<cr>
+nnoremap <leader>ovc :vsplit ~/.vimrc-modules/vimrc.const<cr>
+nnoremap <leader>ovs :vsplit ~/.vimrc-modules/vimrc.shared<cr>
 nnoremap <leader>ozc :vsplit ~/.zshrc<cr>
 nnoremap <leader>ozs :vsplit ~/.zshrc.shared<cr>
 nnoremap <leader>oze :vsplit ~/.zshenv<cr>
@@ -198,27 +189,6 @@ exe 'nnoremap <leader>tgt <ESC>:r '.template_dir.'main_test.go.template<CR>kddjj
 exe 'nnoremap <leader>tm <ESC>:r '.template_dir.'markdown.template<cr>kdd'
 exe 'nnoremap <leader>th <ESC>:r '.template_dir.'html5.template<CR>kdd/body<CR>:nohl<CR>o'
 exe 'nnoremap <leader>tv <ESC>:r '.template_dir.'vue.template<CR>kdd'
-" u: uncomment
-for i in range(0,len(g:my_commentgroup)-1)
-	exe ':autocmd BufNewFile,BufRead '.g:my_commentgroup[i]['ext'].' nnoremap <buffer> <leader>u '.g:my_commentgroup[i]['uncomment-line']
-	exe ':autocmd BufNewFile,BufRead '.g:my_commentgroup[i]['ext'].' vnoremap <buffer> <leader>u '.g:my_commentgroup[i]['uncomment-visual']
-endfor
-" u: comment - manual
-nnoremap <leader>uc ^xx<esc>$xx<esc>
-nnoremap <leader>u/ ^xx<esc>$<esc>
-nnoremap <leader>u{ ^xxx<esc>$xxx<esc>
 " y: yank: whole html tag
 nnoremap <leader>y< vf>f>y
 nnoremap <leader>y> vf>f>y
-" ========================================
-"                              Scope: File
-" ========================================
-" asciidoctor autoconvert after save, note! must open file directly like vim <filename>, not vim .
-let s:asciidoctor_stylesdir='/home/'.$USER.'/Git/assets/stylesheets/asciidoctor-custom/'
-function AsciiDocToHTML()
-	execute '!asciidoctor -a stylesdir='.s:asciidoctor_stylesdir.' '.expand('%:p')
-	execute '!html-minifier --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-tag-whitespace --use-short-doctype --minify-css true --minify-js true -o '.expand('%:r').'.html '.expand('%:r').'.html'
-	execute '!echo "'.strftime("%Y-%m-%d %X \(GMT %Z\)").'" > '.expand('%:p:h').'/modified'
-	execute '![ \! -f created ] && echo "'.strftime("%Y-%m-%d %X \(GMT %Z\)").'" > '.expand('%:p:h').'/created'
-endfunction
-autocmd BufWritePost article.adoc :call AsciiDocToHTML()

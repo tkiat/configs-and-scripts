@@ -1,11 +1,9 @@
-source ~/.vimrc-modules/vimrc.const
-source ~/.vimrc-modules/vimrc.shared
-autocmd VimEnter * if &diff | execute 'windo set wrap' | endif " force line wrap in vim diff
-" syntax ======================================================================
-" autocmd BufNewFile,BufRead *.vimrc set syntax=haskell
-autocmd BufNewFile,BufRead *.xinitrc set syntax=bash
-autocmd BufNewFile,BufRead *.xmobarrc set syntax=haskell
+source ~/.vimrc-modules/comment.vim
+source ~/.vimrc-modules/html.vim
+source ~/.vimrc-modules/shared.vim
+source ~/.vimrc-modules/syntax.vim
 
+autocmd VimEnter * if &diff | execute 'windo set wrap' | endif " force line wrap in vim diff
 " =============================================================================
 "                                  Plugins
 " =============================================================================

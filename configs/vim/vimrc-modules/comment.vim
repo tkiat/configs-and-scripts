@@ -1,6 +1,5 @@
-let mapleader=','
-let space_per_tab=2
-let g:my_commentgroup=[
+" commentgroup ----------------------------------------------------------------
+let s:commentgroup=[
 	\{
 		\'comment-symbol': '#',
 		\'ext': '*.bash,*.bashrc\(\.shared\)\=,*dash,*.gitignore,*.nix,*.py,*.rec,*.sh,*.tf,*.tmux.conf,.xinitrc,*.yml,*.zprofile,*.zshenv,*.zshrc\(\.shared\)\=',
@@ -35,7 +34,7 @@ let g:my_commentgroup=[
 	\},
 	\{
 		\'comment-symbol': '"',
-		\'ext': '*.vim,*.vimrc\(\.shared\)\=,',
+		\'ext': '*.vim,*.vimrc',
 		\'comment-line': 'mqI" <esc>`qll',
 		\'comment-visual': ':s/^\%V/" /g<cr>:nohl<cr>',
 		\'uncomment-line': 'mqI<del><del><esc>`qhh',
@@ -58,17 +57,20 @@ let g:my_commentgroup=[
 		\'uncomment-visual': ':s/<!--//g<cr>gv:s/-->//g<cr>:nohl<cr>'
 	\}
 \]
-let s:char_html_escape={
-	\'&': '&amp;',
-	\">": "&gt;",
-	\'<': '&lt;',
-	\'1': '&nbsp;',
-	\'2': '&ensp;',
-	\'4': '&emsp;'
-\}
-function EscapeHTML()
-  let l:curChar = strcharpart(getline('.')[col('.') - 1:], 0, 1)
-  if has_key(s:char_html_escape, l:curChar)
-    exe 'normal s'.g:char_html_escape[l:curChar]
-  endif
-endfunction
+for i in range(0,len(s:commentgroup)-1)
+  " comment
+	exe ':autocmd BufNewFile,BufRead '.s:commentgroup[i]['ext'].' nnoremap <buffer> <leader>c '.s:commentgroup[i]['comment-line']
+	exe ':autocmd BufNewFile,BufRead '.s:commentgroup[i]['ext'].' vnoremap <buffer> <leader>c '.s:commentgroup[i]['comment-visual']
+  " uncomment
+	exe ':autocmd BufNewFile,BufRead '.s:commentgroup[i]['ext'].' nnoremap <buffer> <leader>u '.s:commentgroup[i]['uncomment-line']
+	exe ':autocmd BufNewFile,BufRead '.s:commentgroup[i]['ext'].' vnoremap <buffer> <leader>u '.s:commentgroup[i]['uncomment-visual']
+endfor
+" ad-hoc ----------------------------------------------------------------------
+" comment
+nnoremap <leader>cc ^i/*<esc>A*/<esc>
+nnoremap <leader>c/ ^i//<esc>A<esc>
+nnoremap <leader>c{ ^i{/*<esc>A*/}<esc>
+" uncomment
+nnoremap <leader>uc ^xx<esc>$xx<esc>
+nnoremap <leader>u/ ^xx<esc>$<esc>
+nnoremap <leader>u{ ^xxx<esc>$xxx<esc>
