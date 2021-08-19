@@ -1,0 +1,4 @@
+- name: vim-plugin -> org.vim -> git clone
+  ansible.builtin.git:
+    repo: 'https://github.com/axvr/org.vim'
+    dest: '{{ base_dir }}/org.vim'

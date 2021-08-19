@@ -3,16 +3,17 @@
     repo: 'https://github.com/neoclide/coc.nvim.git'
     dest: '{{ base_dir }}/coc.nvim'
 
-- name: coc.nvim -> npm install
-  npm:
-    path: '{{ base_dir }}/coc.nvim'
-    state: present
-
 - name: coc.nvim -> symlink coc-settings.json
   ansible.builtin.file:
     src: '{{ configs_dir }}/vim/coc-settings.json'
     dest: '{{ ansible_env.HOME }}/.vim/coc-settings.json'
     state: link
+#
+# - name: coc.nvim -> npm install
+#   npm:
+#     path: '{{ base_dir }}/coc.nvim'
+#     state: present
+
 # - name: coc.nvim -> create ~/.config/coc/extensions/ if not exist
 #   file:
 #     path: "{{ ansible_env.HOME }}/.config/coc/extensions"

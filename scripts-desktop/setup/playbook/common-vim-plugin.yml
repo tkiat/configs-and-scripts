@@ -7,5 +7,6 @@
     - import_tasks: task/common-vim-plugin/editorconfig-vim.yml
     - import_tasks: task/common-vim-plugin/emmet-vim.yml
     - import_tasks: task/common-vim-plugin/nerdtree.yml
+    - import_tasks: task/common-vim-plugin/org.vim.yml
     - import_tasks: task/common-vim-plugin/purescript-vim.yml
     - import_tasks: task/common-vim-plugin/vim-toml.yml
