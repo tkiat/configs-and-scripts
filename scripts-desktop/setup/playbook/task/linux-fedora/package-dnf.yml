@@ -37,6 +37,7 @@
     - mc
     - mediainfo
     - mupdf
+    - ncurses-devel
     - neofetch
     - newsboat
     - pandoc
