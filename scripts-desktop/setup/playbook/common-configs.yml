@@ -1,4 +1,4 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+- hosts: all
   name: common-configs
   tasks:
     - import_tasks: task/common-configs/git.yml

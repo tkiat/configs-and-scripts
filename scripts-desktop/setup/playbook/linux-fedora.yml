@@ -1,4 +1,4 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+- hosts: all
   name: linux-fedora
   tasks:
     - import_tasks: task/linux-fedora/package-dnf.yml

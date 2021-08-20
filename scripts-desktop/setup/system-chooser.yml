@@ -1,10 +1,8 @@
-# usage: ansible-playbook system-chooser.yml --ask-become-pass
+# usage: ansible-playbook system-chooser.yml -i ansible_hosts --ask-become-pass
 
-- hosts: localhost # this need to be fixed, modify set_fact below
-  name: system-chooser
+- name: system-chooser
+  hosts: all
   tasks:
-    - set_fact: hostlist=localhost
-
     - set_fact: sync_dir="{{ ansible_env.HOME }}/Sync"
 
     - set_fact: dir_public="{{ sync_dir }}/Public"

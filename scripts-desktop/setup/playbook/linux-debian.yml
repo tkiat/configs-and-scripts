@@ -1,4 +1,4 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+- hosts: all
   name: linux-debian
   tasks:
     - import_tasks: task/linux-debian/package-apt.yml

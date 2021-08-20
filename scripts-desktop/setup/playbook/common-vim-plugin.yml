@@ -1,4 +1,4 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+- hosts: all
   name: common-vim-plugin
   tasks:
     - set_fact: base_dir="{{ ansible_env.HOME }}/.vim/pack/plugins/start"

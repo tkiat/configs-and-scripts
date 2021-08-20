@@ -1,4 +1,4 @@
-- hosts: "{{ hostvars['localhost']['hostlist'] }}"
+- hosts: all
   name: common-vim
   tasks:
     - import_tasks: task/common-vim/directories.yml
