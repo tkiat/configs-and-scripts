@@ -1,3 +1,8 @@
+- name: xpomodoro -> create ~/.local/share/xpomodoro/ if not exist
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/.local/share/xpomodoro'
+    state: directory
+
 - name: xpomodoro -> symlink record.json
   ansible.builtin.file:
     src: '{{ personal_cloud_app_dir }}/xpomodoro/record.json'
