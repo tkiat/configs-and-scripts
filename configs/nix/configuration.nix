@@ -1,22 +1,20 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
+
+  #   nixpkgs.config.allowBroken = true;
 
   boot = {
     blacklistedKernelModules = [
       "iwlwifi"
     ];
-    kernelPackages = pkgs.linuxPackages;
+    # kernelPackages = pkgs.linuxPackages;
     # kernelPackages = pkgs.linuxPackages_latest-libre;
-    # kernelPackages = pkgs.linuxPackages-libre;
+    kernelPackages = pkgs.linuxPackages-libre;
     loader = {
       grub = {
         enable = true;
@@ -67,6 +65,7 @@
   networking = {
     hostName = "nixos";
     interfaces.eno0.useDHCP = true;
+    # interfaces.wlp2s0.useDHCP = true;
     networkmanager.enable = true;
     useDHCP = false;
   };
@@ -114,6 +113,13 @@
 
   sound.enable = true;
 
+  swapDevices = [
+    {
+      label = "swap";
+    }
+  ];
+
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05";
@@ -125,8 +131,7 @@
   users = {
     users.tkiat = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     };
   };
 }
-
