@@ -1,8 +1,8 @@
-- include: check-fact-template.yml
+- include: ../task-template/check-fact.yml
   with_items:
+    - '{{ dir_personal_cloud }}'
+    - '{{ dir_personal_cloud_app }}'
+    - '{{ dir_personal_local_private }}'
     - '{{ dir_public }}'
     - '{{ dir_temp }}'
     - '{{ configs_dir }}'
-    - '{{ personal_cloud_dir }}'
-    - '{{ personal_cloud_app_dir }}'
-    - '{{ personal_local_private_dir }}'

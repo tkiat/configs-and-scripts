@@ -23,4 +23,4 @@
     dest: '{{ ansible_env.HOME }}/.ssh/{{ item | basename }}'
     state: link
   with_fileglob:
-    - '{{ personal_local_private_dir }}/ssh/*'
+    - '{{ dir_personal_local_private }}/ssh/*'

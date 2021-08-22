@@ -1,0 +1,8 @@
+- name: package-nix-install -> gather list of installed packages
+  shell: nix-env -q
+  register: temp
+
+- name: package-nix-install -> install only new packages
+  ansible.builtin.shell: 'nix-env -i {{ item }}'
+  when: not temp.stdout is search(item)
+  with_items: '{{ packages }}'

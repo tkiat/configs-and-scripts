@@ -2,6 +2,7 @@
   stat:
     path: '{{ item }}'
   register: temp
+
 - name: check if {{ item }} exist
   fail:
     msg: '{{ item }} does not exist!'

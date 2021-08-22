@@ -11,6 +11,6 @@
 
 - name: newsboat -> symlink urls
   ansible.builtin.file:
-    src: '{{ personal_cloud_app_dir }}/Newsboat/urls'
+    src: '{{ dir_personal_cloud_app }}/Newsboat/urls'
     dest: '{{ ansible_env.HOME }}/.newsboat/urls'
     state: link
