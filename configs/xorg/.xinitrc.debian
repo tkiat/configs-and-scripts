@@ -1,3 +1,8 @@
 chromium&
 
-. /home/tkiat/.xinitrc.shared
+xpomodoro_resting=/tmp/.xpomodoro-resting
+xpomodoro_working=/tmp/.xpomodoro-working
+[[ -S $xpomodoro_resting ]] || mkfifo $xpomodoro_resting
+[[ -S $xpomodoro_working ]] || mkfifo $xpomodoro_working
+
+. ~/.xinitrc.shared
