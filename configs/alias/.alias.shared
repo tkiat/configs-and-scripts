@@ -34,8 +34,8 @@ alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
 alias xpdf="xpdf -z width"
 alias xpomodoro="xpomodoro -w 50 -b 15 -lb 60 --xmobar"
-# alias xpomodoro="~/Git/pomodoro-temp/xpomodoro.py -w 50 -b 15 -lb 60 --xmobar"
 # shortcut on top of default command
+alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
 alias 2git-remote='git remote -v'
