@@ -50,7 +50,7 @@ windowCount =
     . windowset
 
 
-myKeys = [("M-b", sendMessage ToggleStruts)]
+myKeys = [("M-b", sendMessage ToggleStruts), ("M-w", spawn "passmenu")]
 
 myLayout = avoidStruts (Full ||| Tall 1 (3 / 100) (1 / 2))
 
