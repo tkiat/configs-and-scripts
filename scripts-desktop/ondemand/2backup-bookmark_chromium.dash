@@ -1,18 +1,17 @@
 #!/usr/bin/env dash
-src_dir=~/.config/ungoogled-chromium/Default
+src=~/.config/chromium/Default/Bookmarks
 target_dir=~/Sync/Personal-Cloud/App/Chromium
 
-if ! [ -d $src_dir ]; then
-  echo "Source directory ${src_dir} not found"
+if ! [ -d $src ]; then
+  echo "Source file ${src} not found. Exiting ..."
   exit 1
 fi
 
 if ! [ -d $target_dir ]; then
-  echo "Target directory ${target_dir} not found"
+  echo "Target directory ${target_dir} not found. Exiting ..."
   exit 1
 fi
 
 bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
-cd $target_dir || exit
-rm -f bookmark-Chromium-*
-cp "$src_dir/Bookmarks" "$bookmark_filename"
+rm -f "$target_dir/bookmark-Chromium-*"
+cp "$src" "$target_dir/$bookmark_filename"
