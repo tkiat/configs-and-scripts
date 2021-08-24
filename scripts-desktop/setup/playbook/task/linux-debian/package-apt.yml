@@ -8,6 +8,7 @@
     - adb
     - apt-file
     - dbus-x11
+    - flashrom
     - fontconfig
     - fonts-thai-tlwg-ttf
     - gcc
