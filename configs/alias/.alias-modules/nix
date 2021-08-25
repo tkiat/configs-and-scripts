@@ -6,3 +6,4 @@ alias 2nix-e='nix-env -e'
       2nix-s-pkg() { nix-env -qa | grep $1 | bat; }
 alias 2nix-s-installed='nix-env --query'
 alias 2nix-u='nix-channel --update && nix-env -u'
+alias 2nix-u-self='nix-channel --update; nix-env -iA nixpkgs.nix'

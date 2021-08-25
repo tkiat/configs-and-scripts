@@ -27,6 +27,7 @@ history-limit 0 # search history
 keep-articles-days 7
 # macro c set browser "chromium --incognito %u"; open-in-browser ; set browser chromium
 # macro c set browser "chromium %u"; open-in-browser ; set browser chromium
+macro c open-in-browser
 macro f set browser "firefox %u"; open-in-browser ; set browser chromium
 macro i set browser "icecat %u"; open-in-browser ; set browser chromium
 macro q set browser "qutebrowser %u"; open-in-browser ; set browser chromium

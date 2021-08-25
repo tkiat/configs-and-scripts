@@ -2,8 +2,8 @@
 src=~/.config/chromium/Default/Bookmarks
 target_dir=~/Sync/Personal-Cloud/App/Chromium
 
-if ! [ -d $src ]; then
-  echo "Source file ${src} not found. Exiting ..."
+if ! [ -f $src ]; then
+  echo "Bookfile file ${src} not found. Exiting ..."
   exit 1
 fi
 
@@ -13,5 +13,5 @@ if ! [ -d $target_dir ]; then
 fi
 
 bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
-rm -f "$target_dir/bookmark-Chromium-*"
+rm -f "$target_dir"/bookmark-Chromium-*
 cp "$src" "$target_dir/$bookmark_filename"
