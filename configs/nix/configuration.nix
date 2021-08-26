@@ -129,9 +129,11 @@
   };
 
   users = {
+    mutableUsers = false;
     users.tkiat = {
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+      uid = 1000;
     };
   };
 }
