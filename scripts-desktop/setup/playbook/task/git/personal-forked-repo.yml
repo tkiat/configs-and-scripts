@@ -1,0 +1,12 @@
+- name: my-personal-forked-repo -> create ~/Git-Forked/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Git-Forked"
+    state: directory
+
+- name: my-personal-forked-repo -> clone from GitLab
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item.split('-')[1:] }}"
+  with_items:
+    - forked-st
+    - forked-slock

@@ -1,0 +1,5 @@
+- hosts: all
+  name: git
+  tasks:
+    - import_tasks: task/git/personal-forked-repo.yml
+    - import_tasks: task/git/personal-original-repo.yml

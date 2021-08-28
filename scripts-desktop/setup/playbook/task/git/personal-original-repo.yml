@@ -1,0 +1,12 @@
+- name: my-personal-original-repo -> create ~/Git/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Git"
+    state: directory
+
+- name: my-personal-original-repo -> clone my original repositories from GitLab
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git/{{ item }}"
+  with_items:
+    - assets
+    - learning

@@ -5,3 +5,9 @@
     state: link
     force: yes
 
+- name: configs -> create .xinitrc symlink
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/xorg/nixos.xinitrc"
+    dest: "{{ ansible_env.HOME }}/.xinitrc"
+    state: link
+    force: yes
