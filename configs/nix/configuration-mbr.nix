@@ -34,17 +34,91 @@
 
   environment = {
     systemPackages = with pkgs; [
+      acpi
+      alsa-utils
       ansible
       bash
-      dmenu
+      bat
+      calibre
+      cmus
+      cpufrequtils
+      curl
+      dejsonlz4
+      dmidecode
+      docker
+      docker-compose
+      du-dust
+      exa
+      fd
+      feh
+      flashrom
       firefox
-      gnupg
+      gcc
+      gdrive
+      ghc
+      ghostscript
+      gimp
       git
-      slock
-      st
+      git-repo
+      gnumake
+      gnupg
+      gwenview
+      haskell-language-server
+      heimdall
+      htop
+      imagemagick
+      inkscape
+      jpegoptim
+      kdenlive
+      less
+      libreoffice
+      loc
+      lm-sensors
+      mc
+      mediainfo
+      mupdf
+      neofetch-unstable
+      neomutt
+      newsboat
+      nixpkgs-fmt
+      pandoc
+      password-store
+      pencil
+      pinentry
+      purescript
+      python3
+      qview
+      ranger
+      redshift
+      ripgrep
+      rsync
+      scrot
+      shellcheck
+      simplescreenrecorder
+      smartmontools
+      spago
+      tealdeer
+      telegram-desktop
+      thunar
+      tmux
+      tokei
+      tor-browser-bundle-bin
+      trash-cli
+      tree
+      tumbler
+      ungoogled-chromium
+      unzip
       vim_configurable
+      vlc
+      vscodium
+      w3m
+      weechat
       wget
       xmobar
+      xmonad-with-packages
+      yarn
+      zenity
+      zip
     ];
   };
 
