@@ -6,15 +6,18 @@
       ./hardware-configuration.nix
     ];
 
-  #   nixpkgs.config.allowBroken = true;
+  # nixpkgs.config.allowBroken = true;
 
   boot = {
     blacklistedKernelModules = [
       "iwlwifi"
     ];
-    # kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages;
     # kernelPackages = pkgs.linuxPackages_latest-libre;
-    kernelPackages = pkgs.linuxPackages-libre;
+    initrd.luks.devices.root = {
+      device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
+      preLVM = true;
+    };
     loader = {
       grub = {
         enable = true;
@@ -46,14 +49,6 @@
   };
 
   hardware = {
-    # firmware = [
-    #   (
-    #     pkgs.runCommandNoCC "open-ath9k-htc" { } ''
-    #       mkdir -p $out/lib/firmware
-    #       cp ${./htc_9271.fw} $out/lib/firmware/htc_9271.fw
-    #     ''
-    #   )
-    # ];
     pulseaudio.enable = true;
     trackpoint.emulateWheel = true;
   };
@@ -69,18 +64,9 @@
     networkmanager.enable = true;
     useDHCP = false;
   };
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   programs = {
     slock.enable = true; # SUID wrappers
-    # gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
   };
 
   powerManagement = {
@@ -97,7 +83,7 @@
         startx.enable = true;
       };
       layout = "us,th";
-      # libinput.enable = true; # touchpad support
+      # libinput.enable = true; # touchpad
       windowManager = {
         xmonad.enable = true;
         xmonad.enableContribAndExtras = true;
@@ -113,15 +99,6 @@
 
   sound.enable = true;
 
-  swapDevices = [
-    {
-      label = "swap";
-    }
-  ];
-
-
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05";
 
   time = {
@@ -129,10 +106,9 @@
   };
 
   users = {
-    mutableUsers = false;
     users.tkiat = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "networkmanager" ];
       uid = 1000;
     };
   };
