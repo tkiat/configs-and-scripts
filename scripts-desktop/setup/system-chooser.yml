@@ -15,5 +15,6 @@
 
     - import_tasks: playbook/task/check-fact.yml
 #
+- import_playbook: systems/nixos.yml
 # - import_playbook: systems/debian.yml
-- import_playbook: systems/fedora.yml
+# - import_playbook: systems/fedora.yml

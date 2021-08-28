@@ -1,0 +1,7 @@
+- name: configs -> symlink .bashrc
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/bash/nixos.bashrc"
+    dest: "{{ ansible_env.HOME }}/.bashrc"
+    state: link
+    force: yes
+
