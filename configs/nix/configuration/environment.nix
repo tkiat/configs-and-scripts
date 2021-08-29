@@ -12,6 +12,7 @@
       cmus
       cpufrequtils
       curl
+      dash
       dejsonlz4
       dmidecode
       docker

@@ -1,13 +1,28 @@
-- name: configs -> create .bashrc symlink
+- name: configs -> create ~/.bashrc symlink
   ansible.builtin.file:
     src: "{{ configs_dir }}/bash/nixos.bashrc"
     dest: "{{ ansible_env.HOME }}/.bashrc"
     state: link
     force: yes
 
-- name: configs -> create .xinitrc symlink
+- name: configs -> create ~/.xinitrc symlink
   ansible.builtin.file:
     src: "{{ configs_dir }}/xorg/nixos.xinitrc"
     dest: "{{ ansible_env.HOME }}/.xinitrc"
     state: link
     force: yes
+
+- name: configs -> create /etc/nixos/configuration/ if not exist
+  become: yes
+  ansible.builtin.file:
+    path: "/etc/nixos/configuration"
+    state: directory
+
+- name: configs -> create /etc/nixos/configuration/* symlinks
+  become: yes
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "/etc/nixos/configuration/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/nix/configuration/*"

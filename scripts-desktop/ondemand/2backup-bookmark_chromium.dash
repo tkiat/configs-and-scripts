@@ -12,6 +12,4 @@ if ! [ -d $target_dir ]; then
   exit 1
 fi
 
-bookmark_filename="bookmark-Chromium-$(date +'%Y_%m_%d').json"
-rm -f "$target_dir"/bookmark-Chromium-*
-cp "$src" "$target_dir/$bookmark_filename"
+cp "$src" "$target_dir/Bookmarks"

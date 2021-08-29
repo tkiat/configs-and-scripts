@@ -1,0 +1,5 @@
+- name: chromium -> copy backup bookmarks
+  ansible.builtin.copy:
+    src: "{{ ansible_env.HOME }}/Sync/Personal-Cloud/App/Chromium/Bookmarks"
+    dest: "{{ ansible_env.HOME }}/.config/chromium/Default/Bookmarks"
+    force: no

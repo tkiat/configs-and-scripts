@@ -7,6 +7,7 @@
     - import_tasks: task/common-configs/alias.yml
     - import_tasks: task/common-configs/alsa.yml
     - import_tasks: task/common-configs/bash.yml
+    - import_tasks: task/common-configs/chromium.yml
     - import_tasks: task/common-configs/cmus.yml
     - import_tasks: task/common-configs/env.yml
     - import_tasks: task/common-configs/folder.yml
@@ -15,6 +16,7 @@
     - import_tasks: task/common-configs/mc.yml
     - import_tasks: task/common-configs/newsboat.yml
     - import_tasks: task/common-configs/pass.yml
+    - import_tasks: task/common-configs/pomodoro-px.yml
     - import_tasks: task/common-configs/ranger.yml
     - import_tasks: task/common-configs/readline.yml
     - import_tasks: task/common-configs/tmux.yml
@@ -23,4 +25,3 @@
     - import_tasks: task/common-configs/xmobar.yml
     - import_tasks: task/common-configs/xmonad.yml
     - import_tasks: task/common-configs/xorg.yml
-    - import_tasks: task/common-configs/xpomodoro.yml
