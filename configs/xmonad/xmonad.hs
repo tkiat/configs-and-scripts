@@ -34,8 +34,8 @@ main = do
 
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnce "echo 'POMODORO' > /tmp/.xpomodoro-resting"
-  spawnOnce "echo '' > /tmp/.xpomodoro-working"
+  spawnOnce "echo 'POMODORO' > /tmp/.pomodoro-px-resting"
+  spawnOnce "echo '' > /tmp/.pomodoro-px-working"
 
 windowCount :: X (Maybe String)
 windowCount =
