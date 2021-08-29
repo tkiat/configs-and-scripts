@@ -35,7 +35,7 @@
   environment = {
     systemPackages = with pkgs; [
       acpi
-      alsa-utils
+      alsaUtils
       ansible
       bash
       bat
@@ -59,7 +59,7 @@
       ghostscript
       gimp
       git
-      git-repo
+      gnome.zenity
       gnumake
       gnupg
       gwenview
@@ -72,17 +72,17 @@
       kdenlive
       less
       libreoffice
+      lm_sensors
       loc
-      lm-sensors
       mc
       mediainfo
       mupdf
-      neofetch-unstable
+      neofetch
       neomutt
       newsboat
       nixpkgs-fmt
       pandoc
-      password-store
+      pass
       pencil
       pinentry
       purescript
@@ -97,15 +97,13 @@
       simplescreenrecorder
       smartmontools
       spago
+      tdesktop
       tealdeer
-      telegram-desktop
-      thunar
       tmux
       tokei
       tor-browser-bundle-bin
       trash-cli
       tree
-      tumbler
       ungoogled-chromium
       unzip
       vim_configurable
@@ -114,10 +112,13 @@
       w3m
       weechat
       wget
+      xfce.exo
+      xfce.thunar
+      xfce.tumbler
+      xfce.xfconf
       xmobar
       xmonad-with-packages
       yarn
-      zenity
       zip
     ];
   };
@@ -141,6 +142,7 @@
 
   programs = {
     slock.enable = true; # SUID wrappers
+    gnupg.agent.enable = true;
   };
 
   powerManagement = {
