@@ -6,4 +6,4 @@ rm -f $pomodoro_px_wpipe && mkfifo $pomodoro_px_wpipe
 
 chromium&
 
-. ~/shared.xinitrc
+. ~/.shared.xinitrc
