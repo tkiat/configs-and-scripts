@@ -1,0 +1,5 @@
+- hosts: all
+  name: linux-distro-nixos
+  tasks:
+    - import_tasks: task/linux-distro-nixos/configs.yml
+    - import_tasks: task/linux-distro-nixos/fonts.yml

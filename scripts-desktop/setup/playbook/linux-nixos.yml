@@ -1,4 +1,0 @@
-- hosts: all
-  name: linux-nixos
-  tasks:
-    - import_tasks: task/linux-nixos/configs.yml
