@@ -50,14 +50,14 @@
     useDHCP = false;
   };
 
-  programs = {
-    slock.enable = true; # SUID wrappers
-    gnupg.agent.enable = true;
-  };
-
   powerManagement = {
     cpuFreqGovernor = "ondemand";
     enable = true;
+  };
+
+  programs = {
+    slock.enable = true; # SUID wrappers
+    gnupg.agent.enable = true;
   };
 
   services = {
