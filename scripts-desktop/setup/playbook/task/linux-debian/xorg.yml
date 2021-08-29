@@ -1,6 +1,6 @@
 - name: xorg -> create .xinitrc symlink
   ansible.builtin.file:
-    src: "{{ configs_dir }}/xorg/.xinitrc.debian"
+    src: "{{ configs_dir }}/xorg/debian.xinitrc"
     dest: "{{ ansible_env.HOME }}/.xinitrc"
     state: link
     force: yes
