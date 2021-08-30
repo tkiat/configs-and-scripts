@@ -1,0 +1,12 @@
+#!/usr/bin/env dash
+result=${PWD##*/}
+echo $result
+cd ..
+cp -r $result /tmp
+cd "/tmp/$result"
+git clean -xdf
+rm -rf .git
+echo -n "Output: "
+nix-hash --type sha256 --base32 .
+cd ..
+rm -rf $result
