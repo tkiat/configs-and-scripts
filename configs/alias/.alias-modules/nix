@@ -9,6 +9,7 @@ alias 2nix-r-root='sudo -i -- nix-env -e'
       2nix-s-pkg() { nix-env -qa | grep $1 | bat; }
 alias 2nix-s-installed='nix-env --query'
 alias 2nix-s-installed-root='sudo -i -- nix-env --query'
+alias 2nix-sha256sum-here='nix-hash --type sha256 --base32 .'
 alias 2nix-u='nix-channel --update && nix-env -u'
 alias 2nix-u-root='sudo -i -- nix-channel --update && nix-env -u'
 alias 2nix-u-self='nix-channel --update; nix-env -iA nixpkgs.nix'

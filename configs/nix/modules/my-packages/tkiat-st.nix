@@ -1,5 +1,7 @@
-with import <nixpkgs> { }; stdenv.mkDerivation
-rec {
+with import <nixpkgs> { };
+
+stdenv.mkDerivation rec {
+
   fontconfig = pkgs.fontconfig;
   freetype = pkgs.freetype;
   ncurses = pkgs.ncurses;
