@@ -1,9 +1,9 @@
-- name: personal-original-repo -> create ~/Git/ if not exist
+- name: clone-original-repo -> create ~/Git/ if not exist
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/Git"
     state: directory
 
-- name: personal-original-repo -> clone from GitHub
+- name: clone-original-repo -> clone from GitHub
   ansible.builtin.git:
     repo: "git@github.com:tkiat/{{ item }}.git"
     dest: "{{ ansible_env.HOME }}/Git/{{ item }}"
@@ -17,7 +17,7 @@
     - tkiat.github.io
     - vim-custom-theme
 
-- name: personal-original-repo -> clone from GitLab
+- name: clone-original-repo -> clone from GitLab
   ansible.builtin.git:
     repo: "git@gitlab.com:tkiat/{{ item }}.git"
     dest: "{{ ansible_env.HOME }}/Git/{{ item }}"

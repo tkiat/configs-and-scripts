@@ -1,0 +1,34 @@
+- name: clone-forked-repo -> create ~/Git-Forked/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Git-Forked"
+    state: directory
+
+- name: clone-forked-repo -> clone from GitLab without --recursive
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
+    recursive: no
+  with_items:
+    - forked-coreboot
+
+- name: clone-forked-repo -> clone from GitHub
+  ansible.builtin.git:
+    repo: "git@github.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
+  with_items:
+    - nixpkgs
+
+- name: clone-forked-repo -> clone from GitLab
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
+  with_items:
+    - forked-brittany
+    - forked-dmenu
+    - forked-dwm
+    - forked-grub
+    - forked-libreboot-lbmk
+    - forked-open_ath9k_htc_firmware
+    - forked-slock
+    - forked-st
+    - forked-vim
