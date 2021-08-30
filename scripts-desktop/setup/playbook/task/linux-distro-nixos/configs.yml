@@ -12,17 +12,25 @@
     state: link
     force: yes
 
-- name: configs -> create /etc/nixos/configuration/ if not exist
+- name: configs -> create /etc/nixos/modules symlinks
   become: yes
   ansible.builtin.file:
-    path: "/etc/nixos/configuration"
-    state: directory
-
-- name: configs -> create /etc/nixos/configuration/* symlinks
-  become: yes
-  ansible.builtin.file:
-    src: "{{ item }}"
-    dest: "/etc/nixos/configuration/{{ item | basename }}"
+    src: "{{ ansible_env.HOME }}/configs-and-scripts/configs/nix/modules"
+    dest: "/etc/nixos/modules"
     state: link
-  with_fileglob:
-    - "{{ configs_dir }}/nix/configuration/*"
+    force: yes
+
+# - name: configs -> create /etc/nixos/configuration/ if not exist
+#   become: yes
+#   ansible.builtin.file:
+#     path: "/etc/nixos/configuration"
+#     state: directory
+# 
+# - name: configs -> create /etc/nixos/configuration/* symlinks
+#   become: yes
+#   ansible.builtin.file:
+#     src: "{{ item }}"
+#     dest: "/etc/nixos/configuration/{{ item | basename }}"
+#     state: link
+#   with_fileglob:
+#     - "{{ configs_dir }}/nix/configuration/*"

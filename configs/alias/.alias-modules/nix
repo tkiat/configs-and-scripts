@@ -1,6 +1,7 @@
 alias 2nix-d='nix-env -qa --description'
 alias 2nix-gc='nix-env --delete-generations old && nix-store --gc'
 alias 2nix-gc-root='sudo -i -- nix-env --delete-generations old && nix-store --gc'
+alias 2nix-gc-system='sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d'
       2nix-i() { nix-env -i $1 && rm -f ~/.cache/dmenu_run; }
 alias 2nix-i-root='sudo -i -- nix-env -i'
 alias 2nix-q-info='nix-shell -p nix-info --run "nix-info -m"'
