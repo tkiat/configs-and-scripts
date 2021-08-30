@@ -3,7 +3,8 @@
 {
   imports =
     [
-      ./configuration/environment.nix
+      ./modules/packages-custom.nix
+      ./modules/packages-nixos.nix
       ./hardware-configuration.nix
     ];
 
@@ -63,7 +64,7 @@
   };
 
   programs = {
-    slock.enable = true; # SUID wrappers
+    #     slock.enable = true; # SUID wrappers
     gnupg.agent.enable = true;
   };
 
