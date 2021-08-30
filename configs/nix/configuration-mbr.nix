@@ -52,10 +52,10 @@
 
   nixpkgs.config = {
     allowBroken = true;
-    #       blacklistedLicenses = with lib.licenses; [
-    #         # despite being nonfree, NixOS doesn't treat unfreeRedistributableFirmware as such
-    #         unfreeRedistributableFirmware
-    #       ];
+    blacklistedLicenses = with lib.licenses; [
+      # despite being nonfree, NixOS doesn't treat unfreeRedistributableFirmware as such
+      unfreeRedistributableFirmware
+    ];
   };
 
   powerManagement = {
