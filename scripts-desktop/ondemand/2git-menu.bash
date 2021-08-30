@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-script_path="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
-helper_script=$script_path"/helper"
 # insertion order matters here
 declare -a options; declare -a commands
 options+=('git add -A'); commands+=('git add -A')
@@ -10,10 +8,6 @@ options+=('git push origin $(git rev-parse --abbrev-ref HEAD)'); commands+=('git
 options+=('git status'); commands+=('git status')
 options+=('git log --graph --decorate --pretty=oneline --abbrev-commit --all'); commands+=('git log --graph --decorate --pretty=oneline --abbrev-commit --all')
 options+=('git log --date=iso-strict --pretty=format:"%h %ad %s"'); commands+=('git log --date=iso-strict --pretty=format:"%h %ad %s"')
-# options+=('git remote add <alias> <url>'); commands+=('read -p "Hint \"<alias> git@<source>:<username>/<repo>.git\": " repo; git remote add "$repo"')
-#options+=('BitBucket API v2'); commands+=('source $helper_script/helper-menu-bitbucketapi_v2.sh')
-#options+=('GitHub API v3'); commands+=('source $helper_script/helper-menu-githubapi_v3.sh')
-#options+=('GitLab API v4'); commands+=('source $helper_script/helper-menu-gitlabapi_v4.sh')
 
 while true; do
 	echo '========================================'
@@ -24,7 +18,7 @@ while true; do
 	select opt in "${options[@]}" "Quit"; do
 	echo '----------------------------------------'
 		if (( 1<=$REPLY && $REPLY<${#options[@]}+1 )); then
-			eval ${commands[$REPLY-1]}
+			eval "${commands[$REPLY-1]}"
 			break
 		elif (( $REPLY==${#options[@]}+1 )); then
 			break 2
