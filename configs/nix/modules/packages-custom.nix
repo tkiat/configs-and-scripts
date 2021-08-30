@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  tkiat-dwm = import ./my-packages/tkiat-dwm.nix;
-  tkiat-dmenu = import ./my-packages/tkiat-dmenu.nix;
-  tkiat-slock = import ./my-packages/tkiat-slock.nix;
-  tkiat-st = import ./my-packages/tkiat-st.nix;
+  tkiat-dwm = import ./packages-custom/tkiat-dwm.nix;
+  tkiat-dmenu = import ./packages-custom/tkiat-dmenu.nix;
+  tkiat-slock = import ./packages-custom/tkiat-slock.nix;
+  tkiat-st = import ./packages-custom/tkiat-st.nix;
 in
 {
   environment.systemPackages = [
