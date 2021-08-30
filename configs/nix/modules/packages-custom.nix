@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
-let my-slock = import ./my-packages/tkiat-slock.nix;
+let
+  tkiat-slock = import ./my-packages/tkiat-slock.nix;
+  tkiat-st = import ./my-packages/tkiat-st.nix;
 in
 {
-  environment = {
-    systemPackages =
-      [
-        my-slock
-      ];
-  };
+  environment.systemPackages = [
+    tkiat-slock
+    tkiat-st
+  ];
 
-  security.wrappers.slock.source = "${my-slock.out}/bin/slock";
+  security.wrappers.slock.source = "${tkiat-slock.out}/bin/slock";
 }

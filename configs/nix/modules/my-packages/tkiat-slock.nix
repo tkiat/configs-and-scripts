@@ -4,9 +4,8 @@ rec {
   libX11 = pkgs.xorg.libX11;
   libXext = pkgs.xorg.libXext;
   libXrandr = pkgs.xorg.libXrandr;
-  conf = null;
 
-  name = "slock-tkiat";
+  name = "tkiat-slock";
 
   src = fetchgit {
     url = "https://gitlab.com/tkiat/forked-slock.git";

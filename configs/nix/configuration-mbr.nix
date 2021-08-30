@@ -3,15 +3,15 @@
 {
   imports =
     [
-      ./modules/packages-custom.nix
-      ./modules/packages-nixos.nix
       ./hardware-configuration.nix
+      ./modules/packages-custom.nix
+      ./modules/packages-system.nix
     ];
 
   boot = {
-    #     blacklistedKernelModules = [
-    #       "iwlwifi"
-    #     ];
+    blacklistedKernelModules = [
+      "iwlwifi"
+    ];
     kernelPackages = pkgs.linuxPackages;
     #     kernelPackages = pkgs.linuxPackages_latest-libre;
     #     kernelPackages = pkgs.linuxPackages-libre;
@@ -64,7 +64,6 @@
   };
 
   programs = {
-    #     slock.enable = true; # SUID wrappers
     gnupg.agent.enable = true;
   };
 
