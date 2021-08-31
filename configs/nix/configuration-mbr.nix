@@ -9,11 +9,19 @@
     ];
 
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest-libre;
     initrd.luks.devices.root = {
       device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
       preLVM = true;
     };
+    kernelPackages = pkgs.linuxPackages_latest-libre;
+    #     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux-libre.override {
+    #       argsOverride = rec {
+    #         linux = pkgs.linux_latest;
+    #         broken = false;
+    #         meta.broken = false;
+    #         extraMeta.broken = false;
+    #       };
+    #     });
     loader = {
       grub = {
         enable = true;
@@ -60,6 +68,17 @@
       # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
       unfreeRedistributableFirmware
     ];
+    #     overlays = [
+    #       (self: super: {
+    #         linuxPackages_latest-libre = super.linux_latest-libre.override {
+    #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
+    #           #           stdenv.hostPlatform.system == "x86_64-linux"
+    #           broken = false;
+    #           meta.broken = false;
+    #           extraMeta.broken = false;
+    #         };
+    #       })
+    #     ];
   };
 
   powerManagement = {
