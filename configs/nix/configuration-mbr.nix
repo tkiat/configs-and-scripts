@@ -9,12 +9,7 @@
     ];
 
   boot = {
-    blacklistedKernelModules = [
-      "iwlwifi"
-    ];
-    #     kernelPackages = pkgs.linuxPackages;
     kernelPackages = pkgs.linuxPackages_latest-libre;
-    #     kernelPackages = pkgs.linuxPackages-libre;
     initrd.luks.devices.root = {
       device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
       preLVM = true;
@@ -34,6 +29,15 @@
   };
 
   hardware = {
+    enableRedistributableFirmware = false;
+    firmware = [
+      (
+        pkgs.runCommand "open-ath9k-htc-firmware" { } ''
+          mkdir -p $out/lib/firmware
+          cp ${./htc_9271.fw} $out/lib/firmware/htc_9271.fw
+        ''
+      )
+    ];
     pulseaudio.enable = true;
     trackpoint.emulateWheel = true;
   };
@@ -53,13 +57,13 @@
   nixpkgs.config = {
     allowBroken = true;
     blacklistedLicenses = with lib.licenses; [
-      # despite being nonfree, NixOS doesn't treat unfreeRedistributableFirmware as such
+      # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
       unfreeRedistributableFirmware
     ];
   };
 
   powerManagement = {
-    cpuFreqGovernor = "ondemand";
+    cpuFreqGovernor = lib.mkDefault "ondemand";
     enable = true;
   };
 
