@@ -34,7 +34,7 @@
       (
         pkgs.runCommand "open-ath9k-htc-firmware" { } ''
           mkdir -p $out/lib/firmware
-          cp ${./htc_9271.fw} $out/lib/firmware/htc_9271.fw
+          cp ${./firmware/htc_9271.fw} $out/lib/firmware/htc_9271.fw
         ''
       )
     ];
