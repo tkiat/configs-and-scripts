@@ -36,6 +36,7 @@
         gnupg
         gwenview
         haskell-language-server
+        haskellPackages.brittany
         heimdall
         htop
         imagemagick

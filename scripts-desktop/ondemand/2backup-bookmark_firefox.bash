@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src_dir=~/.mozilla/firefox/9ivxo1xk.default-default/bookmarkbackups
+src_dir=~/.mozilla/firefox/6rk7axpn.default/bookmarkbackups
 if ! [ -d $src_dir ]; then
   echo "Source folder $src_dir not found. Exiting..."
   exit 1
@@ -11,16 +11,15 @@ if ! [ -d $dest_dir ]; then
   exit 1
 fi
 
-bookmark_arr=( "$src_dir/*.jsonlz4" )
+bookmark_arr=( "$src_dir"/*.jsonlz4 )
 bookmark_latest="${bookmark_arr[-1]}"
 if ! [ -f "$bookmark_latest" ]; then
   echo "Cannot find any Firefox bookmark file inside $src_dir. Exiting..."
   exit 1
 fi
 
-rm -f "$dest_dir/bookmark-Firefox-*"
+rm -f "$dest_dir"/bookmarks-*
 
 # can use e.g. dejsonlz4 later to convert jsonlz4 to json
-src="$HOME/.mozilla/firefox/9ivxo1xk.default-default/bookmarkbackups/$bookmark_latest"
-dest="$dest_dir/bookmark-Firefox-$(date +'%Y_%m_%d').jsonlz4"
-cp "$src" "$dest"
+dest="$dest_dir/bookmarks-$(date +'%Y-%m-%d').jsonlz4"
+cp "$bookmark_latest" "$dest"

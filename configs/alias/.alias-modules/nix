@@ -1,13 +1,16 @@
-alias 2nix-c-nixpkgs='nix-env -qa --description > ~/nixpkgs'
+alias 2nix-c-pkgs="nix-env -f '<nixpkgs>' -qaP > ~/.cache/nixpkgs"
+alias 2nix-c-pkgs-haskell="nix-env -f '<nixpkgs>' -qaP -A haskellPackages > ~/.cache/nixpkgs-haskell"
 alias 2nix-gc='nix-env --delete-generations old && nix-store --gc'
 alias 2nix-gc-root='sudo -i -- nix-env --delete-generations old && nix-store --gc'
 alias 2nix-gc-system='sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d'
       2nix-i() { nix-env -i $1 && rm -f ~/.cache/dmenu_run; }
 alias 2nix-i-root='sudo -i -- nix-env -i'
 alias 2nix-q-generations-system='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
-alias 2nix-q-info='nix-shell -p nix-info --run "nix-info -m"'
+alias 2nix-q-info="nix-shell -p nix-info --run 'nix-info -m'"
 alias 2nix-q-installed='nix-env --query'
 alias 2nix-q-installed-root='sudo -i -- nix-env --query'
+alias 2nix-q-pkgs='cat ~/.cache/nixpkgs'
+alias 2nix-q-pkgs-haskell='cat ~/.cache/nixpkgs-haskell'
 alias 2nix-r='nix-env -e'
 alias 2nix-r-root='sudo -i -- nix-env -e'
 # 2nix-s-pkg() { nix-env -qa | grep $1 | bat; }

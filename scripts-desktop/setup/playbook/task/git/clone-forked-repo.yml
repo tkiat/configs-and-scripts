@@ -17,6 +17,7 @@
     dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
   with_items:
     - nixpkgs
+    - vim
 
 - name: clone-forked-repo -> clone from GitLab
   ansible.builtin.git:
@@ -31,4 +32,3 @@
     - forked-open_ath9k_htc_firmware
     - forked-slock
     - forked-st
-    - forked-vim

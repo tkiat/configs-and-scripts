@@ -18,6 +18,7 @@ stdenv.mkDerivation rec {
     rev = "3b51b794840bf74d72dce918dfdf75880cf3f5ce";
     sha256 = "1ra4bcmzbqx7nvy90haskdllb11smf2i8f8qqhf57i356h5h84zy";
   };
+  #   src = builtins.fetchTarball "https://gitlab.com/tkiat/forked-st/-/archive/my-config/forked-st-my-config.tar.gz";
 
   strictDeps = true;
 
