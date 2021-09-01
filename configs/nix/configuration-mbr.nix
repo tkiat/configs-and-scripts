@@ -4,8 +4,8 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./modules/packages-custom.nix
-      ./modules/packages-system.nix
+      ./modules/packages-nixpkgs.nix
+      ./modules/packages-tkiat.nix
     ];
 
   boot = {
@@ -82,7 +82,7 @@
   };
 
   powerManagement = {
-    cpuFreqGovernor = lib.mkDefault "ondemand";
+    cpuFreqGovernor = "ondemand";
     enable = true;
   };
 
