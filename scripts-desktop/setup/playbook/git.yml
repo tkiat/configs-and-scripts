@@ -1,5 +1,4 @@
 - hosts: all
   name: git
   tasks:
-    - import_tasks: task/git/clone-forked-repo.yml
-    - import_tasks: task/git/clone-original-repo.yml
+    - import_tasks: task/git/clone.yml

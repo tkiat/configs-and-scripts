@@ -1,0 +1,55 @@
+- name: clone -> create ~/Git/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Git"
+    state: directory
+
+- name: clone -> clone personal GitHub repositories
+  ansible.builtin.git:
+    repo: "git@github.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git/{{ item }}"
+  with_items:
+    - a-freedom-blog
+    - archive
+    - assets-public
+    - pomodoro-px
+    - terminal-game-client
+    - test-github
+    - tkiat.github.io
+    - vim-custom-theme
+
+- name: clone -> clone personal GitLab repositories
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git/{{ item }}"
+  with_items:
+    - assets
+    - guix-channel
+    - learning
+    - test-gitlab
+
+
+- name: clone -> create ~/Git-Forked/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/Git-Forked"
+    state: directory
+
+- name: clone -> clone forked GitHub repositories
+  ansible.builtin.git:
+    repo: "git@github.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
+  with_items:
+    - nixpkgs
+    - vim
+
+- name: clone -> clone forked GitLab repositories
+  ansible.builtin.git:
+    repo: "git@gitlab.com:tkiat/{{ item }}.git"
+    dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
+  with_items:
+    - forked-dmenu
+    - forked-dwm
+    - forked-grub
+    - forked-libreboot-lbmk
+    - forked-open_ath9k_htc_firmware
+    - forked-slock
+    - forked-st
