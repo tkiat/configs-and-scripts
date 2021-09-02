@@ -15,6 +15,7 @@ shopt -s checkwinsize # update LINES and COLUMNS after each command
 shopt -s globstar # "**" match all files, directories, and subdirectories.
 shopt -s histappend # append, not overwrite, to the history file
 
+PAGER=nvimpager
 EDITOR=vim
 GIT_PS1_SHOWDIRTYSTATE=1
 HISTCONTROL=ignoreboth # no duplicates or lines with "^ .*" in history
