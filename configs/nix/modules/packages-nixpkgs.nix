@@ -47,6 +47,7 @@
         libreoffice
         lm_sensors
         loc
+        lua
         mc
         mediainfo
         mupdf
