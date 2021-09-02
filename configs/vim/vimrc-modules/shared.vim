@@ -49,7 +49,7 @@ syntax on
 " markdown - remove highlight on error
 autocmd BufNewFile,BufRead,BufEnter *.md :syn match markdownError "\w\@<=\w\@="
 " tab - move new tab to the last position
-autocmd BufNew * execute ":tabm"
+" autocmd BufNew * execute ":tabm"
 " ========================================
 " mapping automatically
 " ========================================
