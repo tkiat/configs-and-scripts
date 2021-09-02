@@ -27,7 +27,6 @@
     - learning
     - test-gitlab
 
-
 - name: clone -> create ~/Git-Forked/ if not exist
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/Git-Forked"
@@ -39,7 +38,7 @@
     dest: "{{ ansible_env.HOME }}/Git-Forked/{{ item | regex_replace('^forked-(.*)$', '\\1') }}"
   with_items:
     - nixpkgs
-    - vim
+    - neovim
 
 - name: clone -> clone forked GitLab repositories
   ansible.builtin.git:

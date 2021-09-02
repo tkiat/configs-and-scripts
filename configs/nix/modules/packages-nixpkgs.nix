@@ -52,6 +52,7 @@
         mupdf
         neofetch
         neomutt
+        neovim
         newsboat
         nixpkgs-fmt
         nodejs
@@ -90,6 +91,7 @@
         xfce.thunar
         xfce.tumbler
         xfce.xfconf
+        xsel
         xmobar
         xmonad-with-packages
         yarn
