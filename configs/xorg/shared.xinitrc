@@ -1,6 +1,13 @@
-### common
+# pomodoro-px
+pomodoro_px_rpipe=/tmp/.pomodoro-px-resting
+pomodoro_px_wpipe=/tmp/.pomodoro-px-working
+rm -f $pomodoro_px_rpipe && mkfifo $pomodoro_px_rpipe
+rm -f $pomodoro_px_wpipe && mkfifo $pomodoro_px_wpipe
+
+[ -x "$(command -v chromium)" ] && chromium&
 [ -x "$(command -v redshift)" ] && redshift -O 3000
-st&
+[ -x "$(command -v st)" ] && st&
+[ -x "$(command -v ungoogled-chromium)" ] && ungoogled-chromium --incognito --disable-default-check&
 
 setxkbmap -layout us,th -option grp:alt_space_toggle
 xsetroot -solid black

@@ -1,6 +1,6 @@
 - name: xorg -> create symlink at ~/.xpdfrc
   ansible.builtin.file:
-    src: "{{ configs_dir }}/xorg/.xpdfrc"
+    src: "{{ configs_dir }}/xorg/xpdfrc"
     dest: "{{ ansible_env.HOME }}/.xpdfrc"
     state: link
 
