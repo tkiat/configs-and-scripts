@@ -6,7 +6,7 @@ alias 2luks-open='sudo cryptsetup luksOpen'
 # reminder
 
 # replace command
-alias cat="bat"
+alias cat="bat --pager=less"
       # cat() { echo -en "\033]0;$1\a" && bat $1; }
 alias du="dust"
 alias ls="exa -g"

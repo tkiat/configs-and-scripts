@@ -56,6 +56,7 @@
         newsboat
         nixpkgs-fmt
         nodejs
+        nvimpager
         pandoc
         pass
         pencil
