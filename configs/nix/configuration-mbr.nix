@@ -8,12 +8,6 @@
       ./modules/packages-tkiat.nix
     ];
 
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   boot = {
     initrd.luks.devices.root = {
       device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
@@ -67,24 +61,30 @@
     useDHCP = false;
   };
 
-  nixpkgs.config = {
-    allowBroken = true;
-    blacklistedLicenses = with lib.licenses; [
-      # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
-      unfreeRedistributableFirmware
+
+  nixpkgs = {
+    config = {
+      #       allowBroken = true;
+      blacklistedLicenses = with lib.licenses; [
+        # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
+        unfreeRedistributableFirmware
+      ];
+    };
+    overlays = [
+      (import (builtins.fetchTarball {
+        url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+      }))
+      #       (self: super: {
+      #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
+      #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
+      #           #           stdenv.hostPlatform.system == "x86_64-linux"
+      #           broken = false;
+      #           meta.broken = false;
+      #           extraMeta.broken = false;
+      #         };
+      #       })
     ];
   };
-  #     overlays = [
-  #       (self: super: {
-  #         linuxPackages_latest-libre = super.linux_latest-libre.override {
-  #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
-  #           #           stdenv.hostPlatform.system == "x86_64-linux"
-  #           broken = false;
-  #           meta.broken = false;
-  #           extraMeta.broken = false;
-  #         };
-  #       })
-  #     ];
 
   powerManagement = {
     cpuFreqGovernor = "ondemand";
