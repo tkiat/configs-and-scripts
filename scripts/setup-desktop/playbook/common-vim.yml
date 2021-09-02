@@ -7,3 +7,5 @@
     - import_tasks: task/common-vim/ftplugin.yml
     - import_tasks: task/common-vim/plugin.yml
     - import_tasks: task/common-vim/template.yml
+
+    - import_tasks: task/common-vim/neovim.yml
