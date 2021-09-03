@@ -16,7 +16,7 @@ shopt -s globstar # "**" match all files, directories, and subdirectories.
 shopt -s histappend # append, not overwrite, to the history file
 
 export PAGER=nvimpager
-EDITOR=vim
+# EDITOR=nvim
 GIT_PS1_SHOWDIRTYSTATE=1
 HISTCONTROL=ignoreboth # no duplicates or lines with "^ .*" in history
 HISTSIZE=10000 # size in actual memory (e.g. up arrow and ctrl-r)

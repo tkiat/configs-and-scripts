@@ -36,6 +36,12 @@
     keyMap = "us";
   };
 
+  environment = {
+    variables = {
+      "EDITOR" = "nvim";
+    };
+  };
+
   hardware = {
     enableRedistributableFirmware = false;
     firmware = [
@@ -64,7 +70,7 @@
 
   nixpkgs = {
     config = {
-      #       allowBroken = true;
+      allowBroken = true;
       blacklistedLicenses = with lib.licenses; [
         # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
         unfreeRedistributableFirmware
@@ -74,6 +80,7 @@
       (import (builtins.fetchTarball {
         url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
       }))
+
       #       (self: super: {
       #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
       #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux

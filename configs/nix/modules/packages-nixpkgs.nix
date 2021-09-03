@@ -83,6 +83,7 @@
         tree
         ungoogled-chromium
         unzip
+        usbutils
         vim_configurable
         vlc
         vscodium
