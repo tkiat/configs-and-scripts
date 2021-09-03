@@ -23,6 +23,7 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " coc.vim =====================================================================
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 if has('nvim-0.4.0') || has('patch-8.2.0750')

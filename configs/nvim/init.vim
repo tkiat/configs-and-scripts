@@ -2,12 +2,23 @@ set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath=&runtimepath
 source ~/.vimrc
 
-call plug#begin()
-Plug 'neovim/nvim-lspconfig'
-call plug#end()
+" call plug#begin()
+" Plug 'neovim/nvim-lspconfig'
+" call plug#end()
+
+" Use completion-nvim in every buffer
+" autocmd BufEnter * lua require'completion'.on_attach()
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 lua << EOF
+require'lspconfig'.bashls.setup{}
+require'lspconfig'.purescriptls.setup{}
 require'lspconfig'.pyright.setup{}
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.yamlls.setup{}
 EOF
 
 lua << EOF
@@ -34,11 +45,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
+  -- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
+
+
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright' }
+local servers = { 'bashls', 'purescriptls', 'pyright', 'tsserver', 'vimls', 'yamlls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,

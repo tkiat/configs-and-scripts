@@ -6,27 +6,60 @@
       with pkgs;
       [
         # LSP
+        haskell-language-server
         pyright
+        nodePackages.bash-language-server
+        nodePackages.purescript-language-server
+        nodePackages.typescript-language-server
+        nodePackages.vim-language-server
+        nodePackages.yaml-language-server
+
+        # autoformatter
+        haskellPackages.brittany
+        nixpkgs-fmt
+
+        # completion
+
 
         # vim
-        vimPlugins.vim-nix
+        vim
         (neovim.override {
           configure = {
-            customRC = "source /home/tkiat/.config/nvim/init.vim";
-            packages.myVimPackage = with pkgs.vimPlugins; {
-              start = [ dhall-vim emmet-vim nerdtree nvim-lspconfig purescript-vim vim-nix vim-toml ];
-              # manually loadable by calling `:packadd $plugin-name`
-              opt = [ ];
-              # To automatically load a plugin when opening a filetype, add vimrc lines like:
-              # autocmd FileType php :packadd phpCompletion
-            };
+            customRC = ''
+              let initial_file = "/home/".$USER."/.config/nvim/init.vim"
+              if filereadable(initial_file)
+                exec "source ".initial_file
+              endif
+            '';
+            packages.myVimPackage = with pkgs.vimPlugins;
+              {
+                start = [ completion-nvim dhall-vim emmet-vim nerdtree nvim-lspconfig nvim-treesitter purescript-vim vim-nix vim-toml ];
+                # manually loadable by calling `:packadd $plugin-name`
+                opt = [ ];
+                # To automatically load a plugin when opening a filetype, add vimrc lines like:
+                # autocmd FileType php :packadd phpCompletion
+              };
           };
         })
 
-        acpi
-        alsaUtils
+        # dev
         ansible
         bash
+        docker
+        docker-compose
+        gcc
+        ghc
+        git
+        gnumake
+        lua
+        purescript
+        python3
+        shellcheck
+        spago
+        stack
+
+        acpi
+        alsaUtils
         bat
         calibre
         cmus
@@ -35,26 +68,18 @@
         dash
         dejsonlz4
         dmidecode
-        docker
-        docker-compose
         du-dust
         exa
         fd
         feh
         flashrom
         firefox
-        gcc
         gdrive
-        ghc
         ghostscript
         gimp
-        git
         gnome.zenity
-        gnumake
         gnupg
         gwenview
-        haskell-language-server
-        haskellPackages.brittany
         heimdall
         htop
         imagemagick
@@ -65,32 +90,26 @@
         libreoffice
         lm_sensors
         loc
-        lua
         mc
         mediainfo
         mupdf
         neofetch
         neomutt
         newsboat
-        nixpkgs-fmt
         nodejs
         nvimpager
         pandoc
         pass
         pencil
         pinentry
-        purescript
-        python3
         qview
         ranger
         redshift
         ripgrep
         rsync
         scrot
-        shellcheck
         simplescreenrecorder
         smartmontools
-        spago
         tdesktop
         tealdeer
         tmux
@@ -101,8 +120,6 @@
         ungoogled-chromium
         unzip
         usbutils
-        vim
-        #         vim_configurable
         vlc
         vscodium
         w3m
