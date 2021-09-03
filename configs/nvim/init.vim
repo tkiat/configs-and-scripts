@@ -6,12 +6,6 @@ source ~/.vimrc
 " Plug 'neovim/nvim-lspconfig'
 " call plug#end()
 
-" Use completion-nvim in every buffer
-" autocmd BufEnter * lua require'completion'.on_attach()
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 lua << EOF
 require'lspconfig'.bashls.setup{}
 require'lspconfig'.purescriptls.setup{}
@@ -69,3 +63,13 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 EOF
+
+" completion-nvim
+  " Use in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+  " Use <Tab> and <S-Tab> to navigate through popup menu
+imap <tab> <Plug>(completion_smart_tab)
+imap <s-tab> <Plug>(completion_smart_s_tab)
+
+set completeopt=menuone,noinsert,noselect
+set shortmess+=c " Avoid showing message extra message when using completion
