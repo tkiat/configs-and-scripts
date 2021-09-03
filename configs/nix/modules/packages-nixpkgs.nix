@@ -5,6 +5,24 @@
     systemPackages =
       with pkgs;
       [
+        # LSP
+        pyright
+
+        # vim
+        vimPlugins.vim-nix
+        (neovim.override {
+          configure = {
+            customRC = "source /home/tkiat/.config/nvim/init.vim";
+            packages.myVimPackage = with pkgs.vimPlugins; {
+              start = [ dhall-vim emmet-vim nerdtree nvim-lspconfig purescript-vim vim-nix vim-toml ];
+              # manually loadable by calling `:packadd $plugin-name`
+              opt = [ ];
+              # To automatically load a plugin when opening a filetype, add vimrc lines like:
+              # autocmd FileType php :packadd phpCompletion
+            };
+          };
+        })
+
         acpi
         alsaUtils
         ansible
@@ -53,7 +71,6 @@
         mupdf
         neofetch
         neomutt
-        neovim
         newsboat
         nixpkgs-fmt
         nodejs
@@ -84,7 +101,8 @@
         ungoogled-chromium
         unzip
         usbutils
-        vim_configurable
+        vim
+        #         vim_configurable
         vlc
         vscodium
         w3m

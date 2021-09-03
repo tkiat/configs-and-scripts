@@ -69,8 +69,9 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
       2e() { vim "$(command -v "$1")" ;}
-alias 2edit-configs="vim ~/configs-and-scripts/configs"
-alias 2edit-scripts="vim ~/configs-and-scripts/scripts"
+alias 2edit-configs="$VISUAL ~/configs-and-scripts/configs"
+alias 2edit-scripts="$VISUAL ~/configs-and-scripts/scripts"
+alias 2edit-nvim="$VISUAL ~/.config/nvim/init.vim"
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
       2git-display-folders-not-update() { for x in $(\ls -d */); do cd $x; git fetch -q 1>/dev/null; [ "$(git rev-parse HEAD 2>/dev/null)" != "$(git rev-parse @{u} 2>/dev/null)" ] && echo $x; cd ..; done; }

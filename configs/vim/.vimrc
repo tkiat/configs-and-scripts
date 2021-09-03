@@ -15,7 +15,7 @@ let g:haskell_brittany_skip = 0
 let g:haskell_hindent_skip = 1
 let g:nixpkgs_fmt_skip = 0
 let g:purescript_purty_skip = 0
-let g:yapf_skip = 1
+let g:yapf_skip = 0
 " nerdtree ====================================================================
 let NERDTreeShowHidden=1
 let NERDTreeShowLineNumbers=1

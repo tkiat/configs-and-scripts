@@ -38,7 +38,8 @@
 
   environment = {
     variables = {
-      "EDITOR" = "nvim";
+      EDITOR = "nvim";
+      VISUAL = "nvim";
     };
   };
 
