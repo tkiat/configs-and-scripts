@@ -1,5 +1,5 @@
--- note: on NixOS runs `which lua-language-server` to determine paths
-local sumneko_root_path = "/nix/store/gjj86p2n7439yns8585nzxrwrgxar345-system-path"
+-- note: on NixOS runs `whereis lua-language-server` to determine paths
+local sumneko_root_path = "/nix/store/8l61qxjb36jiwbf62pbmz4c5y6dlk8aq-system-path"
 local sumneko_binary = sumneko_root_path.."/bin/lua-language-server"
 
 local runtime_path = vim.split(package.path, ';')
