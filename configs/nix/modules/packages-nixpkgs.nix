@@ -29,12 +29,14 @@
         git
         gnumake
         lua
+        nodejs
         purescript
         python3
         shellcheck
         spago
         stack
 
+        # others
         acpi
         alsaUtils
         bat
@@ -73,12 +75,12 @@
         neofetch
         neomutt
         newsboat
-        nodejs
         nvimpager
         pandoc
         pass
         pencil
         pinentry
+        polybar
         qview
         ranger
         redshift
