@@ -13,6 +13,7 @@
         nodePackages.typescript-language-server
         nodePackages.vim-language-server
         nodePackages.yaml-language-server
+        sumneko-lua-language-server
 
         # autoformatter
         haskellPackages.brittany

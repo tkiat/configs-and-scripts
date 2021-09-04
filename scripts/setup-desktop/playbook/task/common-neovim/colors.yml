@@ -1,0 +1,12 @@
+- name: colors -> create "{{ dir_neovim }}/colors/" if not exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/colors"
+    state: directory
+
+- name: colors -> symlink colorschemes
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ dir_neovim }}/colors/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/vim/colors/*.vim"

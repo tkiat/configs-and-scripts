@@ -1,0 +1,33 @@
+- name: ftplugin -> create "{{ dir_neovim }}/ftplugin/" if not exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/ftplugin/"
+    state: directory
+
+# - name: ftplugin -> find my plugins
+#   find:
+#     paths: "{{ configs_dir }}/vim/ftplugin"
+#     recurse: true
+#   register: result
+# 
+# - name: ftplugin -> create folder of those plugins
+#   ansible.builtin.file:
+#     path: "{{ ansible_env.HOME }}/.vim/ftplugin/{{ item.path | dirname | basename}}"
+#     state: directory
+#   with_items: "{{ result.files }}"
+#   when: item.path | dirname | basename != "ftplugin"
+# 
+# - name: ftplugin -> symlink those plugins that live inside folder
+#   file:
+#     src: "{{ item.path }}"
+#     path: "{{ ansible_env.HOME }}/.vim/ftplugin/{{ item.path | dirname | basename }}/{{ item.path | basename }}"
+#     state: link
+#   with_items: "{{ result.files }}"
+#   when: item.path | dirname | basename != "ftplugin"
+# 
+# - name: ftplugin -> symlink those plugins that live outside folder
+#   file:
+#     src: "{{ item.path }}"
+#     path: "{{ ansible_env.HOME }}/.vim/ftplugin/{{ item.path | basename }}"
+#     state: link
+#   with_items: "{{ result.files }}"
+#   when: item.path | dirname | basename == "ftplugin"

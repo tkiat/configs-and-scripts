@@ -3,3 +3,9 @@
     src: '{{ dir_temp }}/Downloads'
     dest: '{{ ansible_env.HOME }}/Downloads'
     state: link
+
+- name: folder -> symlink ~/Temp
+  ansible.builtin.file:
+    src: '{{ dir_sync }}/Temp'
+    dest: '{{ ansible_env.HOME }}/Temp'
+    state: link

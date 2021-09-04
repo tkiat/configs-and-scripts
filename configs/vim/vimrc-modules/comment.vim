@@ -13,7 +13,7 @@ let s:groups=[
       \{
       \'front': '-- ',
       \'back': '',
-      \'ext': '*.cabal,*.dhall,*.hs,*.purs,*.xmobarrc',
+      \'ext': '*.cabal,*.dhall,*.hs,*.lua,*.purs,*.xmobarrc',
       \},
       \{
       \'front': '" ',
@@ -43,7 +43,6 @@ augroup CommentGroups
           \ s:groups[i]['front'].'\1'.s:groups[i]['back'].'/g<cr>:nohls<cr>`q'
     let s:uncomment = 'mq:s/\%V'.
           \ s:groups[i]['front'].'\(.*\)'.s:groups[i]['back'].'\%V/\1/g<cr>`q'
-
     exe s:event.' nnoremap <buffer> <leader>c '.'V'.s:comment
     exe s:event.' nnoremap <buffer> <leader>u '.'V'.s:uncomment
     exe s:event.' vnoremap <buffer> <leader>c '.s:comment

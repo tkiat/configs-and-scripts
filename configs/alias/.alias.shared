@@ -2,7 +2,7 @@
 # All are bash compatible (to test: shellcheck --shell bash <thisfile>)
 
 # shorthand
-alias 2luks-open='sudo cryptsetup luksOpen'
+alias nv="nvim"
 # reminder
 
 # replace command

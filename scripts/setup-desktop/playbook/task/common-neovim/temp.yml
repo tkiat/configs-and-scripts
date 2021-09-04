@@ -1,0 +1,13 @@
+- name: temp -> ensure "{{ dir_neovim }}/temp/" exists
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/temp"
+    state: directory
+
+- name: temp -> ensure backup/, swap/, undo/ inside "{{ dir_neovim }}/temp/" exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/temp/{{ item }}"
+    state: directory
+  with_items:
+    - backup
+    - undo
+    - swap

@@ -4,6 +4,7 @@
   hosts: all
   tasks:
     - set_fact: configs_dir="{{ ansible_env.HOME }}/configs-and-scripts/configs"
+    - set_fact: dir_neovim="{{ ansible_env.HOME }}/.config/nvim"
 
     - set_fact: dir_sync="{{ ansible_env.HOME }}/Sync"
 

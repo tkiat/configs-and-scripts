@@ -5,12 +5,10 @@
     systemPackages =
       with pkgs;
       [
-        vim
-
         (neovim.override {
           configure = {
             customRC = ''
-              let initial_file = "/home/".$USER."/.config/nvim/init.vim"
+              let initial_file = "/home/".$USER."/.config/nvim/init.lua"
               if filereadable(initial_file)
                 exec "source ".initial_file
               endif

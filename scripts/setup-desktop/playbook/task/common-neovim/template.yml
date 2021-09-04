@@ -1,0 +1,12 @@
+- name: template -> create "{{ dir_neovim }}/template/" if not exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/template"
+    state: directory
+
+- name: template -> symlink templates
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ dir_neovim }}/template/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/vim/template/*"
