@@ -8,29 +8,48 @@
     - adb
     - apt-file
     - dbus-x11
+    - firefox-esr
     - flashrom
     - fontconfig
     - fonts-thai-tlwg-ttf
     - gcc
     - gpg
+    - kdenlive
+    - libreoffice
     - libx11-dev
     - libxft-dev
     - libxinerama-dev
     - libxrandr-dev
     - libxss-dev
     - make
+    - mc
     - network-manager
     - neofetch
+    - password-store
     - pinentry-gtk2
     - psmisc
     - python-is-python3
     - python3-pip
+    - ranger
+    - redshift
     - rfkill
+    - ripgrep
+    - shellcheck
+    - simplescreenrecorder
+    - smartmontools
     - sudo
+    - telegram-desktop
     - thunar
+    - tumbler
     - trash-cli
+    - tree
+    - unzip
     - vrms
+    - weechat
     - x11-utils
     - x11-xserver-utils
     - xclip
+    - xmobar
+    - xmonad
     - xorg
+    - yarn

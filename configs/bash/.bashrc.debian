@@ -1,4 +1,9 @@
+# env
+export EDITOR=vim
+export VISUAL=vim
+
 source ~/.bashrc.shared
+
 # Debian Specific
 . ~/.alias-modules/apt
 . ~/.alias-modules/nix
