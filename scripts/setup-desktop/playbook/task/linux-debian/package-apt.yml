@@ -5,15 +5,31 @@
   ansible.builtin.apt:
     name: '{{ item }}'
   with_items:
+    - acpi
     - adb
+    - alsa-utils
+    - ansible
     - apt-file
+    - bat
+    - calibre
+    - cmus
+    - cpufrequtils
+    - curl
     - dbus-x11
+    - dmidecode
     - firefox-esr
     - flashrom
     - fontconfig
     - fonts-thai-tlwg-ttf
     - gcc
+    - gimp
+    - git
     - gpg
+    - htop
+    - imagemagick
+    - inkscape
+    - jpegoptim
+    - less
     - kdenlive
     - libreoffice
     - libx11-dev
@@ -23,6 +39,7 @@
     - libxss-dev
     - make
     - mc
+    - mupdf
     - network-manager
     - neofetch
     - password-store

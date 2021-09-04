@@ -1,5 +1,6 @@
 alias 2apt-gc='sudo apt autoremove'
-      2apt-i() { sudo apt install $1 && rm -f ~/.cache/dmenu_run; }
+#      2apt-i() { sudo apt install $1 && rm -f ~/.cache/dmenu_run; }
+alias 2apt-i='sudo apt install'
 alias 2apt-q-installed='apt list --installed | bat'
 alias 2apt-s='apt search'
 alias 2apt-r='sudo apt remove'

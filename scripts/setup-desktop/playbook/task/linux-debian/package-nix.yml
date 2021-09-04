@@ -1,16 +1,7 @@
 - include: ../../task-template/nix-multiuser-install.yml
   vars:
     packages:
-      - acpi
-      - alsa-utils
-      - ansible
-      - bat
-      - calibre
-      - cmus
-      - cpufrequtils
-      - curl
       - dejsonlz4
-      - dmidecode
       - docker
       - docker-compose
       - du-dust
@@ -20,21 +11,13 @@
       - gdrive
       - ghc
       - ghostscript
-      - gimp
-      - git
       - git-repo
       - gwenview
       - haskell-language-server
       - heimdall
-      - htop
-      - imagemagick
-      - inkscape
-      - jpegoptim
-      - less
       - loc
       - lm-sensors
       - mediainfo
-      - mupdf
       - neomutt
       - newsboat
       - nixpkgs-fmt
