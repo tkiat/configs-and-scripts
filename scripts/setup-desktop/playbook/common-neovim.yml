@@ -1,15 +1,15 @@
 - hosts: all
   name: common-neovim
   tasks:
-    - name: create "{{ dir_neovim }}" if not exist
+    - name: common-neovim -> create "{{ dir_neovim }}" if not exist
       ansible.builtin.file:
         path: "{{ dir_neovim }}"
         state: directory
-#     - name: neovim -> create symlink ~/.config/nvim/init.nvim
-#       ansible.builtin.file:
-#         src: "{{ configs_dir }}/nvim/init.vim"
-#         dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
-#         state: link
+    - name: common-neovim -> create symlink ~/.config/nvim/init.lua
+      ansible.builtin.file:
+        src: "{{ configs_dir }}/neovim/init.vim"
+        dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+        state: link
 
     - import_tasks: task/common-neovim/colors.yml
     - import_tasks: task/common-neovim/ftplugin.yml

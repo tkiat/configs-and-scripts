@@ -1,0 +1,13 @@
+- name: vim -> create "{{ dir_neovim }}/vim/" if not exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/vim"
+    state: directory
+
+- name: vim -> symlink vimscripts
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ dir_neovim }}/vim/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/neovim/vim/*.vim"
+
