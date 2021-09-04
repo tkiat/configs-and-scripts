@@ -17,14 +17,22 @@
     - curl
     - dbus-x11
     - dmidecode
+    - docker
+    - docker-compose
+    - exa
+    - feh
     - firefox-esr
     - flashrom
     - fontconfig
     - fonts-thai-tlwg-ttf
     - gcc
+    - ghc
+    - ghostscript
     - gimp
     - git
     - gpg
+    - gwenview
+    - heimdall-flash
     - htop
     - imagemagick
     - inkscape
@@ -37,11 +45,16 @@
     - libxinerama-dev
     - libxrandr-dev
     - libxss-dev
+    - lm-sensors
     - make
     - mc
+    - mediainfo
     - mupdf
     - network-manager
+    - newsboat
     - neofetch
+    - neomutt
+    - pandoc
     - password-store
     - pinentry-gtk2
     - psmisc
@@ -51,18 +64,25 @@
     - redshift
     - rfkill
     - ripgrep
+    - rsync
+    - scrot
     - shellcheck
     - simplescreenrecorder
     - smartmontools
     - sudo
     - telegram-desktop
     - thunar
+    - tmux
     - tumbler
     - trash-cli
     - tree
     - unzip
+    - vim-gtk
+    - vlc
     - vrms
+    - w3m
     - weechat
+    - wget
     - x11-utils
     - x11-xserver-utils
     - xclip
@@ -70,3 +90,5 @@
     - xmonad
     - xorg
     - yarn
+    - zenity
+    - zip
