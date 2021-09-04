@@ -3,7 +3,7 @@ let s:groups=[
       \{
       \'front': '# ',
       \'back': '',
-      \'ext': '*.bash,*.bashrc\(\.shared\)\=,*.cfg,*.dash,*.gitignore,*.nix,*.py,*.rec,*.sh,*.tf,*.tmux.conf,.xinitrc,*.yml,*.zprofile,*.zshenv,*.zshrc\(\.shared\)\=',
+      \'ext': '*.bash,*.bashrc\(\.shared\)\=,*.cfg,*.dash,*.gitignore,*.nix,*.py,*.rec,*.sh,*.tf,*.tmux.conf,*.xinitrc,*.yml,*.zprofile,*.zshenv,*.zshrc\(\.shared\)\=',
       \},
       \{
       \'front': '\/\/ ',
