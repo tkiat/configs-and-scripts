@@ -5,14 +5,16 @@
       ansible.builtin.file:
         path: "{{ dir_neovim }}"
         state: directory
-    - name: common-neovim -> create symlink ~/.config/nvim/init.lua
+    - name: common-neovim -> create symlink "{{ dir_neovim }}/init.lua"
       ansible.builtin.file:
-        src: "{{ configs_dir }}/neovim/init.vim"
-        dest: "{{ ansible_env.HOME }}/.config/nvim/init.vim"
+        src: "{{ configs_dir }}/neovim/init.lua"
+        dest: "{{ dir_neovim }}/init.lua"
         state: link
 
     - import_tasks: task/common-neovim/colors.yml
     - import_tasks: task/common-neovim/ftplugin.yml
+    - import_tasks: task/common-neovim/lua.yml
     - import_tasks: task/common-neovim/plugin.yml
     - import_tasks: task/common-neovim/temp.yml
     - import_tasks: task/common-neovim/template.yml
+    - import_tasks: task/common-neovim/vim.yml

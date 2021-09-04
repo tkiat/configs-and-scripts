@@ -1,0 +1,13 @@
+- name: lua -> create "{{ dir_neovim }}/lua/" if not exist
+  ansible.builtin.file:
+    path: "{{ dir_neovim }}/lua"
+    state: directory
+
+- name: lua -> symlink Lua scripts
+  ansible.builtin.file:
+    src: "{{ item }}"
+    dest: "{{ dir_neovim }}/lua/{{ item | basename }}"
+    state: link
+  with_fileglob:
+    - "{{ configs_dir }}/neovim/lua/*.lua"
+

@@ -1,4 +1,4 @@
-# - import_playbook: ../playbook/common-configs.yml
+- import_playbook: ../playbook/common-configs.yml
 - import_playbook: ../playbook/common-neovim.yml
-# - import_playbook: ../playbook/git.yml
-# - import_playbook: ../playbook/linux-distro-nixos.yml
+- import_playbook: ../playbook/git.yml
+- import_playbook: ../playbook/linux-distro-nixos.yml
