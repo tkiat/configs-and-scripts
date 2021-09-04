@@ -2,6 +2,8 @@
 export EDITOR=vim
 export VISUAL=vim
 
+alias bat='batcat'
+
 source ~/.bashrc.shared
 
 # Debian Specific
@@ -9,6 +11,7 @@ source ~/.bashrc.shared
 . ~/.alias-modules/nix
 . ~/.alias-modules/systemctl
 
+alias 2showoff="neofetch && vrms"
 alias chromium="chromium --no-default-browser-check"
 
 export NIX_REMOTE=daemon
