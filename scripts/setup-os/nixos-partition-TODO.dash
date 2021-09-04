@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+disk=/dev/sda
+disk_partition_boot="$disk1"
+disk_partition_lvm="$disk2"
+
+sudo gdisk $disk
+
+sudo cryptsetup --type luks1 luksFormat $disk_partition_lvm
+sudo cryptsetup luksOpen $disk_partition_lvm lvm
+
+sudo pvcreate /dev/mapper/lvm
+sudo vgcreate nixos /dev/mapper/lvm
+sudo lvcreate -L 4G -n swap nixos
+sudo lvcreate -l 100%FREE -n root nixos
+
+sudo mkfs.vfat -n boot $disk_partition_boot
+sudo mkfs.ext4 -L root /dev/nixos/root
+sudo mkswap -L swap /dev/nixos/swap
+
+swapon /dev/nixos/swap
+
+sudo mount /dev/nixos/root /mnt
+sudo mkdir -p /mnt/boot/efi
+sudo mount /dev/sda1 /mnt/boot/efi
+
+sudo nixos-generate-config --root /mnt
