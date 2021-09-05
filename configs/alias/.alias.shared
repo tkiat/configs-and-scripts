@@ -1,10 +1,14 @@
 # Author: Theerawat Kiatdarakun
 # All are bash compatible (to test: shellcheck --shell bash <thisfile>)
 
-# shorthand
+# different name
+alias dc='cd'
+alias ceho='echo'
+alias ehco='echo'
+alias gf='fg'
+alias sl='ls'
 alias nv="nvim"
-# reminder
-
+alias ivm='vim'
 # replace command
 alias cat="bat --pager=less"
       # cat() { echo -en "\033]0;$1\a" && bat $1; }
@@ -22,10 +26,10 @@ alias free="free -h"
 alias grep='grep --color=auto'
 alias less='less -r'
 # alias ls="ls -F --group-directories-first --color"
-alias mc="EDITOR=vim mc"
+alias mc="mc"
 alias mupdf='mupdf-x11'
 alias mupdf-dark='mupdf -C aaaaaa -I'
-alias ranger="EDITOR=vim ranger"
+alias ranger="ranger"
 alias rg="rg --ignore-case"
 alias python="python3"
 alias qutebrowser="qutebrowser --target private-window"
@@ -49,15 +53,8 @@ alias 2umount-sdb="sudo umount /mnt/sdb"
 alias 2umount-sdc="sudo umount /mnt/sdc"
 alias 2umount-sdb-encrypted="sudo umount /mnt/sdb && sudo cryptsetup luksClose /dev/mapper/sdb"
 alias 2umount-sdc-encrypted="sudo umount /mnt/sdc && sudo cryptsetup luksClose /dev/mapper/sdc"
-alias 2xmonad-e="vim ~/.xmonad/xmonad.hs"
-alias 2xmobar-e="vim ~/.xmobarrc"
-# typo gotcha
-alias dc='cd'
-alias ehco='echo'
-alias ceho='echo'
-alias gf='fg'
-alias sl='ls'
-alias ivm='vim'
+alias 2xmonad-e="$EDITOR ~/.xmonad/xmonad.hs"
+alias 2xmobar-e="$EDITOR ~/.xmobarrc"
 # new commands
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -68,10 +65,10 @@ alias 2clipboard-set="tr -d '\n' | xclip -selection clipboard" # usage: pwd | 2c
 alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
-      2e() { vim "$(command -v "$1")" ;}
-alias 2edit-configs="$VISUAL ~/configs-and-scripts/configs"
-alias 2edit-scripts="$VISUAL ~/configs-and-scripts/scripts"
-alias 2edit-nvim="$VISUAL ~/.config/nvim/init.vim"
+      2e() { $EDITOR "$(command -v "$1")" ;}
+alias 2edit-configs="$EDITOR ~/configs-and-scripts/configs"
+alias 2edit-scripts="$EDITOR ~/configs-and-scripts/scripts"
+alias 2edit-nvim="$EDITOR ~/.config/nvim/init.vim"
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
       2git-display-folders-not-update() { for x in $(\ls -d */); do cd $x; git fetch -q 1>/dev/null; [ "$(git rev-parse HEAD 2>/dev/null)" != "$(git rev-parse @{u} 2>/dev/null)" ] && echo $x; cd ..; done; }

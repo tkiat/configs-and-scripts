@@ -65,6 +65,7 @@
         inkscape
         jpegoptim
         kdenlive
+        killall
         less
         libreoffice
         lm_sensors
@@ -89,6 +90,7 @@
         scrot
         simplescreenrecorder
         smartmontools
+        taffybar
         tdesktop
         tealdeer
         tmux

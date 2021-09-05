@@ -33,7 +33,7 @@ Config {
       "--low", "green", "--normal", "orange", "--high"  ,"red"
     ] 20,
     Run Date "%_d %a %H:%M:%S" "date" 10,
-    Run PipeReader "/tmp/.pomodoro-px-resting" "pomodoro-px-resting",
-    Run PipeReader "/tmp/.pomodoro-px-working" "pomodoro-px-working"
+    Run PipeReader "OMODORO:/tmp/.pomodoro-px-resting" "pomodoro-px-resting",
+    Run PipeReader "P:/tmp/.pomodoro-px-working" "pomodoro-px-working"
   ]
 }
