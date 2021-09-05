@@ -4,6 +4,7 @@ import qualified XMonad.Hooks.DynamicLog       as DLog
 import           XMonad.Hooks.ManageDocks       ( ToggleStruts(..)
                                                 , avoidStruts
                                                 , docks
+                                                , manageDocks
                                                 )
 import qualified XMonad.StackSet               as W
 import           XMonad.Util.EZConfig           ( additionalKeysP )
@@ -12,9 +13,13 @@ import           XMonad.Util.Run                ( hPutStrLn
                                                 )
 import           XMonad.Util.SpawnOnce
 
+-- import DBus.Client
+-- import System.Taffybar.XMonadLog ( dbusLog )
+
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
   xmobarProc <- spawnPipe "xmobar ~/.xmobarrc"
+--   client <- connectSession
   xmonad
     $                 docks def
                         { borderWidth        = 2
@@ -24,6 +29,8 @@ main = do
                         , layoutHook         = myLayout
                         , logHook = DLog.dynamicLogWithPP $ myLogHook xmobarProc
                         , manageHook         = myManageHook
+--                         , logHook = dbusLog client DLog.defaultPP
+--                         , manageHook         = manageDocks
                         , modMask            = mod4Mask
                         , normalBorderColor  = "#222222"
                         , terminal           = "st"

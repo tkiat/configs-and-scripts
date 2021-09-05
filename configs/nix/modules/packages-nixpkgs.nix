@@ -59,6 +59,7 @@
         gnome.zenity
         gnupg
         gwenview
+        haskellPackages.taffybar
         heimdall
         htop
         imagemagick
