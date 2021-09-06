@@ -11,7 +11,7 @@ Config {
   -- layout
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=green>%pomodoro-px-working%</fc><fc=orange>%pomodoro-px-resting%</fc> <fc=#82aaff>|</fc> %date%",
+  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=green>%pomodoro-px-working%</fc><fc=yellow>%pomodoro-px-resting%</fc> <fc=#82aaff>|</fc> %date%",
   -- behavior
   allDesktops = True,
   hideOnStart = False,

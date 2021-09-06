@@ -22,7 +22,7 @@ local on_attach = function(client, bufnr)
   -- autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync(nil, 1000)
 end
 
-local servers = { 'bashls', 'purescriptls', 'pyright', 'sumneko_lua', 'tsserver', 'vimls', 'yamlls' }
+local servers = { 'bashls', 'hls', 'purescriptls', 'pyright', 'sumneko_lua', 'tsserver', 'vimls', 'yamlls' }
 -- local servers = { 'bashls', 'purescriptls', 'pyright', 'tsserver', 'vimls', 'yamlls' }
 
 -- map keybindings to each language server

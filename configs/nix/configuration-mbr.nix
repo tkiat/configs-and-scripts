@@ -138,8 +138,10 @@
   users = {
     users.tkiat = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ];
+      extraGroups = [ "docker" "networkmanager" "wheel" ];
       uid = 1000;
     };
   };
+
+  virtualisation.docker.enable = true;
 }

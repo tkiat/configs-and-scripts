@@ -1,1 +1,2 @@
 alias 2nixos-config-edit='$EDITOR ~/configs-and-scripts/configs/nix'
+alias 2nixos-rebuild='sudo nixos-rebuild switch'

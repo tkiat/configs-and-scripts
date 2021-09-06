@@ -1,0 +1,24 @@
+! Adjusting the font
+xterm*faceName: Comic Shanns
+xterm*faceSize: 14
+ 
+! Changing foreground/background color
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+ 
+! Adding a scroll-bar on the right side
+xterm*scrollBar: false
+! xterm*rightScrollBar: false
+
+! copy/paste mapping
+xterm*VT100.Translations: #override \
+                 Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+                 Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+ 
+! prevent jumping back to the last line with new output
+! xterm*scrollTtyOutput: false
+ 
+! add keyboard shortcuts to jump to beginning/end
+! xterm*vt100.translations: #override \n\
+!  Shift <Key>Home: scroll-forw(10000000000) \n\
+!  Shift <Key>End: scroll-back(10000000000)

@@ -15,8 +15,8 @@ import           XMonad.Util.SpawnOnce
 
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
---   barProc <- spawnPipe "xmobar ~/.xmobarrc"
-  barProc <- spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
+  barProc <- spawnPipe "xmobar ~/.xmobarrc"
+--   barProc <- spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
   xmonad
     $                 docks def
                         { borderWidth        = 2
@@ -38,7 +38,6 @@ myStartupHook :: X ()
 myStartupHook = do
   pure ()
 --   spawnOnce "echo 'POMODORO' > /tmp/.pomodoro-px-resting"
---   spawnOnce "echo '' > /tmp/.pomodoro-px-working"
 
 windowCount :: X (Maybe String)
 windowCount =

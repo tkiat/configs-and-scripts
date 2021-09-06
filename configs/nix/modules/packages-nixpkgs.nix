@@ -17,6 +17,7 @@
 
         # autoformatter
         haskellPackages.brittany
+        haskellPackages.ormolu
         nixpkgs-fmt
 
         # dev
@@ -109,9 +110,10 @@
         xfce.thunar
         xfce.tumbler
         xfce.xfconf
-        xsel
         xmobar
         xmonad-with-packages
+        xsel
+        xterm
         yarn
         zip
       ];

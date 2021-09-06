@@ -16,6 +16,7 @@ alias du="dust"
 alias ls="exa -g"
 alias tree="exa -T"
 # overwrite default
+alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
 alias dust="dust --depth 1"
@@ -25,6 +26,10 @@ alias fgrep='fgrep --color=auto'
 alias free="free -h"
 alias grep='grep --color=auto'
 alias less='less -r'
+alias 2polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
+alias 2polybar-e='$EDITOR ~/.config/polybar/config.ini'
+alias 2pomodoro-xmobar="pomodoro-px -w 50 -b 15 -lb 60 --xmobar"
+alias 2pomodoro-polybar="pomodoro-px -w 50 -b 15 -lb 60 --polybar"
 # alias ls="ls -F --group-directories-first --color"
 alias mc="mc"
 alias mupdf='mupdf-x11'
@@ -37,7 +42,6 @@ alias sudo='sudo ' # enable running alias as superuser$
 alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
 alias xpdf="xpdf -z width"
-alias pomodoro-px="pomodoro-px -w 50 -b 15 -lb 60 --polybar"
 # shortcut on top of default command
 alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2chown-u="sudo chown 1000:1000 -R"
@@ -66,9 +70,9 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
       2e() { $EDITOR "$(command -v "$1")" ;}
-alias 2edit-configs="$EDITOR ~/configs-and-scripts/configs"
-alias 2edit-scripts="$EDITOR ~/configs-and-scripts/scripts"
-alias 2edit-nvim="$EDITOR ~/.config/nvim/init.vim"
+alias 2configs-e="$EDITOR ~/configs-and-scripts/configs"
+alias 2scripts-e="$EDITOR ~/configs-and-scripts/scripts"
+alias 2nvim-e="$EDITOR ~/.config/nvim"
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
       2git-display-folders-not-update() { for x in $(\ls -d */); do cd $x; git fetch -q 1>/dev/null; [ "$(git rev-parse HEAD 2>/dev/null)" != "$(git rev-parse @{u} 2>/dev/null)" ] && echo $x; cd ..; done; }
