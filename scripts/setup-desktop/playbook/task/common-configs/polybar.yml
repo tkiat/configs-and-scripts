@@ -1,0 +1,11 @@
+- name: polybar -> ensure ~/.config/polybar/ exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/polybar"
+    state: directory
+
+- name: polybar -> create symlink ~/.config/polybar/config.ini
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/polybar/config.ini"
+    dest: "{{ ansible_env.HOME }}/.config/polybar/config.ini"
+    state: link
+

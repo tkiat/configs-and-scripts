@@ -59,7 +59,6 @@
         gnome.zenity
         gnupg
         gwenview
-        haskellPackages.taffybar
         heimdall
         htop
         imagemagick
@@ -91,7 +90,6 @@
         scrot
         simplescreenrecorder
         smartmontools
-        taffybar
         tdesktop
         tealdeer
         tmux
