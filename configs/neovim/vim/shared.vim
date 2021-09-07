@@ -169,7 +169,7 @@ let ColHighlightInstance = ColHighlight()
 nnoremap <leader>sc :call ColHighlightInstance()<cr>
 nnoremap <leader>scc :set colorcolumn=
 " s: source file
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.lua<cr>
 " t: tab new
 nnoremap <leader>t :tabedit<cr>
 " t: template
@@ -180,7 +180,9 @@ exe 'nnoremap <leader>tgt <ESC>:r '.template_dir.'/main_test.go.template<CR>kddj
 exe 'nnoremap <leader>tm <ESC>:r '.template_dir.'/markdown.template<cr>kdd'
 exe 'nnoremap <leader>th <ESC>:r '.template_dir.'/html5.template<CR>kdd/body<CR>:nohl<CR>o'
 exe 'nnoremap <leader>tv <ESC>:r '.template_dir.'/vue.template<CR>kdd'
+" w: window
+nnoremap <leader>wh :split<cr>
+nnoremap <leader>wv :vsplit<cr>
 " y: yank: whole html tag
-nnoremap <leader>y< vf>f>y
-nnoremap <leader>y> vf>f>y
-
+" nnoremap <leader>y< vf>f>y
+" nnoremap <leader>y> vf>f>y

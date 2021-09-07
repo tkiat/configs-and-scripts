@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./cachix.nix
       ./hardware-configuration.nix
       ./modules/packages-nixpkgs.nix
       ./modules/packages-tkiat.nix

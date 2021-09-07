@@ -3,7 +3,7 @@
 let
   tkiat-channel = builtins.fetchGit {
     url = "https://gitlab.com/tkiat/nix-channel.git";
-    rev = "3b8d73e24c56cb80793ba8316216af503c59cf54";
+    rev = "0ce37bef4ba5fee5eccd94310add25673bc89ce9";
   };
 
   pomodoro-px = import "${tkiat-channel}/packages/pomodoro-px.nix";
