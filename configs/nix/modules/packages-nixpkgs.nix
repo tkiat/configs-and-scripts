@@ -23,6 +23,8 @@
         # dev
         ansible
         bash
+        cabal-install
+        cabal2nix
         docker
         docker-compose
         gcc
@@ -30,6 +32,7 @@
         git
         gnumake
         lua
+        niv
         nodejs
         purescript
         python3
@@ -80,6 +83,7 @@
         nvimpager
         pandoc
         pass
+        pciutils
         pencil
         pinentry
         polybar

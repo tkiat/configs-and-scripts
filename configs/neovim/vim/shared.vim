@@ -95,6 +95,8 @@ nnoremap <leader>/ viw"qy/<c-r>q<cr>N
 vnoremap <leader>/ y/<c-r>"<cr>
 " space: surround a word with spaces
 nnoremap <leader><space> mqbi<space><esc>ea<space><esc>`ql
+" b: buffer
+nnoremap <leader>b :bnext<cr>
 " c: colorscheme
 nnoremap <leader>c0 :colorscheme default<cr>
 nnoremap <leader>c1 :colorscheme custom-dark<cr>

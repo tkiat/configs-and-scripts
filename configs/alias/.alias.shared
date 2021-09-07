@@ -97,6 +97,9 @@ alias 2ping="ping gnu.org"
       2port-kill() { sudo fuser -k $1/tcp; }
 alias 2primary-get="xclip -o -selection primary"
 alias 2replace-newline="tr '\n' ' '"
+      2sed-replace-recursive() {
+        find . -type f -not -path '*/\.*' -exec sed -i "s/$1/$2/g" {} +;
+      }
 alias 2showoff='neofetch'
       2tab-title-change() { echo -en "\e]2;$1\a"; }
 # script
