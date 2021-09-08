@@ -70,6 +70,7 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
       2e() { $EDITOR "$(command -v "$1")" ;}
+      2e-chmod-x() { $EDITOR "$1" && chmod +x "$1"; }
 alias 2configs-e="$EDITOR ~/configs-and-scripts/configs"
 alias 2scripts-e="$EDITOR ~/configs-and-scripts/scripts"
 alias 2nvim-e="$EDITOR ~/.config/nvim"

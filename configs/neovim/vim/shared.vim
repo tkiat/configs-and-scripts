@@ -5,8 +5,9 @@
 " set timeoutlen=1000
 " set ttimeoutlen=0
 
-let temp_dir='~/.config/nvim/temp'
-let template_dir='~/.vim/template'
+let nvim_dir='~/.config/nvim'
+let temp_dir=nvim_dir.'/temp'
+let template_dir=nvim_dir.'/template'
 
 let mapleader=','
 let space_per_tab=2
@@ -123,10 +124,10 @@ nnoremap <leader>f :execute "normal! a" . expand('%:t:r')<CR>
 " h: highlight - toggle
 nnoremap <expr> <leader>hl (&hls && v:hlsearch ? ':set nohls' : ':set hls')."\n"
 " o: open file
-nnoremap <leader>oh  :tabnew ~<cr>
-nnoremap <leader>ov  :vsplit ~/.vimrc<cr>
-nnoremap <leader>ovm :tabnew ~/.vimrc-modules<cr>
-nnoremap <leader>ovt :tabnew ~/.vim/template/<cr>
+" nnoremap <leader>oh  :tabnew ~<cr>
+" nnoremap <leader>ov  :vsplit ~/.vimrc<cr>
+exe 'nnoremap <leader>ov  :tabnew '.nvim_dir.'<cr>'
+" nnoremap <leader>ovm :tabnew ~/.vimrc-modules<cr>
 " p: paste from clipboard to end of file
 nnoremap <leader>pc :w<cr>:!echo $(xclip -o selection clipboard) >> %<cr>L<cr>
 " TODO vnoreamp '<,'>s/\%Vfoo\%V/bar/g
