@@ -33,6 +33,7 @@
         gnumake
         lua
         niv
+        nix-prefetch-git
         nodejs
         purescript
         python3

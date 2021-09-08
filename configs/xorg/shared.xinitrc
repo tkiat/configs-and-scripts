@@ -9,6 +9,8 @@ rm -f $pomodoro_px_wpipe && mkfifo $pomodoro_px_wpipe
 [ -x "$(command -v st)" ] && st&
 [ -x "$(command -v ungoogled-chromium)" ] && ungoogled-chromium --incognito --disable-default-check&
 
+xrdb -merge ~/.Xresources
+
 setxkbmap -layout us,th -option grp:alt_space_toggle
 xsetroot -solid black
 
