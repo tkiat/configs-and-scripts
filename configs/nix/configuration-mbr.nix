@@ -15,6 +15,7 @@
       device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
       preLVM = true;
     };
+#     kernelPackages = pkgs.linuxPackages-libre;
     kernelPackages = pkgs.linuxPackages_latest-libre;
     #     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux-libre.override {
     #       argsOverride = rec {
@@ -70,7 +71,6 @@
     useDHCP = false;
   };
 
-
   nixpkgs = {
     config = {
       allowBroken = true;
@@ -79,11 +79,7 @@
         unfreeRedistributableFirmware
       ];
     };
-    overlays = [
-      (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-      }))
-
+#     overlays = [
       #       (self: super: {
       #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
       #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
@@ -93,7 +89,7 @@
       #           extraMeta.broken = false;
       #         };
       #       })
-    ];
+#     ];
   };
 
   powerManagement = {

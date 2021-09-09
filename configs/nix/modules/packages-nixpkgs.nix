@@ -25,6 +25,7 @@
         bash
         cabal-install
         cabal2nix
+        cookiecutter
         docker
         docker-compose
         gcc
