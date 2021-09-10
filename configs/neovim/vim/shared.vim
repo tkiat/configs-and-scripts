@@ -44,8 +44,9 @@ set pumheight=10 " Pmenu max height
 exe 'set shiftwidth='.space_per_tab
 exe 'set tabstop='.space_per_tab
 " syntax highlighting
-syntax reset
-syntax on
+" syntax reset
+" syntax on
+
 " ========================================
 " automatic command
 " ========================================
