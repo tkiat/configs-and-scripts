@@ -6,8 +6,17 @@ alias 2nix-c-pkgs="
 alias 2nix-gc='2nix-gc-user;2nix-gc-root;2nix-gc-system'
 alias 2nix-gc-user='nix-env --delete-generations old && nix-store --gc'
 alias 2nix-gc-root='sudo -i -- nix-env --delete-generations old && nix-store --gc'
-alias 2nix-gc-system='sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d'
+alias 2nix-gc-system='
+        sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old &&
+        nix-collect-garbage -d
+      '
       2nix-i() { nix-env -i $1 && rm -f ~/.cache/dmenu_run; }
+      2nix-i-hint () {
+cat << EOF
+On NixOS
+  - Haskell: nix-env -iA nixos.haskellPackages.<package-name>
+EOF
+}
 alias 2nix-i-root='sudo -i -- nix-env -i'
 alias 2nix-q-generations-system='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
 alias 2nix-q-info="nix-shell -p nix-info --run 'nix-info -m'"

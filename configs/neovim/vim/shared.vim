@@ -15,6 +15,7 @@ let space_per_tab=2
 " ========================================
 " Set
 " ========================================
+set guicursor= " prevent nvim from overriding cursor style
 let @/ = "" " clear last search pattern
 set autoindent " auto indent next line
 set backspace=indent,eol,start " make backspace to work

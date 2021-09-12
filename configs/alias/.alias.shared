@@ -43,8 +43,10 @@ alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
 alias xpdf="xpdf -z width"
 # shortcut on top of default command
+alias 2bash-source="source ~/.bashrc"
 alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2chown-u="sudo chown 1000:1000 -R"
+alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
       2grep-width-nolink() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2mount-sdb="sudo mount /dev/sdb /mnt/sdb"
@@ -113,7 +115,7 @@ alias 2replace-newline="tr '\n' ' '"
       2sed-replace-recursive() {
         find . -type f -not -path '*/\.*' -exec sed -i "s/$1/$2/g" {} +;
       }
+alias 2server-hoogle='hoogle server --local -n -p 3000'
 alias 2showoff='neofetch'
       2tab-title-change() { echo -en "\e]2;$1\a"; }
-# script
-alias 2watch-bash='watch -x bash -ic'
+alias 2w='which'
