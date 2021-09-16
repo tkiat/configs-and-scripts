@@ -102,7 +102,7 @@ alias 2git-sort-size="git rev-list --objects --all | git cat-file --batch-check=
        if [ -z "$1" ]; then
          echo "Please enter commit message"
        fi
-        git add -A && git commit -m "$1" && git push origin $(git rev-parse --abbrev-ref HEAD)
+        git add -A && git commit -m "$1" && git push origin "$(git rev-parse --abbrev-ref HEAD)"
       }
       2goto-symlink() { cd $(dirname $(readlink $1)); }
 alias 2grep-current-dir="grep -inr . -e "
