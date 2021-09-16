@@ -91,7 +91,7 @@
         neofetch
         neomutt
         newsboat
-        nvimpager
+#         nvimpager
         pandoc
         pass
         pciutils
@@ -122,6 +122,7 @@
         w3m
         weechat
         wget
+        xclip
         xfce.exo
         xfce.thunar
         xfce.tumbler

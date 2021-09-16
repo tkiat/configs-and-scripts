@@ -15,7 +15,7 @@
       device = "/dev/disk/by-uuid/831e92d5-4f9e-4f62-9ec4-0a649ab64ec9";
       preLVM = true;
     };
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.linuxPackages_latest;
 #     kernelPackages = pkgs.linuxPackages-libre;
 #     kernelPackages = pkgs.linuxPackages_latest-libre;
     #     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux-libre.override {
