@@ -1,4 +1,7 @@
 import           Prelude
+import           Control.Monad (forM_, join)
+import           Data.List (sortBy)
+import           Data.Function (on)
 import           XMonad
 import qualified XMonad.Hooks.DynamicLog       as DLog
 import           XMonad.Hooks.ManageDocks       ( ToggleStruts(..)
@@ -8,6 +11,7 @@ import           XMonad.Hooks.ManageDocks       ( ToggleStruts(..)
                                                 )
 import qualified XMonad.StackSet               as W
 import           XMonad.Util.EZConfig           ( additionalKeysP )
+import           XMonad.Util.NamedWindows       (getName)
 import           XMonad.Util.Run                ( hPutStrLn
                                                 , spawnPipe
                                                 )
@@ -15,8 +19,8 @@ import           XMonad.Util.SpawnOnce
 
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
-  barProc <- spawnPipe "xmobar ~/.xmobarrc"
---   barProc <- spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
+--   barProc <- spawnPipe "xmobar ~/.xmobarrc"
+  spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
   xmonad
     $                 docks def
                         { borderWidth        = 2
@@ -24,7 +28,8 @@ main = do
                         , focusedBorderColor = "#005577"
                         , focusFollowsMouse  = False
                         , layoutHook         = myLayout
-                        , logHook = DLog.dynamicLogWithPP $ myLogHook barProc
+--                         , logHook = myXmobarLogHook barProc
+--                         , logHook = myPolybarLogHook
                         , manageHook         = myManageHook
                         , modMask            = mod4Mask
                         , normalBorderColor  = "#222222"
@@ -36,7 +41,12 @@ main = do
 
 myStartupHook :: X ()
 myStartupHook = do
-  pure ()
+  -- polybar
+  spawnOnce "mkfifo /tmp/.xmonad-workspace-log"
+  spawnOnce "mkfifo /tmp/.xmonad-title-log"
+--   forM_ [".xmonad-workspace-log", ".xmonad-title-log"] $ \file -> do
+--       spawnOnce "mkfifo" ["/tmp/" ++ file]
+--   pure ()
 --   spawnOnce "echo 'POMODORO' > /tmp/.pomodoro-px-resting"
 
 windowCount :: X (Maybe String)
@@ -56,7 +66,7 @@ myKeys = [("M-b", sendMessage ToggleStruts), ("M-w", spawn "passmenu")]
 
 myLayout = avoidStruts (Full ||| Tall 1 (3 / 100) (1 / 2))
 
-myLogHook h = DLog.xmobarPP
+myXmobarLogHook h = DLog.dynamicLogWithPP $ DLog.xmobarPP
   { DLog.ppOutput          = hPutStrLn h
   , DLog.ppCurrent         = DLog.xmobarColor "#00bbdd" ""
   , DLog.ppTitle           = DLog.xmobarColor "#00bbdd" "" . DLog.shorten 60
@@ -66,6 +76,21 @@ myLogHook h = DLog.xmobarPP
   , DLog.ppSep             = "<fc=#82aaff> | </fc>"
   , DLog.ppOrder           = \(ws : l : t : ex) -> ws : concat ex : [t]
   }
+
+myPolybarLogHook = do
+  winset <- gets windowset
+  title <- maybe (return "") (fmap show . getName) . W.peek $ winset
+  let currWs = W.currentTag winset
+  let wss = map W.tag $ W.workspaces winset
+  let wsStr = join $ map (fmt currWs) $ sort' wss
+
+  io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
+  io $ appendFile "/tmp/.xmonad-workspace-log" (wsStr ++ "\n")
+
+  where fmt currWs ws
+          | currWs == ws = "[" ++ ws ++ "]"
+          | otherwise    = " " ++ ws ++ " "
+        sort' = sortBy (compare `on` (!! 0))
 
 myManageHook = composeAll
   [ className =? "Chromium" --> doShift "Web"

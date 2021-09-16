@@ -11,7 +11,7 @@ Config {
   -- layout
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=green>%pomodoro-px-working%</fc><fc=yellow>%pomodoro-px-resting%</fc> <fc=#82aaff>|</fc> %date%",
+  template = "%StdinReader% }{ %cpu% %memory% <fc=#82aaff>|</fc> <fc=green>%pomodoro-bar-w%</fc><fc=yellow>%pomodoro-bar-i%</fc> <fc=#82aaff>|</fc> %date%",
   -- behavior
   allDesktops = True,
   hideOnStart = False,
@@ -33,7 +33,7 @@ Config {
       "--low", "green", "--normal", "orange", "--high"  ,"red"
     ] 20,
     Run Date "%_d %a %H:%M:%S" "date" 10,
-    Run PipeReader "OMODORO:/tmp/.pomodoro-px-resting" "pomodoro-px-resting",
-    Run PipeReader "P:/tmp/.pomodoro-px-working" "pomodoro-px-working"
+    Run PipeReader "OMODORO:/tmp/.pomodoro-bar-i" "pomodoro-bar-i",
+    Run PipeReader "P:/tmp/.pomodoro-bar-w" "pomodoro-bar-w"
   ]
 }
