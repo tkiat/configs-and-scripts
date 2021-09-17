@@ -19,8 +19,8 @@ import           XMonad.Util.SpawnOnce
 
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
---   barProc <- spawnPipe "xmobar ~/.xmobarrc"
-  spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
+  barProc <- spawnPipe "xmobar ~/.xmobarrc"
+--   spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
   xmonad
     $                 docks def
                         { borderWidth        = 2
@@ -28,7 +28,7 @@ main = do
                         , focusedBorderColor = "#005577"
                         , focusFollowsMouse  = False
                         , layoutHook         = myLayout
---                         , logHook = myXmobarLogHook barProc
+                        , logHook = myXmobarLogHook barProc
 --                         , logHook = myPolybarLogHook
                         , manageHook         = myManageHook
                         , modMask            = mod4Mask
