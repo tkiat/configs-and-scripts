@@ -4,11 +4,11 @@
 #   unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
 # in
 {
-#   nixpkgs.config.packageOverrides = pkgs: {
-#     unstable = import unstableTarball {
-#       config = config.nixpkgs.config;
-#     };
-#   };
+  #   nixpkgs.config.packageOverrides = pkgs: {
+  #     unstable = import unstableTarball {
+  #       config = config.nixpkgs.config;
+  #     };
+  #   };
 
   environment = {
     systemPackages =
@@ -25,9 +25,9 @@
         sumneko-lua-language-server
 
         # autoformatter
-        haskellPackages.brittany
-        haskellPackages.ormolu
-        nixpkgs-fmt
+        # haskellPackages.brittany
+        # haskellPackages.ormolu
+        # nixpkgs-fmt
 
         # dev
         ansible
@@ -91,7 +91,7 @@
         neofetch
         neomutt
         newsboat
-#         nvimpager
+        #         nvimpager
         pandoc
         pass
         pciutils

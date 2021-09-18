@@ -136,7 +136,7 @@ nnoremap <leader>pc :w<cr>:!echo $(xclip -o selection clipboard) >> %<cr>L<cr>
 " r: replace - 2 tabs with 1 tab
 vnoremap <leader><tab><tab> :s/\%V\t\t/\t/g<cr>:nohl<cr>
 " r: replace - all words in file
-nnoremap <leader>R viw"qy:%s/<C-r>q/<C-r>q/g<left><left>
+nnoremap <leader>R viw"qy:%s/<C-r>q/<C-r>q/gc<left><left><left>
 vnoremap <leader>R y:%s/<c-r>"/<c-r>"/g<left><left>
 " r: replace - all words in line
 nnoremap <leader>r viw"qy:s/<C-r>q/<C-r>q/g<left><left>
