@@ -28,10 +28,8 @@ alias grep='grep --color=auto'
 alias less='less -r'
 alias 2polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
 alias 2polybar-e='$EDITOR ~/.config/polybar/config.ini'
-alias 2pomodoro="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off'"
-alias 2pomodoro-xmobar="2pomodoro --xmobar"
-alias 2pomodoro-polybar="2pomodoro --polybar"
-# alias ls="ls -F --group-directories-first --color"
+alias 2pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cw 'xset dpms force off' --cb 'xset dpms force off'"
+alias 2pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cw 'xset dpms force off' --cb 'xset dpms force off'"
 alias mc="mc"
 alias mupdf='mupdf-x11'
 alias mupdf-dark='mupdf -C aaaaaa -I'
@@ -100,10 +98,10 @@ alias 2git-remote='git remote -v'
       }
 alias 2git-sort-size="git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | sort --numeric-sort --key=2 | cut -c 1-12,41- | $(command -v gnumfmt || echo numfmt) --field=2 --to=iec-i --suffix=B --padding=7 --round=neares"
       2git-update() {
-       if [ -z "$1" ]; then
-         echo "Please enter commit message"
-       fi
-        git add -A && git commit -m "$1" && git push origin "$(git rev-parse --abbrev-ref HEAD)"
+#        if [ -z "$1" ]; then
+#          echo "Please enter commit message"
+#        fi
+       git add -A && git commit -m "$1:=UPDATE" && git push origin "$(git rev-parse --abbrev-ref HEAD)"
       }
       2goto-symlink() { cd $(dirname $(readlink $1)); }
 alias 2grep-current-dir="grep -inr . -e "

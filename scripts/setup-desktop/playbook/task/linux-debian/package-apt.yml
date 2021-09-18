@@ -54,6 +54,7 @@
     - newsboat
     - neofetch
     - neomutt
+    - neovim
     - pandoc
     - password-store
     - pinentry-gtk2
@@ -77,7 +78,7 @@
     - trash-cli
     - tree
     - unzip
-    - vim-gtk
+#     - vim-gtk
     - vlc
     - vrms
     - w3m
