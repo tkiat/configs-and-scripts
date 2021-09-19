@@ -14,3 +14,6 @@ plugins:
       arg: --columns 80 --indent 2
     - cmd: hindent
       arg: --indent-size 2 --line-length 80
+  nix:
+    - cmd: nixpkgs-fmt
+      arg:
