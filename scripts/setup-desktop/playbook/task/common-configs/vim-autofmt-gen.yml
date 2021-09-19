@@ -1,0 +1,11 @@
+- name: vim-autofmt-gen -> create ~/.config/vim-autofmt-gen/ if not exist
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.config/vim-autofmt-gen"
+    state: directory
+
+- name: vim-autofmt-gen -> symlink config.yaml
+  ansible.builtin.file:
+    src: "{{ configs_dir }}/vim-autofmt-gen/config.yaml"
+    dest: "{{ ansible_env.HOME }}/.config/vim-autofmt-gen/config.ymal"
+    state: link
+
