@@ -6,7 +6,7 @@ let
     rev = "0ce37bef4ba5fee5eccd94310add25673bc89ce9";
   };
 
-  pomodoro-px = import "${tkiat-channel}/packages/pomodoro-px.nix";
+#   pomodoro-px = import "${tkiat-channel}/packages/pomodoro-px.nix";
   tkiat-dmenu = import "${tkiat-channel}/packages/tkiat-dmenu.nix";
   tkiat-dwm = import "${tkiat-channel}/packages/tkiat-dwm.nix";
   tkiat-slock = import "${tkiat-channel}/packages/tkiat-slock.nix";
@@ -14,7 +14,7 @@ let
 in
 {
   environment.systemPackages = [
-    pomodoro-px
+#     pomodoro-px
     tkiat-dmenu
     tkiat-dwm
     tkiat-slock

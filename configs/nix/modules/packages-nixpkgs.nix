@@ -25,9 +25,8 @@
         sumneko-lua-language-server
 
         # autoformatter
-        # haskellPackages.brittany
-        # haskellPackages.ormolu
-        # nixpkgs-fmt
+        haskellPackages.ormolu
+        nixpkgs-fmt
 
         # dev
         ansible
@@ -118,7 +117,7 @@
         unzip
         usbutils
         vlc
-        vscodium
+        #         vscodium
         w3m
         weechat
         wget

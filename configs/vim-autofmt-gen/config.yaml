@@ -10,6 +10,8 @@ plugins:
     - cmd: yapf
       arg:
   haskell:
+    - cmd: ormolu
+      arg: 
     - cmd: brittany
       arg: --columns 80 --indent 2
     - cmd: hindent
