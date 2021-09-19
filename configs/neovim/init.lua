@@ -1,5 +1,6 @@
 require('lsp')
 
+vim.cmd('source ~/.config/nvim/vim/autofmtgen.vim')
 vim.cmd('source ~/.config/nvim/vim/comment.vim')
 vim.cmd('source ~/.config/nvim/vim/completion.vim')
 vim.cmd('source ~/.config/nvim/vim/html.vim')
