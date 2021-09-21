@@ -68,6 +68,7 @@ windowCount =
 myKeys =
   [ ("M-b", sendMessage ToggleStruts),
     ("M-s", spawn "scrot --select"),
+    ("M-l", spawn "slock"),
     ("M-w", spawn "passmenu")
   ]
 

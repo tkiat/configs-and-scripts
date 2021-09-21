@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-items=$(seq -w 1 12)
+# items=$(seq -w 1 12)
 
 
-for i in $items
+for i in $(ls)
 do
-  mkdir "hw$i"
+  echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i
 done
 
 # fd --extension md --print0 |
