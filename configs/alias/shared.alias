@@ -28,8 +28,8 @@ alias grep='grep --color=auto'
 alias less='less -r'
 alias 2polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
 alias 2polybar-e='$EDITOR ~/.config/polybar/config.ini'
-alias 2pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cw 'xset dpms force off' --cb 'xset dpms force off'"
-alias 2pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cw 'xset dpms force off' --cb 'xset dpms force off'"
+alias 2pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --workcmd 'xset dpms force off' --breakcmd 'xset dpms force off'"
+alias 2pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --workcmd 'xset dpms force off' --breakcmd 'xset dpms force off'"
 alias mc="mc"
 alias mupdf='mupdf-x11'
 alias mupdf-dark='mupdf -C aaaaaa -I'

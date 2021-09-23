@@ -9,4 +9,4 @@
     dest: "{{ dir_neovim }}/template/{{ item | basename }}"
     state: link
   with_fileglob:
-    - "{{ configs_dir }}/vim/template/*"
+    - "{{ configs_dir }}/neovim/template/*"

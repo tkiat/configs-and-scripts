@@ -8,4 +8,3 @@
     src: "{{ configs_dir }}/vim-autofmt-gen/config.yaml"
     dest: "{{ ansible_env.HOME }}/.config/vim-autofmt-gen/config.ymal"
     state: link
-

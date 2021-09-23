@@ -1,0 +1,11 @@
+- name: pomodoro-bar -> create ~/.local/share/pomodoro-bar/ if not exist
+  ansible.builtin.file:
+    path: '{{ ansible_env.HOME }}/.local/share/pomodoro-bar'
+    state: directory
+
+- name: pomodoro-bar -> symlink record.json
+  ansible.builtin.file:
+    src: '{{ dir_personal_cloud_app }}/pomodoro-bar/record.json'
+    dest: '{{ ansible_env.HOME }}/.local/share/pomodoro-bar/record.json'
+    state: link
+    force: yes

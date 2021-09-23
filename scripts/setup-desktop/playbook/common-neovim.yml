@@ -12,9 +12,7 @@
         state: link
 
     - import_tasks: task/common-neovim/colors.yml
-    - import_tasks: task/common-neovim/ftplugin.yml
     - import_tasks: task/common-neovim/lua.yml
-    - import_tasks: task/common-neovim/plugin.yml
     - import_tasks: task/common-neovim/temp.yml
     - import_tasks: task/common-neovim/template.yml
     - import_tasks: task/common-neovim/vim.yml
