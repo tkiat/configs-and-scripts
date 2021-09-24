@@ -67,9 +67,10 @@ windowCount =
 
 myKeys =
   [ ("M-b", sendMessage ToggleStruts),
-    ("M-s", spawn "scrot --select"),
+    ("M-d", spawn "dmenu_run"),
     ("M-l", spawn "slock"),
-    ("M-w", spawn "passmenu")
+    ("M-p", spawn "passmenu"),
+    ("M-s", spawn "scrot --select")
   ]
 
 myLayout = avoidStruts (Full ||| Tall 1 (3 / 100) (1 / 2))
