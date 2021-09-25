@@ -58,11 +58,6 @@ autocmd BufNewFile,BufRead,BufEnter *.md :syn match markdownError "\w\@<=\w\@="
 " ========================================
 " mapping automatically
 " ========================================
-" {([: generate closing braces automatically
-for val in ['{}','()','[]']
-  exe 'inoremap '.val[0].' '.val[0].val[1].'<Esc>i'
-  exe 'inoremap '.val[0].'<CR> '.val[0].'<CR>'.val[1].'<Esc>ko'
-endfor
 " placeholder
 inoreabbrev lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dapibus convallis massa, nec gravida diam pellentesque at. Aliquam mollis tempor mi sed venenatis. Maecenas neque massa, pulvinar vitae lacus et, convallis interdum ligula. Suspendisse rhoncus a arcu quis volutpat. Donec ac risus eros. Pellentesque convallis lectus eu sodales ornare. Quisque egestas ex non purus porta porttitor. Ut blandit feugiat iaculis. Nulla mollis venenatis pulvinar. Nullam pulvinar efficitur aliquet. Donec in nibh eleifend, finibus dui nec, faucibus dui.
 " help - start in a new tab
@@ -177,14 +172,6 @@ nnoremap <leader>scc :set colorcolumn=
 nnoremap <leader>sv :source ~/.config/nvim/init.lua<cr>
 " t: tab new
 nnoremap <leader>t :tabedit<cr>
-" t: template
-exe 'nnoremap <leader>tc <ESC>:r '.template_dir.'/c.template<CR>kdd'
-exe 'nnoremap <leader>ta <ESC>:r '.template_dir.'/asciidoctor.template<CR>kdd'
-exe 'nnoremap <leader>tgm <ESC>:r '.template_dir.'/main.go.template<CR>kddjjjjjjA'
-exe 'nnoremap <leader>tgt <ESC>:r '.template_dir.'/main_test.go.template<CR>kddjjjjjjeea'
-exe 'nnoremap <leader>tm <ESC>:r '.template_dir.'/markdown.template<cr>kdd'
-exe 'nnoremap <leader>th <ESC>:r '.template_dir.'/html5.template<CR>kdd/body<CR>:nohl<CR>o'
-exe 'nnoremap <leader>tv <ESC>:r '.template_dir.'/vue.template<CR>kdd'
 " w: window
 nnoremap <leader>wh :split<cr>
 nnoremap <leader>wv :vsplit<cr>
