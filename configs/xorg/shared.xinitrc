@@ -6,7 +6,7 @@ rm -f $pomodoro_px_wpipe && mkfifo $pomodoro_px_wpipe
 
 [ -x "$(command -v chromium)" ] && chromium&
 [ -x "$(command -v redshift)" ] && redshift -O 3000
-[ -x "$(command -v st)" ] && st&
+[ -x "$(command -v xterm)" ] && xterm&
 [ -x "$(command -v ungoogled-chromium)" ] && ungoogled-chromium --incognito --disable-default-check&
 
 xrdb -merge ~/.Xresources
