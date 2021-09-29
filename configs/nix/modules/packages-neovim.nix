@@ -23,7 +23,7 @@
               {
                 start = [
                   completion-nvim
-                  dhall-vim
+                  #                   dhall-vim
                   emmet-vim
                   nerdtree
                   nvim-lspconfig
