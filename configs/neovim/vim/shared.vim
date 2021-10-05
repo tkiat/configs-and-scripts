@@ -9,7 +9,6 @@ let nvim_dir='~/.config/nvim'
 let temp_dir=nvim_dir.'/temp'
 let template_dir=nvim_dir.'/template'
 
-let mapleader=','
 let space_per_tab=2
 " TODO use vim tag sections here also check mapping first perhaps can remove leader
 " ========================================
@@ -75,20 +74,7 @@ for val in range(0,8)
   exe 'nnoremap <leader>'.val.' '.val.'gt<cr>'
 endfor
 nnoremap <leader>9 :tabl<cr>
-" {(["'*<`: enclose curent word with its pair
-" TODO custom pair
-for val in ['{}','()','[]','""',"''",'**','<>','``']
-  exe 'nnoremap <leader>'.val[0].' ciw'.val[0].val[1].'<esc>Pl'
-  exe 'vnoremap <leader>'.val[0].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
-  if val[0] !=# val[1]
-    exe 'nnoremap <leader>'.val[1].' ciw'.val[0].val[1].'<esc>Pl'
-    exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
-  endif
-endfor
 nnoremap <leader>; mqA;<esc>`q
-" ** enclose word
-nnoremap <leader>** ciw****<esc>hPl
-vnoremap <leader>** mq:s/\%V.*\%V./**&**/<cr>`qf'**':nohl<cr>
 " /: search current word
 nnoremap <leader>/ viw"qy/<c-r>q<cr>N
 vnoremap <leader>/ y/<c-r>"<cr>
