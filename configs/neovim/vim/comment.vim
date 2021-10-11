@@ -21,6 +21,11 @@ let s:groups=[
       \'ext': '*.vim,*.vimrc',
       \},
       \{
+      \'front': '% ',
+      \'back': '',
+      \'ext': '*.tex',
+      \},
+      \{
       \'front': ';;; ',
       \'back': '',
       \'ext': '*.scm',
