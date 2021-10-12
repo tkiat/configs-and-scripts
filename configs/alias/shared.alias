@@ -17,6 +17,7 @@ alias ls="exa -g"
 alias tree="exa -T"
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
+alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
 alias dust="dust --depth 1"
