@@ -16,8 +16,7 @@
       preLVM = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-#     kernelPackages = pkgs.linuxPackages-libre;
-#     kernelPackages = pkgs.linuxPackages_latest-libre;
+    #     kernelPackages = pkgs.linuxPackages_latest-libre;
     #     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux-libre.override {
     #       argsOverride = rec {
     #         linux = pkgs.linux_latest;
@@ -80,17 +79,17 @@
         unfreeRedistributableFirmware
       ];
     };
-#     overlays = [
-      #       (self: super: {
-      #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
-      #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
-      #           #           stdenv.hostPlatform.system == "x86_64-linux"
-      #           broken = false;
-      #           meta.broken = false;
-      #           extraMeta.broken = false;
-      #         };
-      #       })
-#     ];
+    #     overlays = [
+    #       (self: super: {
+    #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
+    #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
+    #           #           stdenv.hostPlatform.system == "x86_64-linux"
+    #           broken = false;
+    #           meta.broken = false;
+    #           extraMeta.broken = false;
+    #         };
+    #       })
+    #     ];
   };
 
   powerManagement = {

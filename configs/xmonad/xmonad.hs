@@ -118,7 +118,7 @@ myManageHook =
       className =? "Inkscape" --> doShift "7",
       className =? "kdenlive" --> doShift "7",
       className =? "FreeFileSync" --> doShift "Media",
-      className =? "mupdf" --> doShift "Media",
+      className =? "MuPDF" --> doShift "Media",
       className =? "supertux2" --> doShift "Media",
       className =? "vlc" --> doShift "Media"
     ]

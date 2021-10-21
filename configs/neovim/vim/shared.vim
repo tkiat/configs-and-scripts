@@ -126,6 +126,10 @@ vnoremap <leader>r y:s/<c-r>"/<c-r>"/g<left><left>
 " r: replace - hyphen and underscore with space
 nnoremap <leader>r<space> mq:s/[-_]\+/ /g<cr>`q
 " r: replace - capitalize first letter of each word
+  " \< matches the start of a word
+  " . matches the first character of a word
+  " \u tells Vim to uppercase the following character
+  " & means substitute whatever was matched on the LHS"
 nnoremap <leader>rU mq:s/\<./\u&/g<cr>`q
 " r: replace - spaces at front with tab(s)
 exe 'nnoremap <leader>r<tab> mq:%s/\(^ *\)\@<= \{'.space_per_tab.'\}/<tab>/g<cr>`q'
