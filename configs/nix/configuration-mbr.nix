@@ -17,14 +17,6 @@
     };
     kernelPackages = pkgs.linuxPackages_latest;
     #     kernelPackages = pkgs.linuxPackages_latest-libre;
-    #     kernelPackages = pkgs.linuxPackagesFor (pkgs.linux-libre.override {
-    #       argsOverride = rec {
-    #         linux = pkgs.linux_latest;
-    #         broken = false;
-    #         meta.broken = false;
-    #         extraMeta.broken = false;
-    #       };
-    #     });
     loader = {
       grub = {
         enable = true;
@@ -73,23 +65,11 @@
 
   nixpkgs = {
     config = {
-      allowBroken = true;
       blacklistedLicenses = with lib.licenses; [
         # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
         unfreeRedistributableFirmware
       ];
     };
-    #     overlays = [
-    #       (self: super: {
-    #         linuxPackages_latest-libre = super.linuxPackages_latest-libre.override {
-    #           #           broken = pkgs.stdenv.hostPlatform.isx86_64-linux
-    #           #           stdenv.hostPlatform.system == "x86_64-linux"
-    #           broken = false;
-    #           meta.broken = false;
-    #           extraMeta.broken = false;
-    #         };
-    #       })
-    #     ];
   };
 
   powerManagement = {
