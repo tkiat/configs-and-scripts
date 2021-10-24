@@ -28,7 +28,6 @@ alias free="free -h"
 alias grep='grep --color=auto'
 alias less='less -r'
 alias 2polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
-alias 2polybar-e='$EDITOR ~/.config/polybar/config.ini'
 alias 2pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias 2pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias mc="mc"
@@ -51,19 +50,38 @@ alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-n
 alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i;
 done'
-
-alias 2mount-sdb="sudo mount /dev/sdb /mnt/sdb"
-alias 2mount-sdc="sudo mount /dev/sdc /mnt/sdc"
-alias 2mount-sdb-encrypted="sudo cryptsetup luksOpen /dev/sdb sdb && sudo mount /dev/mapper/sdb /mnt/sdb"
-alias 2mount-sdc-encrypted="sudo cryptsetup luksOpen /dev/sdc sdc && sudo mount /dev/mapper/sdc /mnt/sdc"
+      2mount-sdx() {
+        if [[ $# -eq 0 ]] ; then
+            echo 'please enter x in disk label sdx like b for sdb'
+            return 1
+        fi;
+        sudo mount /dev/sd${1} /mnt/sd${1}
+      }
+      2mount-sdx-encrypted() {
+        if [[ $# -eq 0 ]] ; then
+            echo 'please enter x in disk label sdx like b for sdb'
+            return 1
+        fi;
+        sudo cryptsetup luksOpen /dev/sd${1} sd${1}
+        sudo mount /dev/mapper/sd${1} /mnt/sd${1}
+      }
 alias 2rm-file-recursive="find . -type f -delete"
 alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
-alias 2umount-sdb="sudo umount /mnt/sdb"
-alias 2umount-sdc="sudo umount /mnt/sdc"
-alias 2umount-sdb-encrypted="sudo umount /mnt/sdb && sudo cryptsetup luksClose /dev/mapper/sdb"
-alias 2umount-sdc-encrypted="sudo umount /mnt/sdc && sudo cryptsetup luksClose /dev/mapper/sdc"
-alias 2xmonad-e="$EDITOR ~/.xmonad/xmonad.hs"
-alias 2xmobar-e="$EDITOR ~/.xmobarrc"
+      2umount-sdx() {
+        if [[ $# -eq 0 ]] ; then
+            echo 'please enter x in disk label sdx like b for sdb'
+            return 1
+        fi;
+        sudo umount /mnt/sd${1}
+      }
+      2umount-sdx-encrypted() {
+        if [[ $# -eq 0 ]] ; then
+            echo 'please enter x in disk label sdx like b for sdb'
+            return 1
+        fi;
+        sudo umount /mnt/sd${1}
+        sudo cryptsetup luksClose /dev/mapper/sd${1}
+      }
 # new commands
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -79,6 +97,18 @@ alias 2diff-folders="diff -x '.*' -rq"
         if [ $arg == '.' ]; then
           echo Edit current directory ...
           $EDITOR .
+        elif [ $arg == 'config' ]; then
+          $EDITOR ~/configs-and-scripts/configs
+        elif [ $arg == 'nvim' ]; then
+          $EDITOR ~/.config/nvim
+        elif [ $arg == 'polybar' ]; then
+          $EDITOR ~/.config/polybar/config.ini
+        elif [ $arg == 'script' ]; then
+          $EDITOR ~/configs-and-scripts/scripts
+        elif [ $arg == 'xmobar' ]; then
+          $EDITOR ~/.xmobarrc
+        elif [ $arg == 'xmonad' ]; then
+          $EDITOR ~/.xmonad/xmonad.hs
         elif [ -f "$(command -v $arg)" ]; then
           echo Edit script ...
           $EDITOR "$(command -v "$arg")"
@@ -87,10 +117,6 @@ alias 2diff-folders="diff -x '.*' -rq"
           $EDITOR $arg
         fi;
       }
-      2e-chmod-x() { $EDITOR "$1" && chmod +x "$1"; }
-alias 2configs-e="$EDITOR ~/configs-and-scripts/configs"
-alias 2scripts-e="$EDITOR ~/configs-and-scripts/scripts"
-alias 2nvim-e="$EDITOR ~/.config/nvim"
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
       2git-display-folders-not-update() { for x in $(\ls -d */); do cd $x; git fetch -q 1>/dev/null; [ "$(git rev-parse HEAD 2>/dev/null)" != "$(git rev-parse @{u} 2>/dev/null)" ] && echo $x; cd ..; done; }
