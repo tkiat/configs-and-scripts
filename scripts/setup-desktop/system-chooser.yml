@@ -1,4 +1,5 @@
 # usage: ansible-playbook system-chooser.yml -i ansible_hosts --ask-become-pass
+# TODO determine system sutomatically
 
 - name: system-chooser
   hosts: all

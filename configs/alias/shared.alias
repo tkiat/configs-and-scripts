@@ -117,6 +117,16 @@ alias 2diff-folders="diff -x '.*' -rq"
           $EDITOR $arg
         fi;
       }
+      2server() {
+        arg="${1}"
+        if [[ $# -eq 0 ]] ; then
+          python -m http.server 8000
+        elif [ $arg == 'python' ]; then
+          python -m http.server 8000
+        elif [ $arg == 'hoogle' ]; then
+          hoogle server --local -n -p 3000
+        fi;
+      }
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
       2git-display-folders-not-update() { for x in $(\ls -d */); do cd $x; git fetch -q 1>/dev/null; [ "$(git rev-parse HEAD 2>/dev/null)" != "$(git rev-parse @{u} 2>/dev/null)" ] && echo $x; cd ..; done; }
@@ -134,7 +144,6 @@ alias 2git-sort-size="git rev-list --objects --all | git cat-file --batch-check=
 alias 2grep-current-dir="grep -inr . -e "
 alias 2grub-make="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias 2keyring-get-gnu="wget https://ftp.gnu.org/gnu/gnu-keyring.gpg"
-alias 2live-server="python -m http.server 8000"
       2ls-exclude-same-name-diff-ext() { for f in *; do echo "${f%.*}"; done | sort | uniq -u ;}
 alias 2ls-symlink="find . -maxdepth 1 -type l"
       2ls-tar() { tar tf $1 | sed 's/\/.*//' | uniq; } # list tarball file and folders (depth = 1)
@@ -146,7 +155,6 @@ alias 2replace-newline="tr '\n' ' '"
       2sed-replace-recursive() {
         find . -type f -not -path '*/\.*' -exec sed -i "s/$1/$2/g" {} +;
       }
-alias 2server-hoogle='hoogle server --local -n -p 3000'
 alias 2showoff='neofetch'
       2tab-title-change() { echo -en "\e]2;$1\a"; }
 alias 2w='which'
