@@ -54,9 +54,8 @@
     - newsboat
     - neofetch
     - neomutt
-    - neovim
+      #    - neovim
     - pandoc
-    - password-store
     - pinentry-gtk2
     - psmisc
     - python-is-python3

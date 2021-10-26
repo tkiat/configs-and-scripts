@@ -1,15 +1,15 @@
 # env
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 
 alias bat='batcat'
 
 source ~/.bashrc.shared
 
 # Debian Specific
-. ~/.alias-modules/apt
-. ~/.alias-modules/nix
-. ~/.alias-modules/systemctl
+. ~/.alias-modules/apt.alias
+. ~/.alias-modules/nix.alias
+. ~/.alias-modules/systemctl.alias
 
 alias 2showoff="neofetch && vrms"
 alias chromium="chromium --no-default-browser-check"

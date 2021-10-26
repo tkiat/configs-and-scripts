@@ -17,7 +17,7 @@
     - import_tasks: task/common-configs/newsboat.yml
     - import_tasks: task/common-configs/pass.yml
     - import_tasks: task/common-configs/polybar.yml
-    - import_tasks: task/common-configs/pomodoro-px.yml
+    - import_tasks: task/common-configs/pomodoro-bar.yml
     - import_tasks: task/common-configs/ranger.yml
     - import_tasks: task/common-configs/readline.yml
     - import_tasks: task/common-configs/tmux.yml
