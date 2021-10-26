@@ -103,6 +103,8 @@ alias 2diff-folders="diff -x '.*' -rq"
           $EDITOR ~/.config/nvim
         elif [ $arg == 'polybar' ]; then
           $EDITOR ~/.config/polybar/config.ini
+        elif [ $arg == 'pomodoro' ]; then
+          $EDITOR ~/.local/share/pomodoro-bar/record.json
         elif [ $arg == 'script' ]; then
           $EDITOR ~/configs-and-scripts/scripts
         elif [ $arg == 'xmobar' ]; then
