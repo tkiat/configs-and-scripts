@@ -41,8 +41,8 @@ alias sudo='sudo ' # enable running alias as superuser$
 alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
 alias xpdf="xpdf -z width"
+
 # shortcut on top of default command
-alias 2bash-source="source ~/.bashrc"
 alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
@@ -50,37 +50,52 @@ alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-n
 alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i;
 done'
-      2mount-sdx() {
+      2mount() {
         if [[ $# -eq 0 ]] ; then
-            echo 'please enter x in disk label sdx like b for sdb'
-            return 1
+            echo 'usage: 2mount <letter x in disk label: sdx> <luks (optional)>'
         fi;
-        sudo mount /dev/sd${1} /mnt/sd${1}
-      }
-      2mount-sdx-encrypted() {
-        if [[ $# -eq 0 ]] ; then
-            echo 'please enter x in disk label sdx like b for sdb'
-            return 1
+
+        if [[ $# -eq 1 ]] ; then
+          echo 'mounting a disk ...'
+          sudo mount /dev/sd${1} /mnt/sd${1}
+        elif [[ $2 -eq 'luks' ]] ; then
+          echo 'mounting an encrypted disk ...'
+          sudo cryptsetup luksOpen /dev/sd${1} sd${1}
+          sudo mount /dev/mapper/sd${1} /mnt/sd${1}
         fi;
-        sudo cryptsetup luksOpen /dev/sd${1} sd${1}
-        sudo mount /dev/mapper/sd${1} /mnt/sd${1}
       }
 alias 2rm-file-recursive="find . -type f -delete"
 alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
-      2umount-sdx() {
+      2source() {
         if [[ $# -eq 0 ]] ; then
-            echo 'please enter x in disk label sdx like b for sdb'
-            return 1
+          echo 'usage: 2source <program>'
         fi;
-        sudo umount /mnt/sd${1}
+
+        local c=
+        case "$1" in
+          bash) c="source ~/.bashrc" ;;
+        esac
+
+        if [ -n "$c" ]; then
+          echo "$c"; eval "$c"
+        else
+          echo unknown arguments
+        fi;
       }
-      2umount-sdx-encrypted() {
-        if [[ $# -eq 0 ]] ; then
-            echo 'please enter x in disk label sdx like b for sdb'
-            return 1
+      2umount() {
+        if [[ $# -eq 0 || $1 -eq '-h' ]] ; then
+            echo 'usage: 2umount <letter x in disk label: sdx> <luks (optional)>'
+            if [[ $# -eq 0 ]] ; then return 1; else return 0; fi
         fi;
-        sudo umount /mnt/sd${1}
-        sudo cryptsetup luksClose /dev/mapper/sd${1}
+
+        if [[ $# -eq 1 ]] ; then
+          echo 'unmounting a disk ...'
+          sudo umount /mnt/sd${1}
+        elif [[ $2 -eq 'luks' ]] ; then
+          echo 'unmounting an encrypted disk ...'
+          sudo umount /mnt/sd${1}
+          sudo cryptsetup luksClose /dev/mapper/sd${1}
+        fi;
       }
 # new commands
 alias ..='cd ..'
@@ -93,40 +108,27 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
       2e() {
-        arg="${1:-.}"
-        if [ $arg == '.' ]; then
-          echo Edit current directory ...
-          $EDITOR .
-        elif [ $arg == 'config' ]; then
-          $EDITOR ~/configs-and-scripts/configs
-        elif [ $arg == 'nvim' ]; then
-          $EDITOR ~/.config/nvim
-        elif [ $arg == 'polybar' ]; then
-          $EDITOR ~/.config/polybar/config.ini
-        elif [ $arg == 'pomodoro' ]; then
-          $EDITOR ~/.local/share/pomodoro-bar/record.json
-        elif [ $arg == 'script' ]; then
-          $EDITOR ~/configs-and-scripts/scripts
-        elif [ $arg == 'xmobar' ]; then
-          $EDITOR ~/.xmobarrc
-        elif [ $arg == 'xmonad' ]; then
-          $EDITOR ~/.xmonad/xmonad.hs
-        elif [ -f "$(command -v $arg)" ]; then
-          echo Edit script ...
-          $EDITOR "$(command -v "$arg")"
-        else
-          echo Edit file ...
-          $EDITOR $arg
-        fi;
-      }
-      2server() {
-        arg="${1}"
-        if [[ $# -eq 0 ]] ; then
-          python -m http.server 8000
-        elif [ $arg == 'python' ]; then
-          python -m http.server 8000
-        elif [ $arg == 'hoogle' ]; then
-          hoogle server --local -n -p 3000
+        local arg="${1:-.}"
+        local f=
+        case $arg in
+          .) f=. ;;
+          config) f=~/configs-and-scripts/configs ;;
+          nvim) f=~/.config/nvim ;;
+          polybar) f=~/.config/polybar/config.ini ;;
+          pomodoro) f=~/.local/share/pomodoro-bar/record.json ;;
+          script) f=~/configs-and-scripts/scripts ;;
+          xmobar) f=~/.xmobarrc ;;
+          xmonad) f=~/.xmonad/xmonad.hs ;;
+          *)
+            if [ -f "$(command -v $arg)" ]; then
+              f="$(command -v "$arg")"
+            fi;
+        esac
+
+        if [ -n "$f" ]; then
+          echo $EDITOR $f
+          $EDITOR "$f"
+        else echo unknown arguments
         fi;
       }
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
@@ -156,6 +158,16 @@ alias 2primary-get="xclip -o -selection primary"
 alias 2replace-newline="tr '\n' ' '"
       2sed-replace-recursive() {
         find . -type f -not -path '*/\.*' -exec sed -i "s/$1/$2/g" {} +;
+      }
+      2server() {
+        arg="${1}"
+        if [[ $# -eq 0 ]] ; then
+          python -m http.server 8000
+        elif [ $arg == 'python' ]; then
+          python -m http.server 8000
+        elif [ $arg == 'hoogle' ]; then
+          hoogle server --local -n -p 3000
+        fi;
       }
 alias 2showoff='neofetch'
       2tab-title-change() { echo -en "\e]2;$1\a"; }
