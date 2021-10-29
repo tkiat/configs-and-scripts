@@ -1,72 +1,66 @@
 2nix() {
-  data='{
-    "i": {
-      "root": "echo root",
-      "user": "echo user"
+#   usage: 2nix i user nixpkgs hello
+  commands=$(cat <<EOF
+    {
+      "c": {
+        "pkg": {
+          "nixpkgs": "nix-env -f '<nixpkgs>' -qaP > ~/.cache/nixpkgs",
+          "haskell": "nix-env -f '<nixpkgs>' -qaP -A haskellPackages > ~/.cache/nixpkgs-haskell",
+          "node":    "nix-env -f '<nixpkgs>' -qaP -A nodePackages > ~/.cache/nixpkgs-node"
+        }
+      },
+      "gc": {
+        "root": "sudo -i -- nix-env --delete-generations old && nix-store --gc",
+        "system": "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d",
+        "user": "nix-env --delete-generations old && nix-store --gc"
+      },
+      "i": {
+        "root": "sudo -i -- nix-env -i $3",
+        "user": {
+          "haskell": "nix-env -iA nixos.haskellPackages.$3",
+          "nixpkgs": "nix-env -i $3 && rm -f ~/.cache/dmenu_run"
+        }
+      },
+      "q": {
+        "pkg": {
+          "nixpkgs": "cat ~/.cache/nixpkgs",
+          "haskell": "cat ~/.cache/nixpkgs-haskell",
+          "node": "cat ~/.cache/nixpkgs-node"
+        },
+        "root": {
+          "installed": "sudo -i -- nix-env --query"
+        },
+        "system": {
+          "generation": "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system",
+          "info": "nix-shell -p nix-info --run 'nix-info -m'"
+        },
+        "user": {
+          "installed": "nix-env --query"
+        }
+      },
+      "r": {
+        "root": "sudo -i -- nix-env -e $3",
+        "user": "nix-env -e $3"
+      },
+      "u": {
+        "nix": {
+          "root": "sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix",
+          "user": "nix-channel --update; nix-env -iA nixpkgs.nix"
+        },
+        "root": "sudo -i -- nix-channel --update && nix-env -u",
+        "user": "nix-channel --update && nix-env -u"
+      }
     }
-  }'
-  cmd=$(python3 ~/configs-and-scripts/scripts/ondemand/helper/get_json_leaf.py "$data" "$1" "$2")
-  eval $cmd
-}
-# 2nix() {
-#   common() {
-#     local -n arr="$1" # pass by name
-#     for key in ${!arr[@]}; do
-#       if [ "$2" == "$key" ] ; then
-#         eval ${arr[${key}]}
-#         return 0
-#       fi
-#     done
-#     echo unknown arguments
-#     return 1
-#   }
-# 
-#   arg1="$1"
-#   arg2="$2"
-# 
-# 
-#   declare -A i
-#   i[user]='sudo -i -- nix-env -i $2'
-#   i[root]='nix-env -i $2 && rm -f ~/.cache/dmenu_run'
-# 
-#   declare -A top
-#   top[i]='common i "$arg2"'
-#   top[q]='common i "$arg2"'
-# 
-#   common top $1
-# }
-
-alias 2nix-c-pkgs="
-  nix-env -f '<nixpkgs>' -qaP                    > ~/.cache/nixpkgs
-  nix-env -f '<nixpkgs>' -qaP -A haskellPackages > ~/.cache/nixpkgs-haskell
-  nix-env -f '<nixpkgs>' -qaP -A nodePackages    > ~/.cache/nixpkgs-node
-"
-alias 2nix-gc='2nix-gc-user;2nix-gc-root;2nix-gc-system'
-alias 2nix-gc-user='nix-env --delete-generations old && nix-store --gc'
-alias 2nix-gc-root='sudo -i -- nix-env --delete-generations old && nix-store --gc'
-alias 2nix-gc-system='
-        sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old &&
-        nix-collect-garbage -d
-      '
-      2nix-i() { nix-env -i $1 && rm -f ~/.cache/dmenu_run; }
-      2nix-i-hint () {
-cat << EOF
-On NixOS
-  - Haskell: nix-env -iA nixos.haskellPackages.<package-name>
 EOF
+  )
+  cmd=$(~/configs-and-scripts/scripts/ondemand/helper/get_json_leaf.py "$commands" "$@")
+  if [ "$cmd" != "" ]; then
+    echo "$cmd"; eval "$cmd"
+  else
+    echo unknown arguments
+    return 1
+  fi;
 }
-alias 2nix-i-root='sudo -i -- nix-env -i'
-alias 2nix-q-generations-system='sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'
-alias 2nix-q-info="nix-shell -p nix-info --run 'nix-info -m'"
-alias 2nix-q-installed='nix-env --query'
-alias 2nix-q-installed-root='sudo -i -- nix-env --query'
-alias 2nix-q-pkgs='cat ~/.cache/nixpkgs'
-alias 2nix-q-pkgs-haskell='cat ~/.cache/nixpkgs-haskell'
-alias 2nix-q-pkgs-node='cat ~/.cache/nixpkgs-node'
-alias 2nix-r='nix-env -e'
-alias 2nix-r-root='sudo -i -- nix-env -e'
-# 2nix-s-pkg() { nix-env -qa | grep $1 | bat; }
-alias 2nix-u='nix-channel --update && nix-env -u'
-alias 2nix-u-root='sudo -i -- nix-channel --update && nix-env -u'
-alias 2nix-u-self='nix-channel --update; nix-env -iA nixpkgs.nix'
-alias 2nix-u-self-root='sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix'
+
+alias 2nix-c='2nix c pkg haskell;2nix c pkg nixpkgs;2nix c pkg node'
+alias 2nix-gc='2nix gc root;2nix gc system;2nix gc user'
