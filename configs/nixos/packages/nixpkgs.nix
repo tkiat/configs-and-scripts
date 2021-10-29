@@ -18,7 +18,7 @@
         haskell-language-server
         pyright
         nodePackages.bash-language-server
-        nodePackages.purescript-language-server
+        #         nodePackages.purescript-language-server
         nodePackages.typescript-language-server
         nodePackages.vim-language-server
         nodePackages.yaml-language-server

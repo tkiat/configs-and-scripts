@@ -115,7 +115,7 @@ alias 2e=2edit
           .) f=. ;;
           alias) f=~/configs-and-scripts/configs/alias ;;
           config) f=~/configs-and-scripts/configs ;;
-          nixos) $EDITOR ~/configs-and-scripts/configs/nix ;;
+          nixos) $EDITOR ~/configs-and-scripts/configs/nixos ;;
           nvim) f=~/.config/nvim ;;
           polybar) f=~/.config/polybar/config.ini ;;
           pomodoro) f=~/.local/share/pomodoro-bar/record.json ;;
