@@ -107,12 +107,15 @@ alias 2clipboard-set="tr -d '\n' | xclip -selection clipboard" # usage: pwd | 2c
 alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
-      2e() {
-        local arg="${1:-.}"
+alias 2e=2edit
+      2edit() {
+        local arg=${1:-.}
         local f=
-        case $arg in
+        case "$arg" in
           .) f=. ;;
+          alias) f=~/configs-and-scripts/configs/alias ;;
           config) f=~/configs-and-scripts/configs ;;
+          nixos) $EDITOR ~/configs-and-scripts/configs/nix ;;
           nvim) f=~/.config/nvim ;;
           polybar) f=~/.config/polybar/config.ini ;;
           pomodoro) f=~/.local/share/pomodoro-bar/record.json ;;
@@ -122,6 +125,8 @@ alias 2diff-folders="diff -x '.*' -rq"
           *)
             if [ -f "$(command -v $arg)" ]; then
               f="$(command -v "$arg")"
+            elif [ -f "$arg" ]; then
+              f=$arg
             fi;
         esac
 

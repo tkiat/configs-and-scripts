@@ -37,7 +37,6 @@
         docker
         docker-compose
         gcc
-        ghc
         git
         gnumake
         lua
@@ -90,7 +89,7 @@
         neofetch
         neomutt
         newsboat
-        #         nvimpager
+        okular
         pandoc
         pass
         pciutils
