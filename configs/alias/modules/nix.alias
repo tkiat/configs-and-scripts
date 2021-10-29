@@ -1,57 +1,40 @@
 2nix() {
-  common() {
-    local -n arr="$1" # pass by name
-    for key in ${!arr[@]}; do
-      if [ "$2" == "$key" ] ; then
-        eval ${arr[${key}]}
-        return 0
-      fi
-    done
-    echo unknown arguments
-    return 1
-  }
-
-  arg1="$1"
-  arg2="$2"
-
-# animals=(dog cat mouse)
-# declare -A sound=(
-#   [dog]=barks
-#   [cat]=purrs
-#   [mouse]=cheeps
-# )
-# declare -A size=(
-#   [dog]=big
-#   [cat]=medium
-#   [mouse]=small
-# )
-# for animal in "${animals[@]}"; do
-#   echo "$animal ${sound[$animal]} and it is ${size[$animal]}"
-# done
-#   aa=(user 'echo user')
-#   test=(('a' 'b') ('c' 'd'))
-#   for a in "${test[@]}"; do
-#     echo "${a[0]} ${a[1]}"
-# #     echo "$animal ${test[$animal]}"
-#   done
-#   for i in c,'echo noob' e,5; do IFS=","; set -- $i; echo $1 and $2; done
-#   printarr() { declare -n __p="$1"; for k in "${!__p[@]}"; do printf "%s=%s\n" "$k" "${__p[$k]}" ; done ;  }
-
-  declare -A i
-  i[user]='echo user'
-  i[root]='echo root'
+  data='{
+    "i": {
+      "root": "echo root",
+      "user": "echo user"
+    }
+  }'
+  cmd=$(python3 ~/configs-and-scripts/scripts/ondemand/helper/get_json_leaf.py "$data" "$1" "$2")
+  eval $cmd
+}
+# 2nix() {
+#   common() {
+#     local -n arr="$1" # pass by name
+#     for key in ${!arr[@]}; do
+#       if [ "$2" == "$key" ] ; then
+#         eval ${arr[${key}]}
+#         return 0
+#       fi
+#     done
+#     echo unknown arguments
+#     return 1
+#   }
+# 
+#   arg1="$1"
+#   arg2="$2"
+# 
+# 
+#   declare -A i
 #   i[user]='sudo -i -- nix-env -i $2'
 #   i[root]='nix-env -i $2 && rm -f ~/.cache/dmenu_run'
-
-  declare -A top
-  top[i]='common i "$arg2"'
-  top[q]='common i "$arg2"'
-
-  common top $1
-
-  printarr top
-  printarr i
-}
+# 
+#   declare -A top
+#   top[i]='common i "$arg2"'
+#   top[q]='common i "$arg2"'
+# 
+#   common top $1
+# }
 
 alias 2nix-c-pkgs="
   nix-env -f '<nixpkgs>' -qaP                    > ~/.cache/nixpkgs
