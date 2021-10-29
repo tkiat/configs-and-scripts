@@ -11,4 +11,3 @@ in
     systemPackages = with pkgs; [ myGhc ];
   };
 }
-
