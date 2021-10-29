@@ -1,7 +1,18 @@
-alias 2apt-gc='sudo apt autoremove'
-#      2apt-i() { sudo apt install $1 && rm -f ~/.cache/dmenu_run; }
-alias 2apt-i='sudo apt install'
-alias 2apt-q-installed='apt list --installed | bat'
-alias 2apt-s='apt search'
-alias 2apt-r='sudo apt remove'
-alias 2apt-u='sudo apt update && sudo apt upgrade'
+# alias 2apt-gc='sudo apt autoremove'
+# alias 2apt-i='sudo apt install'
+# alias 2apt-q-installed='apt list --installed | bat'
+# alias 2apt-r='sudo apt remove'
+# alias 2apt-s='apt search'
+# alias 2apt-u='sudo apt update && sudo apt upgrade'
+
+2apt() {
+  local arg=${1:-h}
+  case "$arg" in
+    gc) sudo apt autoremove ;;
+    i) sudo apt install ;;
+    r) sudo apt remove ;;
+    s) apt search ;;
+    u) sudo apt update && sudo apt upgrade ;;
+    *) echo unknown arguments; return 1 ;;
+  esac
+}

@@ -5,10 +5,10 @@
     [
       ./cachix.nix
       ./hardware-configuration.nix
+      ./packages/ghc.nix
+      ./packages/neovim.nix
       ./packages/nixpkgs.nix
       ./packages/tkiat.nix
-      ./packages/neovim.nix
-      ./packages/ghc.nix
     ];
 
   boot = {
