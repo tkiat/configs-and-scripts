@@ -42,7 +42,7 @@
         lua
         niv
         nix-prefetch-git
-        nodejs
+        #         nodejs
         purescript
         python3
         shellcheck
