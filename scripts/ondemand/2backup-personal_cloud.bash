@@ -22,6 +22,7 @@ function archive_compress_encrypt_upload () {
 
   echo 'Encrypting ...'
   gpg --encrypt --recipient tkiat@tutanota.com "$filename.tar.gz"
+  if [[ $? -ne 0 ]]; then echo gpg encryption failed. exiting ...; exit 1; fi;
 
   echo 'Uploading ...'
   gdrive upload "$filename.tar.gz.gpg"
