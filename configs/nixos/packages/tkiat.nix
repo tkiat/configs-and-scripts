@@ -3,6 +3,7 @@
 let
   tkiat-channel = builtins.fetchGit {
     url = "https://gitlab.com/tkiat/nix-channel.git";
+    ref = "main";
     rev = "0ce37bef4ba5fee5eccd94310add25673bc89ce9";
   };
 

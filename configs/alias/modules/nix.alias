@@ -15,18 +15,14 @@
         "user": "nix-env --delete-generations old && nix-store --gc"
       },
       "i": {
-        "root": "sudo -i -- nix-env -i $3",
-        "user": {
-          "haskell": "nix-env -iA nixos.haskellPackages.$3",
-          "nixpkgs": "nix-env -i $3 && rm -f ~/.cache/dmenu_run"
-        }
+        "haskell": "nix-env -iA nixos.haskellPackages.$3",
+        "nixpkgs": "nix-env -i $3 && rm -f ~/.cache/dmenu_run",
+        "root": "sudo -i -- nix-env -i $3"
       },
       "q": {
-        "pkg": {
-          "nixpkgs": "cat ~/.cache/nixpkgs",
-          "haskell": "cat ~/.cache/nixpkgs-haskell",
-          "node": "cat ~/.cache/nixpkgs-node"
-        },
+        "nixpkgs": "cat ~/.cache/nixpkgs",
+        "haskell": "cat ~/.cache/nixpkgs-haskell",
+        "node": "cat ~/.cache/nixpkgs-node",
         "root": {
           "installed": "sudo -i -- nix-env --query"
         },

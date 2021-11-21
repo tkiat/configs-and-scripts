@@ -39,12 +39,14 @@
         gcc
         git
         gnumake
+        go
         lua
         niv
         nix-prefetch-git
         #         nodejs
         purescript
         python3
+        sass
         shellcheck
         spago
         stack
@@ -90,6 +92,7 @@
         neomutt
         newsboat
         okular
+        openbox
         pandoc
         pass
         pciutils

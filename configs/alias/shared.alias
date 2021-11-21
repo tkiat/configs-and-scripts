@@ -162,7 +162,7 @@ alias 2ping="ping gnu.org"
 alias 2primary-get="xclip -o -selection primary"
 alias 2replace-newline="tr '\n' ' '"
       2sed-replace-recursive() {
-        find . -type f -not -path '*/\.*' -exec sed -i "s/$1/$2/g" {} +;
+        find . -type f -not -path '*/\.*' -exec sed -i "s|$1|$2|g" {} +;
       }
       2server() {
         arg="${1}"

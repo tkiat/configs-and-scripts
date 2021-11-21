@@ -11,6 +11,7 @@ let template_dir=nvim_dir.'/template'
 
 let space_per_tab=2
 " TODO use vim tag sections here also check mapping first perhaps can remove leader
+" TODO colsure on how to display 80 clumns
 " ========================================
 " Set
 " ========================================

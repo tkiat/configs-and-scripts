@@ -9,6 +9,7 @@
       ./packages/neovim.nix
       ./packages/nixpkgs.nix
       ./packages/tkiat.nix
+      ./packages/unfree.nix
     ];
 
   boot = {
