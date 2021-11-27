@@ -83,7 +83,7 @@ alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
         fi;
       }
       2umount() {
-        if [[ $# -eq 0 || $1 -eq '-h' ]] ; then
+        if [[ $# -eq 0 ]] || [[ $1 == '-h' ]] ; then
             echo 'usage: 2umount <letter x in disk label: sdx> <luks (optional)>'
             if [[ $# -eq 0 ]] ; then return 1; else return 0; fi
         fi;

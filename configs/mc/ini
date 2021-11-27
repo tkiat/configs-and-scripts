@@ -121,6 +121,8 @@ st-256color=
 
 linux=
 
+xterm=
+
 [Panels]
 simple_swap=false
 show_mini_info=true

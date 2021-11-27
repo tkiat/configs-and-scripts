@@ -25,7 +25,7 @@
         sumneko-lua-language-server
 
         # autoformatter
-        haskellPackages.ormolu
+        #         haskellPackages.ormolu
         nixpkgs-fmt
 
         # dev
@@ -44,11 +44,11 @@
         niv
         nix-prefetch-git
         #         nodejs
-        purescript
+        #         purescript
         python3
         sass
         shellcheck
-        spago
+        #         spago
         stack
 
         # others

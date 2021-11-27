@@ -11,7 +11,7 @@ plugins:
       arg:
   haskell:
     - cmd: ormolu
-      arg: 
+      arg:
     - cmd: brittany
       arg: --columns 80 --indent 2
     - cmd: hindent
@@ -19,3 +19,6 @@ plugins:
   nix:
     - cmd: nixpkgs-fmt
       arg:
+#   purescript:
+#     - cmd: purty
+#       arg: "- --write"
