@@ -1,0 +1,25 @@
+#!/usr/bin/env dash
+guix_repo=/home/$USER/Git/guix-channel
+file="$guix_repo"/tkiat/packages/$(basename "$(pwd)").scm
+
+exec < /dev/tty
+[ -e "$file" ] && read -p "Do you want to update this commit to your Guix channel (auto-commit and push it)? (y or anything else): " -r ans
+
+if [ "$ans" = "y" ]; then
+  git_hash=$(git -C . log -n 1 --format=format:"%H")
+  guix_hash=$(guix hash --hash=sha256 --format=nix-base32 -rx .)
+
+  echo "New Git hash: $git_hash. Substituting ..."
+  sed -i "s/(commit \"[0-9a-f]\{40\}\")/(commit \"$git_hash\")/g" "$file"
+  echo "New Guix hash: $guix_hash. Substituting ..."
+  sed -i "s/(base32 \".\+\")/(base32 \"$guix_hash\")/g" "$file"
+
+  branch_name=$(git -C "$guix_repo" rev-parse --abbrev-ref HEAD)
+  echo "Now at your guix channel ..."
+  echo "git add"
+  git -C "$guix_repo" add -A
+  echo "git signed commit"
+  git -C "$guix_repo" commit -S -m "UPDATE: $(basename "$(pwd)").scm"
+  echo "git push"
+  git -C "$guix_repo" push origin "$branch_name"
+fi

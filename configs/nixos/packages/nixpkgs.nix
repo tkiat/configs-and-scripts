@@ -40,6 +40,7 @@
         git
         gnumake
         go
+        graphviz
         lua
         niv
         nix-prefetch-git

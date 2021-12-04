@@ -21,14 +21,16 @@ function archive_compress_encrypt_upload () {
   tar czf "$filename.tar.gz" --directory="$dir" .
 
   echo 'Encrypting ...'
-  gpg --encrypt --recipient tkiat@tutanota.com "$filename.tar.gz"
-  if [[ $? -ne 0 ]]; then echo gpg encryption failed. exiting ...; exit 1; fi;
-
-  echo 'Uploading ...'
-  gdrive upload "$filename.tar.gz.gpg"
-
-  rm "$filename.tar.gz"
-  rm "$filename.tar.gz.gpg"
+  if gpg --encrypt --recipient tkiat@tutanota.com "$filename.tar.gz"
+  then
+    echo 'Uploading ...'
+    gdrive upload "$filename.tar.gz.gpg"
+    rm "$filename.tar.gz"
+    rm "$filename.tar.gz.gpg"
+  else
+    echo gpg encryption failed. exiting ...
+    exit 1
+  fi
 }
 
 function backup_dir () {
