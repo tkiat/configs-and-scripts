@@ -1,7 +1,8 @@
 2nixos() {
   commands=$(cat <<EOF
     {
-      "rebuild": "sudo nixos-rebuild switch --upgrade"
+      "rebuild": "sudo nixos-rebuild switch"
+      "update": "sudo nixos-rebuild switch --upgrade"
     }
 EOF
   )
