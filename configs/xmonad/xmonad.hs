@@ -74,7 +74,7 @@ myConf =
       modMask = mod4Mask,
       normalBorderColor = "#222222",
       terminal = "st",
-      workspaces = ["General", "Web", "3", "4", "Login", "6", "7", "Media"],
+      workspaces = ["General", "Web", "3", "4", "Login", "6", "7", "Media", "9"],
       startupHook = myStartupHook
     }
   where

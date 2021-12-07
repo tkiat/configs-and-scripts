@@ -13,6 +13,10 @@ for val in ['{}','()','[]']
   exe 'inoremap '.val[0].'<CR> '.val[0].'<CR>'.val[1].'<Esc>ko'
 endfor
 
+" symbol
+inoremap endash –
+inoremap emdash —
+
 " {(["'*<`: enclose curent word with its pair
 for val in ['{}','()','[]','""',"''",'**','<>','``','__']
   exe 'nnoremap <leader>'.val[0].' mqciw'.val[0].val[1].'<esc>P`ql'
