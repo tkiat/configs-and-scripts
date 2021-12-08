@@ -46,7 +46,7 @@ alias xpdf="xpdf -z width"
 alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
-      2grep-width-nolink() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
+      2grep-markdown-width() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g; s/^([^:]*:[^:]*:)\s+(.*)/\1\2/g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i;
 done'
