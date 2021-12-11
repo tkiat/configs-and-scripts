@@ -19,21 +19,6 @@
         "nixpkgs": "nix-env -i $3 && rm -f ~/.cache/dmenu_run",
         "root": "sudo -i -- nix-env -i $3"
       },
-      "q": {
-        "nixpkgs": "cat ~/.cache/nixpkgs",
-        "haskell": "cat ~/.cache/nixpkgs-haskell",
-        "node": "cat ~/.cache/nixpkgs-node",
-        "root": {
-          "installed": "sudo -i -- nix-env --query"
-        },
-        "system": {
-          "generation": "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system",
-          "info": "nix-shell -p nix-info --run 'nix-info -m'"
-        },
-        "user": {
-          "installed": "nix-env --query"
-        }
-      },
       "r": {
         "root": "sudo -i -- nix-env -e $3",
         "user": "nix-env -e $3"
@@ -58,5 +43,14 @@ EOF
   fi;
 }
 
+      print-and-execute() { cmd=$1; echo "Evaluating: $cmd"; echo; eval "$cmd";}
+
 alias 2nix-c='2nix c pkg haskell;2nix c pkg nixpkgs;2nix c pkg node'
 alias 2nix-gc='2nix gc root;2nix gc system;2nix gc user'
+alias 2nix-q-haskell="print-and-execute 'cat ~/.cache/nixpkgs-haskell'"
+alias 2nix-q-nixpkgs="print-and-execute 'cat ~/.cache/nixpkgs'"
+alias 2nix-q-node="print-and-execute 'cat ~/.cache/nixpkgs-node'"
+alias 2nix-q-root-installed="print-and-execute 'sudo -i -- nix-env --query'"
+alias 2nix-q-system-generation="print-and-execute 'sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'"
+alias 2nix-q-system-info="print-and-execute \"nix-shell -p nix-info --run 'nix-info -m'\""
+alias 2nix-q-user-installed="print-and-execute 'nix-env --query'"
