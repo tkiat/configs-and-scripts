@@ -9,7 +9,6 @@
       ./packages/neovim.nix
       ./packages/nixpkgs.nix
       ./packages/tkiat.nix
-      ./packages/unfree.nix
     ];
 
   boot = {
@@ -65,13 +64,11 @@
     useDHCP = false;
   };
 
-  nixpkgs = {
-    config = {
-      blacklistedLicenses = with lib.licenses; [
-        # despite being non-free, NixOS doesn't treat unfreeRedistributableFirmware as such
-        unfreeRedistributableFirmware
-      ];
-    };
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
   };
 
   powerManagement = {

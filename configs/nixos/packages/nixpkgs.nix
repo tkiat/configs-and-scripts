@@ -1,38 +1,40 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-# let
-#   unstableTarball = fetchTarball https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz;
-# in
 {
-  #   nixpkgs.config.packageOverrides = pkgs: {
-  #     unstable = import unstableTarball {
-  #       config = config.nixpkgs.config;
-  #     };
-  #   };
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "google-chrome"
+      ];
+      blacklistedLicenses = with lib.licenses; [
+        # NixOS doesn't treat unfreeRedistributableFirmware as unfree
+        unfreeRedistributableFirmware
+      ];
+    };
+  };
 
   environment = {
     systemPackages =
       with pkgs;
       [
-        # LSP
-        haskell-language-server
-        pyright
-        nodePackages.bash-language-server
-        #         nodePackages.purescript-language-server
-        nodePackages.typescript-language-server
-        nodePackages.vim-language-server
-        nodePackages.yaml-language-server
-        sumneko-lua-language-server
+        # unfree
+        google-chrome
 
-        # autoformatter
-        #         haskellPackages.ormolu
-        nixpkgs-fmt
+        # LSP
+          # haskell-language-server
+        nodePackages.bash-language-server
+          # nodePackages.purescript-language-server
+          # nodePackages.typescript-language-server
+          # nodePackages.vim-language-server
+        nodePackages.yaml-language-server
+          # pyright
+        sumneko-lua-language-server
 
         # dev
         ansible
         bash
         cabal-install
-        cabal2nix
+#         cabal2nix
         cookiecutter
         docker
         docker-compose

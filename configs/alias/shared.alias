@@ -167,11 +167,11 @@ alias 2replace-newline="tr '\n' ' '"
       2server() {
         arg="${1}"
         if [[ $# -eq 0 ]] ; then
-          python -m http.server 3000
+          python -m http.server 5000
         elif [ $arg == 'python' ]; then
-          python -m http.server 3000
+          python -m http.server 5000
         elif [ $arg == 'hoogle' ]; then
-          hoogle server --local -n -p 3000
+          hoogle server --local -n -p 5000
         fi;
       }
 alias 2showoff='neofetch'
