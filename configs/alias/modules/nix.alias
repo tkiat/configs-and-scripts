@@ -2,13 +2,6 @@
 #   usage: 2nix i user nixpkgs hello
   commands=$(cat <<EOF
     {
-      "c": {
-        "pkg": {
-          "nixpkgs": "nix-env -f '<nixpkgs>' -qaP > ~/.cache/nixpkgs",
-          "haskell": "nix-env -f '<nixpkgs>' -qaP -A haskellPackages > ~/.cache/nixpkgs-haskell",
-          "node":    "nix-env -f '<nixpkgs>' -qaP -A nodePackages > ~/.cache/nixpkgs-node"
-        }
-      },
       "gc": {
         "root": "sudo -i -- nix-env --delete-generations old && nix-store --gc",
         "system": "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d",
@@ -45,7 +38,11 @@ EOF
 
       print-and-execute() { cmd=$1; echo "Evaluating: $cmd"; echo; eval "$cmd";}
 
-alias 2nix-c='2nix c pkg haskell;2nix c pkg nixpkgs;2nix c pkg node'
+      2nix-c(){
+        print-and-execute "nix-env -f '<nixpkgs>' -qaP -A haskellPackages > ~/.cache/nixpkgs-haskell"
+        print-and-execute "nix-env -f '<nixpkgs>' -qaP > ~/.cache/nixpkgs"
+        print-and-execute "nix-env -f '<nixpkgs>' -qaP -A nodePackages > ~/.cache/nixpkgs-node"
+      }
 alias 2nix-gc='2nix gc root;2nix gc system;2nix gc user'
 alias 2nix-q-haskell="print-and-execute 'cat ~/.cache/nixpkgs-haskell'"
 alias 2nix-q-nixpkgs="print-and-execute 'cat ~/.cache/nixpkgs'"
