@@ -21,7 +21,7 @@ import Prelude
 
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
-  barProc <- spawnPipe "xmobar ~/.xmobarrc"
+  barProc <- spawnPipe "xmobar ~/.config/xmobar/.xmobarrc"
   --   spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
   xmonad $
     docks
