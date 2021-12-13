@@ -3,10 +3,12 @@
 
   outputs = { self, nixpkgs }: {
 
-    nixosConfigurations.container = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
+    nixosConfigurations.nixos-main = nixpkgs.lib.nixosSystem {
       modules =
-        [ ({ pkgs, ... }: {
+        [
+          ./configuration.nix
+
+          ({ pkgs, ... }: {
             boot.isContainer = true;
 
             # Let 'nixos-version --json' know about the Git revision
