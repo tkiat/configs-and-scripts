@@ -31,33 +31,9 @@ in
 
   environment.systemPackages = with pkgs; [
     dmenu
-    neovim
 
-    # dev
-    ansible
-    bash
-    cabal-install
-    cookiecutter
-    docker
-    docker-compose
-    gcc
-    git
-    gnumake
-    go
-    graphviz
-    lua
-    niv
-    nix-prefetch-git
-    python3
-    sass
-    shellcheck
-    stack
-
-    # others
     acpi
     alsaUtils
-    calibre
-    cmus
     cpufrequtils
     curl
     dash
@@ -68,56 +44,39 @@ in
     fd
     feh
     flashrom
-    gdrive
     ghostscript
-    gimp
     gnupg
     gwenview
     heimdall
     htop
     imagemagick
-    inkscape
     jpegoptim
-    kdenlive
     killall
     less
-    libreoffice
     lm_sensors
     loc
     mc
     mediainfo
-    mupdf
     neofetch
-    neomutt
-    newsboat
-    okular
+    neovim
     openbox
-    pandoc
     pciutils
     pencil
     pinentry
     pinta
-    polybar
     qview
     ranger
     redshift
     ripgrep
     rsync
     scrot
-    simplescreenrecorder
     smartmontools
-    tdesktop
     tealdeer
     tmux
-    tokei
-    # tor-browser-bundle-bin
     trash-cli
     unzip
     usbutils
-    vlc
-    # vscodium
     w3m
-    weechat
     wget
     xclip
     xfce.exo
@@ -127,7 +86,6 @@ in
     xmonad-with-packages
     xsel
     xterm
-    yarn
     zip
   ];
 
@@ -159,7 +117,46 @@ in
       file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
 
       packages = with pkgs; [
+        # dev
+        ansible
+        bash
+        cabal-install
+          # cookiecutter
+        docker
+        docker-compose
+        gcc
+        gnumake
+        go
+        graphviz
         jq
+        lua
+        niv
+        nix-prefetch-git
+        python3
+        sass
+        shellcheck
+        stack
+        tokei
+        yarn
+
+        calibre
+        cmus
+        gdrive
+        gimp
+        inkscape
+        kdenlive
+        libreoffice
+        mupdf
+        neomutt
+        newsboat
+        okular
+        pandoc
+        polybar
+        simplescreenrecorder
+        tdesktop
+        tor-browser-bundle-bin
+        vlc
+        weechat
       ];
       sessionVariables = {
         EDITOR = "nvim";
@@ -248,21 +245,28 @@ in
         enable = true;
         bashrcExtra = ''
         ''; # non-interactive shell
+	historyControl = [ "ignoredups" "ignorespace" ]; # ignore duplicates and "^ .*" entries
         historyFileSize = 10000;
         historySize = 10000;
         initExtra = '' # interactive shell
-. "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-# Prompt
-. ~/configs-and-scripts/scripts/onstart/bash_zsh-git_prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=1
-PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;36m\]$(__git_ps1)\[\033[0m\]\$ ";
-# Completion
-if ! shopt -oq posix; then . ~/configs-and-scripts/scripts/onstart/bash_zsh-git_completion.bash; fi
-bind 'TAB':menu-complete # cycle through completion matches
-bind "set show-all-if-ambiguous on" # display a list of matching files
-bind "set menu-complete-display-prefix on"
+          . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" # make less friendly for like *.tar.gz
+	  path_config=~/configs-and-scripts/configs
+          path_script=~/configs-and-scripts/scripts
+
+          # Prompt
+          . $path_script/onstart/bash_zsh-git_prompt.sh
+          GIT_PS1_SHOWDIRTYSTATE=1
+          PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;36m\]$(__git_ps1)\[\033[0m\]\$ ";
+
+          # Completion
+          if ! shopt -oq posix; then . $path_script/onstart/bash_zsh-git_completion.bash; fi
+          bind 'TAB':menu-complete # cycle through completion matches
+          bind "set show-all-if-ambiguous on" # display a list of matching files
+          bind "set menu-complete-display-prefix on"
+          
+          [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" # make less friendly for like *.tar.gz
+	  PATH=$PATH:$path_script/ondemand
         '';
         shellAliases = {
         };
@@ -299,8 +303,11 @@ bind "set menu-complete-display-prefix on"
 	    Gitlab = {
 	      url = "https://gitlab.com/";
 	    };
-	    Gog = {
+	    GOG = {
 	      url = "https://www.gog.com/";
+	    };
+	    "Grammarly" = {
+	      url = "https://app.grammarly.com/ddocs/880707227";
 	    };
 	    "Humble Bundle" = {
 	      url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
@@ -308,20 +315,17 @@ bind "set menu-complete-display-prefix on"
 	    Kaidee = {
 	      url = "https://www.kaidee.com/member/listing";
 	    };
-	    Shopee = {
-	      url = "https://shopee.co.th/";
-	    };
 	    Outlook = {
 	      url = "https://outlook.live.com/mail/0/inbox";
 	    };
-	    Tutanota = {
-	      url = "https://mail.tutanota.com/";
+	    Shopee = {
+	      url = "https://shopee.co.th/";
 	    };
 	    "Stack Overflow" = {
 	      url = "https://stackoverflow.com/";
 	    };
-	    "Grammarly" = {
-	      url = "https://app.grammarly.com/ddocs/880707227";
+	    Tutanota = {
+	      url = "https://mail.tutanota.com/";
 	    };
           };
 	  settings = {
@@ -370,11 +374,15 @@ bind "set menu-complete-display-prefix on"
           let mapleader=','
 	  let s:root_dir="${my-config}/neovim/init"
 
+	  luafile ${my-config}/neovim/init/lsp.lua
+
 	  exe "source ".s:root_dir."/shared.vim"
 	  exe "source ".s:root_dir."/template.vim"
 	  exe "source ".s:root_dir."/colorscheme.vim"
-
-	  " luafile ${my-config}/neovim/init.lua
+	  exe "source ".s:root_dir."/comment.vim"
+	  exe "source ".s:root_dir."/completion.vim"
+	  exe "source ".s:root_dir."/html.vim"
+	  exe "source ".s:root_dir."/syntax.vim"
 	'';
         plugins = with pkgs.vimPlugins; [
 	 completion-nvim
@@ -479,6 +487,18 @@ bind "set menu-complete-display-prefix on"
       };
       tmux = {
         # enable = true;
+      };
+      vscode = {
+        enable = true;
+	package = pkgs.vscodium;
+	# extensions = [ pkgs.vscode-extensions.bbenoist.Nix ];
+	# haskell = {
+	#   enable = true;
+        # };
+	# userSettings = {
+	#   "update.channel" = "none";
+        #   "[nix]"."editor.tabSize" = 2;
+	# };
       };
       xmobar = {
         enable = true;
