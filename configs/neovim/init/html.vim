@@ -10,4 +10,3 @@ let s:escape_pair={
 for [key, val] in items(s:escape_pair)
   exe 'inoremap '.key.'esc '.val
 endfor
-

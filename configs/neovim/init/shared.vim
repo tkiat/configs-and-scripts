@@ -161,7 +161,7 @@ nnoremap <leader>sc :call ColHighlightInstance()<cr>
 nnoremap <leader>scc :set colorcolumn=
 nnoremap <leader>s8 :set colorcolumn=80<cr>
 " s: source file
-nnoremap <leader>sv :source ~/.config/nvim/init.lua<cr>
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
 " t: tab new
 nnoremap <leader>t :tabedit<cr>
 " w: window
