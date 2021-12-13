@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 let
   my-config = "/home/tkiat/configs-and-scripts/configs";
+  my-private = "/home/tkiat/Sync/Personal-Local/Private";
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
@@ -31,7 +32,6 @@ in
   environment.systemPackages = with pkgs; [
     dmenu
     neovim
-    st
 
     # dev
     ansible
@@ -68,7 +68,6 @@ in
     fd
     feh
     flashrom
-    firefox
     gdrive
     ghostscript
     gimp
@@ -94,7 +93,6 @@ in
     okular
     openbox
     pandoc
-    pass
     pciutils
     pencil
     pinentry
@@ -114,7 +112,6 @@ in
     tokei
     # tor-browser-bundle-bin
     trash-cli
-    ungoogled-chromium
     unzip
     usbutils
     vlc
@@ -127,7 +124,6 @@ in
     xfce.thunar
     xfce.tumbler
     xfce.xfconf
-    # xmobar
     xmonad-with-packages
     xsel
     xterm
@@ -149,6 +145,16 @@ in
       enableNixpkgsReleaseCheck = true;
       # home.file.".foo".source = /my/config/repo/foo;
       # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
+
+      file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
+      file.".ssh/GitLab-tkiatd".source = "${my-private}/ssh/GitLab-tkiatd";
+      file.".ssh/NotABug-tkiat".source = "${my-private}/ssh/NotABug-tkiat";
+
+      file.".ssh/config".source = "${my-config}/ssh/config";
+      file.".ssh/GitHub-tkiatd.pub".source = "${my-config}/ssh/GitHub-tkiatd.pub";
+      file.".ssh/GitLab-tkiatd.pub".source = "${my-config}/ssh/GitLab-tkiatd.pub";
+      file.".ssh/NotABug-tkiat.pub".source = "${my-config}/ssh/NotABug-tkiat.pub";
+
       file.".xmonad/xmonad.hs".source = "${my-config}/xmonad/xmonad.hs";
       file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
 
@@ -267,8 +273,82 @@ bind "set menu-complete-display-prefix on"
       bat = {
         enable = true;
       };
+      chromium = {
+        enable = true;
+	extensions = [
+          { id = "lhdoppojpmngadmnindnejefpokejbdd"; } # axe devtools
+          { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
+          { id = "ammoloihpcbognfddfjcljgembpibcmb"; } # javascript restrictor
+          { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # react devtools
+          { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
+          { id = "cdockenadnadldjbbgcallicgledbeoc"; } # visBug
+
+          { id = "npadhaijchjemiifipabpmeebeelbmpd"; } # theme - material dark
+        ];
+	package = pkgs.chromium;
+	# package = pkgs.ungoogled-chromium;
+      };
       firefox = {
         enable = true;
+	profiles.default = {
+	  id = 0;
+	  bookmarks = {
+	    Github = {
+	      url = "https://github.com/tkiat?tab=repositories";
+	    };
+	    Gitlab = {
+	      url = "https://gitlab.com/";
+	    };
+	    Gog = {
+	      url = "https://www.gog.com/";
+	    };
+	    "Humble Bundle" = {
+	      url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
+	    };
+	    Kaidee = {
+	      url = "https://www.kaidee.com/member/listing";
+	    };
+	    Shopee = {
+	      url = "https://shopee.co.th/";
+	    };
+	    Outlook = {
+	      url = "https://outlook.live.com/mail/0/inbox";
+	    };
+	    Tutanota = {
+	      url = "https://mail.tutanota.com/";
+	    };
+	    "Stack Overflow" = {
+	      url = "https://stackoverflow.com/";
+	    };
+	    "Grammarly" = {
+	      url = "https://app.grammarly.com/ddocs/880707227";
+	    };
+          };
+	  settings = {
+	    "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
+	    "browser.newtabpage.activity-stream.feeds.snippets" = false;
+	    "browser.newtabpage.activity-stream.feeds.topsites" = false;
+	    "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
+            "browser.startup.page" = 3; # Open previous windows and tabs
+	    "browser.search.defaultenginename" = "DuckDuckGo";
+            "browser.search.isUS" = false;
+            "browser.search.region" = "TH";
+	    "browser.search.selectedEngine" = "DuckDuckGo";
+	    "browser.search.suggest.enabled" = false;
+	    "browser.shell.checkDefaultBrowser" = false;
+	    "browser.toolbars.bookmarks.visibility" = "never";
+	    "browser.uidensity" = 1; # compact
+	    "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten
+	    "browser.urlbar.suggest.bookmark" = false;
+	    "browser.urlbar.suggest.engines" = false;
+	    "browser.urlbar.suggest.history" = false;
+	    "browser.urlbar.suggest.openpage" = false;
+	    "browser.urlbar.suggest.topsites" = false;
+	    "dom.webnotifications.enabled" = false;
+	    "permissions.default.desktop-notification" = 2; # disable
+	    "signon.rememberSignons" = false; # never save logins and passwords
+          };
+	};
       };
       git = {
         enable = true;
@@ -285,21 +365,107 @@ bind "set menu-complete-display-prefix on"
         userEmail = "tkiat@tutanota.com";
       };
       neovim = {
-        # extraPackages = [ ];
+        enable = true;
+	extraConfig = ''
+          let mapleader=','
+	  let s:root_dir="${my-config}/neovim/init"
+
+	  exe "source ".s:root_dir."/shared.vim"
+	  exe "source ".s:root_dir."/template.vim"
+	  exe "source ".s:root_dir."/colorscheme.vim"
+
+	  " luafile ${my-config}/neovim/init.lua
+	'';
+        plugins = with pkgs.vimPlugins; [
+	 completion-nvim
+         # dhall-vim
+         emmet-vim
+         nerdtree
+         nvim-lspconfig
+         nvim-treesitter
+         purescript-vim
+         vim-nix
+         vim-toml
+	];
       };
       newsboat = {
-        # browser = "";
         enable = true;
-        # extraConfig = "";
-        maxItems = 10;
+        extraConfig = ''
+          unbind-key C
+          unbind-key h
+          unbind-key j
+          unbind-key k
+          unbind-key l
+          unbind-key o
+          unbind-key w
+          
+          bind-key ^D pagedown
+          bind-key ^U pageup
+          bind-key d toggle-show-read-feeds
+          bind-key h quit
+          bind-key j down
+          bind-key k up
+          bind-key l open
+          bind-key w open-in-browser
+          browser chromium
+          color article             white   black
+          color background          white   black
+          color info                white   black      bold
+          color listfocus           white   color240   bold
+          color listfocus_unread    magenta color240   bold
+          color listnormal          white   black
+          color listnormal_unread   magenta black
+          datetime-format "%L"
+          history-limit 0 # search history
+          keep-articles-days 7
+          macro c open-in-browser
+          macro f set browser "firefox %u"; open-in-browser ; set browser chromium
+          macro i set browser "icecat %u"; open-in-browser ; set browser chromium
+          macro q set browser "qutebrowser %u"; open-in-browser ; set browser chromium
+          macro u set browser "ungoogled-chromium --incognito %u"; open-in-browser ; set browser chromium
+          macro w set browser "w3m %u"; open-in-browser ; set browser chromium
+          # max-items 100
+          # refresh-on-startup yes
+          show-read-articles no
+          show-read-feeds no
+	'';
         urls = [
-          { tags = [ "foo" "bar" ] ; url = "http://example.com"; }
+          { tags = [ "~Crapple" ] ; url = "https://www.apple.com/newsroom/rss-feed.rss"; }
+          { tags = [ "~Dilbert" ] ; url = "https://dilbert.com/feed"; }
+          { tags = [ "~Standard Ebooks" ] ; url = "https://standardebooks.org/rss/new-releases"; }
+
+          { tags = [ "~CopyBlogger" ] ; url = "https://copyblogger.com/feed/"; }
+          { tags = [ "~ProBlogger" ] ; url = "https://feeds.feedblitz.com/ProBlogger"; }
+
+          { tags = [ "~Debian" ] ; url = "http://debian-handbook.info/feed/"; }
+          { tags = [ "~Distrowatch" ] ; url = "https://distrowatch.com/news/dww.xml"; }
+          { tags = [ "~Fedora Magazine" ] ; url = "https://fedoramagazine.org/feed/"; }
+          { tags = [ "~Guix" ] ; url = "http://guix-website-test.cbaines.net/feeds/blog.atom"; }
+          { tags = [ "~Linux Journal" ] ; url = "https://www.linuxjournal.com/node/feed"; }
+          { tags = [ "~Linux Magazine" ] ; url = "https://www.linux-magazine.com/rss/feed/lmi_news"; }
+          { tags = [ "~LWN.net" ] ; url = "https://lwn.net/headlines/rss"; }
+          { tags = [ "~NixOS" ] ; url = "https://weekly.nixos.org/feeds/all.rss.xml"; }
+
+          { tags = [ "~freeCodeCamp" ] ; url = "https://www.freecodecamp.org/news/rss/"; }
+          { tags = [ "~FSF" ] ; url = "https://static.fsf.org/fsforg/rss/news.xml"; }
+          { tags = [ "~GitLab" ] ; url = "https://about.gitlab.com/atom.xml"; }
+          { tags = [ "~Opensource.com" ] ; url = "https://opensource.com/feed"; }
+          { tags = [ "~PodRocker" ] ; url = "https://feeds.fireside.fm/podrocket/rss"; }
+          { tags = [ "~Real Python" ] ; url = "https://realpython.com/atom.xml"; }
+
+          { tags = [ "~A List Apart" ] ; url = "https://alistapart.com/main/feed/"; }
+          { tags = [ "~Codrops" ] ; url = "https://tympanus.net/codrops/feed/"; }
+          { tags = [ "~CSS Tricks" ] ; url = "https://css-tricks.com/feed/"; }
+          { tags = [ "~Kevin Powell" ] ; url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCJZv4d5rbIKd4QHMPkcABCw"; }
+          { tags = [ "~Lea Verou" ] ; url = "http://feeds.feedburner.com/leaverou"; }
+          { tags = [ "~Overreacted" ] ; url = "https://overreacted.io/rss.xml"; }
+          { tags = [ "~Smashing Magazine" ] ; url = "https://www.smashingmagazine.com/feed/"; }
         ];
       };
       password-store = {
-        enable = true;
+        enable = true; # git clone folder to /password-store
         settings = {
-          PASSWORD_STORE_DIR = "$XDG_DATA_HOME/password-store";
+          PASSWORD_STORE_DIR = "/home/tkiat/.password-store";
         };
       };
       readline = {

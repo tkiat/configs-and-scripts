@@ -42,4 +42,4 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     }
 )
 
-require('lsp-lua')
+-- require('lsp-lua')

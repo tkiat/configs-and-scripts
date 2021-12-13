@@ -7,7 +7,6 @@
 
 let nvim_dir='~/.config/nvim'
 let temp_dir=nvim_dir.'/temp'
-let template_dir=nvim_dir.'/template'
 
 let space_per_tab=2
 " TODO use vim tag sections here also check mapping first perhaps can remove leader
@@ -84,9 +83,9 @@ nnoremap <leader><space> mqbi<space><esc>ea<space><esc>`ql
 " b: buffer
 nnoremap <leader>b :bnext<cr>
 " c: colorscheme
-nnoremap <leader>c0 :colorscheme default<cr>
-nnoremap <leader>c1 :colorscheme custom-dark<cr>
-nnoremap <leader>c2 :colorscheme custom-light<cr>
+" nnoremap <leader>c0 :colorscheme default<cr>
+" nnoremap <leader>c1 :colorscheme custom-dark<cr>
+" nnoremap <leader>c2 :colorscheme custom-light<cr>
 " c: copy - current file
 " nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
 " d: definition highlight group
