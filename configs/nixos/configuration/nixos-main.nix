@@ -4,7 +4,7 @@
   imports =
     [
       /etc/nixos/hardware-configuration.nix
-      ./configuration-shared/home-manager.nix
+      ./shared/home-manager.nix
     ];
 
   boot = {

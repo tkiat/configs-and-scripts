@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-private = "/home/tkiat/Sync/Personal-Local/Private";
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 {
   imports =
