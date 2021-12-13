@@ -34,6 +34,7 @@ in
 
     acpi
     alsaUtils
+    bash
     cpufrequtils
     curl
     dash
@@ -44,6 +45,7 @@ in
     fd
     feh
     flashrom
+    gcc
     ghostscript
     gnupg
     gwenview
@@ -64,6 +66,7 @@ in
     pencil
     pinentry
     pinta
+    python3
     qview
     ranger
     redshift
@@ -119,12 +122,10 @@ in
       packages = with pkgs; [
         # dev
         ansible
-        bash
         cabal-install
           # cookiecutter
         docker
         docker-compose
-        gcc
         gnumake
         go
         graphviz
@@ -132,7 +133,6 @@ in
         lua
         niv
         nix-prefetch-git
-        python3
         sass
         shellcheck
         stack
