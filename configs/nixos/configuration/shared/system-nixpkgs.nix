@@ -1,10 +1,18 @@
 { config, pkgs, lib, ... }:
 
+let
+  ghc' = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
+    lens
+    mtl
+    transformers
+  ]);
+in
 {
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "google-chrome"
+        "unrar"
       ];
       blacklistedLicenses = with lib.licenses; [
         # NixOS doesn't treat unfreeRedistributableFirmware as unfree
@@ -16,8 +24,12 @@
   environment.systemPackages = with pkgs; [
     # unfree
     google-chrome
+    unrar
 
     dmenu
+
+    nodePackages.bash-language-server
+    nodePackages.yaml-language-server
 
     acpi
     alsaUtils
@@ -33,6 +45,7 @@
     feh
     flashrom
     gcc
+    ghc'
     ghostscript
     gnupg
     gwenview
@@ -64,7 +77,6 @@
     tealdeer
     tmux
     trash-cli
-    unrar
     unzip
     usbutils
     w3m

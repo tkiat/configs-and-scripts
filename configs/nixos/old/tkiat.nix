@@ -11,7 +11,7 @@ let
   tkiat-dmenu = import "${tkiat-channel}/packages/tkiat-dmenu.nix";
   tkiat-dwm = import "${tkiat-channel}/packages/tkiat-dwm.nix";
   tkiat-slock = import "${tkiat-channel}/packages/tkiat-slock.nix";
-  tkiat-st = import "${tkiat-channel}/packages/tkiat-st.nix";
+#   tkiat-st = import "${tkiat-channel}/packages/tkiat-st.nix";
 in
 {
   environment.systemPackages = [
@@ -19,7 +19,7 @@ in
     tkiat-dmenu
     tkiat-dwm
     tkiat-slock
-    tkiat-st
+#     tkiat-st
   ];
 
   security.wrappers.slock = {

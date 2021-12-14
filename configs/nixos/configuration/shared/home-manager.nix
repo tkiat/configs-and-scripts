@@ -18,6 +18,14 @@ in
       enableNixpkgsReleaseCheck = true;
       # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
 
+      file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
+      file.".inputrc".text = ''
+        set completion-ignore-case on
+      '';
+      file.".newsboat/config".source = "${my-config}/newsboat/config";
+      file.".newsboat/urls".source = "${my-config}/newsboat/urls";
+      file.".config/polybar/config.ini".source = "${my-config}/polybar/config.ini";
+
       file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
       file.".ssh/GitLab-tkiatd".source = "${my-private}/ssh/GitLab-tkiatd";
       file.".ssh/NotABug-tkiat".source = "${my-private}/ssh/NotABug-tkiat";
@@ -28,7 +36,6 @@ in
       file.".ssh/NotABug-tkiat.pub".source = "${my-config}/ssh/NotABug-tkiat.pub";
 
       file.".xmonad/xmonad.hs".source = "${my-config}/xmonad/xmonad.hs";
-      file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
 
       file.".Xresources".text = ''
         ! Adjust the font
@@ -298,6 +305,7 @@ in
             "browser.urlbar.suggest.openpage" = false;
             "browser.urlbar.suggest.topsites" = false;
             "dom.webnotifications.enabled" = false;
+            "network.protocol-handler.external.mailto" = false; # mailto warning
             "permissions.default.desktop-notification" = 2; # disable
             "signon.rememberSignons" = false; # never save logins and passwords
           };
@@ -335,7 +343,7 @@ in
         '';
         plugins = with pkgs.vimPlugins; [
           completion-nvim
-          # dhall-vim
+          dhall-vim
           emmet-vim
           nerdtree
           nvim-lspconfig
@@ -343,80 +351,6 @@ in
           purescript-vim
           vim-nix
           vim-toml
-        ];
-      };
-      newsboat = {
-        enable = true;
-        extraConfig = ''
-          unbind-key C
-          unbind-key h
-          unbind-key j
-          unbind-key k
-          unbind-key l
-          unbind-key o
-          unbind-key w
-
-          bind-key ^D pagedown
-          bind-key ^U pageup
-          bind-key d toggle-show-read-feeds
-          bind-key h quit
-          bind-key j down
-          bind-key k up
-          bind-key l open
-          bind-key w open-in-browser
-          browser chromium
-          color article             white   black
-          color background          white   black
-          color info                white   black      bold
-          color listfocus           white   color240   bold
-          color listfocus_unread    magenta color240   bold
-          color listnormal          white   black
-          color listnormal_unread   magenta black
-          datetime-format "%L"
-          history-limit 0 # search history
-          keep-articles-days 7
-          macro c open-in-browser
-          macro f set browser "firefox %u"; open-in-browser ; set browser chromium
-          macro i set browser "icecat %u"; open-in-browser ; set browser chromium
-          macro q set browser "qutebrowser %u"; open-in-browser ; set browser chromium
-          macro u set browser "ungoogled-chromium --incognito %u"; open-in-browser ; set browser chromium
-          macro w set browser "w3m %u"; open-in-browser ; set browser chromium
-          # max-items 100
-          # refresh-on-startup yes
-          show-read-articles no
-          show-read-feeds no
-        '';
-        urls = [
-          { tags = [ "~Crapple" ] ; url = "https://www.apple.com/newsroom/rss-feed.rss"; }
-          { tags = [ "~Dilbert" ] ; url = "https://dilbert.com/feed"; }
-          { tags = [ "~Standard Ebooks" ] ; url = "https://standardebooks.org/rss/new-releases"; }
-
-          { tags = [ "~CopyBlogger" ] ; url = "https://copyblogger.com/feed/"; }
-          { tags = [ "~ProBlogger" ] ; url = "https://feeds.feedblitz.com/ProBlogger"; }
-
-          { tags = [ "~Debian" ] ; url = "http://debian-handbook.info/feed/"; }
-          { tags = [ "~Distrowatch" ] ; url = "https://distrowatch.com/news/dww.xml"; }
-          { tags = [ "~Fedora Magazine" ] ; url = "https://fedoramagazine.org/feed/"; }
-          { tags = [ "~Guix" ] ; url = "http://guix-website-test.cbaines.net/feeds/blog.atom"; }
-          { tags = [ "~Linux Journal" ] ; url = "https://www.linuxjournal.com/node/feed"; }
-          { tags = [ "~Linux Magazine" ] ; url = "https://www.linux-magazine.com/rss/feed/lmi_news"; }
-          { tags = [ "~LWN.net" ] ; url = "https://lwn.net/headlines/rss"; }
-          { tags = [ "~NixOS" ] ; url = "https://weekly.nixos.org/feeds/all.rss.xml"; }
-
-          { tags = [ "~freeCodeCamp" ] ; url = "https://www.freecodecamp.org/news/rss/"; }
-          { tags = [ "~FSF" ] ; url = "https://static.fsf.org/fsforg/rss/news.xml"; }
-          { tags = [ "~GitLab" ] ; url = "https://about.gitlab.com/atom.xml"; }
-          { tags = [ "~Opensource.com" ] ; url = "https://opensource.com/feed"; }
-          { tags = [ "~PodRocker" ] ; url = "https://feeds.fireside.fm/podrocket/rss"; }
-          { tags = [ "~Real Python" ] ; url = "https://realpython.com/atom.xml"; }
-
-          { tags = [ "~A List Apart" ] ; url = "https://alistapart.com/main/feed/"; }
-          { tags = [ "~Codrops" ] ; url = "https://tympanus.net/codrops/feed/"; }
-          { tags = [ "~CSS Tricks" ] ; url = "https://css-tricks.com/feed/"; }
-          { tags = [ "~Kevin Powell" ] ; url = "https://www.youtube.com/feeds/videos.xml?channel_id=UCJZv4d5rbIKd4QHMPkcABCw"; }
-          { tags = [ "~Lea Verou" ] ; url = "http://feeds.feedburner.com/leaverou"; }
-          { tags = [ "~Overreacted" ] ; url = "https://overreacted.io/rss.xml"; }
-          { tags = [ "~Smashing Magazine" ] ; url = "https://www.smashingmagazine.com/feed/"; }
         ];
       };
       password-store = {

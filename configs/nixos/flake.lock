@@ -16,9 +16,45 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1639161226,
+        "narHash": "sha256-75Y08ynJDTq6HHGIF+8IADBJSVip0UyWQH7jqSFnRR8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "573095944e7c1d58d30fc679c81af63668b54056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "st": "st"
+      }
+    },
+    "st": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1639313176,
+        "narHash": "sha256-ZZAaQvL6+qFbIpsn60FKdCOGhLhpuIdA/rr2vH40L+U=",
+        "owner": "tkiat",
+        "repo": "forked-st",
+        "rev": "bab798fe1abfbb55891a6aba92f35a8b17abf314",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "tkiat",
+        "ref": "my-config",
+        "repo": "forked-st",
+        "type": "gitlab"
       }
     }
   },
