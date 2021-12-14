@@ -1,7 +1,6 @@
-# Author: Theerawat Kiatdarakun
 # All are bash compatible (to test: shellcheck --shell bash <thisfile>)
 
-# different name
+# catch typo
 alias dc='cd'
 alias ceho='echo'
 alias ehco='echo'
@@ -9,17 +8,14 @@ alias gf='fg'
 alias sl='ls'
 alias nv="nvim"
 alias ivm='vim'
-# replace command
-alias cat="bat --pager=less"
-      # cat() { echo -en "\033]0;$1\a" && bat $1; }
-alias du="dust"
-alias ls="exa -g"
-alias tree="exa -T"
+
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
+alias cat="bat --pager=less"
 alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
+alias du="dust"
 alias dust="dust --depth 1"
 alias exa="exa --group-directories-first"
 alias feh="feh --scale-down --auto-zoom"
@@ -27,84 +23,34 @@ alias fgrep='fgrep --color=auto'
 alias free="free -h"
 alias grep='grep --color=auto'
 alias less='less -r'
-alias 2polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
-alias 2pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
-alias 2pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
+alias ls="exa -g"
 alias mc="mc"
 alias mupdf='mupdf-x11'
 alias mupdf-dark='mupdf -C aaaaaa -I'
-alias ranger="ranger"
-alias rg="rg --ignore-case"
+alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
+alias pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
+alias pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias python="python3"
 alias qutebrowser="qutebrowser --target private-window"
+alias ranger="ranger"
+alias rg="rg --ignore-case"
 alias sudo='sudo ' # enable running alias as superuser$
 alias telegram-cli="telegram-cli --enable-msg-id --wait-dialog-list"
 alias tokei="tokei --sort code"
+alias tree="exa -T"
 alias xpdf="xpdf -z width"
 
-# shortcut on top of default command
-alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
-alias 2chown-u="sudo chown 1000:1000 -R"
-alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
-      2grep-markdown-width() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g; s/^([^:]*:[^:]*:)\s+(.*)/\1\2/g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
-alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
-alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i;
-done'
-      2mount() {
-        if [[ $# -eq 0 ]] ; then
-            echo 'usage: 2mount <letter x in disk label: sdx> <luks (optional)>'
-        fi;
-
-        if [[ $# -eq 1 ]] ; then
-          echo 'mounting a disk ...'
-          sudo mount /dev/sd${1} /mnt/sd${1}
-        elif [[ $2 -eq 'luks' ]] ; then
-          echo 'mounting an encrypted disk ...'
-          sudo cryptsetup luksOpen /dev/sd${1} sd${1}
-          sudo mount /dev/mapper/sd${1} /mnt/sd${1}
-        fi;
-      }
-alias 2rm-file-recursive="find . -type f -delete"
-alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
-      2source() {
-        if [[ $# -eq 0 ]] ; then
-          echo 'usage: 2source <program>'
-        fi;
-
-        local c=
-        case "$1" in
-          bash) c="source ~/.bashrc" ;;
-        esac
-
-        if [ -n "$c" ]; then
-          echo "$c"; eval "$c"
-        else
-          echo unknown arguments
-        fi;
-      }
-      2umount() {
-        if [[ $# -eq 0 ]] || [[ $1 == '-h' ]] ; then
-            echo 'usage: 2umount <letter x in disk label: sdx> <luks (optional)>'
-            if [[ $# -eq 0 ]] ; then return 1; else return 0; fi
-        fi;
-
-        if [[ $# -eq 1 ]] ; then
-          echo 'unmounting a disk ...'
-          sudo umount /mnt/sd${1}
-        elif [[ $2 -eq 'luks' ]] ; then
-          echo 'unmounting an encrypted disk ...'
-          sudo umount /mnt/sd${1}
-          sudo cryptsetup luksClose /dev/mapper/sd${1}
-        fi;
-      }
 # new commands
 alias ..='cd ..'
 alias ...='cd ../..'
 alias 2a="alias"
+alias 2bios-ver="sudo dmidecode | grep 'BIOS Information' -A 2"
 alias 2brightness-change="[ -x '$(command -v xrandr)' ] && xrandr --output LVDS-1 --brightness"
+alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2clipboard-get="xclip -o -selection clipboard"
 alias 2clipboard-set="tr -d '\n' | xclip -selection clipboard" # usage: pwd | 2clipboard-set
 alias 2clipboard-set_withnewline="xclip -selection clipboard"
+alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
 alias 2e=2edit
@@ -150,17 +96,36 @@ alias 2git-sort-size="git rev-list --objects --all | git cat-file --batch-check=
         git add -A && git commit -m "${1:-UPDATE}" && git push origin "$(git rev-parse --abbrev-ref HEAD)"
       }
       2goto-symlink() { cd $(dirname $(readlink $1)); }
+alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2grep-current-dir="grep -inr . -e "
+      2grep-markdown-width() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g; s/^([^:]*:[^:]*:)\s+(.*)/\1\2/g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2grub-make="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias 2keyring-get-gnu="wget https://ftp.gnu.org/gnu/gnu-keyring.gpg"
+alias 2logout="pkill -u $USER"
       2ls-exclude-same-name-diff-ext() { for f in *; do echo "${f%.*}"; done | sort | uniq -u ;}
 alias 2ls-symlink="find . -maxdepth 1 -type l"
       2ls-tar() { tar tf $1 | sed 's/\/.*//' | uniq; } # list tarball file and folders (depth = 1)
-alias 2logout="pkill -u $USER"
+alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i; done'
+      2mount() {
+        if [[ $# -eq 0 ]] ; then
+            echo 'usage: 2mount <letter x in disk label: sdx> <luks (optional)>'
+        fi;
+
+        if [[ $# -eq 1 ]] ; then
+          echo 'mounting a disk ...'
+          sudo mount /dev/sd${1} /mnt/sd${1}
+        elif [[ $2 -eq 'luks' ]] ; then
+          echo 'mounting an encrypted disk ...'
+          sudo cryptsetup luksOpen /dev/sd${1} sd${1}
+          sudo mount /dev/mapper/sd${1} /mnt/sd${1}
+        fi;
+      }
 alias 2ping="ping gnu.org"
       2port-kill() { sudo fuser -k $1/tcp; }
 alias 2primary-get="xclip -o -selection primary"
+alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
 alias 2replace-newline="tr '\n' ' '"
+alias 2rm-file-recursive="find . -type f -delete"
       2sed-replace-recursive() {
         find . -type f -not -path '*/\.*' -exec sed -i "s|$1|$2|g" {} +;
       }
@@ -175,5 +140,36 @@ alias 2replace-newline="tr '\n' ' '"
         fi;
       }
 alias 2showoff='neofetch'
+      2source() {
+        if [[ $# -eq 0 ]] ; then
+          echo 'usage: 2source <program>'
+        fi;
+
+        local c=
+        case "$1" in
+          bash) c="source ~/.bashrc" ;;
+        esac
+
+        if [ -n "$c" ]; then
+          echo "$c"; eval "$c"
+        else
+          echo unknown arguments
+        fi;
+      }
       2tab-title-change() { echo -en "\e]2;$1\a"; }
+      2umount() {
+        if [[ $# -eq 0 ]] || [[ $1 == '-h' ]] ; then
+            echo 'usage: 2umount <letter x in disk label: sdx> <luks (optional)>'
+            if [[ $# -eq 0 ]] ; then return 1; else return 0; fi
+        fi;
+
+        if [[ $# -eq 1 ]] ; then
+          echo 'unmounting a disk ...'
+          sudo umount /mnt/sd${1}
+        elif [[ $2 -eq 'luks' ]] ; then
+          echo 'unmounting an encrypted disk ...'
+          sudo umount /mnt/sd${1}
+          sudo cryptsetup luksClose /dev/mapper/sd${1}
+        fi;
+      }
 alias 2w='which'

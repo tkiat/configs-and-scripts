@@ -1,16 +1,1 @@
-2nixos() {
-  commands=$(cat <<EOF
-    {
-      "rebuild": "sudo nixos-rebuild switch",
-      "update": "sudo nixos-rebuild switch --upgrade"
-    }
-EOF
-  )
-  cmd=$(~/configs-and-scripts/scripts/ondemand/helper/get_json_leaf.py "$commands" "$@")
-  if [ "$cmd" != "" ]; then
-    echo "$cmd"; eval "$cmd"
-  else
-    echo unknown arguments
-    return 1
-  fi;
-}
+alias 2nixos-rebuild="sudo nixos-rebuild --impure switch --flake ~/configs-and-scripts/configs/nixos#nixos-main"

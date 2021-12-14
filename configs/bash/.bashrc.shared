@@ -14,7 +14,7 @@ HISTSIZE=10000 # actual memory
 HISTTIMEFORMAT="%d/%m/%y %T "
 
 # Alias and Env
-. ~/.alias/shared.alias
+#. ~/.alias/shared.alias
 
 path_config=~/configs-and-scripts/configs
 path_script=~/configs-and-scripts/scripts

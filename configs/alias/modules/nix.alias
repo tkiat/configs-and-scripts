@@ -1,41 +1,3 @@
-2nix() {
-#   usage: 2nix i user nixpkgs hello
-  commands=$(cat <<EOF
-    {
-      "gc": {
-        "root": "sudo -i -- nix-env --delete-generations old && nix-store --gc",
-        "system": "sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d",
-        "user": "nix-env --delete-generations old && nix-store --gc"
-      },
-      "i": {
-        "haskell": "nix-env -iA nixos.haskellPackages.$3",
-        "nixpkgs": "nix-env -i $3 && rm -f ~/.cache/dmenu_run",
-        "root": "sudo -i -- nix-env -i $3"
-      },
-      "r": {
-        "root": "sudo -i -- nix-env -e $3",
-        "user": "nix-env -e $3"
-      },
-      "u": {
-        "nix": {
-          "root": "sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix",
-          "user": "nix-channel --update; nix-env -iA nixpkgs.nix"
-        },
-        "root": "sudo -i -- nix-channel --update && nix-env -u",
-        "user": "nix-channel --update && nix-env -u"
-      }
-    }
-EOF
-  )
-  cmd=$(~/configs-and-scripts/scripts/ondemand/helper/get_json_leaf.py "$commands" "$@")
-  if [ "$cmd" != "" ]; then
-    echo "$cmd"; eval "$cmd"
-  else
-    echo unknown arguments
-    return 1
-  fi;
-}
-
       print-and-execute() { cmd=$1; echo "Evaluating: $cmd"; echo; eval "$cmd";}
 
       2nix-c(){
@@ -44,6 +6,9 @@ EOF
         print-and-execute "nix-env -f '<nixpkgs>' -qaP -A nodePackages > ~/.cache/nixpkgs-node"
       }
 alias 2nix-gc='2nix gc root;2nix gc system;2nix gc user'
+alias 2nix-gc-root="sudo -i -- nix-env --delete-generations old && nix-store --gc",
+alias 2nix-gc-system="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d",
+alias 2nix-gc-user="nix-env --delete-generations old && nix-store --gc"
 alias 2nix-q-haskell="print-and-execute 'cat ~/.cache/nixpkgs-haskell'"
 alias 2nix-q-nixpkgs="print-and-execute 'cat ~/.cache/nixpkgs'"
 alias 2nix-q-node="print-and-execute 'cat ~/.cache/nixpkgs-node'"
@@ -51,3 +16,14 @@ alias 2nix-q-root-installed="print-and-execute 'sudo -i -- nix-env --query'"
 alias 2nix-q-system-generation="print-and-execute 'sudo nix-env --list-generations --profile /nix/var/nix/profiles/system'"
 alias 2nix-q-system-info="print-and-execute \"nix-shell -p nix-info --run 'nix-info -m'\""
 alias 2nix-q-user-installed="print-and-execute 'nix-env --query'"
+alias 2nix-i-root-nixpkgs="sudo -i -- nix-env -i $3"
+alias 2nix-i-user-nixpkgs="nix-env -i"
+      2nix-i-user-haskell() {
+        print-and-execute "nix-env -iA nixos.haskellPackages.$1"
+      }
+alias 2nix-r-root="sudo -i -- nix-env -e"
+alias 2nix-r-user="nix-env -e"
+alias 2nix-u-nix-root="sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix",
+alias 2nix-u-nix-user="nix-channel --update; nix-env -iA nixpkgs.nix"
+alias 2nix-u-root="sudo -i -- nix-channel --update && nix-env -u",
+alias 2nix-u-user="nix-channel --update && nix-env -u",

@@ -34,6 +34,7 @@ in
     acpi
     alsaUtils
     bash
+    bat
     cpufrequtils
     curl
     dash
