@@ -1,13 +1,12 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      /etc/nixos/hardware-configuration.nix
-      ./shared/home-manager.nix
-      ./shared/nixpkgs.nix
-      ./shared/shared.nix
-    ];
+  imports = [
+    /etc/nixos/hardware-configuration.nix
+    ./shared/home-manager.nix
+    ./shared/system-nixpkgs.nix
+    ./shared/system-shared.nix
+  ];
 
   boot = {
     initrd.luks.devices.root = {
@@ -21,6 +20,8 @@
       version = 2;
     };
   };
+
+  networking.hostName = "nixos-main";
   system.stateVersion = "21.11"; # README before modification
   users.users.tkiat = {
     isNormalUser = true;

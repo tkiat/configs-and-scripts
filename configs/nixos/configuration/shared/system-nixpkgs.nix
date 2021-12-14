@@ -64,6 +64,7 @@
     tealdeer
     tmux
     trash-cli
+    unrar
     unzip
     usbutils
     w3m

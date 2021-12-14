@@ -16,7 +16,6 @@ in
     # fonts.fontconfig.enable = true;
     home = {
       enableNixpkgsReleaseCheck = true;
-      # home.file.".foo".source = /my/config/repo/foo;
       # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
 
       file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
@@ -58,6 +57,9 @@ in
         [ -x "$(command -v chromium)" ] && chromium&
         [ -x "$(command -v redshift)" ] && redshift -O 3000
         xrdb -merge ~/.Xresources && [ -x "$(command -v xterm)" ] && xterm&
+
+        # setxkbmap -layout us,th -option grp:alt_space_toggle
+        # xsetroot -solid black
 
         exec dbus-launch xmonad
         exec xmonad
