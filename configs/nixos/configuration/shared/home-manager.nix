@@ -166,31 +166,9 @@ in
         enable = true;
         bashrcExtra = ''
         ''; # non-interactive shell
-        historyControl = [ "ignoredups" "ignorespace" ]; # ignore duplicates and "^ .*" entries
-        historyFileSize = 10000;
-        historySize = 10000;
-        # initExtra = '' # interactive shell
-        #   . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-        # '';
         initExtra = '' # interactive shell
-          . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-
-          path_config=~/configs-and-scripts/configs
-          path_script=~/configs-and-scripts/scripts
-
-          # Prompt
-          . $path_script/onstart/bash_zsh-git_prompt.sh
-          GIT_PS1_SHOWDIRTYSTATE=1
-          PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;36m\]$(__git_ps1)\[\033[0m\]\$ ";
-
-          # Completion
-          if ! shopt -oq posix; then . $path_script/onstart/bash_zsh-git_completion.bash; fi
-          bind 'TAB':menu-complete # cycle through completion matches
-          bind "set show-all-if-ambiguous on" # display a list of matching files
-          bind "set menu-complete-display-prefix on"
-
-          [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" # make less friendly for like *.tar.gz
-          PATH=$PATH:$path_script/ondemand
+        source ~/.bashrc.shared
+        # . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
         '';
         shellAliases = {
         };
