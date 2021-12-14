@@ -1,0 +1,16 @@
+! Adjust the font
+xterm*faceName: Comic Shanns
+xterm*faceSize: 14
+
+! Change foreground/background color
+xterm*background: #000000
+xterm*foreground: #FFFFFF
+
+! Add a scroll-bar on the right side
+xterm*scrollBar: false
+! xterm*rightScrollBar: false
+
+! map copy/paste
+xterm*VT100.Translations: #override \
+  Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)

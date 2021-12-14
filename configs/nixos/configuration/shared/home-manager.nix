@@ -35,46 +35,10 @@ in
       file.".ssh/GitLab-tkiatd.pub".source = "${my-config}/ssh/GitLab-tkiatd.pub";
       file.".ssh/NotABug-tkiat.pub".source = "${my-config}/ssh/NotABug-tkiat.pub";
 
+      file.".xinitrc".source = "${my-config}/xorg/.xinitrc";
       file.".xmonad/xmonad.hs".source = "${my-config}/xmonad/xmonad.hs";
-
-      file.".Xresources".text = ''
-        ! Adjust the font
-        xterm*faceName: Comic Shanns
-        xterm*faceSize: 14
-
-        ! Change foreground/background color
-        xterm*background: #000000
-        xterm*foreground: #FFFFFF
-
-        ! Add a scroll-bar on the right side
-        xterm*scrollBar: false
-        ! xterm*rightScrollBar: false
-
-        ! map copy/paste
-        xterm*VT100.Translations: #override \
-          Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-          Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
-      '';
-      file.".xinitrc".text = ''
-        pomodoro_bar_i=/tmp/.pomodoro-bar-i
-        pomodoro_bar_w=/tmp/.pomodoro-bar-w
-        rm -f $pomodoro_bar_i && mkfifo $pomodoro_bar_i
-        rm -f $pomodoro_bar_w && mkfifo $pomodoro_bar_w
-
-        [ -x "$(command -v chromium)" ] && chromium&
-        [ -x "$(command -v redshift)" ] && redshift -O 3000
-        xrdb -merge ~/.Xresources && [ -x "$(command -v xterm)" ] && xterm&
-
-        # setxkbmap -layout us,th -option grp:alt_space_toggle
-        # xsetroot -solid black
-
-        exec dbus-launch xmonad
-        exec xmonad
-      '';
-      file.".xpdfrc".text = ''
-        initialSidebarState no
-      '';
-
+      file.".xpdfrc".source = "${my-config}/xpdf/.xpdfrc";
+      file.".Xresources".source = "${my-config}/xorg/.Xresources";
 
       packages = with pkgs; [
         # dev
@@ -205,6 +169,9 @@ in
         historyControl = [ "ignoredups" "ignorespace" ]; # ignore duplicates and "^ .*" entries
         historyFileSize = 10000;
         historySize = 10000;
+        # initExtra = '' # interactive shell
+        #   . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+        # '';
         initExtra = '' # interactive shell
           . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
