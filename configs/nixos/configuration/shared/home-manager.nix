@@ -31,6 +31,42 @@ in
       file.".xmonad/xmonad.hs".source = "${my-config}/xmonad/xmonad.hs";
       file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
 
+      file.".Xresources".text = ''
+        ! Adjust the font
+        xterm*faceName: Comic Shanns
+        xterm*faceSize: 14
+
+        ! Change foreground/background color
+        xterm*background: #000000
+        xterm*foreground: #FFFFFF
+
+        ! Add a scroll-bar on the right side
+        xterm*scrollBar: false
+        ! xterm*rightScrollBar: false
+
+        ! map copy/paste
+        xterm*VT100.Translations: #override \
+          Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+          Ctrl Shift <Key>C:    copy-selection(CLIPBOARD)
+      '';
+      file.".xinitrc".text = ''
+        pomodoro_bar_i=/tmp/.pomodoro-bar-i
+        pomodoro_bar_w=/tmp/.pomodoro-bar-w
+        rm -f $pomodoro_bar_i && mkfifo $pomodoro_bar_i
+        rm -f $pomodoro_bar_w && mkfifo $pomodoro_bar_w
+
+        [ -x "$(command -v chromium)" ] && chromium&
+        [ -x "$(command -v redshift)" ] && redshift -O 3000
+        xrdb -merge ~/.Xresources && [ -x "$(command -v xterm)" ] && xterm&
+
+        exec dbus-launch xmonad
+        exec xmonad
+      '';
+      file.".xpdfrc".text = ''
+        initialSidebarState no
+      '';
+
+
       packages = with pkgs; [
         # dev
         ansible
@@ -157,13 +193,13 @@ in
         enable = true;
         bashrcExtra = ''
         ''; # non-interactive shell
-  historyControl = [ "ignoredups" "ignorespace" ]; # ignore duplicates and "^ .*" entries
+        historyControl = [ "ignoredups" "ignorespace" ]; # ignore duplicates and "^ .*" entries
         historyFileSize = 10000;
         historySize = 10000;
         initExtra = '' # interactive shell
           . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
-    path_config=~/configs-and-scripts/configs
+          path_config=~/configs-and-scripts/configs
           path_script=~/configs-and-scripts/scripts
 
           # Prompt
@@ -178,93 +214,92 @@ in
           bind "set menu-complete-display-prefix on"
 
           [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" # make less friendly for like *.tar.gz
-    PATH=$PATH:$path_script/ondemand
+          PATH=$PATH:$path_script/ondemand
         '';
         shellAliases = {
         };
         sessionVariables = {
         };
-  shellOptions =  [ "autocd" "checkjobs" "checkwinsize" "extglob" "globstar" "histappend" ];
+        shellOptions =  [ "autocd" "checkjobs" "checkwinsize" "extglob" "globstar" "histappend" ];
       };
       bat = {
         enable = true;
       };
       chromium = {
         enable = true;
-  extensions = [
+        extensions = [
           { id = "lhdoppojpmngadmnindnejefpokejbdd"; } # axe devtools
           { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # dark reader
           { id = "ammoloihpcbognfddfjcljgembpibcmb"; } # javascript restrictor
           { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # react devtools
+          { id = "npadhaijchjemiifipabpmeebeelbmpd"; } # theme - material dark
           { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # vimium
           { id = "cdockenadnadldjbbgcallicgledbeoc"; } # visBug
-
-          { id = "npadhaijchjemiifipabpmeebeelbmpd"; } # theme - material dark
         ];
-  package = pkgs.chromium;
-  # package = pkgs.ungoogled-chromium;
+        package = pkgs.chromium;
+        # package = pkgs.ungoogled-chromium;
       };
       firefox = {
         enable = true;
-  profiles.default = {
-    id = 0;
-    bookmarks = {
-      Github = {
-        url = "https://github.com/tkiat?tab=repositories";
-      };
-      Gitlab = {
-        url = "https://gitlab.com/";
-      };
-      GOG = {
-        url = "https://www.gog.com/";
-      };
-      "Grammarly" = {
-        url = "https://app.grammarly.com/ddocs/880707227";
-      };
-      "Humble Bundle" = {
-        url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
-      };
-      Kaidee = {
-        url = "https://www.kaidee.com/member/listing";
-      };
-      Outlook = {
-        url = "https://outlook.live.com/mail/0/inbox";
-      };
-      Shopee = {
-        url = "https://shopee.co.th/";
-      };
-      "Stack Overflow" = {
-        url = "https://stackoverflow.com/";
-      };
-      Tutanota = {
-        url = "https://mail.tutanota.com/";
-      };
+        profiles.default = {
+          id = 0;
+          bookmarks = {
+            Github = {
+              url = "https://github.com/tkiat?tab=repositories";
+            };
+            Gitlab = {
+              url = "https://gitlab.com/";
+            };
+            GOG = {
+              url = "https://www.gog.com/";
+            };
+            "Grammarly" = {
+              url = "https://app.grammarly.com/ddocs/880707227";
+            };
+            "Humble Bundle" = {
+              url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
+            };
+            Kaidee = {
+              url = "https://www.kaidee.com/member/listing";
+            };
+            Outlook = {
+              url = "https://outlook.live.com/mail/0/inbox";
+            };
+            Shopee = {
+              url = "https://shopee.co.th/";
+            };
+            "Stack Overflow" = {
+              url = "https://stackoverflow.com/";
+            };
+            Tutanota = {
+              url = "https://mail.tutanota.com/";
+            };
           };
-    settings = {
-      "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
-      "browser.newtabpage.activity-stream.feeds.snippets" = false;
-      "browser.newtabpage.activity-stream.feeds.topsites" = false;
-      "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
+          settings = {
+            "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
+            "browser.newtabpage.activity-stream.feeds.snippets" = false;
+            "browser.newtabpage.activity-stream.feeds.topsites" = false;
+            "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
             "browser.startup.page" = 3; # Open previous windows and tabs
-      "browser.search.defaultenginename" = "DuckDuckGo";
+            "browser.search.defaultenginename" = "DuckDuckGo";
             "browser.search.isUS" = false;
             "browser.search.region" = "TH";
-      "browser.search.selectedEngine" = "DuckDuckGo";
-      "browser.search.suggest.enabled" = false;
-      "browser.shell.checkDefaultBrowser" = false;
-      "browser.toolbars.bookmarks.visibility" = "never";
-      "browser.uidensity" = 1; # compact
-      "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten
-      "browser.urlbar.suggest.bookmark" = false;
-      "browser.urlbar.suggest.engines" = false;
-      "browser.urlbar.suggest.history" = false;
-      "browser.urlbar.suggest.openpage" = false;
-      "browser.urlbar.suggest.topsites" = false;
-      "dom.webnotifications.enabled" = false;
-      "permissions.default.desktop-notification" = 2; # disable
-      "signon.rememberSignons" = false; # never save logins and passwords
+            "browser.search.selectedEngine" = "DuckDuckGo";
+            "browser.search.suggest.enabled" = false;
+            "browser.shell.checkDefaultBrowser" = false;
+            "browser.toolbars.bookmarks.visibility" = "never";
+            "browser.uidensity" = 1; # compact
+            "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten
+            "browser.urlbar.suggest.bookmark" = false;
+            "browser.urlbar.suggest.engines" = false;
+            "browser.urlbar.suggest.history" = false;
+            "browser.urlbar.suggest.openpage" = false;
+            "browser.urlbar.suggest.topsites" = false;
+            "dom.webnotifications.enabled" = false;
+            "permissions.default.desktop-notification" = 2; # disable
+            "signon.rememberSignons" = false; # never save logins and passwords
           };
-  };
+        };
       };
       git = {
         enable = true;
@@ -282,31 +317,31 @@ in
       };
       neovim = {
         enable = true;
-  extraConfig = ''
+        extraConfig = ''
           let mapleader=','
-    let s:root_dir="${my-config}/neovim/init"
+          let s:root_dir="${my-config}/neovim/init"
 
-    luafile ${my-config}/neovim/init/lsp.lua
+          luafile ${my-config}/neovim/init/lsp.lua
 
-    exe "source ".s:root_dir."/shared.vim"
-    exe "source ".s:root_dir."/template.vim"
-    exe "source ".s:root_dir."/colorscheme.vim"
-    exe "source ".s:root_dir."/comment.vim"
-    exe "source ".s:root_dir."/completion.vim"
-    exe "source ".s:root_dir."/html.vim"
-    exe "source ".s:root_dir."/syntax.vim"
-  '';
+          exe "source ".s:root_dir."/shared.vim"
+          exe "source ".s:root_dir."/template.vim"
+          exe "source ".s:root_dir."/colorscheme.vim"
+          exe "source ".s:root_dir."/comment.vim"
+          exe "source ".s:root_dir."/completion.vim"
+          exe "source ".s:root_dir."/html.vim"
+          exe "source ".s:root_dir."/syntax.vim"
+        '';
         plugins = with pkgs.vimPlugins; [
-   completion-nvim
-         # dhall-vim
-         emmet-vim
-         nerdtree
-         nvim-lspconfig
-         nvim-treesitter
-         purescript-vim
-         vim-nix
-         vim-toml
-  ];
+          completion-nvim
+          # dhall-vim
+          emmet-vim
+          nerdtree
+          nvim-lspconfig
+          nvim-treesitter
+          purescript-vim
+          vim-nix
+          vim-toml
+        ];
       };
       newsboat = {
         enable = true;
@@ -348,7 +383,7 @@ in
           # refresh-on-startup yes
           show-read-articles no
           show-read-feeds no
-  '';
+        '';
         urls = [
           { tags = [ "~Crapple" ] ; url = "https://www.apple.com/newsroom/rss-feed.rss"; }
           { tags = [ "~Dilbert" ] ; url = "https://dilbert.com/feed"; }
@@ -402,15 +437,15 @@ in
       };
       vscode = {
         enable = true;
-  package = pkgs.vscodium;
-  # extensions = [ pkgs.vscode-extensions.bbenoist.Nix ];
-  # haskell = {
-  #   enable = true;
+        package = pkgs.vscodium;
+        # extensions = [ pkgs.vscode-extensions.bbenoist.Nix ];
+        # haskell = {
+        #   enable = true;
+              # };
+        # userSettings = {
+        #   "update.channel" = "none";
+              #   "[nix]"."editor.tabSize" = 2;
         # };
-  # userSettings = {
-  #   "update.channel" = "none";
-        #   "[nix]"."editor.tabSize" = 2;
-  # };
       };
       xmobar = {
         enable = true;
@@ -471,10 +506,12 @@ in
         # };
       };
     };
-    # xsession = {
-    #   windowManager = {
-    #     xmonad = {
-    #       enable = false;
+#     xsession = {
+      # initExtra = ''
+      # '';
+#       windowManager = {
+#         xmonad = {
+#           enable = true;
     #       config = pkgs.writeText "xmonad.hs" ''
     #       '';
     #       enableContribAndExtras = true;
@@ -483,8 +520,8 @@ in
     #         haskellPackages.xmonad-contrib
     #         haskellPackages.xmonad-extras
     #       ];
-    #     };
-    #   };
-    # };
+#         };
+#       };
+#     };
   };
 }

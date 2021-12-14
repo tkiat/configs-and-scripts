@@ -5,6 +5,7 @@
     [
       /etc/nixos/hardware-configuration.nix
       ./shared/home-manager.nix
+      ./shared/nixpkgs.nix
     ];
 
   boot = {
@@ -25,75 +26,11 @@
     keyMap = "us";
   };
 
-  environment.systemPackages = with pkgs; [
-    dmenu
-
-    acpi
-    alsaUtils
-    bash
-    cpufrequtils
-    curl
-    dash
-    dejsonlz4
-    dmidecode
-    du-dust
-    exa
-    fd
-    feh
-    flashrom
-    gcc
-    ghostscript
-    gnupg
-    gwenview
-    heimdall
-    htop
-    imagemagick
-    jpegoptim
-    killall
-    less
-    lm_sensors
-    loc
-    mc
-    mediainfo
-    neofetch
-    neovim
-    openbox
-    pciutils
-    pencil
-    pinentry
-    pinta
-    python3
-    qview
-    ranger
-    redshift
-    ripgrep
-    rsync
-    scrot
-    smartmontools
-    tealdeer
-    tmux
-    trash-cli
-    unzip
-    usbutils
-    w3m
-    wget
-    xclip
-    xfce.exo
-    xfce.thunar
-    xfce.tumbler
-    xfce.xfconf
-    xmonad-with-packages
-    xsel
-    xterm
-    zip
-  ];
-
   hardware = {
     enableRedistributableFirmware = false;
     pulseaudio.enable = true;
     trackpoint.emulateWheel = true;
   };
-
 
   i18n.defaultLocale = "en_US.UTF-8";
 
