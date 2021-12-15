@@ -82,10 +82,6 @@ vnoremap <leader>/ y/<c-r>"<cr>
 nnoremap <leader><space> mqbi<space><esc>ea<space><esc>`ql
 " b: buffer
 nnoremap <leader>b :bnext<cr>
-" c: colorscheme
-" nnoremap <leader>c0 :colorscheme default<cr>
-" nnoremap <leader>c1 :colorscheme custom-dark<cr>
-" nnoremap <leader>c2 :colorscheme custom-light<cr>
 " c: copy - current file
 " nnoremap <leader>cf :!cat % \| xclip -selection clipboard<cr><cr>
 " d: definition highlight group

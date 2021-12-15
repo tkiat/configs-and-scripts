@@ -64,16 +64,52 @@
         "type": "github"
       }
     },
+    "nixpkgs_4": {
+      "locked": {
+        "lastModified": 1639161226,
+        "narHash": "sha256-75Y08ynJDTq6HHGIF+8IADBJSVip0UyWQH7jqSFnRR8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "573095944e7c1d58d30fc679c81af63668b54056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "tkiat-slock": "tkiat-slock",
         "tkiat-st": "tkiat-st"
+      }
+    },
+    "tkiat-slock": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1639569571,
+        "narHash": "sha256-mz11YNeBy7WLzOu6z5pQ/MAS07Px4C8XV5kOOkLB9qQ=",
+        "owner": "tkiat",
+        "repo": "forked-slock",
+        "rev": "586785272e109aa524070cdd93be57164af8d211",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "tkiat",
+        "ref": "my-config",
+        "repo": "forked-slock",
+        "type": "gitlab"
       }
     },
     "tkiat-st": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1639313176,

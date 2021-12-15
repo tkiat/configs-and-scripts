@@ -14,7 +14,6 @@ in
     unrar
 
     dmenu
-    slock
 
     acpi
     alsaUtils
