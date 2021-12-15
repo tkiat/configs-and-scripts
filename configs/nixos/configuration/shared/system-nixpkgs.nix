@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   ghc' = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
@@ -21,12 +21,16 @@ in
     };
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages =
+#     [ tkiat-custom-st ] ++
+    (with pkgs; [
     # unfree
     google-chrome
     unrar
 
     dmenu
+    slock
+#     tkiat-custom-st
 
     nodePackages.bash-language-server
     nodePackages.yaml-language-server
@@ -91,5 +95,5 @@ in
     xsel
     xterm
     zip
-  ];
+  ]);
 }

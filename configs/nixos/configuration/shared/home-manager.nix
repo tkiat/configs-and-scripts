@@ -4,16 +4,11 @@ let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-private = "/home/tkiat/Sync/Personal-Local/Private";
-  nur-no-pkgs = import pkgs.nur {
-    nurpkgs = import pkgs { system = "x86_64-linux"; };
-  };
 in
 {
-  imports =
-    [
-      nur-no-pkgs.repos.rycee.firefox-addons
-      (import "${home-manager}/nixos")
-    ];
+  imports = [
+    (import "${home-manager}/nixos")
+  ];
   home-manager.users.tkiat = { pkgs, ... }: {
     # dconf.setttings = {
     # }
