@@ -1,16 +1,7 @@
-" Author: Theerawat Kiatdarakun
-" TODO combine mapping sections
-
-" test: https://stackoverflow.com/questions/37644682/why-is-vim-so-slow
-" set timeoutlen=1000
-" set ttimeoutlen=0
-
 let nvim_dir='~/.config/nvim'
 let temp_dir=nvim_dir.'/temp'
 
 let space_per_tab=2
-" TODO use vim tag sections here also check mapping first perhaps can remove leader
-" TODO colsure on how to display 80 clumns
 " ========================================
 " Set
 " ========================================
