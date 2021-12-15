@@ -3,7 +3,6 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-    ./shared/system-shared.nix
   ];
 
   boot = {

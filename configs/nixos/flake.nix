@@ -8,14 +8,17 @@
   outputs = { self, home-manager, nixpkgs, tkiat-st }: {
     nixosConfigurations.nixos-main = nixpkgs.lib.nixosSystem {
       modules = [
-        ./configuration/nixos-main.nix
+        ./configuration/machine/nixos-main.nix
+        ./configuration/system/shared.nix
+
         home-manager.nixosModules.home-manager {
           home-manager.users.tkiat =
-            import ./configuration/shared/home-manager-tkiat.nix;
+            import ./configuration/home-manager/tkiat.nix;
         }
+
         ({ pkgs, ... }: {
           environment.systemPackages =
-            (import ./configuration/shared/system-pkgs.nix pkgs).list
+            (import ./configuration/system/shared-pkgs.nix pkgs).list
             ++ [
               tkiat-st.defaultPackage.x86_64-linux
             ];

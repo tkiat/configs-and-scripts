@@ -16,12 +16,10 @@ in
     dmenu
     slock
 
-    nodePackages.bash-language-server
-    nodePackages.yaml-language-server
-
     acpi
     alsaUtils
     bash
+    nodePackages.bash-language-server
     bat
     cpufrequtils
     curl
@@ -78,6 +76,7 @@ in
     xmonad-with-packages
     xsel
     xterm
+    nodePackages.yaml-language-server
     zip
   ];
 }

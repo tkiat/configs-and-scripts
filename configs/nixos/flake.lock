@@ -68,10 +68,10 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
-        "tkiat-custom-st": "tkiat-custom-st"
+        "tkiat-st": "tkiat-st"
       }
     },
-    "tkiat-custom-st": {
+    "tkiat-st": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
       },
