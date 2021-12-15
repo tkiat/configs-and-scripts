@@ -3,8 +3,6 @@
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
-#     ./shared/home-manager.nix
-    ./shared/system-nixpkgs.nix
     ./shared/system-shared.nix
   ];
 
