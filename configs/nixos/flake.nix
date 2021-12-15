@@ -1,11 +1,15 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  inputs.st.url = "gitlab:tkiat/forked-st/my-config";
+  inputs.nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
+  inputs.nur.url = github:nix-community/NUR;
+  inputs.st.url = gitlab:tkiat/forked-st/my-config;
 
-  outputs = { self, nixpkgs, st }: {
+  outputs = { self, nixpkgs, nur, st }: {
 
     nixosConfigurations.nixos-main = nixpkgs.lib.nixosSystem {
-      modules = [ ./configuration/nixos-main.nix ];
+      modules = [
+        { nixpkgs.overlays = [ nur.overlay ]; }
+        ./configuration/nixos-main.nix
+      ];
     };
   };
 }

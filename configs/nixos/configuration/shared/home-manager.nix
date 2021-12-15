@@ -4,10 +4,14 @@ let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-private = "/home/tkiat/Sync/Personal-Local/Private";
+  nur-no-pkgs = import pkgs.nur {
+    nurpkgs = import pkgs { system = "x86_64-linux"; };
+  };
 in
 {
   imports =
     [
+      nur-no-pkgs.repos.rycee.firefox-addons
       (import "${home-manager}/nixos")
     ];
   home-manager.users.tkiat = { pkgs, ... }: {
@@ -119,6 +123,9 @@ in
       };
       firefox = {
         enable = true;
+        # extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        #   privacy-badger
+        # ];
         profiles.default = {
           id = 0;
           bookmarks = {
@@ -161,13 +168,13 @@ in
             "browser.newtabpage.activity-stream.feeds.snippets" = false;
             "browser.newtabpage.activity-stream.feeds.topsites" = false;
             "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
-            "browser.startup.page" = 3; # Open previous windows and tabs
             "browser.search.defaultenginename" = "DuckDuckGo";
             "browser.search.isUS" = false;
             "browser.search.region" = "TH";
             "browser.search.selectedEngine" = "DuckDuckGo";
             "browser.search.suggest.enabled" = false;
             "browser.shell.checkDefaultBrowser" = false;
+            "browser.startup.page" = 3; # Open previous windows and tabs
             "browser.toolbars.bookmarks.visibility" = "never";
             "browser.uidensity" = 1; # compact
             "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten

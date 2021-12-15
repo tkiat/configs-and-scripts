@@ -17,6 +17,7 @@ https://lwn.net/headlines/rss "~LWN.net"
 https://weekly.nixos.org/feeds/all.rss.xml "~NixOS"
 
 https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
+https://www.eff.org/rss/updates.xml "~EFF"
 https://static.fsf.org/fsforg/rss/news.xml "~FSF"
 https://about.gitlab.com/atom.xml "~GitLab"
 # http://planet.haskell.org/rss20.xml "~Planet Haskell"
