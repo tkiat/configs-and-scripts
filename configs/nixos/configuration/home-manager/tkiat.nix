@@ -203,12 +203,14 @@ in
         luafile ${my-config}/neovim/init/lsp.lua
 
         exe "source ".s:root_dir."/shared.vim"
-        exe "source ".s:root_dir."/template.vim"
+
         exe "source ".s:root_dir."/colorscheme.vim"
         exe "source ".s:root_dir."/comment.vim"
         exe "source ".s:root_dir."/completion.vim"
         exe "source ".s:root_dir."/html.vim"
+        exe "source ".s:root_dir."/plugin.vim"
         exe "source ".s:root_dir."/syntax.vim"
+        exe "source ".s:root_dir."/template.vim"
       '';
       plugins = with pkgs.vimPlugins; [
         completion-nvim
