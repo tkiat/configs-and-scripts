@@ -5,7 +5,7 @@
     tkiat-st.url = gitlab:tkiat/forked-st/my-config;
   };
 
-  outputs = { self, home-manager, nixpkgs, tkiat-st }: {
+  outputs = { self, home-manager, nixpkgs, tkiat-st }@inputs: {
     nixosConfigurations.nixos-main = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration/machine/nixos-main.nix
@@ -20,7 +20,7 @@
           environment.systemPackages =
             (import ./configuration/system/shared-pkgs.nix pkgs).list
             ++ [
-              tkiat-st.defaultPackage.x86_64-linux
+              inputs.tkiat-st.defaultPackage.x86_64-linux
             ];
         })
       ];
