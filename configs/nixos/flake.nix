@@ -23,8 +23,8 @@
           environment.systemPackages =
             (import ./configuration/system/shared-pkgs.nix pkgs).list
             ++ [
-              inputs.pomodoro-bar.defaultPackage.x86_64-linux
-              inputs.pomodoro-bar-py.defaultPackage.x86_64-linux
+#               inputs.pomodoro-bar.defaultPackage.x86_64-linux
+#               inputs.pomodoro-bar-py.defaultPackage.x86_64-linux
               inputs.tkiat-slock.defaultPackage.x86_64-linux
               inputs.tkiat-st.defaultPackage.x86_64-linux
             ];
