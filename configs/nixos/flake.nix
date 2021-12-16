@@ -5,6 +5,8 @@
 
 #     pomodoro-bar.url = github:tkiat/pomodoro-bar/main;
 #     pomodoro-bar-py.url = github:tkiat/pomodoro-bar-py/main;
+    tkiat-dmenu.url = gitlab:tkiat/forked-dmenu/my-config;
+    tkiat-dwm.url = gitlab:tkiat/forked-dwm/my-config;
     tkiat-slock.url = gitlab:tkiat/forked-slock/my-config;
     tkiat-st.url = gitlab:tkiat/forked-st/my-config;
   };
