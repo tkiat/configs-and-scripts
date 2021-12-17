@@ -27,6 +27,8 @@
             ++ [
 #               inputs.pomodoro-bar.defaultPackage.x86_64-linux
 #               inputs.pomodoro-bar-py.defaultPackage.x86_64-linux
+              inputs.tkiat-dmenu.defaultPackage.x86_64-linux
+              inputs.tkiat-dwm.defaultPackage.x86_64-linux
               inputs.tkiat-slock.defaultPackage.x86_64-linux
               inputs.tkiat-st.defaultPackage.x86_64-linux
             ];

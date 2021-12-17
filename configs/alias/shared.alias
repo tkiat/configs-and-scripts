@@ -107,18 +107,11 @@ alias 2ls-symlink="find . -maxdepth 1 -type l"
       2ls-tar() { tar tf $1 | sed 's/\/.*//' | uniq; } # list tarball file and folders (depth = 1)
 alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="Video;%Duration/String%" $i; done'
       2mount() {
-        if [[ $# -eq 0 ]] ; then
-            echo 'usage: 2mount <letter x in disk label: sdx> <luks (optional)>'
-        fi;
-
-        if [[ $# -eq 1 ]] ; then
-          echo 'mounting a disk ...'
-          sudo mount /dev/sd${1} /mnt/sd${1}
-        elif [[ $2 -eq 'luks' ]] ; then
-          echo 'mounting an encrypted disk ...'
-          sudo cryptsetup luksOpen /dev/sd${1} sd${1}
-          sudo mount /dev/mapper/sd${1} /mnt/sd${1}
-        fi;
+        sudo mount /dev/${1} ~/mnt/${1}
+      }
+      2mount-luks() {
+        sudo cryptsetup luksOpen /dev/${1} ${1}
+        sudo mount /dev/mapper/${1} ~/mnt/${1}
       }
 alias 2ping="ping gnu.org"
       2port-kill() { sudo fuser -k $1/tcp; }
@@ -158,18 +151,10 @@ alias 2showoff='neofetch'
       }
       2tab-title-change() { echo -en "\e]2;$1\a"; }
       2umount() {
-        if [[ $# -eq 0 ]] || [[ $1 == '-h' ]] ; then
-            echo 'usage: 2umount <letter x in disk label: sdx> <luks (optional)>'
-            if [[ $# -eq 0 ]] ; then return 1; else return 0; fi
-        fi;
-
-        if [[ $# -eq 1 ]] ; then
-          echo 'unmounting a disk ...'
-          sudo umount /mnt/sd${1}
-        elif [[ $2 -eq 'luks' ]] ; then
-          echo 'unmounting an encrypted disk ...'
-          sudo umount /mnt/sd${1}
-          sudo cryptsetup luksClose /dev/mapper/sd${1}
-        fi;
+        sudo umount ~/mnt/${1}
+      }
+      2umount-luks() {
+        sudo umount ~/mnt/$1
+        sudo cryptsetup luksClose /dev/mapper/$1
       }
 alias 2w='which'

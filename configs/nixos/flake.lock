@@ -80,17 +80,89 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1639161226,
+        "narHash": "sha256-75Y08ynJDTq6HHGIF+8IADBJSVip0UyWQH7jqSFnRR8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "573095944e7c1d58d30fc679c81af63668b54056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_6": {
+      "locked": {
+        "lastModified": 1639161226,
+        "narHash": "sha256-75Y08ynJDTq6HHGIF+8IADBJSVip0UyWQH7jqSFnRR8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "573095944e7c1d58d30fc679c81af63668b54056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-21.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "tkiat-dmenu": "tkiat-dmenu",
+        "tkiat-dwm": "tkiat-dwm",
         "tkiat-slock": "tkiat-slock",
         "tkiat-st": "tkiat-st"
       }
     },
-    "tkiat-slock": {
+    "tkiat-dmenu": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1639621318,
+        "narHash": "sha256-cX82WesIEFl9WifZzqMuIZmpICeB8Hmx9O4/Oq5YfV4=",
+        "owner": "tkiat",
+        "repo": "forked-dmenu",
+        "rev": "f0fa076bb0398fdf96ed9bd062b0189b278cee86",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "tkiat",
+        "ref": "my-config",
+        "repo": "forked-dmenu",
+        "type": "gitlab"
+      }
+    },
+    "tkiat-dwm": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_4"
+      },
+      "locked": {
+        "lastModified": 1639621818,
+        "narHash": "sha256-snD/J8u+oLW73Qf0EUXr5VEluco83Ap4eqjqX2r6YqU=",
+        "owner": "tkiat",
+        "repo": "forked-dwm",
+        "rev": "6b96c670041fe40f10f2a615a18b06f0a7eb7098",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "tkiat",
+        "ref": "my-config",
+        "repo": "forked-dwm",
+        "type": "gitlab"
+      }
+    },
+    "tkiat-slock": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1639569571,
@@ -109,7 +181,7 @@
     },
     "tkiat-st": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_6"
       },
       "locked": {
         "lastModified": 1639313176,

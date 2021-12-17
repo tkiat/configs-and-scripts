@@ -13,8 +13,6 @@ in
     google-chrome
     unrar
 
-    dmenu
-
     acpi
     alsaUtils
     bash
