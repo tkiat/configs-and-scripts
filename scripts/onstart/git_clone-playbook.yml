@@ -23,6 +23,7 @@
           - pomodoro-bar
           - pomodoro-bar-py
           - task
+          - templates
           - terminal-game-client
           - tkiat.github.io
           - vim-autofmt-gen

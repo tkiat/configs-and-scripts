@@ -35,6 +35,9 @@ in
     file.".xpdfrc".source = "${my-config}/xpdf/.xpdfrc";
     file.".Xresources".source = "${my-config}/xorg/.Xresources";
 
+#     file.".config/nvim/init".source = "${my-config}/neovim/init";
+#     file.".config/nvim/init".recursive = true;
+
     packages = with pkgs; [
       # dev
       ansible
@@ -200,8 +203,6 @@ in
         let mapleader=','
         let s:root_dir="${my-config}/neovim/init"
 
-        luafile ${my-config}/neovim/init/lsp.lua
-
         exe "source ".s:root_dir."/shared.vim"
 
         exe "source ".s:root_dir."/colorscheme.vim"
@@ -211,6 +212,8 @@ in
         exe "source ".s:root_dir."/plugin.vim"
         exe "source ".s:root_dir."/syntax.vim"
         exe "source ".s:root_dir."/template.vim"
+
+        exe "luafile ".s:root_dir."/lsp.lua"
       '';
       plugins = with pkgs.vimPlugins; [
         completion-nvim
