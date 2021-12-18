@@ -1,6 +1,7 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
+  my-app = "/home/tkiat/Sync/Personal-Cloud/App";
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-private = "/home/tkiat/Sync/Personal-Local/Private";
 in
@@ -20,6 +21,7 @@ in
     file.".newsboat/config".source = "${my-config}/newsboat/config";
     file.".newsboat/urls".source = "${my-config}/newsboat/urls";
     file.".config/polybar/config.ini".source = "${my-config}/polybar/config.ini";
+    file.".local/share/pomodoro-bar/record.json".source = config.lib.file.mkOutOfStoreSymlink "${my-app}/pomodoro-bar/record.json";
 
     file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
     file.".ssh/GitLab-tkiatd".source = "${my-private}/ssh/GitLab-tkiatd";
