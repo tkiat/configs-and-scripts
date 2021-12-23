@@ -4,6 +4,7 @@ let
   ghc' = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
     lens
     mtl
+    random
     transformers
   ]);
 in

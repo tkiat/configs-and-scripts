@@ -221,6 +221,7 @@ in
         completion-nvim
         dhall-vim
         emmet-vim
+        fugitive
         nerdtree
         nvim-lspconfig
         nvim-treesitter
