@@ -66,8 +66,8 @@ alias 2e=2edit
           polybar) f=~/.config/polybar/config.ini ;;
           pomodoro) f=~/.local/share/pomodoro-bar/record.json ;;
           script) f=~/configs-and-scripts/scripts ;;
-          xmobar) f=~/.xmobarrc ;;
-          xmonad) f=~/.xmonad/xmonad.hs ;;
+          xmobar) f=~/configs-and-scripts/configs/xmobar/.xmobarrc ;;
+          xmonad) f=~/configs-and-scripts/configs/xmonad/xmonad.hs ;;
           *)
             if [ -f "$(command -v $arg)" ]; then
               f="$(command -v "$arg")"
