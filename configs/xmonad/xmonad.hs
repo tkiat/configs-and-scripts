@@ -96,6 +96,7 @@ myConf =
           className =? "kdenlive" --> doShift "7",
           className =? "FreeFileSync" --> doShift "Media",
           className =? "MuPDF" --> doShift "Media",
+          className =? "okular" --> doShift "Media",
           className =? "supertux2" --> doShift "Media",
           className =? "vlc" --> doShift "Media"
         ]
