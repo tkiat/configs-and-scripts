@@ -23,7 +23,9 @@ alias 2nix-i-user-nixpkgs="nix-env -i"
       }
 alias 2nix-r-root="sudo -i -- nix-env -e"
 alias 2nix-r-user="nix-env -e"
-alias 2nix-u-nix-root="sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix",
-alias 2nix-u-nix-user="nix-channel --update; nix-env -iA nixpkgs.nix"
+alias 2nix-u-channel="nix-channel --update"
+alias 2nix-u-channel-sudo="sudo nix-channel --update"
+# alias 2nix-u-nix-root="sudo -i -- nix-channel --update && nix-env -iA nixpkgs.nix",
+alias 2nix-u-nix="nix-env -iA nixpkgs.nix"
 alias 2nix-u-root="sudo -i -- nix-channel --update && nix-env -u",
 alias 2nix-u-user="nix-channel --update && nix-env -u",
