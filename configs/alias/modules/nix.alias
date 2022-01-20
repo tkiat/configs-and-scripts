@@ -5,7 +5,7 @@
         print-and-execute "nix-env -f '<nixpkgs>' -qaP > ~/.cache/nixpkgs"
         print-and-execute "nix-env -f '<nixpkgs>' -qaP -A nodePackages > ~/.cache/nixpkgs-node"
       }
-alias 2nix-gc='2nix gc root;2nix gc system;2nix gc user'
+alias 2nix-gc='2nix-gc-root;2nix-gc-system;2nix-gc-user'
 alias 2nix-gc-root="sudo -i -- nix-env --delete-generations old && nix-store --gc",
 alias 2nix-gc-system="sudo nix-env -p /nix/var/nix/profiles/system --delete-generations old && nix-collect-garbage -d",
 alias 2nix-gc-user="nix-env --delete-generations old && nix-store --gc"
