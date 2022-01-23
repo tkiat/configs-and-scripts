@@ -8,6 +8,14 @@
 
   hardware = {
     enableRedistributableFirmware = false;
+    firmware = [
+      (
+        pkgs.runCommand "open-ath9k-htc-firmware" { } ''
+          mkdir -p $out/lib/firmware
+          cp ${/home/tkiat/Sync/Personal-Local/Software/ath9k-htc-compiled/htc_9271.fw} $out/lib/firmware/htc_9271.fw
+        ''
+      )
+    ];
     pulseaudio.enable = true;
     trackpoint.emulateWheel = true;
   };
