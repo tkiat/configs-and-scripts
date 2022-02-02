@@ -11,8 +11,10 @@ alias ivm='vim'
 
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
+alias cal="cal -n 2"
 alias cat="bat --pager=less"
 alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
+alias coolreader="cr3"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
 alias du="dust"
@@ -25,8 +27,7 @@ alias grep='grep --color=auto'
 alias less='less -r'
 alias ls="exa -g"
 alias mc="mc"
-alias mupdf='mupdf-x11'
-alias mupdf-dark='mupdf -C aaaaaa -I'
+alias mupdf='mupdf -C aaaaaa -I'
 alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
 alias pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
@@ -61,6 +62,7 @@ alias 2e=2edit
           .) f=. ;;
           alias) f=~/configs-and-scripts/configs/alias ;;
           config) f=~/configs-and-scripts/configs ;;
+          neovim) f=~/configs-and-scripts/configs/neovim ;;
           nixos) f=~/configs-and-scripts/configs/nixos ;;
           nvim) f=~/configs-and-scripts/configs/neovim ;;
           polybar) f=~/.config/polybar/config.ini ;;
