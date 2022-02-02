@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  my-app = "/home/tkiat/Sync/Personal-Cloud/App";
+  my-app = "/home/tkiat/Cloud/Frequent/App";
   my-config = "/home/tkiat/configs-and-scripts/configs";
-  my-private = "/home/tkiat/Sync/Personal-Local/Private";
+  my-private = "/home/tkiat/Local/Private";
 in
 {
   # dconf.setttings = {
