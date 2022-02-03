@@ -5,7 +5,7 @@ if ! [ -d $src_dir ]; then
   exit 1
 fi
 
-dest_dir=~/Sync/Personal-Cloud/App/Firefox
+dest_dir=~/Cloud/Frequent/App/Firefox
 if ! [ -d $dest_dir ]; then
   echo "Destination folder $dest_dir not found. Exiting..."
   exit 1

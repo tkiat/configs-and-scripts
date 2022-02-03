@@ -41,7 +41,7 @@ function backup_dir () {
     exit 1
   fi
 
-  echo "If the script hangs, check if authenticated (like typing gdrive list)."
+  echo "If the script hangs, check if authenticated (try 'gdrive list')."
 
   filename_nodate="${dir##*/}"
   filename="$(date '+%Y_%m_%d')-$filename_nodate"
@@ -53,39 +53,36 @@ function backup_dir () {
   gdrive list
 }
 
-dir1=~/Sync/Personal-Cloud
-dir2=~/Sync/Personal-Cloud-Big
-dir3=~/Sync/Personal-Local
+dir1=~/Cloud/Frequent
+dir2=~/Cloud/Seldom
+# dir3=~/Cloud/Personal-Local
 
 PS3='Select directories to back up: '
-choices=("$dir1" "$dir2" "$dir3" "Everything" "Nothing")
+choices=("$dir1" "$dir2" "Everything" "Nothing")
 select chosen in "${choices[@]}"; do
   echo "----------------------------------------------------------------------"
   case $chosen in
     "$dir1")
       echo "Backing up ${dir1} ..."
       backup_dir $dir1
-
       break
       ;;
     "$dir2")
       echo "Backing up ${dir2} ..."
       backup_dir $dir2
-
       break
       ;;
-    "$dir3")
-      echo "Backing up ${dir3} ..."
-      backup_dir $dir3
-
-      break
-      ;;
+#     "$dir3")
+#       echo "Backing up ${dir3} ..."
+#       backup_dir $dir3
+# 
+#       break
+#       ;;
     "Everything")
       echo "Backing up Everything ..."
       backup_dir $dir1
       backup_dir $dir2
-      backup_dir $dir3
-
+#       backup_dir $dir3
       break
       ;;
     "Nothing")

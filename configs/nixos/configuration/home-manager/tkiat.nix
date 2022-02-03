@@ -62,8 +62,11 @@ in
 
       calibre
       cmus
+      exfat
       gdrive
       gimp
+      gnome.cheese
+      gnome.gedit
       inkscape
       kdenlive
       libreoffice
@@ -75,6 +78,7 @@ in
       polybar
       simplescreenrecorder
       tdesktop
+      texlive.combined.scheme-medium
       tor-browser-bundle-bin
       vlc
       weechat
