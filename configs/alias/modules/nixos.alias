@@ -1,2 +1,2 @@
 alias 2nixos-rebuild-main="sudo nixos-rebuild --impure switch --flake ~/configs-and-scripts/configs/nixos#nixos-main"
-alias 2nixos-update-main="cd ~/configs-and-scripts/configs/nixos && nix flake update && cd -"
+alias 2nixos-update-main="sudo nix-channel --update && cd ~/configs-and-scripts/configs/nixos && nix flake update && cd -"
