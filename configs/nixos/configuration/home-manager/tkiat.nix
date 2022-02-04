@@ -78,7 +78,7 @@ in
       polybar
       simplescreenrecorder
       tdesktop
-      texlive.combined.scheme-medium
+      texlive.combined.scheme-full
       tor-browser-bundle-bin
       vlc
       weechat

@@ -1,4 +1,6 @@
+let configs_dir='~/configs-and-scripts/configs/neovim'
 let nvim_dir='~/.config/nvim'
+
 let temp_dir=nvim_dir.'/temp'
 
 let space_per_tab=2
@@ -97,7 +99,7 @@ nnoremap <expr> <leader>hl (&hls && v:hlsearch ? ':set nohls' : ':set hls')."\n"
 " o: open file
 " nnoremap <leader>oh  :tabnew ~<cr>
 " nnoremap <leader>ov  :vsplit ~/.vimrc<cr>
-exe 'nnoremap <leader>ov  :tabnew '.nvim_dir.'<cr>'
+exe 'nnoremap <leader>ov  :tabnew '.configs_dir.'<cr>'
 " nnoremap <leader>ovm :tabnew ~/.vimrc-modules<cr>
 " p: paste from clipboard to end of file
 nnoremap <leader>pc :w<cr>:!echo $(xclip -o selection clipboard) >> %<cr>L<cr>

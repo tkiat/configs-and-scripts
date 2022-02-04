@@ -11,7 +11,7 @@ alias ivm='vim'
 
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
-alias cal="cal -n 2"
+alias cal="cal -3"
 alias cat="bat --pager=less"
 alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias coolreader="cr3"
