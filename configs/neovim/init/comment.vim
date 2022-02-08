@@ -23,7 +23,7 @@ let s:groups=[
       \{
       \'front': '% ',
       \'back': '',
-      \'ext': '*.tex',
+      \'ext': '*.bib,*.tex',
       \},
       \{
       \'front': ';;; ',

@@ -94,6 +94,7 @@ myConf =
           className =? "Gimp" --> doShift "7",
           className =? "Inkscape" --> doShift "7",
           className =? "kdenlive" --> doShift "7",
+          className =? "cr3" --> doShift "Media",
           className =? "FreeFileSync" --> doShift "Media",
           className =? "MuPDF" --> doShift "Media",
           className =? "okular" --> doShift "Media",
