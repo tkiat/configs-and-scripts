@@ -53,8 +53,8 @@ function backup_dir () {
   gdrive list
 }
 
-dir1=~/Cloud/Frequent
-dir2=~/Cloud/Seldom
+dir1=~/Sync/Cloud-Weekly
+dir2=~/Sync/Cloud-Monthly
 # dir3=~/Cloud/Personal-Local
 
 PS3='Select directories to back up: '

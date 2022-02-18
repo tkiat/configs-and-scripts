@@ -1,6 +1,6 @@
 #!/usr/bin/env dash
 src=~/.config/chromium/Default/Bookmarks
-target_dir=~/Cloud/Frequent/App/Chromium
+target_dir=~/Sync/Cloud-Weekly/App/Chromium
 
 if ! [ -f $src ]; then
   echo "Bookfile file ${src} not found. Exiting ..."

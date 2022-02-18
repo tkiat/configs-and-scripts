@@ -1,9 +1,10 @@
 { config, pkgs, ... }:
 
 let
-  my-app = "/home/tkiat/Cloud/Frequent/App";
+  my-app = "/home/tkiat/Sync/Cloud-Weekly/App";
   my-config = "/home/tkiat/configs-and-scripts/configs";
-  my-private = "/home/tkiat/Local/Private";
+  my-private = "/home/tkiat/Sync/Private";
+  my-temp = "/home/tkiat/Sync/Temp";
 in
 {
   # dconf.setttings = {
@@ -12,6 +13,8 @@ in
   home = {
     enableNixpkgsReleaseCheck = true;
     # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
+
+    file."Downloads".source = config.lib.file.mkOutOfStoreSymlink "${my-temp}/Downloads";
 
     file.".config/xmobar/.xmobarrc".source = "${my-config}/xmobar/.xmobarrc";
     file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
@@ -79,7 +82,8 @@ in
       simplescreenrecorder
       tdesktop
       texlive.combined.scheme-full
-      tor-browser-bundle-bin
+#       torbrowser
+#       tor-browser-bundle-bin
       vlc
       weechat
       xmobar
