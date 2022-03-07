@@ -161,6 +161,9 @@ in
           "Stack Overflow" = {
             url = "https://stackoverflow.com/";
           };
+          Thairath = {
+            url = "https://www.thairath.co.th/newspaper";
+          };
           Tutanota = {
             url = "https://mail.tutanota.com/";
           };
