@@ -89,6 +89,7 @@ myConf =
           className =? "qutebrowser" --> doShift "Web",
           className =? "Firefox" --> doShift "Login",
           className =? "Icecat" --> doShift "Login",
+          className =? "Signal" --> doShift "Login",
           className =? "TelegramDesktop" --> doShift "Login",
           className =? "Blender" --> doShift "7",
           className =? "Gimp" --> doShift "7",
