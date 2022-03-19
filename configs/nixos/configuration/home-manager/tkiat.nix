@@ -82,7 +82,7 @@ in
       simplescreenrecorder
       tdesktop
       texlive.combined.scheme-full
-      torbrowser
+      tor-browser-bundle-bin
       vlc
       weechat
       xmobar
