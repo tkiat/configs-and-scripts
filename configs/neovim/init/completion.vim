@@ -15,6 +15,10 @@ inoremap hsext {-# LANGUAGE  #-}<esc>F<space>i
 exe 'inoremap lenumerate <esc>:r '.s:template_dir.'/enumerate.tex<cr>kdd'
 exe 'inoremap litemize <esc>:r '.s:template_dir.'/itemize.tex<cr>kdd'
 exe 'inoremap lquote <esc>:r '.s:template_dir.'/quote.tex<cr>kdd'
+inoremap l-> $\rightarrow$
+inoremap l<- $\leftarrow$
+inoremap lemph \emph{}<esc>i
+inoremap ltextbf \textbf{}<esc>i
 
 " completion-nvim
   " Use in every buffer
@@ -40,6 +44,8 @@ for val in ['{}','()','[]','""',"''",'**','<>','``','__','$$']
     exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
   endif
 endfor
+nnoremap <leader>"" mqciw“”<esc>P`ql
+vnoremap <leader>"" mq:s/\%V.*\%V./“&”/<cr>`qf”:nohl<cr>
 
 " ** enclose word
 nnoremap <leader>** ciw****<esc>hPl

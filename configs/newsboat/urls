@@ -8,7 +8,6 @@ https://psyche.co/feed "~Psyche"
 https://standardebooks.org/rss/new-releases "~Standard Ebooks"
 
 https://copyblogger.com/feed/ "~CopyBlogger"
-https://feeds.feedblitz.com/ProBlogger "~ProBlogger"
 
 http://debian-handbook.info/feed/ "~Debian"
 https://distrowatch.com/news/dww.xml "~Distrowatch"
@@ -19,7 +18,7 @@ https://fedoramagazine.org/feed/ "~Fedora Magazine"
 https://lwn.net/headlines/rss "~LWN.net"
 https://weekly.nixos.org/feeds/all.rss.xml "~NixOS"
 
-https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
+# https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
 https://www.eff.org/rss/updates.xml "~EFF"
 https://static.fsf.org/fsforg/rss/news.xml "~FSF"
 https://about.gitlab.com/atom.xml "~GitLab"
