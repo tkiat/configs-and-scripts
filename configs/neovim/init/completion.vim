@@ -12,7 +12,7 @@ inoremap myquote “”<esc>i
 " haskell
 inoremap hsext {-# LANGUAGE  #-}<esc>F<space>i
 " latex
-exe 'inoremap lenumerate <esc>:r '.s:template_dir.'/enumerate.tex<cr>kdd'
+exe 'inoremap lenum <esc>:r '.s:template_dir.'/enumerate.tex<cr>kdd'
 exe 'inoremap litemize <esc>:r '.s:template_dir.'/itemize.tex<cr>kdd'
 exe 'inoremap lquote <esc>:r '.s:template_dir.'/quote.tex<cr>kdd'
 inoremap l-> $\rightarrow$
