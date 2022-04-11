@@ -63,7 +63,7 @@ in
       tokei
       yarn
 
-      calibre
+#       calibre
       cmus
       exfat
       gdrive
