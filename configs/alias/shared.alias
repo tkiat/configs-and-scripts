@@ -160,3 +160,4 @@ alias 2showoff='neofetch'
         sudo cryptsetup luksClose /dev/mapper/$1
       }
 alias 2w='which'
+alias 2watch-power='watch cat /sys/class/power_supply/BAT*/power_now'
