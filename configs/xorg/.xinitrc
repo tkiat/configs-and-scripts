@@ -4,7 +4,7 @@ rm -f $pomodoro_bar_i && mkfifo $pomodoro_bar_i
 rm -f $pomodoro_bar_w && mkfifo $pomodoro_bar_w
 
 [ -x "$(command -v chromium)" ] && chromium&
-[ -x "$(command -v redshift)" ] && redshift -O 3000
+[ -x "$(command -v redshift)" ] && redshift -O 3200
 xrdb -merge ~/.Xresources && [ -x "$(command -v xterm)" ] && xterm&
 
 # setxkbmap -layout us,th -option grp:alt_space_toggle

@@ -17,6 +17,9 @@ exe 'inoremap litemize <esc>:r '.s:template_dir.'/itemize.tex<cr>kdd'
 exe 'inoremap lquote <esc>:r '.s:template_dir.'/quote.tex<cr>kdd'
 inoremap l-> $\rightarrow$
 inoremap l<- $\leftarrow$
+inoremap lsec \section{}<esc>i
+inoremap lssec \subsection{}<esc>i
+inoremap lsssec \subsubsection{}<esc>i
 inoremap lemph \emph{}<esc>i
 inoremap ltextbf \textbf{}<esc>i
 
