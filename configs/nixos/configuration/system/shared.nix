@@ -7,7 +7,7 @@
   };
 
   hardware = {
-    enableRedistributableFirmware = false;
+#     enableRedistributableFirmware = false;
     firmware = [
       (
         pkgs.runCommand "open-ath9k-htc-firmware" { } ''
@@ -43,7 +43,7 @@
       ];
       blacklistedLicenses = with lib.licenses; [
         # NixOS doesn't treat unfreeRedistributableFirmware as unfree
-        unfreeRedistributableFirmware
+#         unfreeRedistributableFirmware
       ];
     };
   };

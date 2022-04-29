@@ -25,6 +25,7 @@ in
     dejsonlz4
     dmidecode
     du-dust
+    edid-decode
     exa
     fd
     feh

@@ -140,7 +140,7 @@ in
           GOG = {
             url = "https://www.gog.com/";
           };
-          "Grammarly" = {
+          Grammarly = {
             url = "https://app.grammarly.com/ddocs/880707227";
           };
           "Humble Bundle" = {
@@ -166,6 +166,12 @@ in
           };
           Tutanota = {
             url = "https://mail.tutanota.com/";
+          };
+          "Utility - MEA" = {
+            url = "https://eservice.mea.or.th/meaeservice/";
+          };
+          "Utility - MWA" = {
+            url = "https://eservicesapp.mwa.co.th/ES/main.jsp";
           };
         };
         settings = {
