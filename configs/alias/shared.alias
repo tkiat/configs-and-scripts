@@ -27,7 +27,7 @@ alias grep='grep --color=auto'
 alias less='less -r'
 alias ls="exa -g"
 alias mc="mc"
-alias mupdf='mupdf -C aaaaaa -I'
+# alias mupdf='mupdf -C aaaaaa -I'
 alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
 alias pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
@@ -102,6 +102,7 @@ alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
 alias 2grep-current-dir="grep -inr . -e "
       2grep-markdown-width() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g; s/^([^:]*:[^:]*:)\s+(.*)/\1\2/g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2grub-make="sudo grub-mkconfig -o /boot/grub/grub.cfg"
+alias 2join-pdf="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=joined.pdf *.pdf"
 alias 2keyring-get-gnu="wget https://ftp.gnu.org/gnu/gnu-keyring.gpg"
 alias 2logout="pkill -u $USER"
       2ls-exclude-same-name-diff-ext() { for f in *; do echo "${f%.*}"; done | sort | uniq -u ;}
