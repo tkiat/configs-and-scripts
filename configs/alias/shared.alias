@@ -51,6 +51,7 @@ alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2clipboard-get="xclip -o -selection clipboard"
 alias 2clipboard-set="tr -d '\n' | xclip -selection clipboard" # usage: pwd | 2clipboard-set
 alias 2clipboard-set_withnewline="xclip -selection clipboard"
+alias 2convert-jpgs_pdfs="mogrify -format pdf *.jpg"
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
 alias 2diff-folders="diff -x '.*' -rq"
