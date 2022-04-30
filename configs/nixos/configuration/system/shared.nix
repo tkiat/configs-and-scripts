@@ -12,7 +12,7 @@
       (
         pkgs.runCommand "open-ath9k-htc-firmware" { } ''
           mkdir -p $out/lib/firmware
-          cp ${/home/tkiat/Sync/Cloud-Monthly/Software/Firmware/ath9k-htc-compiled/htc_9271.fw} $out/lib/firmware/htc_9271.fw
+          cp ${/home/tkiat/Sync/cloud-monthly/software/Firmware/ath9k-htc-compiled/htc_9271.fw} $out/lib/firmware/htc_9271.fw
         ''
       )
     ];

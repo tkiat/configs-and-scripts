@@ -1,10 +1,9 @@
 { config, pkgs, ... }:
 
 let
-  my-app = "/home/tkiat/Sync/Cloud-Weekly/App";
+  my-app = "/home/tkiat/Sync/cloud-weekly/App";
   my-config = "/home/tkiat/configs-and-scripts/configs";
-  my-private = "/home/tkiat/Sync/Private";
-  my-temp = "/home/tkiat/Sync/Temp";
+  my-local = "/home/tkiat/Sync/local";
 in
 {
   # dconf.setttings = {
@@ -14,7 +13,7 @@ in
     enableNixpkgsReleaseCheck = true;
     # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
 
-    file."Downloads".source = config.lib.file.mkOutOfStoreSymlink "${my-temp}/Downloads";
+    file."Downloads".source = config.lib.file.mkOutOfStoreSymlink "${my-local}/downloads";
 
     file.".config/xmobar/.xmobarrc".source = "${my-config}/xmobar/.xmobarrc";
     file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
@@ -26,9 +25,9 @@ in
     file.".config/polybar/config.ini".source = "${my-config}/polybar/config.ini";
     file.".local/share/pomodoro-bar/record.json".source = config.lib.file.mkOutOfStoreSymlink "${my-app}/pomodoro-bar/record.json";
 
-    file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
-    file.".ssh/GitLab-tkiatd".source = "${my-private}/ssh/GitLab-tkiatd";
-    file.".ssh/NotABug-tkiat".source = "${my-private}/ssh/NotABug-tkiat";
+    file.".ssh/GitHub-tkiatd".source = "${my-local}/private/ssh/GitHub-tkiatd";
+    file.".ssh/GitLab-tkiatd".source = "${my-local}/private/ssh/GitLab-tkiatd";
+    file.".ssh/NotABug-tkiat".source = "${my-local}/private/ssh/NotABug-tkiat";
 
     file.".ssh/config".source = "${my-config}/ssh/config";
     file.".ssh/GitHub-tkiatd.pub".source = "${my-config}/ssh/GitHub-tkiatd.pub";
