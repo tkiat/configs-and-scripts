@@ -174,6 +174,8 @@ in
           };
         };
         settings = {
+          "browser.download.folderList" = 2; # 2 is using last used folder
+          "browser.download.lastDir" = "/home/tkiat/downloads";
           "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
           "browser.newtabpage.activity-stream.feeds.snippets" = false;
           "browser.newtabpage.activity-stream.feeds.topsites" = false;

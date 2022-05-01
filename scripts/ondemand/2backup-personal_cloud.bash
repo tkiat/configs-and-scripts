@@ -13,12 +13,15 @@ function delete_old_backup () {
 }
 
 function archive_compress_encrypt_upload () {
-  dir=$1
-  filename=$2
+  base_dir=$1
+  chosen_dir=$2
+  filename=$3
 
   cd ~ || exit
   echo 'Archiving and Compressing ...'
-  tar czf "$filename.tar.gz" --directory="$dir" .
+#   tar czf "$filename.tar.gz" --directory="$dir" .
+  cd "$base_dir"
+  tar czf "$filename.tar.gz" "$chosen_dir"
 
   echo 'Encrypting ...'
   if gpg --encrypt --recipient tkiat@tutanota.com "$filename.tar.gz"
@@ -31,10 +34,14 @@ function archive_compress_encrypt_upload () {
     echo gpg encryption failed. exiting ...
     exit 1
   fi
+  cd -
 }
 
 function backup_dir () {
-  dir=$1
+  base_dir=$1
+  chosen_dir=$2
+
+  dir=$base_dir/$chosen_dir
 
   if ! [ -d "$dir" ]; then
     echo "$dir not found. Exiting ..."
@@ -43,53 +50,21 @@ function backup_dir () {
 
   echo "If the script hangs, check if authenticated (try 'gdrive list')."
 
-  filename_nodate="${dir##*/}"
+#   filename_nodate="${dir##*/}"
+  filename_nodate="$chosen_dir"
   filename="$(date '+%Y_%m_%d')-$filename_nodate"
 
   delete_old_backup "$filename_nodate.tar.gz.gpg"
-  archive_compress_encrypt_upload "$dir" "$filename"
+  archive_compress_encrypt_upload "$base_dir" "$chosen_dir" "$filename"
 
   echo 'Finish!'
   gdrive list
 }
 
-dir1=~/Sync/Cloud-Weekly
-dir2=~/Sync/Cloud-Monthly
-# dir3=~/Cloud/Personal-Local
-
+base_dir=~/cloud
 PS3='Select directories to back up: '
-choices=("$dir1" "$dir2" "Everything" "Nothing")
+choices=($(ls $base_dir))
 select chosen in "${choices[@]}"; do
-  echo "----------------------------------------------------------------------"
-  case $chosen in
-    "$dir1")
-      echo "Backing up ${dir1} ..."
-      backup_dir $dir1
-      break
-      ;;
-    "$dir2")
-      echo "Backing up ${dir2} ..."
-      backup_dir $dir2
-      break
-      ;;
-#     "$dir3")
-#       echo "Backing up ${dir3} ..."
-#       backup_dir $dir3
-# 
-#       break
-#       ;;
-    "Everything")
-      echo "Backing up Everything ..."
-      backup_dir $dir1
-      backup_dir $dir2
-#       backup_dir $dir3
-      break
-      ;;
-    "Nothing")
-      echo "Backing up Nothing ..."
-
-      exit 0
-      ;;
-    *) echo "Invalid option $REPLY";;
-  esac
+  backup_dir $base_dir $chosen
+  break
 done
