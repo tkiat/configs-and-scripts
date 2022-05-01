@@ -38,23 +38,22 @@ function archive_compress_encrypt_upload () {
 }
 
 function backup_dir () {
-  base_dir=$1
-  chosen_dir=$2
+  base_dir="$1"
+  chosen_dir="$2"
 
-  dir=$base_dir/$chosen_dir
+  dir="$base_dir"/"$chosen_dir"
 
   if ! [ -d "$dir" ]; then
     echo "$dir not found. Exiting ..."
     exit 1
   fi
 
-  echo "If the script hangs, check if authenticated (try 'gdrive list')."
+#   echo "If the script hangs, check if authenticated (try 'gdrive list')."
 
-#   filename_nodate="${dir##*/}"
-  filename_nodate="$chosen_dir"
-  filename="$(date '+%Y_%m_%d')-$filename_nodate"
+#   filename="$(date '+%Y_%m_%d')-${dir##*/}"
+  filename="$(date '+%Y_%m_%d')-$chosen_dir"
 
-  delete_old_backup "$filename_nodate.tar.gz.gpg"
+  delete_old_backup "$chosen_dir.tar.gz.gpg"
   archive_compress_encrypt_upload "$base_dir" "$chosen_dir" "$filename"
 
   echo 'Finish!'
@@ -63,10 +62,16 @@ function backup_dir () {
 
 base_dir=~/cloud
 PS3='Select directories to back up: '
-choices=($(ls $base_dir))
+choices=($(ls "$base_dir"))
+
+gdrive list
 while true; do
   select chosen in "${choices[@]}"; do
-    backup_dir $base_dir $chosen
+    if printf '%s\0' "${choices[@]}" | grep -Fxqz "$chosen"; then
+      backup_dir "$base_dir" "$chosen"
+    else
+      echo "invald input. please select a valid number"
+    fi
     break
   done
 done
