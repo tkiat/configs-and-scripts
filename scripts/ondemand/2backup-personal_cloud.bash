@@ -64,7 +64,9 @@ function backup_dir () {
 base_dir=~/cloud
 PS3='Select directories to back up: '
 choices=($(ls $base_dir))
-select chosen in "${choices[@]}"; do
-  backup_dir $base_dir $chosen
-  break
+while true; do
+  select chosen in "${choices[@]}"; do
+    backup_dir $base_dir $chosen
+    break
+  done
 done
