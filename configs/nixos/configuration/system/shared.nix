@@ -67,6 +67,7 @@
         startx.enable = true;
       };
       layout = "us, th";
+      synaptics.enable = true;
       windowManager = {
         xmonad.enable = false;
         xmonad.enableContribAndExtras = true;
