@@ -67,7 +67,7 @@
         startx.enable = true;
       };
       layout = "us, th";
-      synaptics.enable = true;
+#       synaptics.enable = true; # touchpad
       windowManager = {
         xmonad.enable = false;
         xmonad.enableContribAndExtras = true;

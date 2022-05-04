@@ -136,9 +136,6 @@ in
           Gitlab = {
             url = "https://gitlab.com/";
           };
-          GOG = {
-            url = "https://www.gog.com/";
-          };
           Grammarly = {
             url = "https://app.grammarly.com/ddocs/880707227";
           };
@@ -174,7 +171,7 @@ in
           };
         };
         settings = {
-          "browser.download.folderList" = 2; # 2 is using last used folder
+          "browser.download.folderList" = 1; # 1 is ~/Downloads
           "browser.download.lastDir" = "/home/tkiat/downloads";
           "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
           "browser.newtabpage.activity-stream.feeds.snippets" = false;

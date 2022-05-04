@@ -36,6 +36,7 @@ in
     gnupg
     gwenview
     heimdall
+    hdparm
     htop
     imagemagick
     jpegoptim
@@ -43,6 +44,7 @@ in
     less
     lm_sensors
     loc
+    lshw
     mc
     mediainfo
     neofetch
