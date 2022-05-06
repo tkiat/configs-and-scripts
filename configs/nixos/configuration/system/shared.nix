@@ -56,6 +56,7 @@
   programs = {
     flashrom.enable = true;
     gnupg.agent.enable = true;
+    light.enable = true;
   };
 
   services = {

@@ -69,6 +69,7 @@ in
     usbutils
     w3m
     wget
+    xbrightness
     xclip
     xfce.exo
     xfce.thunar

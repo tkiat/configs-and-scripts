@@ -22,7 +22,7 @@
   system.stateVersion = "21.11"; # README before modification
   users.users.tkiat = {
     isNormalUser = true;
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
+    extraGroups = [ "docker" "networkmanager" "video" "wheel" ];
     uid = 1000;
   };
 }
