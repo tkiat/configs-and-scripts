@@ -81,6 +81,7 @@ in
       simplescreenrecorder
       tdesktop
       texlive.combined.scheme-full
+      thunderbird
       tor-browser-bundle-bin
       vlc
       weechat
