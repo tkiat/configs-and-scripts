@@ -1,6 +1,5 @@
 settings:
-  folder-dir: ~/.config/nvim/ftplugin
-  script-path: ~/.config/nvim/vim/autofmtgen.vim
+  ftplugin-dir: ~/.config/nvim/ftplugin
 
 plugins:
   javascript:

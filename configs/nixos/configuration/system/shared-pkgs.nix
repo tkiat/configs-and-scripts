@@ -17,8 +17,9 @@ in
     acpi
     alsaUtils
     bash
-    nodePackages.bash-language-server
     bat
+    busybox
+    calc
     cpufrequtils
     curl
     dash
@@ -49,6 +50,7 @@ in
     mediainfo
     neofetch
     neovim
+    nodePackages.bash-language-server
     openbox
     pciutils
     pencil
