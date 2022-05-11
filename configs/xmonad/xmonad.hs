@@ -14,6 +14,7 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.NamedWindows (getName)
 import XMonad.Util.Run
   ( hPutStrLn,
+    safeSpawn,
     spawnPipe,
   )
 import XMonad.Util.SpawnOnce
@@ -22,10 +23,14 @@ import Prelude
 -- import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
 main = do
   barProc <- spawnPipe "xmobar ~/.config/xmobar/.xmobarrc"
-  --   spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
+--   spawnPipe "polybar xmonad --config-file=~/.config/polybar/config.ini"
+--   forM_ [".xmonad-workspace-log", ".xmonad-title-log"] $ \file -> do
+--     safeSpawn "mkfifo" ["/tmp/" ++ file]
+
   xmonad $
     docks
       (myConf {logHook = myXmobarLogHook barProc})
+--       (myConf {logHook = myPolybarLogHook})
       `additionalKeysP` (myKeys myConf)
   where
     myKeys myConf =
@@ -69,7 +74,6 @@ myConf =
       focusedBorderColor = "#005577",
       focusFollowsMouse = False,
       layoutHook = myLayout,
-      -- , logHook = myPolybarLogHook
       manageHook = myManageHook,
       modMask = mod4Mask,
       normalBorderColor = "#222222",
@@ -107,17 +111,17 @@ myConf =
     myStartupHook = do
       pure ()
 
--- myPolybarLogHook = do
---   winset <- gets windowset
---   title <- maybe (return "") (fmap show . getName) . W.peek $ winset
---   let currWs = W.currentTag winset
---   let wss = map W.tag $ W.workspaces winset
---   let wsStr = join $ map (fmt currWs) $ sort' wss
---
---   io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
---   io $ appendFile "/tmp/.xmonad-workspace-log" (wsStr ++ "\n")
---   where
---     fmt currWs ws
---       | currWs == ws = "[" ++ ws ++ "]"
---       | otherwise = " " ++ ws ++ " "
---     sort' = sortBy (compare `on` (!! 0))
+myPolybarLogHook = do
+  winset <- gets windowset
+  title <- maybe (return "") (fmap show . getName) . W.peek $ winset
+  let currWs = W.currentTag winset
+  let wss = map W.tag $ W.workspaces winset
+  let wsStr = join $ map (fmt currWs) $ sort' wss
+
+  io $ appendFile "/tmp/.xmonad-title-log" (title ++ "\n")
+  io $ appendFile "/tmp/.xmonad-workspace-log" (wsStr ++ "\n")
+  where
+    fmt currWs ws
+      | currWs == ws = "[" ++ ws ++ "]"
+      | otherwise = " " ++ ws ++ " "
+    sort' = sortBy (compare `on` (!! 0))
