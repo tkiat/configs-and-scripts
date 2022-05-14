@@ -1,23 +1,21 @@
-settings:
-  ftplugin-dir: ~/.config/nvim/ftplugin
-
+ftplugin-dir: ~/.config/nvim/ftplugin
 plugins:
-  javascript:
+  - javascript:
     - cmd: js-beautify
       arg:
-  python:
+  - python:
     - cmd: yapf
       arg:
-  haskell:
+  - haskell:
     - cmd: ormolu
       arg:
     - cmd: brittany
       arg: --columns 80 --indent 2
     - cmd: hindent
       arg: --indent-size 2 --line-length 80
-  nix:
+  - nix:
     - cmd: nixpkgs-fmt
       arg:
-#   purescript:
-#     - cmd: purty
-#       arg: "- --write"
+  - purescript:
+    - cmd: purty
+      arg: "- --write"
