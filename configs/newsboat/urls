@@ -17,6 +17,7 @@ https://fedoramagazine.org/feed/ "~Fedora Magazine"
 # https://www.linux-magazine.com/rss/feed/lmi_news "~Linux Magazine"
 https://lwn.net/headlines/rss "~LWN.net"
 https://weekly.nixos.org/feeds/all.rss.xml "~NixOS"
+https://www.qubes-os.org/feed.xml "~QubesOS"
 
 # https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
 https://www.eff.org/rss/updates.xml "~EFF"

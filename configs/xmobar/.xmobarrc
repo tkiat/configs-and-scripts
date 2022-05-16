@@ -32,11 +32,31 @@ Config {
       "--Low", "40", "--High", "60",
       "--low", "green", "--normal", "orange", "--high"  ,"red"
     ] 20,
+--     Run Battery [
+--          "-t", "<acstatus>"
+--          , "-S", "Off", "-d", "0", "-m", "3"
+--          , "-L", "10", "-H", "90", "-p", "3"
+--          , "-W", "0"
+--          , "-f", "\xf244\xf243\xf243\xf243\xf242\xf242\xf242\xf241\xf241\xf240"
+--          , "--"
+--          , "-P"
+--          , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
+--          , "-A", "5"
+--          , "-i", "NOOB0"
+--          , "-O", "NOOB1"
+--          , "-o", "NOOB2"
+--          , "-H", "10", "-L", "7"
+--          ] 50,
+
     Run Battery [
-      "--template", "POW <left>%",
+      "--template", "BAT <left>% <watts>W",
       "--Low", "20", "--High", "80",
-      "--low","red", "--normal","orange", "--high","green"
-    ] 10,
+      "--low","red", "--normal","orange", "--high","green",
+      "--", -- battery specific options
+      "-o", "<fc=red><watts></fc>", -- <acstatus> when AC off
+      "-O", "<fc=orange><watts></fc>", -- <acstatus> when AC on
+      "-i", "<fc=green><watts></fc>" -- <acstatus> when AC idle (charged)
+    ] 50,
     Run Date "%_d %a %H:%M:%S" "date" 10,
     Run PipeReader "OMODORO:/tmp/.pomodoro-bar-i" "pomodoro-bar-i",
     Run PipeReader "P:/tmp/.pomodoro-bar-w" "pomodoro-bar-w"
