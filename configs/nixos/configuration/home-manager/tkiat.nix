@@ -83,6 +83,7 @@ in
       texlive.combined.scheme-full
       thunderbird
       tor-browser-bundle-bin
+      virtualbox
       vlc
       weechat
       xmobar
