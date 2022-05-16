@@ -39,6 +39,7 @@
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "google-chrome"
+        "Oracle_VM_VirtualBox_Extension_Pack"
         "unrar"
       ];
       blacklistedLicenses = with lib.licenses; [
@@ -85,5 +86,9 @@
   sound.enable = true;
   time.timeZone = "Asia/Bangkok";
 
-  virtualisation.docker.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    virtualbox.host.enable = true;
+#     virtualbox.host.enableExtensionPack = true;
+  };
 }

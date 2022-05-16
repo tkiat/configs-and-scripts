@@ -33,7 +33,7 @@ Config {
       "--low", "green", "--normal", "orange", "--high"  ,"red"
     ] 20,
     Run Battery [
-      "--template", "POW: <left>%",
+      "--template", "POW <left>%",
       "--Low", "20", "--High", "80",
       "--low","red", "--normal","orange", "--high","green"
     ] 10,

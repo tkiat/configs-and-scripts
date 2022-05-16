@@ -35,7 +35,7 @@ main = do
   where
     myKeys myConf =
       [ ("M-b", sendMessage ToggleStruts),
-        ("M-d", spawn "dmenu_run"),
+        ("M-d", spawn "dmenu_run -i"),
         ("M-S-a", spawn (terminal myConf)),
         ("M-S-l", spawn "slock"),
         ("M-p", spawn "passmenu"),
