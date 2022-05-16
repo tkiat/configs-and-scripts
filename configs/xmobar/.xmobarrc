@@ -48,14 +48,23 @@ Config {
 --          , "-H", "10", "-L", "7"
 --          ] 50,
 
+--     Run Battery [
+--       "--template", "BAT <left>% <acstatus>",
+--       "--Low", "20", "--High", "80",
+--       "--low","red", "--normal","orange", "--high","green"
+--       "--", -- battery specific options
+--       "-o", "<fc=red><watts>W</fc>", -- <acstatus> when AC off
+--       "-O", "<fc=green><watts>W</fc>", -- <acstatus> when AC on
+--       "-i", "<fc=green><watts>W</fc>" -- <acstatus> when AC idle (charged)
+--     ] 50,
     Run Battery [
-      "--template", "BAT <left>% <watts>W",
+      "--template", "BAT <left>% <acstatus>W",
       "--Low", "20", "--High", "80",
-      "--low","red", "--normal","orange", "--high","green",
+      "--low","red", "--normal","orange", "--high", "green",
       "--", -- battery specific options
       "-o", "<fc=red><watts></fc>", -- <acstatus> when AC off
-      "-O", "<fc=orange><watts></fc>", -- <acstatus> when AC on
-      "-i", "<fc=green><watts></fc>" -- <acstatus> when AC idle (charged)
+      "-O", "<fc=green><watts></fc>", -- <acstatus> when AC on
+      "-i", "<fc=gray90><watts></fc>" -- <acstatus> when AC idle (charged)
     ] 50,
     Run Date "%_d %a %H:%M:%S" "date" 10,
     Run PipeReader "OMODORO:/tmp/.pomodoro-bar-i" "pomodoro-bar-i",
