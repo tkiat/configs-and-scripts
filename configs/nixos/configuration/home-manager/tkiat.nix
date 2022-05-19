@@ -1,13 +1,26 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
+  ghc' = pkgs.haskellPackages.ghcWithPackages (hpkgs: with hpkgs; [
+    lens
+    mtl
+    random
+    transformers
+  ]);
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-cloud = "/home/tkiat/cloud";
   my-private = "/home/tkiat/private";
 in
 {
-  # dconf.setttings = {
-  # }
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "google-chrome"
+        "Oracle_VM_VirtualBox_Extension_Pack"
+        "unrar"
+      ];
+    };
+  };
   # fonts.fontconfig.enable = true;
   home = {
     enableNixpkgsReleaseCheck = true;
@@ -43,8 +56,12 @@ in
 #     file.".config/nvim/init".recursive = true;
 
     packages = with pkgs; [
+      # unfree
+      google-chrome
+      unrar
+
       # dev
-      ansible
+#       ansible
       cabal-install
         # cookiecutter
       docker
@@ -62,30 +79,93 @@ in
       tokei
       yarn
 
+      acpi
+      alsaUtils
+      bash
+      bat
+#       busybox
+      calc
 #       calibre
       cmus
+      cpufrequtils
+      curl
+      dash
+      dejsonlz4
+      dmidecode
+      du-dust
+      edid-decode
+      exa
       exfat
+      fd
+      feh
+      flashrom
+      gcc
       gdrive
+      ghc'
+#       ghostscript
       gimp
       gnome.cheese
       gnome.gedit
+      gnupg
+      gwenview
+      heimdall
+      hdparm
+      htop
+      imagemagick
       inkscape
+      jpegoptim
       kdenlive
+      killall
+      less
       libreoffice
+      lm_sensors
+      loc
+      lshw
+      mc
+      mediainfo
       mupdf
+      neofetch
       neomutt
+#       neovim
       newsboat
+      nodePackages.bash-language-server
+      nodePackages.yaml-language-server
       okular
+      openbox
       pandoc
+      pciutils
+      pencil
+      pinentry
+      pinta
       polybar
+      python3
+      qview
+      ranger
+      redshift
+      ripgrep
+      rsync
+      scrot
       simplescreenrecorder
+      smartmontools
       tdesktop
+      tealdeer
       texlive.combined.scheme-full
       thunderbird
-      tor-browser-bundle-bin
+      tmux
+#       tor-browser-bundle-bin
+      trash-cli
+      unzip
+      usbutils
+      w3m
+      wget
+      xfce.exo
+      xfce.thunar
+      xfce.tumbler
+      xfce.xfconf
+      xterm
       vlc
       weechat
-      xmobar
+      zip
     ];
     sessionVariables = {
       EDITOR = "nvim";

@@ -37,11 +37,11 @@
 
   nixpkgs = {
     config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "google-chrome"
-        "Oracle_VM_VirtualBox_Extension_Pack"
-        "unrar"
-      ];
+#       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+#         "google-chrome"
+#         "Oracle_VM_VirtualBox_Extension_Pack"
+#         "unrar"
+#       ];
       blacklistedLicenses = with lib.licenses; [
         # NixOS doesn't treat unfreeRedistributableFirmware as unfree
 #         unfreeRedistributableFirmware
