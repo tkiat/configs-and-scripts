@@ -3,8 +3,8 @@
     home-manager.url = github:nix-community/home-manager;
     nixpkgs.url = github:NixOS/nixpkgs/nixos-unstable;
 
-#     pomodoro-bar.url = github:tkiat/pomodoro-bar/main;
-#     pomodoro-bar-py.url = github:tkiat/pomodoro-bar-py/main;
+    pomodoro-bar.url = github:tkiat/pomodoro-bar/main;
+    pomodoro-bar-py.url = github:tkiat/pomodoro-bar-py/main;
     tkiat-dmenu.url = gitlab:tkiat/forked-dmenu/my-config;
     tkiat-dwm.url = gitlab:tkiat/forked-dwm/my-config;
     tkiat-slock.url = gitlab:tkiat/forked-slock/my-config;
@@ -25,8 +25,8 @@
           environment.systemPackages =
             (import ./configuration/system/shared-pkgs.nix pkgs).list
             ++ [
-#               inputs.pomodoro-bar.defaultPackage.x86_64-linux
-#               inputs.pomodoro-bar-py.defaultPackage.x86_64-linux
+              inputs.pomodoro-bar.defaultPackage.x86_64-linux
+              inputs.pomodoro-bar-py.defaultPackage.x86_64-linux
               inputs.tkiat-dmenu.defaultPackage.x86_64-linux
               inputs.tkiat-dwm.defaultPackage.x86_64-linux
               inputs.tkiat-slock.defaultPackage.x86_64-linux
