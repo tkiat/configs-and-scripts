@@ -1,6 +1,7 @@
 {
-  description = "Home Manager configuration of a user in Qubes OS";
+  description = "template VM config";
 
+#   TODO move these 21.11 to common-flake.nix
   inputs = {
     home-manager.url = "github:nix-community/home-manager/release-21.11"; # also update stateVersion
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
@@ -21,8 +22,8 @@
     in {
       homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
         # TODO include packages on template but only peronal data differs
+#         configuration = import ./all.nix;
 #         configuration = import ./dev.nix;
-        configuration = import [ ./dev.nix ];
 
         inherit system username;
         homeDirectory = "/home/${username}";
