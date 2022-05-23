@@ -106,6 +106,7 @@ in
       gimp
       gnome.cheese
       gnome.gedit
+      gnome.zenity
       gnupg
       gwenview
       heimdall
@@ -117,7 +118,7 @@ in
       kdenlive
       killall
       less
-      libnotify
+#       libnotify
       libreoffice
       lm_sensors
       loc

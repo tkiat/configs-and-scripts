@@ -42,9 +42,9 @@ Config {
       "--template", "BAT <left>%/<acstatus>W",
       "--Low", "20", "--High", "80",
       "--low","red", "--normal","orange", "--high", "green",
---          , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
---          , "-A", "5"
       "--", -- specific options
+      "-a", "zenity --warning --text='Battery is running out!'",
+      "-A", "10",
       "-o", "<fc=red><watts></fc>", -- <acstatus> when AC off
       "-O", "<fc=green><watts></fc>", -- <acstatus> when AC on
       "-i", "<fc=gray90><watts></fc>" -- <acstatus> when AC idle (charged)
