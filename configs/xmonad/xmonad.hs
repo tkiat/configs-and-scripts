@@ -39,7 +39,12 @@ main = do
         ("M-S-a", spawn (terminal myConf)),
         ("M-S-l", spawn "slock"),
         ("M-p", spawn "passmenu"),
-        ("M-s", spawn "scrot --select")
+        ("M-s", spawn "scrot --select"),
+        ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-"),
+        ("<XF86AudioMute>", spawn "amixer set Master toggle"),
+        ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+"),
+        ("<XF86MonBrightnessUp>", spawn "light -A 10"),
+        ("<XF86MonBrightnessDown>", spawn "light -U 10")
       ]
 
     myXmobarLogHook h =

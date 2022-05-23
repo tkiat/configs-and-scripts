@@ -11,7 +11,7 @@ Config {
   -- layout
   sepChar = "%",
   alignSep = "}{",
-  template = "%StdinReader% }{ %battery% %cpu% %memory% <fc=#82aaff>|</fc> <fc=green>%pomodoro-bar-w%</fc><fc=yellow>%pomodoro-bar-i%</fc> <fc=#82aaff>|</fc> %date%",
+  template = "%StdinReader% }{ %default:Master% %battery% %cpu% %memory% <fc=green>%pomodoro-bar-w%</fc><fc=yellow>%pomodoro-bar-i%</fc> %date%",
   -- behavior
   allDesktops = True,
   hideOnStart = False,
@@ -26,42 +26,25 @@ Config {
       "--template", "CPU <total>%",
       "--Low", "5", "--High", "50",
       "--low", "green", "--normal", "orange", "--high"  ,"red"
-    ] 20, -- * 0.1 sec
+    ] 30, -- every 0.1X sec
     Run Memory [
       "--template", "RAM <usedratio>%",
       "--Low", "40", "--High", "60",
       "--low", "green", "--normal", "orange", "--high"  ,"red"
-    ] 20,
---     Run Battery [
---          "-t", "<acstatus>"
---          , "-S", "Off", "-d", "0", "-m", "3"
---          , "-L", "10", "-H", "90", "-p", "3"
---          , "-W", "0"
---          , "-f", "\xf244\xf243\xf243\xf243\xf242\xf242\xf242\xf241\xf241\xf240"
---          , "--"
---          , "-P"
---          , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
---          , "-A", "5"
---          , "-i", "NOOB0"
---          , "-O", "NOOB1"
---          , "-o", "NOOB2"
---          , "-H", "10", "-L", "7"
---          ] 50,
-
---     Run Battery [
---       "--template", "BAT <left>% <acstatus>",
---       "--Low", "20", "--High", "80",
---       "--low","red", "--normal","orange", "--high","green"
---       "--", -- battery specific options
---       "-o", "<fc=red><watts>W</fc>", -- <acstatus> when AC off
---       "-O", "<fc=green><watts>W</fc>", -- <acstatus> when AC on
---       "-i", "<fc=green><watts>W</fc>" -- <acstatus> when AC idle (charged)
---     ] 50,
+    ] 30,
+    Run Volume "default" "Master" [
+      "--template" , "VOL <status>",
+      "--", -- specific options
+      "--on", "<volume>",
+      "--off", "<volume>"
+    ] 10,
     Run Battery [
       "--template", "BAT <left>% <acstatus>W",
       "--Low", "20", "--High", "80",
       "--low","red", "--normal","orange", "--high", "green",
-      "--", -- battery specific options
+--          , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
+--          , "-A", "5"
+      "--", -- specific options
       "-o", "<fc=red><watts></fc>", -- <acstatus> when AC off
       "-O", "<fc=green><watts></fc>", -- <acstatus> when AC on
       "-i", "<fc=gray90><watts></fc>" -- <acstatus> when AC idle (charged)

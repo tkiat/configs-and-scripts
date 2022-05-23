@@ -117,6 +117,7 @@ in
       kdenlive
       killall
       less
+      libnotify
       libreoffice
       lm_sensors
       loc
