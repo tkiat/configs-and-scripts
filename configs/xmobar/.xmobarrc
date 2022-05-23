@@ -39,7 +39,7 @@ Config {
       "--off", "<volume>"
     ] 10,
     Run Battery [
-      "--template", "BAT <left>% <acstatus>W",
+      "--template", "BAT <left>%/<acstatus>W",
       "--Low", "20", "--High", "80",
       "--low","red", "--normal","orange", "--high", "green",
 --          , "-a", "notify-send -u critical 'Battery running out!!!!!!'"
