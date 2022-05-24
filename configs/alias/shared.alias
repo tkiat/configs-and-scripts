@@ -117,6 +117,9 @@ alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="V
         sudo cryptsetup luksOpen /dev/${1} ${1}
         sudo mount /dev/mapper/${1} ~/mnt/${1}
       }
+      2ms2date() {
+        perl -e "print scalar localtime($1 / 1000)" && echo
+      }
       2mv-batch() {
         tempfile=$(mktemp); old=(*); printf "%s\n" "${old[@]}" > $tempfile; $EDITOR $tempfile; readarray -t new < $tempfile; for i in ${!old[*]}; do if [ "${old[i]}" != "${new[i]}" ]; then mv "${old[i]}" "${new[i]}"; fi; done; rm $tempfile
 #         TODO in new file tell preserves sequence and do not remove this line

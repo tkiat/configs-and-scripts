@@ -154,7 +154,7 @@ in
       texlive.combined.scheme-full
       thunderbird
       tmux
-#       tor-browser-bundle-bin
+      tor-browser-bundle-bin
       trash-cli
       unzip
       usbutils
