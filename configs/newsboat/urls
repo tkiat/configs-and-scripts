@@ -25,7 +25,7 @@ https://static.fsf.org/fsforg/rss/news.xml "~FSF"
 https://about.gitlab.com/atom.xml "~GitLab"
 # http://planet.haskell.org/rss20.xml "~Planet Haskell"
 https://opensource.com/feed "~Opensource.com"
-https://feeds.fireside.fm/podrocket/rss "~PodRocker"
+# https://feeds.fireside.fm/podrocket/rss "~PodRocker"
 # https://www.python.org/dev/peps/peps.rss "~Python"
 https://realpython.com/atom.xml "~Real Python"
 

@@ -43,8 +43,8 @@ main = do
         ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-"),
         ("<XF86AudioMute>", spawn "amixer set Master toggle"),
         ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+"),
-        ("<XF86MonBrightnessUp>", spawn "light -A 10"),
-        ("<XF86MonBrightnessDown>", spawn "light -U 10")
+        ("<XF86MonBrightnessUp>", spawn "light -A 5"),
+        ("<XF86MonBrightnessDown>", spawn "light -U 5")
       ]
 
     myXmobarLogHook h =
