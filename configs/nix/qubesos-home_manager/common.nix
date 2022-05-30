@@ -31,6 +31,15 @@ in
         . ${my-config}/alias/modules/systemctl.alias
 
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+
+        # SPLIT SSH CONFIGURATION >>>
+        # replace "vault" with your AppVM name which stores the ssh private key(s)
+        SSH_VAULT_VM="my-vault"
+
+        if [ "$SSH_VAULT_VM" != "" ]; then
+          export SSH_AUTH_SOCK="/home/user/.SSH_AGENT_$SSH_VAULT_VM"
+        fi
+        # <<< SPLIT SSH CONFIGURATION
       '';
       profileExtra = ''
         # if running bash
