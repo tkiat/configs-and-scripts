@@ -41,5 +41,5 @@ PATH=$PATH:$path_script/ondemand
 # programs --------------------------------------------------------------------
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)" # make less friendly for like *.tar.gz
 
-exec "setxkbmap -layout us,th"
-exec "setxkbmap -option 'grp:win_space_toggle'"
+setxkbmap -layout us,th
+setxkbmap -option grp:win_space_toggle
