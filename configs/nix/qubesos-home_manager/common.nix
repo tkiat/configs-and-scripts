@@ -32,6 +32,8 @@ in
 
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
+        export QUBES_GPG_DOMAIN=my-vault
+
         # SPLIT SSH CONFIGURATION >>>
         # replace "vault" with your AppVM name which stores the ssh private key(s)
         SSH_VAULT_VM="my-vault"
