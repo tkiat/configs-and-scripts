@@ -1,6 +1,6 @@
 ! Adjust the font
 xterm*faceName: Comic Shanns
-xterm*faceSize: 14
+xterm*faceSize: 13
 
 ! Change foreground/background color
 xterm*background: #000000
