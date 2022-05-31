@@ -14,7 +14,7 @@ bind-key j down
 bind-key k up
 bind-key l open
 bind-key w open-in-browser
-browser chromium
+browser firefox
 color article             white   black
 color background          white   black
 color info                white   black      bold
