@@ -20,7 +20,7 @@ in
         . ${my-config}/bash/.bashrc.shared
         . ${my-config}/alias/shared.alias
         . ${my-config}/alias/modules/nix.alias
-        # . ${my-config}/alias/modules/nixos.alias
+        . ${my-config}/alias/modules/qubes-os.alias
         . ${my-config}/alias/modules/systemctl.alias
 
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"

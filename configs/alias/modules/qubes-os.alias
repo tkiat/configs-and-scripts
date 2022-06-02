@@ -1,0 +1,1 @@
+alias 2nix-apply="home-manager switch --impure --flake \"path:/home/user/configs-and-scripts/configs/nix/qubes-os/${HOSTNAME}#user\""
