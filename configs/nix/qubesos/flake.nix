@@ -2,7 +2,6 @@
 {
   description = "template VM config";
 
-#   TODO move these 21.11 to common-flake.nix
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
     home-manager.url = "github:nix-community/home-manager/release-21.11"; # also update stateVersion
@@ -18,6 +17,8 @@
 
   outputs = { home-manager, pomodoro-bar, pomodoro-bar-py, tkiat-st, ... }:
     let
+#       hostname = builtins.getEnv "HOSTNAME";
+#       hostname = config.networking.hostName;
       system = "x86_64-linux";
       username = "user";
     in {

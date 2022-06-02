@@ -13,7 +13,6 @@ in
   nixpkgs = {
     config = {
       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "google-chrome"
         "unrar"
       ];
     };
@@ -78,7 +77,6 @@ in
         { id = "cdockenadnadldjbbgcallicgledbeoc"; } # visBug
       ];
       package = pkgs.chromium;
-      # package = pkgs.ungoogled-chromium;
     };
     firefox = {
       enable = true;
@@ -217,6 +215,7 @@ in
     };
   };
 
+#   noob = {pkgs, ...}: { home.packages = [ pkgs.fortune ]; };
   home = {
     enableNixpkgsReleaseCheck = true;
 
@@ -239,7 +238,6 @@ in
 
     packages = with pkgs; [
       # unfree
-      google-chrome
       unrar
 
       # dev
