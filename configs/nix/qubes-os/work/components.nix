@@ -5,6 +5,6 @@ in
 {
   imports = [
     "${p}/common.nix"
-    "${p}/personal.nix"
+    "${p}/work.nix"
   ];
 }
