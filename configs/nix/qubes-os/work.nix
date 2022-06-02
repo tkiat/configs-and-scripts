@@ -10,13 +10,13 @@ let
   ]);
 in
 {
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-        "google-chrome"
-      ];
-    };
-  };
+#   nixpkgs = {
+#     config = {
+#       allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+#         "google-chrome"
+#       ];
+#     };
+#   };
   programs = {
     vscode = {
       enable = true;
@@ -39,7 +39,7 @@ in
 
     packages = with pkgs; [
       # unfree
-      google-chrome
+#       google-chrome
 
       # dev
       ansible
@@ -69,7 +69,7 @@ in
       tokei
       yarn
 
-      ghostscript
+#       ghostscript # collide with texlive
       gimp
       inkscape
       kdenlive

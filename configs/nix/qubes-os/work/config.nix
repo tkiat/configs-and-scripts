@@ -1,3 +1,7 @@
+{ specialArgs, ... }:
 {
-  imports = [ ../common.nix ../work.nix ];
+  imports = [
+    /home/${specialArgs.username}/configs-and-scripts/configs/nix/qubes-os/common.nix
+    /home/${specialArgs.username}/configs-and-scripts/configs/nix/qubes-os/work.nix
+  ];
 }
