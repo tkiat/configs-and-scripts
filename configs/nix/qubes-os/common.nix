@@ -179,7 +179,7 @@ in
       xfce.exo
       xfce.xfconf
       xsel
-#       xterm
+      xterm
       zip
     ];
 
