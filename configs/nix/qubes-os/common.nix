@@ -173,6 +173,7 @@ in
       trash-cli
       unzip
       usbutils
+      vlc
       w3m
       wget
       xclip
