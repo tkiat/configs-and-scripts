@@ -7,4 +7,5 @@ export NIX_PATH=$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/
 nix-shell '<home-manager>' -A install
 mkdir -p ~/.config/nix
 echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+rm ~/.bashrc ~/.profile
 home-manager switch --impure --flake "path:/home/user/configs-and-scripts/configs/nix/qubes-os/${HOSTNAME}#user"
