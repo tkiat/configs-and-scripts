@@ -1,7 +1,10 @@
 { specialArgs, ... }:
+let
+  p = "/home/${specialArgs.username}/configs-and-scripts/configs/nix/qubes-os";
+in
 {
   imports = [
-    /home/${specialArgs.username}/configs-and-scripts/configs/nix/qubes-os/common.nix
-    /home/${specialArgs.username}/configs-and-scripts/configs/nix/qubes-os/personal.nix
+    "${p}/common.nix"
+    "${p}/personal.nix"
   ];
 }
