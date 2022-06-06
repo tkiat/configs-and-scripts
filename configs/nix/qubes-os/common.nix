@@ -158,6 +158,7 @@ in
       mupdf
       neofetch
       okular
+      pass
       pandoc
       pciutils
 #       pinentry
