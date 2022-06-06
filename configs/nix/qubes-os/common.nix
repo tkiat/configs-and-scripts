@@ -173,6 +173,7 @@ in
       trash-cli
       unzip
       usbutils
+      ventoy-bin
       vlc
       w3m
       wget
