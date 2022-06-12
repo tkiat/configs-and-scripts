@@ -87,7 +87,7 @@ in
   home = {
     packages = with pkgs; [
       gdrive
-      gnome.cheese
+#       gnome.cheese
       tdesktop
       vlc
       weechat
