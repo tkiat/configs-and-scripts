@@ -9,6 +9,7 @@ exe 'nnoremap <leader>tm <esc>:r '.s:template_dir.'/template.md<cr>kdd'
 inoremap endash –
 inoremap emdash —
 inoremap myquote “”<esc>i
+inoremap my" “”<esc>i
 " haskell
 inoremap hsext {-# LANGUAGE  #-}<esc>F<space>i
 " latex
