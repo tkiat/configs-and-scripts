@@ -13,6 +13,9 @@ in
       profiles.default = {
         id = 0;
         bookmarks = {
+          Facebook = {
+            url = "https://www.facebook.com/pages/?category=liked&ref=bookmarks";
+          };
           Github = {
             url = "https://github.com/tkiat?tab=repositories";
           };
