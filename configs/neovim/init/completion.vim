@@ -8,8 +8,7 @@ exe 'nnoremap <leader>tm <esc>:r '.s:template_dir.'/template.md<cr>kdd'
 " - symbol
 inoremap endash –
 inoremap emdash —
-inoremap myquote “”<esc>i
-inoremap my" “”<esc>i
+inoremap "curly “”<esc>i
 " haskell
 inoremap hsext {-# LANGUAGE  #-}<esc>F<space>i
 " latex
@@ -48,8 +47,8 @@ for val in ['{}','()','[]','""',"''",'**','<>','``','__','$$']
     exe 'vnoremap <leader>'.val[1].' mq:s/\%V.*\%V./'.val[0].'&'.val[1].'/<cr>`qf'.val[1].':nohl<cr>'
   endif
 endfor
-nnoremap <leader>"" mqciw“”<esc>P`ql
-vnoremap <leader>"" mq:s/\%V.*\%V./“&”/<cr>`qf”:nohl<cr>
+nnoremap <leader>curly mqciw“”<esc>P`ql
+vnoremap <leader>curly mq:s/\%V.*\%V./“&”/<cr>`qf”:nohl<cr>
 
 " ** enclose word
 nnoremap <leader>** ciw****<esc>hPl
