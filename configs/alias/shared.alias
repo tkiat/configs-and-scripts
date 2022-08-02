@@ -32,7 +32,7 @@ alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
       pomodoro-bar() {
         local cmdwork='notify-send "pomodoro-bar" "<span color=\"yellow\" background=\"blue\" font=\"100px\"><b>PAUSE</b></span>"'
         local cmdwork='notify-send "pomodoro-bar" "<span color=\"green\" background=\"red\" font=\"100px\"><b>RESUME</b></span>"'
-        command pomodoro-bar -w 50 -b 15 -l 60 --cmdwork "$cmdwork" --cmdbreak "$cmdbreak"
+        command pomodoro-bar -w 50 -b 15 -l 60 --cmdwork "$cmdwork" --cmdbreak "$cmdbreak" "$@"
       }
 # alias pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 # alias pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
