@@ -131,6 +131,7 @@ in
       bat
       calc
       curl
+      cryptsetup
       dejsonlz4
       dmidecode
       du-dust
