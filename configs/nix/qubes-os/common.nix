@@ -128,6 +128,7 @@ in
       # unfree
       unrar
 
+      android-tools
       bat
       calc
       curl
