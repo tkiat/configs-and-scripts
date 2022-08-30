@@ -133,6 +133,7 @@ alias 2ping="ping gnu.org"
       2port-kill() { sudo fuser -k $1/tcp; }
 alias 2primary-get="xclip -o -selection primary"
 alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
+alias 2r="ranger"
 alias 2replace-newline="tr '\n' ' '"
 alias 2rotate-pic="echo convert \<old\> -rotate 90 \<new\>"
 alias 2rm-file-recursive="find . -type f -delete"
