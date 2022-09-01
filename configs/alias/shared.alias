@@ -135,7 +135,9 @@ alias 2primary-get="xclip -o -selection primary"
 alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
 alias 2r="ranger"
 alias 2replace-newline="tr '\n' ' '"
-alias 2rotate-pic="echo convert \<old\> -rotate 90 \<new\>"
+      2rotate-pic() {
+        convert "${1}" -rotate 90 "${1}"
+      }
 alias 2rm-file-recursive="find . -type f -delete"
       2sed-replace-recursive() {
         find . -type f -not -path '*/\.*' -exec sed -i "s|$1|$2|g" {} +;
