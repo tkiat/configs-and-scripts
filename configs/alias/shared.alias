@@ -136,7 +136,11 @@ alias 2pwd-s="pwd | tr -d '\n' | xclip -selection clipboard"
 alias 2r="ranger"
 alias 2replace-newline="tr '\n' ' '"
       2rotate-pic() {
-        convert "${1}" -rotate 90 "${1}"
+        for i in "$@"
+        do
+#           echo "$i"
+          convert "$i" -rotate 90 "$i"
+        done
       }
 alias 2rm-file-recursive="find . -type f -delete"
       2sed-replace-recursive() {
