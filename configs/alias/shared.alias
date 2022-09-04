@@ -156,6 +156,7 @@ alias 2rm-file-recursive="find . -type f -delete"
           hoogle server --local -n -p 5000
         fi;
       }
+alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
 alias 2showoff='neofetch'
       2source() {
         if [[ $# -eq 0 ]] ; then
