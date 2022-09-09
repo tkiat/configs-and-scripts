@@ -91,6 +91,7 @@ in
     packages = with pkgs; [
       gdrive
 #       gnome.cheese
+      libreoffice
       tdesktop
       vlc
       weechat
