@@ -14,7 +14,7 @@ https://fedoramagazine.org/feed/ "~Fedora Magazine"
 # http://guix-website-test.cbaines.net/feeds/blog.atom "~Guix"
 # https://www.linuxjournal.com/node/feed "~Linux Journal"
 # https://www.linux-magazine.com/rss/feed/lmi_news "~Linux Magazine"
-https://lwn.net/headlines/rss "~LWN.net"
+# https://lwn.net/headlines/rss "~LWN.net"
 https://www.qubes-os.org/feed.xml "~QubesOS"
 
 # https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
