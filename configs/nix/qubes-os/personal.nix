@@ -31,6 +31,9 @@ in
           Kaidee = {
             url = "https://www.kaidee.com/member/listing";
           };
+          "LWN.net" = {
+            url = "https://lwn.net/Archives/";
+          };
           Outlook = {
             url = "https://outlook.live.com/mail/0/inbox";
           };
