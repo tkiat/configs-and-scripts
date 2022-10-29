@@ -6,7 +6,7 @@ prefix=1
 
 for i in "$@"
 do
-  filename="$(printf "%03d" $prefix)_${i##*/}"
+  filename="$(printf "%03d" $prefix)-${i##*/}"
   wget "$i" -O "$filename"
   prefix=$((prefix+1))
 done
