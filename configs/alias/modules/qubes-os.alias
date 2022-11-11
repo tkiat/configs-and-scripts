@@ -1,1 +1,4 @@
-alias 2nix-apply="home-manager switch --impure --flake \"path:/home/user/configs-and-scripts/configs/nix/qubes-os/${HOSTNAME}#user\""
+alias 2qubes-nix-apply="home-manager switch --impure --flake \"path:/home/user/configs-and-scripts/configs/nix/qubes-os/${HOSTNAME}#user\""
+      2qubes-connect-port() {
+        qvm-connect-tcp ::"$1"
+      }
