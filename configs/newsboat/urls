@@ -18,7 +18,7 @@ https://fedoramagazine.org/feed/ "~Fedora Magazine"
 https://www.qubes-os.org/feed.xml "~QubesOS"
 
 # https://www.freecodecamp.org/news/rss/ "~freeCodeCamp"
-https://www.eff.org/rss/updates.xml "~EFF"
+# https://www.eff.org/rss/updates.xml "~EFF"
 https://static.fsf.org/fsforg/rss/news.xml "~FSF"
 # https://about.gitlab.com/atom.xml "~GitLab"
 # http://planet.haskell.org/rss20.xml "~Planet Haskell"
