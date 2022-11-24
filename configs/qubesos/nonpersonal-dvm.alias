@@ -1,0 +1,52 @@
+EDITOR=nvim
+alias ..='cd ..'
+alias ...='cd ../..'
+alias cat="bat --pager=less"
+alias cp="cp --preserve=timestamps"
+alias df="df -h"
+alias du="dust"
+alias dust="dust --depth 1"
+alias exa="exa --group-directories-first"
+alias free="free -h"
+alias gf='fg'
+alias grep='grep --color=auto'
+alias less='less -r'
+alias ls="exa -g"
+alias rg="rg --ignore-case"
+alias sl='ls'
+alias sudo='sudo ' # enable running alias as superuser$
+alias tree="exa -T"
+alias vim="nvim"
+alias xpdf="xpdf -z width"
+alias 2a="alias"
+alias 2e="nvim"
+      2qubes-connect-port() {
+        qvm-connect-tcp ::"$1"
+      }
+      2mount() {
+        sudo mount /dev/${1} ~/mnt/${1}
+      }
+      2mount-luks() {
+        su -c "cryptsetup luksOpen /dev/${1} ${1}"
+        sudo mount /dev/mapper/${1} ~/mnt/${1}
+      }
+      2mv-batch() {
+        tempfile=$(mktemp); old=(*); printf "%s\n" "${old[@]}" > $tempfile; $EDITOR $tempfile; readarray -t new < $tempfile; for i in ${!old[*]}; do if [ "${old[i]}" != "${new[i]}" ]; then mv "${old[i]}" "${new[i]}"; fi; done; rm $tempfile
+#         TODO in new file tell preserves sequence and do not remove this line
+      }
+alias 2r="ranger"
+      2rotate-pic() {
+        for i in "$@"
+        do
+#           echo "$i"
+          convert "$i" -rotate 90 "$i"
+        done
+      }
+alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
+      2umount() {
+        sudo umount ~/mnt/${1}
+      }
+      2umount-luks() {
+        sudo umount ~/mnt/$1
+        su -c "cryptsetup luksClose /dev/mapper/$1"
+      }

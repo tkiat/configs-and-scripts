@@ -26,7 +26,6 @@ alias free="free -h"
 alias grep='grep --color=auto'
 alias less='less -r'
 alias ls="exa -g"
-alias mc="mc"
 # alias mupdf='mupdf -C aaaaaa -I'
 alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
       pomodoro-bar() {
