@@ -2,7 +2,6 @@
 sudo dnf install\
  bat\
  chromium\
- dust\
  exa\
  git\
  libreoffice\
@@ -10,7 +9,7 @@ sudo dnf install\
  neovim\
  newsboat\
  ranger
- rg\
+ ripgrep\
  qview\
  weechat
 
