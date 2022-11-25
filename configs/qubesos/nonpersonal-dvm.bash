@@ -6,3 +6,4 @@ mkdir -p "/home/user/.local/share/fonts/comic shanns 2" && cp "$conf/font/comic-
 cp "$conf/qubesos/nonpersonal-dvm.alias" ~
 
 cp "$conf/ranger/rifle.conf-nonpersonal_dvm" "/home/user/.config/ranger/rifle.conf"
+mkdir -p /home/user/mnt/sda && mkdir /home/user/mnt/sdb && mkdir /home/user/mnt/sdc
