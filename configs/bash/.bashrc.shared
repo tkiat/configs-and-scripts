@@ -14,8 +14,8 @@ HISTSIZE=10000 # actual memory
 HISTTIMEFORMAT="%d/%m/%y %T "
 
 # env variables ---------------------------------------------------------------
-# EDITOR = "nvim";
-# VISUAL = "nvim";
+EDITOR=nvim
+VISUAL=nvim
 
 path_config=~/configs-and-scripts/configs
 path_script=~/configs-and-scripts/scripts
