@@ -1,18 +1,4 @@
 #!/usr/bin/env bash
-sudo dnf install\
- bat\
- chromium\
- exa\
- git\
- libreoffice\
- mc\
- neovim\
- newsboat\
- ranger
- ripgrep\
- qview\
- weechat
-
 sudo dnf remove vim
 
 # RPM fusion for QubesOS
@@ -23,5 +9,19 @@ sudo dnf config-manager --set-enabled rpmfusion-free-updates
 sudo dnf upgrade --refresh
 
 sudo dnf install\
- simplescreenrecorder\
+sudo dnf install\
+ bat\
+ chromium\
+ exa\
+ git\
+ libreoffice\
+ mc\
  mpv
+ neovim\
+ newsboat\
+ ranger
+ ripgrep\
+ qview\
+ simplescreenrecorder\
+ telegram-desktop
+ weechat
