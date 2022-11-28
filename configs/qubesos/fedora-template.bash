@@ -14,6 +14,7 @@ sudo dnf install\
  chromium\
  exa\
  git\
+ google-noto-sans-thai-fonts.noarch
  libreoffice\
  mc\
  mpv
