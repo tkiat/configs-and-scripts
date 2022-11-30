@@ -27,4 +27,5 @@ sudo dnf install\
  qview\
  simplescreenrecorder\
  telegram-desktop
- weechat
+ weechat\
+ xclip
