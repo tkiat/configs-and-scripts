@@ -18,8 +18,10 @@ sudo dnf install\
  libreoffice\
  mc\
  mpv
+ mupdf\
  neovim\
  newsboat\
+ okular\
  ranger
  ripgrep\
  qview\
