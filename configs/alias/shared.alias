@@ -118,7 +118,8 @@ alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="V
         sudo mount /dev/${1} ~/mnt/${1}
       }
       2mount-luks() {
-        su -c "cryptsetup luksOpen /dev/${1} ${1}"
+        sudo cryptsetup luksOpen /dev/"${1}" "${1}"
+#         su -c "cryptsetup luksOpen /dev/${1} ${1}"
         sudo mount /dev/mapper/${1} ~/mnt/${1}
       }
       2ms2date() {
@@ -179,7 +180,8 @@ alias 2showoff='neofetch'
       }
       2umount-luks() {
         sudo umount ~/mnt/$1
-        su -c "cryptsetup luksClose /dev/mapper/$1"
+        sudo cryptsetup luksClose /dev/mapper/"${1}"
+#         su -c "cryptsetup luksClose /dev/mapper/$1"
       }
 alias 2w='which'
 alias 2watch-power='watch cat /sys/class/power_supply/BAT*/power_now'
