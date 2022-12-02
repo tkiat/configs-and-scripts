@@ -17,6 +17,7 @@ sudo dnf install\
  google-noto-sans-thai-fonts.noarch
  libreoffice\
  mc\
+ mediainfo\
  mpv
  mupdf\
  neovim\
@@ -28,7 +29,8 @@ sudo dnf install\
  simplescreenrecorder\
  telegram-desktop
  weechat\
- xclip
+ xclip\
+ zathura zathura-cb\
 
 # nonfree
 sudo dnf install qbittorrent unrar
