@@ -58,7 +58,9 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
 alias 2convert-jpgs_pdfs="mogrify -format pdf *.jpg"
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
-alias 2create-cbz="zip ../${PWD##*/}.cbz *"
+      2create-cbz() {
+       zip ../${PWD##*/}.cbz *
+      }
 alias 2diff-folders="diff -x '.*' -rq"
 alias 2e=2edit
       2edit() {
