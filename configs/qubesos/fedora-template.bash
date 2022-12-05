@@ -12,6 +12,7 @@ sudo dnf install\
  bat\
  chromium\
  exa\
+ fd-find\
  feh\
  git\
  google-noto-sans-thai-fonts.noarch
