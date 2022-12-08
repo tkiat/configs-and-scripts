@@ -12,6 +12,7 @@ sudo apt install\
  mediainfo\
  mpv\
  mupdf\
+ neofetch\
  neovim\
  newsboat\
  qbittorrent\
