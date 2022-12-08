@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-sudo apt remove vim
-
 sudo apt install\
  bat\
  chromium\
@@ -8,22 +6,21 @@ sudo apt install\
  fd-find\
  feh\
  git\
- google-noto-sans-thai-fonts.noarch
+ xfonts-intl-asian\
  libreoffice\
  mc\
  mediainfo\
- mpv
+ mpv\
  mupdf\
  neovim\
  newsboat\
  qbittorrent\
  okular\
- ranger
+ ranger\
  ripgrep\
- qview\
  simplescreenrecorder\
- telegram-desktop
+ telegram-desktop\
  unrar-free\
  weechat\
  xclip\
- zathura zathura-cb\
+ zathura zathura-cb
