@@ -2,6 +2,7 @@
 sudo apt install\
  bat\
  chromium\
+ dict\
  exa\
  fd-find\
  feh\
