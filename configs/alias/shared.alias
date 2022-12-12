@@ -9,16 +9,18 @@ alias sl='ls'
 alias nv="nvim"
 alias ivm='vim'
 
+# common
+alias 2less="bat --pager=less"
+
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
 alias cal="cal -3"
-alias cat="bat --pager=less"
 alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias coolreader="cr3"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
       dict() {
-        command dict "$1" | bat --pager=less
+        command dict "$1" | 2less
       }
 alias du="du -k * | sort -n | cut -f2 | xargs -d '\n' du -sh"
 # alias dust="dust --depth 1"
