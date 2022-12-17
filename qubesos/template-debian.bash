@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 sudo apt install\
  bat\
+ cheese\
  chromium\
  dict\
  exa\
@@ -23,6 +24,7 @@ sudo apt install\
  simplescreenrecorder\
  telegram-desktop\
  unrar-free\
+ v4l-utils\
  weechat\
  xclip\
  zathura zathura-cb

@@ -22,7 +22,7 @@ alias df="df -h"
       dict() {
         command dict "$1" | 2less
       }
-alias du="du -k * | sort -n | cut -f2 | xargs -d '\n' du -sh"
+alias du="du --max-depth=1 -k * | sort -n | cut -f2 | xargs -d '\n' du -sh"
 # alias dust="dust --depth 1"
 alias exa="exa --group-directories-first"
 alias feh="feh --scale-down --auto-zoom"
