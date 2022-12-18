@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 sudo apt install\
  bat\
+ calibre\
  cheese\
  chromium\
  dict\

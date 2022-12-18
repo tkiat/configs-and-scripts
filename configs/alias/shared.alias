@@ -15,7 +15,7 @@ alias 2less="bat --pager=less"
 # overwrite default
 alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
 alias cal="cal -3"
-alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
+# alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias coolreader="cr3"
 alias cp="cp --preserve=timestamps"
 alias df="df -h"
