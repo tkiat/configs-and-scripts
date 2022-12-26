@@ -5,6 +5,7 @@ sudo apt install\
  cheese\
  chromium\
  dict\
+ dunst\
  exa\
  fd-find\
  feh\
@@ -29,3 +30,5 @@ sudo apt install\
  weechat\
  xclip\
  zathura zathura-cb
+
+# signal: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/signal.md
