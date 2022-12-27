@@ -47,6 +47,10 @@
 #         unfreeRedistributableFirmware
       ];
     };
+    hostPlatform = {
+      system = "x86_64-linux";
+      config = "x86_64-unknown-linux-gnu";
+    };
   };
 
   powerManagement = {

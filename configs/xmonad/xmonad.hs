@@ -36,8 +36,9 @@ main = do
     myKeys myConf =
       [ ("M-b", sendMessage ToggleStruts),
         ("M-d", spawn "dmenu_run -i"),
-        ("M-S-a", spawn (terminal myConf)),
+        ("M-S-a", spawn (terminal myConf)), -- mod + shift + a
         ("M-S-l", spawn "slock"),
+        ("M-S-q", kill),
         ("M-p", spawn "passmenu"),
         ("M-s", spawn "scrot --select"),
         ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%-"),
