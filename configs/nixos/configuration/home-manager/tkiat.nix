@@ -135,6 +135,7 @@ in
       okular
       openbox
       pandoc
+      pavucontrol
       pciutils
       pencil
       pinentry
@@ -147,6 +148,7 @@ in
       ripgrep
       rsync
       scrot
+      signal-desktop
       simplescreenrecorder
       smartmontools
       tdesktop

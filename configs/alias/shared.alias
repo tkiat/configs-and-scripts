@@ -33,13 +33,13 @@ alias less='less -r'
 alias ls="exa -g"
 # alias mupdf='mupdf -C aaaaaa -I'
 alias polybar='polybar xmonad --config-file=~/.config/polybar/config.ini'
-      pomodoro-bar() {
+      pomodoro-bar-notify() {
         local cmdwork='notify-send "pomodoro-bar" "<span color=\"yellow\" background=\"blue\" font=\"100px\"><b>PAUSE</b></span>"'
         local cmdwork='notify-send "pomodoro-bar" "<span color=\"green\" background=\"red\" font=\"100px\"><b>RESUME</b></span>"'
         command pomodoro-bar -w 50 -b 15 -l 60 --cmdwork "$cmdwork" --cmdbreak "$cmdbreak" "$@"
       }
-# alias pomodoro-bar="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
-# alias pomodoro-bar-py="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
+alias pomodoro-bar-xset="pomodoro-bar -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
+alias pomodoro-bar-py-xset="pomodoro-bar-py -w 50 -b 15 -l 60 --cmdwork 'xset dpms force off' --cmdbreak 'xset dpms force off' --bartype xmobar"
 alias python="python3"
 alias qutebrowser="qutebrowser --target private-window"
 alias ranger="ranger"
