@@ -10,7 +10,7 @@ sudo apt install\
  fd-find\
  feh\
  git\
- xfonts-intl-asian\
+ libgtk2.0-0\
  libreoffice\
  mc\
  mediainfo\
@@ -29,6 +29,7 @@ sudo apt install\
  v4l-utils\
  weechat\
  xclip\
+ xfonts-intl-asian\
  zathura zathura-cb
 
 # signal: https://github.com/Qubes-Community/Contents/blob/master/docs/privacy/signal.md
