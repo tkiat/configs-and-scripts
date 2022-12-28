@@ -9,7 +9,7 @@ let
   ]);
   my-config = "/home/tkiat/configs-and-scripts/configs";
   my-cloud = "/home/tkiat/cloud";
-  my-private = "/home/tkiat/private";
+  my-private = "/home/tkiat/cloud/personal/private";
 in
 {
   nixpkgs = {
@@ -26,7 +26,7 @@ in
     enableNixpkgsReleaseCheck = true;
     # home.file.".foo".source = config.lib.file.mkOutOfStoreSymlink /my/config/repo/foo;
 
-#     file."Downloads".source = config.lib.file.mkOutOfStoreSymlink "${my-local}/downloads";
+    #     file."Downloads".source = config.lib.file.mkOutOfStoreSymlink "${my-local}/downloads";
 
     file.".config/xmobar/.xmobarrc".source = "${my-config}/xmobar/.xmobarrc";
     file.".local/share/fonts/comic shanns 2.ttf".source = "${my-config}/font/comic-shanns/v2/comic shanns 2.ttf";
@@ -52,8 +52,8 @@ in
     file.".xpdfrc".source = "${my-config}/xpdf/.xpdfrc";
     file.".Xresources".source = "${my-config}/xorg/.Xresources";
 
-#     file.".config/nvim/init".source = "${my-config}/neovim/init";
-#     file.".config/nvim/init".recursive = true;
+    #     file.".config/nvim/init".source = "${my-config}/neovim/init";
+    #     file.".config/nvim/init".recursive = true;
 
     packages = with pkgs; [
       # unfree
@@ -61,9 +61,9 @@ in
       unrar
 
       # dev
-#       ansible
+      #       ansible
       cabal-install
-        # cookiecutter
+      # cookiecutter
       docker
       docker-compose
       gnumake
@@ -73,6 +73,7 @@ in
       lua
       niv
       nix-prefetch-git
+      nixpkgs-fmt
       sass
       shellcheck
       stack
@@ -83,9 +84,9 @@ in
       alsaUtils
       bash
       bat
-#       busybox
+      #       busybox
       calc
-#       calibre
+      #       calibre
       cmus
       cpufrequtils
       curl
@@ -102,7 +103,7 @@ in
       gcc
       gdrive
       ghc'
-#       ghostscript
+      #       ghostscript
       gimp
       gnome.cheese
       gnome.gedit
@@ -118,7 +119,7 @@ in
       kdenlive
       killall
       less
-#       libnotify
+      #       libnotify
       libreoffice
       lm_sensors
       loc
@@ -128,7 +129,7 @@ in
       mupdf
       neofetch
       neomutt
-#       neovim
+      #       neovim
       newsboat
       nodePackages.bash-language-server
       nodePackages.yaml-language-server
@@ -169,6 +170,7 @@ in
       xterm
       vlc
       weechat
+      zathura
       zip
     ];
     sessionVariables = {
@@ -192,7 +194,7 @@ in
 
       # . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       '';
-      shellOptions =  [ ];
+      shellOptions = [ ];
     };
     chromium = {
       enable = true;
@@ -215,74 +217,74 @@ in
       # ];
       profiles.default = {
         id = 0;
-#         bookmarks = {
-#           Github = {
-#             url = "https://github.com/tkiat?tab=repositories";
-#           };
-#           Gitlab = {
-#             url = "https://gitlab.com/";
-#           };
-#           Grammarly = {
-#             url = "https://app.grammarly.com/ddocs/880707227";
-#           };
-#           "Humble Bundle" = {
-#             url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
-#           };
-#           Kaidee = {
-#             url = "https://www.kaidee.com/member/listing";
-#           };
-#           Outlook = {
-#             url = "https://outlook.live.com/mail/0/inbox";
-#           };
-#           Reddit = {
-#             url = "https://www.reddit.com/";
-#           };
-#           Shopee = {
-#             url = "https://shopee.co.th/";
-#           };
-#           "Stack Overflow" = {
-#             url = "https://stackoverflow.com/";
-#           };
-#           Thairath = {
-#             url = "https://www.thairath.co.th/newspaper";
-#           };
-#           Tutanota = {
-#             url = "https://mail.tutanota.com/";
-#           };
-#           "Utility - MEA" = {
-#             url = "https://eservice.mea.or.th/meaeservice/";
-#           };
-#           "Utility - MWA" = {
-#             url = "https://eservicesapp.mwa.co.th/ES/main.jsp";
-#           };
-#         };
-#         settings = {
-#           "browser.download.folderList" = 1; # 1 is ~/Downloads
-#           "browser.download.lastDir" = "/home/tkiat/downloads";
-#           "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
-#           "browser.newtabpage.activity-stream.feeds.snippets" = false;
-#           "browser.newtabpage.activity-stream.feeds.topsites" = false;
-#           "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
-#           "browser.search.defaultenginename" = "DuckDuckGo";
-#           "browser.search.isUS" = false;
-#           "browser.search.region" = "TH";
-#           "browser.search.selectedEngine" = "DuckDuckGo";
-#           "browser.search.suggest.enabled" = false;
-#           "browser.shell.checkDefaultBrowser" = false;
-#           "browser.startup.page" = 3; # Open previous windows and tabs
-#           "browser.toolbars.bookmarks.visibility" = "never";
-#           "browser.uidensity" = 1; # compact
-#           "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten
-#           "browser.urlbar.suggest.bookmark" = false;
-#           "browser.urlbar.suggest.engines" = false;
-#           "browser.urlbar.suggest.history" = false;
-#           "browser.urlbar.suggest.openpage" = false;
-#           "browser.urlbar.suggest.topsites" = false;
-#           "dom.webnotifications.enabled" = false;
-#           "network.protocol-handler.external.mailto" = false; # mailto warning
-#           "permissions.default.desktop-notification" = 2; # disable
-#           "signon.rememberSignons" = false; # never save logins and passwords
-#         };
+        #         bookmarks = {
+        #           Github = {
+        #             url = "https://github.com/tkiat?tab=repositories";
+        #           };
+        #           Gitlab = {
+        #             url = "https://gitlab.com/";
+        #           };
+        #           Grammarly = {
+        #             url = "https://app.grammarly.com/ddocs/880707227";
+        #           };
+        #           "Humble Bundle" = {
+        #             url = "https://www.humblebundle.com/bundles?hmb_source=navbar";
+        #           };
+        #           Kaidee = {
+        #             url = "https://www.kaidee.com/member/listing";
+        #           };
+        #           Outlook = {
+        #             url = "https://outlook.live.com/mail/0/inbox";
+        #           };
+        #           Reddit = {
+        #             url = "https://www.reddit.com/";
+        #           };
+        #           Shopee = {
+        #             url = "https://shopee.co.th/";
+        #           };
+        #           "Stack Overflow" = {
+        #             url = "https://stackoverflow.com/";
+        #           };
+        #           Thairath = {
+        #             url = "https://www.thairath.co.th/newspaper";
+        #           };
+        #           Tutanota = {
+        #             url = "https://mail.tutanota.com/";
+        #           };
+        #           "Utility - MEA" = {
+        #             url = "https://eservice.mea.or.th/meaeservice/";
+        #           };
+        #           "Utility - MWA" = {
+        #             url = "https://eservicesapp.mwa.co.th/ES/main.jsp";
+        #           };
+        #         };
+        #         settings = {
+        #           "browser.download.folderList" = 1; # 1 is ~/Downloads
+        #           "browser.download.lastDir" = "/home/tkiat/downloads";
+        #           "browser.newtabpage.activity-stream.feeds.section.highlights" = false; # home screen content
+        #           "browser.newtabpage.activity-stream.feeds.snippets" = false;
+        #           "browser.newtabpage.activity-stream.feeds.topsites" = false;
+        #           "browser.newtabpage.activity-stream.showSearch" = false; # home screen content
+        #           "browser.search.defaultenginename" = "DuckDuckGo";
+        #           "browser.search.isUS" = false;
+        #           "browser.search.region" = "TH";
+        #           "browser.search.selectedEngine" = "DuckDuckGo";
+        #           "browser.search.suggest.enabled" = false;
+        #           "browser.shell.checkDefaultBrowser" = false;
+        #           "browser.startup.page" = 3; # Open previous windows and tabs
+        #           "browser.toolbars.bookmarks.visibility" = "never";
+        #           "browser.uidensity" = 1; # compact
+        #           "browser.urlbar.placeholderName" = "whatever you want"; # get overwritten
+        #           "browser.urlbar.suggest.bookmark" = false;
+        #           "browser.urlbar.suggest.engines" = false;
+        #           "browser.urlbar.suggest.history" = false;
+        #           "browser.urlbar.suggest.openpage" = false;
+        #           "browser.urlbar.suggest.topsites" = false;
+        #           "dom.webnotifications.enabled" = false;
+        #           "network.protocol-handler.external.mailto" = false; # mailto warning
+        #           "permissions.default.desktop-notification" = 2; # disable
+        #           "signon.rememberSignons" = false; # never save logins and passwords
+        #         };
       };
     };
     git = {
@@ -296,7 +298,7 @@ in
       extraConfig = {
         init.defaultBranch = "main";
       };
-      userName  = "tkiat";
+      userName = "tkiat";
       userEmail = "tkiat@tutanota.com";
     };
     neovim = {
@@ -321,7 +323,7 @@ in
         completion-nvim
         dhall-vim
         emmet-vim
-#         fugitive
+        #         fugitive
         nerdtree
         nvim-lspconfig
         nvim-treesitter
@@ -345,10 +347,10 @@ in
       # extensions = [ pkgs.vscode-extensions.bbenoist.Nix ];
       # haskell = {
       #   enable = true;
-            # };
+      # };
       # userSettings = {
       #   "update.channel" = "none";
-            #   "[nix]"."editor.tabSize" = 2;
+      #   "[nix]"."editor.tabSize" = 2;
       # };
     };
   };
