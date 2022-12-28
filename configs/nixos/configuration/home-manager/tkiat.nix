@@ -36,7 +36,7 @@ in
     file.".newsboat/config".source = "${my-config}/newsboat/config";
     file.".newsboat/urls".source = "${my-config}/newsboat/urls";
     file.".config/polybar/config.ini".source = "${my-config}/polybar/config.ini";
-    file.".local/share/pomodoro-bar/record.json".source = config.lib.file.mkOutOfStoreSymlink "${my-cloud}/app/pomodoro-bar/record.json";
+    file.".local/share/pomodoro-bar/record.json".source = config.lib.file.mkOutOfStoreSymlink "${my-cloud}/personal/app-data/pomodoro_bar-record.json";
 
     file.".ssh/GitHub-tkiatd".source = "${my-private}/ssh/GitHub-tkiatd";
     file.".ssh/GitLab-tkiatd".source = "${my-private}/ssh/GitLab-tkiatd";
