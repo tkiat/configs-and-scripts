@@ -5,7 +5,7 @@ Config {
   borderColor = "black",
   border = BottomB,
   fgColor = "grey",
-  font = "xft:Comic Shanns:pixelsize=16",
+  font = "xft:Comic Shanns-14",
   position = Top,
   textOffset = -1,
   -- layout
