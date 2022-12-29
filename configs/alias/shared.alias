@@ -165,7 +165,6 @@ alias 2rm-file-recursive="find . -type f -delete"
         fi;
       }
 alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
-alias 2showoff='neofetch'
       2source() {
         if [[ $# -eq 0 ]] ; then
           echo 'usage: 2source <program>'
