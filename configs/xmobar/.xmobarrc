@@ -5,7 +5,7 @@ Config {
   borderColor = "black",
   border = BottomB,
   fgColor = "grey",
-  font = "xft:Comic Shanns-14",
+  font = "xft:Comic Shanns-13",
   position = Top,
   textOffset = -1,
   -- layout
@@ -44,7 +44,7 @@ Config {
       "--low","red", "--normal","orange", "--high", "green",
       "--", -- specific options
       "-a", "zenity --warning --text='Battery is running out!'",
-      "-A", "10",
+      "-A", "20",
       "-o", "<fc=red><watts></fc>", -- <acstatus> when AC off
       "-O", "<fc=green><watts></fc>", -- <acstatus> when AC on
       "-i", "<fc=gray90><watts></fc>" -- <acstatus> when AC idle (charged)
