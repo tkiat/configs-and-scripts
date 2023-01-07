@@ -4,6 +4,7 @@ sudo apt install\
  calibre\
  cheese\
  chromium\
+ cmus\
  dict\
  dunst\
  exa\
@@ -27,6 +28,7 @@ sudo apt install\
  telegram-desktop\
  unrar-free\
  v4l-utils\
+ vlc\
  weechat\
  xclip\
  xfonts-intl-asian\
