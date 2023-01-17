@@ -61,6 +61,15 @@ alias 2chown-u="sudo chown 1000:1000 -R"
 alias 2clipboard-get="xclip -o -selection clipboard"
 alias 2clipboard-set="tr -d '\n' | xclip -selection clipboard" # usage: pwd | 2clipboard-set
 alias 2clipboard-set_withnewline="xclip -selection clipboard"
+      2convert-dot-svg() {
+        for i in "$@"
+        do
+          if [ "${i: -4}" == ".dot" ]; then
+            echo "dot -Tsvg $i > ${i%.*}.svg"
+            dot -Tsvg "$i" > "${i%.*}.svg"
+          fi;
+        done
+      }
 alias 2convert-jpgs_pdfs="mogrify -format pdf *.jpg"
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
@@ -113,9 +122,6 @@ alias 2git-sort-size="git rev-list --objects --all | git cat-file --batch-check=
       }
       2goto-symlink() { cd $(dirname $(readlink $1)); }
 alias 2gpg-edit='gpg --edit-key tkiat@tutanota.com'
-      2graph-dot_to_svg() {
-        dot -Tsvg "$1" > "${1%.*}.svg"
-      }
 alias 2grep-current-dir="grep -inr . -e "
       2grep-markdown-width() { rg --line-number '.' | sed -E 's/\[([^]]*)\]\([^\)]*\)/\1/g; s/<[^>]*>//g; s/^([^:]*:[^:]*:)\s+(.*)/\1\2/g' | rg "(.*?):(.*?):.{${1:-500},}" -r 'filename: $1, line number: $2'; }
 alias 2grub-make="sudo grub-mkconfig -o /boot/grub/grub.cfg"
