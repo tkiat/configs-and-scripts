@@ -119,6 +119,7 @@ in
       '';
       ".config/polybar/config.ini".source = "${my-config}/polybar/config.ini";
       ".config/ranger/rifle.conf".source = "${my-config}/ranger/rifle.conf";
+      ".tmux.conf".source = "${my-config}/tmux/.tmux.conf";
       ".xinitrc".source = "${my-config}/xorg/.xinitrc";
       ".xmonad/xmonad.hs".source = "${my-config}/xmonad/xmonad.hs";
       ".xpdfrc".source = "${my-config}/xpdf/.xpdfrc";
