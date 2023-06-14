@@ -25,11 +25,15 @@ in
 
         . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
 
+        if [ -f /etc/bash_completion ]; then
+         . /etc/bash_completion
+        fi
+
         export QUBES_GPG_DOMAIN=my-vault
 
         # SPLIT SSH CONFIGURATION >>>
         # replace "vault" with your AppVM name which stores the ssh private key(s)
-        SSH_VAULT_VM="vault"
+        SSH_VAULT_VM="offline"
 
         if [ "$SSH_VAULT_VM" != "" ]; then
           export SSH_AUTH_SOCK="/home/user/.SSH_AGENT_$SSH_VAULT_VM"
