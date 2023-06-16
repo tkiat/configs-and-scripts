@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+X-Qubes-VmName=np-disp
+X-Qubes-AppName=chromium
+Name=np-disp: chromium
+Categories=Network;WebBrowser;X-Qubes-VM;
+Exec=qvm-run -a np-disp "chromium"

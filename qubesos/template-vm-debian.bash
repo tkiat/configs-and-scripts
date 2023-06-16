@@ -11,6 +11,7 @@ sudo apt install\
  fd-find\
  feh\
  git\
+ htop\
  libgtk2.0-0\
  libreoffice\
  mc\
