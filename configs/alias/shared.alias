@@ -24,7 +24,7 @@ alias df="df -h"
       }
 alias du="du --max-depth=1 -k | sort -n | cut -f2 | xargs -d '\n' du -sh"
 # alias dust="dust --depth 1"
-alias exa="exa --group-directories-first"
+# alias exa="exa --group-directories-first"
 alias feh="feh --scale-down --auto-zoom"
 alias fgrep='fgrep --color=auto'
 alias free="free -h"
