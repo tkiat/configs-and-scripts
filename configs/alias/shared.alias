@@ -17,7 +17,7 @@ alias alacritty="LIBGL_ALWAYS_SOFTWARE=1 alacritty"
 alias cal="cal -3"
 # alias cmus="cd ~/Sync/Public/Music/ && cmus && cd -"
 alias coolreader="cr3"
-alias cp="cp --preserve=timestamps"
+alias cp="cp --preserve=all"
 alias df="df -h"
       dict() {
         command dict "$1" | 2less
@@ -106,6 +106,20 @@ alias 2e=2edit
           $EDITOR "$f"
         else echo unknown arguments
         fi;
+      }
+      2file-name2date() {
+        [ -d "name2date" ] && echo "directory \"name2date\" already exists. remove it first" && return
+        mkdir name2date
+        for filename in "$@"
+        do
+          newname=$(exiftool -d "%Y_%m_%d-%H%M%S" -CreateDate -short -veryShort "$filename")
+          if [ -z "$newname" ]
+          then
+            cp --preserve=all "$filename" "name2date/$filename"
+          else
+            cp --preserve=all "$filename" "name2date/$newname"."$(echo "$filename" | cut -d '.' -f 2)"
+          fi
+        done
       }
 alias 2file-size="du -a --max-depth=1 --si | awk -F' ' '{ if (\$2 != \".\") {print} }' | sort -h && echo "" && echo This is SI format"
 alias 2git-addconfig='git config --local include.path ../.gitconfig'
@@ -197,6 +211,7 @@ alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
           echo unknown arguments
         fi;
       }
+alias 2t="type"
       2tab-title-change() { echo -en "\e]2;$1\a"; }
       2umount() {
         sudo umount ~/mnt/${1}
