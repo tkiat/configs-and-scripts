@@ -7,11 +7,13 @@ sudo apt install\
  cmus\
  dict\
  dunst\
+ eog\
  exa\
  fd-find\
  feh\
  geeqie\
  git\
+ heif-gdk-pixbuf\
  htop\
  libgtk2.0-0\
  libreoffice\
