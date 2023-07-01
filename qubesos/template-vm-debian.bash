@@ -10,6 +10,7 @@ sudo apt install\
  exa\
  fd-find\
  feh\
+ geeqie\
  git\
  htop\
  libgtk2.0-0\
