@@ -109,13 +109,14 @@ alias 2e=2edit
       }
       2file-name2date() {
         [ -d "name2date" ] && echo "directory \"name2date\" already exists. remove it first" && return
-        mkdir name2date
+        [ -d "name2date-unmodified" ] && echo "directory \"name2date-unmodified\" already exists. remove it first" && return
+        mkdir name2date && mkdir "name2date-unmodified"
         for filename in "$@"
         do
           newname=$(exiftool -d "%Y_%m_%d-%H%M%S" -CreateDate -short -veryShort "$filename")
           if [ -z "$newname" ]
           then
-            cp --preserve=all "$filename" "name2date/$filename"
+            cp --preserve=all "$filename" "name2date-unmodified/$filename"
           else
             cp --preserve=all "$filename" "name2date/$newname"."$(echo "$filename" | cut -d '.' -f 2)"
           fi
