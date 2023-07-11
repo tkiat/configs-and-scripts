@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 sudo apt install\
+ apt-file\
  bat\
  calibre\
  cheese\
@@ -9,6 +10,7 @@ sudo apt install\
  dunst\
  eog\
  exa\
+ fbreader\
  fd-find\
  feh\
  geeqie\
