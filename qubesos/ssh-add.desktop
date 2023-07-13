@@ -1,0 +1,4 @@
+[Desktop Entry]
+Name=ssh-add
+Exec=ssh-add /home/user/.ssh/GitHub-tkiatd /home/user/.ssh/GitLab-tkiatd /home/user/.ssh/NotABug-tkiatd
+Type=Application
