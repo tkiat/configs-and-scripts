@@ -113,7 +113,7 @@ alias 2e=2edit
         mkdir name2date && mkdir "name2date-unmodified"
         for filename in "$@"
         do
-          newname=$(exiftool -d "%Y_%m_%d-%H%M%S" -CreateDate -short -veryShort "$filename")
+          newname=$(exiftool -d "%Y_%m_%d-%H%M%S" -DateTimeOriginal -short -veryShort "$filename")
           if [ -z "$newname" ]
           then
             cp --preserve=all "$filename" "name2date-unmodified/$filename"
