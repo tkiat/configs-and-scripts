@@ -28,6 +28,7 @@ sudo apt install\
  newsboat\
  qbittorrent\
  okular\
+ pass\
  ranger\
  ripgrep\
  simplescreenrecorder\
