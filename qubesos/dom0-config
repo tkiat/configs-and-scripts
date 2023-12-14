@@ -157,17 +157,17 @@ set $ws7 "7: sp"
 set $ws8 "8: other"
 set $ws9 "9: dom0"
 
-assign [class=^disp.*$] $ws1
-assign [class="p"] $ws2
-assign [class="offline"] $ws6
-assign [class="vault"] $ws6
-assign [class="sp"] $ws7
-assign [class=^debian-.*$] $ws8
-assign [class=^nonwork-.*$] $ws8
-assign [class="sys-firewall"] $ws8
-assign [class="sys-net"] $ws8
-assign [class="sys-usb"] $ws8
-assign [class="sys-whonix"] $ws8
+assign [class="^disp[0-9]*:.*$"] $ws1
+assign [class="^p:.*$"] $ws2
+assign [class="^offline:.*$"] $ws6
+assign [class="^vault:.*$"] $ws6
+assign [class="^sp:.*$"] $ws7
+assign [class="^debian-[0-9]*:.*$"] $ws8
+assign [class="^nonwork-[0-9]*:.*$"] $ws8
+assign [class="^sys-firewall:.*$"] $ws8
+assign [class="^sys-net:.*$"] $ws8
+assign [class="^sys-usb:.*$"] $ws8
+assign [class="^sys-whonix:.*$"] $ws8
 
   # switch to workspace
 bindsym $mod+1 workspace number $ws1
