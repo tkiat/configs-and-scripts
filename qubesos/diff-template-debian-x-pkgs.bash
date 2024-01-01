@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 sudo apt install\
  apt-file\
+ bash-completion\
  bat\
  calibre\
  cheese\
