@@ -32,11 +32,13 @@ sudo apt install\
  ranger\
  ripgrep\
  simplescreenrecorder\
+ ssh-askpass-gnome\
  telegram-desktop\
  unrar-free\
  v4l-utils\
  vlc\
  weechat\
+ wget\
  xclip\
  xfonts-intl-asian\
  zathura zathura-cb

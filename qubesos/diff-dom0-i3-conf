@@ -1,0 +1,36 @@
+# ---------------------------------------- mine - appended
+
+exec --no-startup-id "xscreensaver -no-splash"
+bindsym $mod+Shift+z exec "xscreensaver-command -lock"
+
+workspace_layout tabbed
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+set $ws1 "1: np"
+set $ws2 "2: p"
+set $ws3 "3: w"
+set $ws4 "4: w"
+set $ws5 "5: w"
+set $ws6 "6: offline"
+set $ws7 "7: sp"
+set $ws8 "8: other"
+set $ws9 "9: dom0"
+set $ws10 "10: dom0"
+
+assign [class="^disp[0-9]*:.*$"] $ws1
+assign [class="^p:.*$"] $ws2
+assign [class="^offline:.*$"] $ws6
+assign [class="^vault:.*$"] $ws6
+assign [class="^sp:.*$"] $ws7
+assign [class="^debian-[0-9]*:.*$"] $ws8
+assign [class="^nonwork-[0-9]*:.*$"] $ws8
+assign [class="^sys-firewall:.*$"] $ws8
+assign [class="^sys-net:.*$"] $ws8
+assign [class="^sys-usb:.*$"] $ws8
+assign [class="^sys-whonix:.*$"] $ws8
+
+for_window [instance=chromium] sticky enable
+for_window [instance=mpv] sticky enable
+for_window [instance=vlc] sticky enable
