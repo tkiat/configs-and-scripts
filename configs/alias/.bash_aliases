@@ -195,6 +195,7 @@ alias 2rm-file-recursive="find . -type f -delete"
           hoogle server --local -n -p 5000
         fi;
       }
+alias 2run-dropbox-headless="~/.dropbox-dist/dropboxd & disown"
 alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
       2source() {
         if [[ $# -eq 0 ]] ; then
