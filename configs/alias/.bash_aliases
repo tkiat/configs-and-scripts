@@ -156,6 +156,9 @@ alias 2ls-vidlength='for i in $(ls); do echo -n "$i - " && mediainfo --Inform="V
       2mount() {
         sudo mount /dev/${1} ~/mnt/${1}
       }
+      2mount-ms() {
+        sudo mount -o rw,user,uid=1000,dmask=007,fmask=117 /dev/${1} ~/mnt/${1}
+      }
       2mount-luks() {
         sudo cryptsetup luksOpen /dev/"${1}" "${1}"
 #         su -c "cryptsetup luksOpen /dev/${1} ${1}"
