@@ -43,3 +43,19 @@ PATH=$PATH:$path_script/ondemand
 
 setxkbmap -layout us,th
 setxkbmap -option grp:win_space_toggle
+
+# --- nix
+if [ -f "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then
+  . /home/user/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# --- flatpak: run app name 
+if [ -x "$(command -v flatpak)" ]; then
+  # flatpak_list=$(flatpak list --columns=application | tr ' ' '\n')
+  # flatpak_app=$(ls /var/lib/flatpak/exports/bin)
+  # echo $flatpak_app | grep -q io.neovim.nvim && alias nvim="flatpak run io.neovim.nvim" && EDITOR="flatpak run io.neovim.nvim"
+  # echo $flatpak_app | grep -q org.gimp.GIMP && alias gimp="flatpak run org.gimp.GIMP"
+  2flatpak () {
+    echo s
+  }
+fi
