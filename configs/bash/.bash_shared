@@ -49,13 +49,27 @@ if [ -f "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then
   . /home/user/.nix-profile/etc/profile.d/nix.sh
 fi
 
-# --- flatpak: run app name 
+# --- flatpak: run app short name 
 if [ -x "$(command -v flatpak)" ]; then
   # flatpak_list=$(flatpak list --columns=application | tr ' ' '\n')
-  # flatpak_app=$(ls /var/lib/flatpak/exports/bin)
-  # echo $flatpak_app | grep -q io.neovim.nvim && alias nvim="flatpak run io.neovim.nvim" && EDITOR="flatpak run io.neovim.nvim"
-  # echo $flatpak_app | grep -q org.gimp.GIMP && alias gimp="flatpak run org.gimp.GIMP"
-  2flatpak () {
-    echo s
+  flatpak_installed=$(\ls /var/lib/flatpak/exports/bin)
+
+  2fp() {
+    declare -A pkgs
+    pkgs=(
+     [gimp]=org.gimp.GIMP
+     [nvim]=io.neovim.nvim
+    )
+    if [ ! -z ${pkgs[$1]} ]; then
+      if echo $flatpak_installed | grep -q ${pkgs[$1]}; then
+        flatpak run ${pkgs[$1]} "${@:2}"
+      else
+        echo $FUNCNAME: package "$1" not installed
+        return 1
+      fi
+    else
+      echo "$FUNCNAME": package "$1" not found in function database
+      return 1
+    fi
   }
 fi
