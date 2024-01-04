@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# --- debian
+sudo apt install exa
 # --- nix
 if ! [ -f "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then
   echo installing nix ...
@@ -13,5 +15,5 @@ if ! [ -x "$(command -v flatpak)" ]; then
 
   echo installing flatpak packages ...
   flatpak install --assumeyes flathub org.gimp.GIMP
-  flatpak install --assumeyes flathub io.neovim.nvim
+  flatpak install --assumeyes flathub io.neovim.nvim && ln -v -s "/home/$USER/configs-and-scripts/config/nvim" "/home/$USER/.var/app/io.neovim.nvim/config"
 fi
