@@ -77,6 +77,7 @@ alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set 
        zip ../${PWD##*/}.cbz *
       }
 alias 2diff-folders="diff -x '.*' -rq"
+alias 2dropbox-headless="~/.dropbox-dist/dropboxd & disown"
 alias 2e=2edit
       2edit() {
         local arg=${1:-.}
@@ -198,7 +199,6 @@ alias 2rm-file-recursive="find . -type f -delete"
           hoogle server --local -n -p 5000
         fi;
       }
-alias 2run-dropbox-headless="~/.dropbox-dist/dropboxd & disown"
 alias 2setxkbmap="setxkbmap -layout us,th -option 'grp:toggle'"
       2source() {
         if [[ $# -eq 0 ]] ; then
