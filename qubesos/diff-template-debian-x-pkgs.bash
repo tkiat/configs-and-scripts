@@ -19,6 +19,7 @@ sudo apt install\
  heif-gdk-pixbuf\
  htop\
  libgtk2.0-0\
+ libheif-examples\
  libreoffice\
  mc\
  mediainfo\
