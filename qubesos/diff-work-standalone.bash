@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # --- debian
-sudo apt install exa
+sudo apt install\
+  exa\
+  feh\
+  ranger
 # --- nix
 if ! [ -f "/home/$USER/.nix-profile/etc/profile.d/nix.sh" ]; then
   echo installing nix ...
