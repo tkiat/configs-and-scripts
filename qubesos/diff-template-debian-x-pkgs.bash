@@ -36,6 +36,7 @@ sudo apt install\
  simplescreenrecorder\
  ssh-askpass-gnome\
  telegram-desktop\
+ tmux\
  unrar-free\
  v4l-utils\
  vlc\
