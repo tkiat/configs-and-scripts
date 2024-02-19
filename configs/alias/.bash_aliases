@@ -71,13 +71,6 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
         done
       }
 alias 2convert-jpgs_pdfs="mogrify -format pdf *.jpg"
-      2convert-heic_jpg() {
-        for f in *.heic
-        do
-          noext=$(echo "$f" | cut -d '.' -f 1)
-          heif-convert -q 100 "$f" "$noext".jpg
-        done
-      }
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
       2create-cbz() {
@@ -157,6 +150,23 @@ alias 2grub-make="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias 2join-pdf="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=joined.pdf *.pdf"
 alias 2keyring-get-gnu="wget https://ftp.gnu.org/gnu/gnu-keyring.gpg"
 alias 2logout="pkill -u $USER"
+      2loop-heic-to-jpg() {
+        for i in "$@"
+        do
+          if [ "${i: -5}" == ".heic" ]; then
+              noext=$(echo "$i" | cut -d '.' -f 1)
+              heif-convert -q 100 "$i" "$noext".jpg
+          fi;
+        done
+      }
+      2loop-unzip() {
+        for i in "$@"
+        do
+          if [ "${i: -4}" == ".zip" ]; then
+            unzip "$i"
+          fi;
+        done
+      }
       2ls-exclude-same-name-diff-ext() { for f in *; do echo "${f%.*}"; done | sort | uniq -u ;}
 alias 2ls-symlink="find . -maxdepth 1 -type l"
       2ls-tar() { tar tf $1 | sed 's/\/.*//' | uniq; } # list tarball file and folders (depth = 1)
