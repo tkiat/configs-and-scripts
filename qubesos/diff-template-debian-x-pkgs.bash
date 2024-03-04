@@ -11,6 +11,7 @@ sudo apt install\
  dunst\
  eog\
  exa\
+ exiftool\
  fbreader\
  fd-find\
  feh\
