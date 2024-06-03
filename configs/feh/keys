@@ -1,0 +1,19 @@
+# unbind old keys
+zoom_in 
+zoom_out 
+
+next_img
+prev_img
+
+scroll_up_page
+scroll_down_page 
+
+# bind new keys
+zoom_in plus
+zoom_out minus
+
+prev_img Left h
+next_img Right l
+
+scroll_up_page k
+scroll_down_page j
