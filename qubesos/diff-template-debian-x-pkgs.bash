@@ -7,6 +7,7 @@ sudo apt install\
  cheese\
  chromium\
  cmus\
+ dcraw\
  dict\
  dunst\
  eog\

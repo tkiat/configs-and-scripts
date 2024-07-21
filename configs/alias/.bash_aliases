@@ -71,6 +71,12 @@ alias 2clipboard-set_withnewline="xclip -selection clipboard"
         done
       }
 alias 2convert-jpgs_pdfs="mogrify -format pdf *.jpg"
+      2convert-raw() {
+        for i in "$@"
+        do
+          dcraw -c -w "$i" | convert - "${i%\.*}.jpg"
+        done
+      }
 alias 2cookiecutter-hint="echo cookiecutter gh:tkiat/templates --directory='hs-nix'"
 alias 2cpu-setfreq-ondemand="for i in {0..$(($(nproc)-1))}; do sudo cpufreq-set -c \$i -g ondemand; done"
       2create-cbz() {
