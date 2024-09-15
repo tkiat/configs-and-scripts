@@ -32,7 +32,8 @@ do
 	if [[ $filename =~ .*\.(jpg|jpeg) ]]
 	then
 		echo "optimizing $filename ..."
-		jpegoptim --size=150k -q "$filename"
+		jpegoptim -m 50 -q "$filename"
+# 		jpegoptim --size=150k -q "$filename"
 	fi
 
 	# video
